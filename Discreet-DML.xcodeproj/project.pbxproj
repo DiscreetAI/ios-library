@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E409790523A0A3A000F51C42 /* Discreet_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */; };
+		E409790A23A0A3A000F51C42 /* Discreet_DMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409790923A0A3A000F51C42 /* Discreet_DMLTests.swift */; };
+		E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* Discreet_DML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E409790623A0A3A000F51C42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E40978F223A0A39F00F51C42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E40978FA23A0A39F00F51C42;
+			remoteInfo = "Discreet-DML";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Discreet_DML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E40978FE23A0A39F00F51C42 /* Discreet_DML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Discreet_DML.h; sourceTree = "<group>"; };
+		E40978FF23A0A39F00F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E409790423A0A3A000F51C42 /* Discreet-DMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Discreet-DMLTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E409790923A0A3A000F51C42 /* Discreet_DMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discreet_DMLTests.swift; sourceTree = "<group>"; };
+		E409790B23A0A3A000F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E40978F823A0A39F00F51C42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E409790123A0A3A000F51C42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E409790523A0A3A000F51C42 /* Discreet_DML.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E40978F123A0A39F00F51C42 = {
+			isa = PBXGroup;
+			children = (
+				E40978FD23A0A39F00F51C42 /* Discreet-DML */,
+				E409790823A0A3A000F51C42 /* Discreet-DMLTests */,
+				E40978FC23A0A39F00F51C42 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E40978FC23A0A39F00F51C42 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */,
+				E409790423A0A3A000F51C42 /* Discreet-DMLTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E40978FD23A0A39F00F51C42 /* Discreet-DML */ = {
+			isa = PBXGroup;
+			children = (
+				E40978FE23A0A39F00F51C42 /* Discreet_DML.h */,
+				E40978FF23A0A39F00F51C42 /* Info.plist */,
+			);
+			path = "Discreet-DML";
+			sourceTree = "<group>";
+		};
+		E409790823A0A3A000F51C42 /* Discreet-DMLTests */ = {
+			isa = PBXGroup;
+			children = (
+				E409790923A0A3A000F51C42 /* Discreet_DMLTests.swift */,
+				E409790B23A0A3A000F51C42 /* Info.plist */,
+			);
+			path = "Discreet-DMLTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E40978F623A0A39F00F51C42 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E40978FA23A0A39F00F51C42 /* Discreet-DML */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E409790F23A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "Discreet-DML" */;
+			buildPhases = (
+				E40978F623A0A39F00F51C42 /* Headers */,
+				E40978F723A0A39F00F51C42 /* Sources */,
+				E40978F823A0A39F00F51C42 /* Frameworks */,
+				E40978F923A0A39F00F51C42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Discreet-DML";
+			productName = "Discreet-DML";
+			productReference = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E409790323A0A3A000F51C42 /* Discreet-DMLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "Discreet-DMLTests" */;
+			buildPhases = (
+				E409790023A0A3A000F51C42 /* Sources */,
+				E409790123A0A3A000F51C42 /* Frameworks */,
+				E409790223A0A3A000F51C42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E409790723A0A3A000F51C42 /* PBXTargetDependency */,
+			);
+			name = "Discreet-DMLTests";
+			productName = "Discreet-DMLTests";
+			productReference = E409790423A0A3A000F51C42 /* Discreet-DMLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E40978F223A0A39F00F51C42 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = DiscreetAI;
+				TargetAttributes = {
+					E40978FA23A0A39F00F51C42 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+					E409790323A0A3A000F51C42 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = E40978F523A0A39F00F51C42 /* Build configuration list for PBXProject "Discreet-DML" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E40978F123A0A39F00F51C42;
+			productRefGroup = E40978FC23A0A39F00F51C42 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E40978FA23A0A39F00F51C42 /* Discreet-DML */,
+				E409790323A0A3A000F51C42 /* Discreet-DMLTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E40978F923A0A39F00F51C42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E409790223A0A3A000F51C42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E40978F723A0A39F00F51C42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E409790023A0A3A000F51C42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E409790A23A0A3A000F51C42 /* Discreet_DMLTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E409790723A0A3A000F51C42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E40978FA23A0A39F00F51C42 /* Discreet-DML */;
+			targetProxy = E409790623A0A3A000F51C42 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E409790D23A0A3A000F51C42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E409790E23A0A3A000F51C42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E409791023A0A3A000F51C42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Discreet-DML/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DML";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E409791123A0A3A000F51C42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Discreet-DML/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DML";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E409791323A0A3A000F51C42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Discreet-DMLTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E409791423A0A3A000F51C42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Discreet-DMLTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E40978F523A0A39F00F51C42 /* Build configuration list for PBXProject "Discreet-DML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E409790D23A0A3A000F51C42 /* Debug */,
+				E409790E23A0A3A000F51C42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E409790F23A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "Discreet-DML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E409791023A0A3A000F51C42 /* Debug */,
+				E409791123A0A3A000F51C42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "Discreet-DMLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E409791323A0A3A000F51C42 /* Debug */,
+				E409791423A0A3A000F51C42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E40978F223A0A39F00F51C42 /* Project object */;
+}

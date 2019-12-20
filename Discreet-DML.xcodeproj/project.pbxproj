@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		E409790A23A0A3A000F51C42 /* Discreet_DMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409790923A0A3A000F51C42 /* Discreet_DMLTests.swift */; };
 		E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* Discreet_DML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
+		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
+		E4BA35F423AC2CBB00F81825 /* Surge in Frameworks */ = {isa = PBXBuildFile; productRef = E4BA35F323AC2CBB00F81825 /* Surge */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,7 @@
 		E409790923A0A3A000F51C42 /* Discreet_DMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discreet_DMLTests.swift; sourceTree = "<group>"; };
 		E409790B23A0A3A000F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessor.swift; sourceTree = "<group>"; };
+		E4BA35F023AB187000F81825 /* BinaryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BA35F423AC2CBB00F81825 /* Surge in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +80,7 @@
 				E40978FE23A0A39F00F51C42 /* Discreet_DML.h */,
 				E40978FF23A0A39F00F51C42 /* Info.plist */,
 				E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */,
+				E4BA35F023AB187000F81825 /* BinaryUtils.swift */,
 			);
 			path = "Discreet-DML";
 			sourceTree = "<group>";
@@ -117,6 +122,9 @@
 			dependencies = (
 			);
 			name = "Discreet-DML";
+			packageProductDependencies = (
+				E4BA35F323AC2CBB00F81825 /* Surge */,
+			);
 			productName = "Discreet-DML";
 			productReference = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */;
 			productType = "com.apple.product-type.framework";
@@ -167,6 +175,9 @@
 				Base,
 			);
 			mainGroup = E40978F123A0A39F00F51C42;
+			packageReferences = (
+				E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */,
+			);
 			productRefGroup = E40978FC23A0A39F00F51C42 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -200,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */,
+				E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +470,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jounce/Surge";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E4BA35F323AC2CBB00F81825 /* Surge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */;
+			productName = Surge;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E40978F223A0A39F00F51C42 /* Project object */;
 }

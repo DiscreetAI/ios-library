@@ -1,46 +1,25 @@
 //
-//  BinaryUtils.swift
-//  Discreet-DML
+//  BinUtils.swift
+//  BinUtils
 //
-//  Created by Neelesh on 12/18/19.
-//  Copyright © 2019 DiscreetAI. All rights reserved.
+//  Created by Nicolas Seriot on 12/03/16.
+//  Copyright © 2016 Nicolas Seriot. All rights reserved.
 //
+
 import Foundation
+import CoreFoundation
 
-extension String {
-    subscript (from:Int, to:Int) -> String {
-        return NSString(string: self).substring(with: NSMakeRange(from, to-from))
-    }
-    
-    subscript (bounds: CountableClosedRange<Int>) -> String {
-        let start = index(startIndex, offsetBy: bounds.lowerBound)
-        let end = index(startIndex, offsetBy: bounds.upperBound)
-        return String(self[start...end])
-    }
+// MARK: protocol UnpackedType
 
-    subscript (bounds: CountableRange<Int>) -> String {
-        let start = index(startIndex, offsetBy: bounds.lowerBound)
-        let end = index(startIndex, offsetBy: bounds.upperBound)
-        return String(self[start..<end])
-    }
-}
-
-// MARK: Data extension
-
-extension Data {
-    var bytes : [UInt8] {
-        return [UInt8](self)
-    }
-}
-
-protocol Unpackable {}
+public protocol Unpackable {}
 
 extension NSString: Unpackable {}
 extension Bool: Unpackable {}
 extension Int: Unpackable {}
 extension Double: Unpackable {}
-// MARK: protocol DataConvertible
 
+// MARK: protocol DataConvertible
+ 
 protocol DataConvertible {}
 
 extension DataConvertible {
@@ -76,7 +55,25 @@ extension UInt64 : DataConvertible { }
 extension Float32 : DataConvertible { }
 extension Float64 : DataConvertible { }
 
-private func hexlify(_ data:Data) -> String {
+// MARK: String extension
+
+extension String {
+    subscript (from:Int, to:Int) -> String {
+        return NSString(string: self).substring(with: NSMakeRange(from, to-from))
+    }
+}
+
+// MARK: Data extension
+
+extension Data {
+    var bytes : [UInt8] {
+        return [UInt8](self)
+    }
+}
+
+// MARK: functions
+
+public func hexlify(_ data:Data) -> String {
     
     // similar to hexlify() in Python's binascii module
     // https://docs.python.org/2/library/binascii.html
@@ -92,7 +89,7 @@ private func hexlify(_ data:Data) -> String {
     return s as String
 }
 
-private func unhexlify(_ string:String) -> Data? {
+public func unhexlify(_ string:String) -> Data? {
     
     // similar to unhexlify() in Python's binascii module
     // https://docs.python.org/2/library/binascii.html
@@ -108,7 +105,7 @@ private func unhexlify(_ string:String) -> Data? {
     var data = Data(capacity: s.count / 2)
     
     for i in stride(from: 0, to:s.count, by:2) {
-        let byteString = String(s[i..<i+2])
+        let byteString = s[i, i+2]
         let byte = UInt8(byteString.withCString { strtoul($0, nil, 16) })
         data.append([byte] as [UInt8], count: 1)
     }
@@ -116,14 +113,14 @@ private func unhexlify(_ string:String) -> Data? {
     return data
 }
 
-private func readIntegerType<T:DataConvertible>(_ type:T.Type, bytes:[UInt8], loc:inout Int) -> T {
+func readIntegerType<T:DataConvertible>(_ type:T.Type, bytes:[UInt8], loc:inout Int) -> T {
     let size = MemoryLayout<T>.size
     let sub = Array(bytes[loc..<(loc+size)])
     loc += size
     return T(bytes: sub)!
 }
 
-private func readFloatingPointType<T:DataConvertible>(_ type:T.Type, bytes:[UInt8], loc:inout Int, isBigEndian:Bool) -> T {
+func readFloatingPointType<T:DataConvertible>(_ type:T.Type, bytes:[UInt8], loc:inout Int, isBigEndian:Bool) -> T {
     let size = MemoryLayout<T>.size
     let sub = Array(bytes[loc..<(loc+size)])
     loc += size
@@ -131,7 +128,7 @@ private func readFloatingPointType<T:DataConvertible>(_ type:T.Type, bytes:[UInt
     return T(bytes: sub_)!
 }
 
-private func isBigEndianFromMandatoryByteOrderFirstCharacter(_ format:String) -> Bool {
+func isBigEndianFromMandatoryByteOrderFirstCharacter(_ format:String) -> Bool {
     
     guard let firstChar = format.first else { assertionFailure("empty format"); return false }
     
@@ -149,7 +146,7 @@ private func isBigEndianFromMandatoryByteOrderFirstCharacter(_ format:String) ->
 }
 
 // akin to struct.calcsize(fmt)
-private func numberOfBytesInFormat(_ format:String) -> Int {
+func numberOfBytesInFormat(_ format:String) -> Int {
     
     var numberOfBytes = 0
     
@@ -199,7 +196,7 @@ private func numberOfBytesInFormat(_ format:String) -> Int {
     return numberOfBytes
 }
 
-private func formatDoesMatchDataLength(_ format:String, data:Data) -> Bool {
+func formatDoesMatchDataLength(_ format:String, data:Data) -> Bool {
     let sizeAccordingToFormat = numberOfBytesInFormat(format)
     let dataLength = data.count
     if sizeAccordingToFormat != dataLength {
@@ -218,12 +215,12 @@ private func formatDoesMatchDataLength(_ format:String, data:Data) -> Bool {
  - Pascal strings 'p' and native pointers 'P' are not supported
  */
 
-private enum BinUtilsError: Error {
+public enum BinUtilsError: Error {
     case formatDoesMatchDataLength(format:String, dataSize:Int)
     case unsupportedFormat(character:Character)
 }
 
-func pack(_ format:String, _ objects:[Any], _ stringEncoding:String.Encoding=String.Encoding.windowsCP1252) -> Data {
+public func pack(_ format:String, _ objects:[Any], _ stringEncoding:String.Encoding=String.Encoding.windowsCP1252) -> Data {
     
     var objectsQueue = objects
     
@@ -337,7 +334,7 @@ func pack(_ format:String, _ objects:[Any], _ stringEncoding:String.Encoding=Str
     return mutableData
 }
 
-func unpack(_ format:String, _ data:Data, _ stringEncoding:String.Encoding=String.Encoding.windowsCP1252) throws -> [Unpackable] {
+public func unpack(_ format:String, _ data:Data, _ stringEncoding:String.Encoding=String.Encoding.windowsCP1252) throws -> [Unpackable] {
     
     assert(CFByteOrderGetCurrent() == 1 /* CFByteOrderLittleEndian */, "\(#file) assumes little endian, but host is big endian")
     

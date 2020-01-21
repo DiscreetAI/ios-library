@@ -3,13 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		E409790523A0A3A000F51C42 /* Discreet_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */; };
-		E409790A23A0A3A000F51C42 /* Discreet_DMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409790923A0A3A000F51C42 /* Discreet_DMLTests.swift */; };
 		E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* Discreet_DML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */; };
+		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
+		E49BDD4E23D6890A00A954FE /* old_complex_weights in Resources */ = {isa = PBXBuildFile; fileRef = E49BDD4A23D6890A00A954FE /* old_complex_weights */; };
+		E49BDD4F23D6890A00A954FE /* new_simple_weights in Resources */ = {isa = PBXBuildFile; fileRef = E49BDD4B23D6890A00A954FE /* new_simple_weights */; };
+		E49BDD5023D6890A00A954FE /* old_simple_weights in Resources */ = {isa = PBXBuildFile; fileRef = E49BDD4C23D6890A00A954FE /* old_simple_weights */; };
+		E49BDD5123D6890A00A954FE /* new_complex_weights in Resources */ = {isa = PBXBuildFile; fileRef = E49BDD4D23D6890A00A954FE /* new_complex_weights */; };
+		E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BDD5223D689A400A954FE /* TestingUtils.swift */; };
+		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
+		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
+		E4BA35F423AC2CBB00F81825 /* Surge in Frameworks */ = {isa = PBXBuildFile; productRef = E4BA35F323AC2CBB00F81825 /* Surge */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +36,16 @@
 		E40978FE23A0A39F00F51C42 /* Discreet_DML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Discreet_DML.h; sourceTree = "<group>"; };
 		E40978FF23A0A39F00F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E409790423A0A3A000F51C42 /* Discreet-DMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Discreet-DMLTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E409790923A0A3A000F51C42 /* Discreet_DMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discreet_DMLTests.swift; sourceTree = "<group>"; };
 		E409790B23A0A3A000F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessorTests.swift; sourceTree = "<group>"; };
+		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		E49BDD4A23D6890A00A954FE /* old_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = old_complex_weights; sourceTree = "<group>"; };
+		E49BDD4B23D6890A00A954FE /* new_simple_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = new_simple_weights; sourceTree = "<group>"; };
+		E49BDD4C23D6890A00A954FE /* old_simple_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = old_simple_weights; sourceTree = "<group>"; };
+		E49BDD4D23D6890A00A954FE /* new_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = new_complex_weights; sourceTree = "<group>"; };
+		E49BDD5223D689A400A954FE /* TestingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
+		E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessor.swift; sourceTree = "<group>"; };
+		E4BA35F023AB187000F81825 /* BinaryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BA35F423AC2CBB00F81825 /* Surge in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +91,9 @@
 			children = (
 				E40978FE23A0A39F00F51C42 /* Discreet_DML.h */,
 				E40978FF23A0A39F00F51C42 /* Info.plist */,
+				E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */,
+				E4BA35F023AB187000F81825 /* BinaryUtils.swift */,
+				E44F577123D3027400FE0619 /* Utils.swift */,
 			);
 			path = "Discreet-DML";
 			sourceTree = "<group>";
@@ -80,10 +101,31 @@
 		E409790823A0A3A000F51C42 /* Discreet-DMLTests */ = {
 			isa = PBXGroup;
 			children = (
-				E409790923A0A3A000F51C42 /* Discreet_DMLTests.swift */,
+				E49BDD4823D6889D00A954FE /* TestingArtifacts */,
 				E409790B23A0A3A000F51C42 /* Info.plist */,
+				E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */,
+				E49BDD5223D689A400A954FE /* TestingUtils.swift */,
 			);
 			path = "Discreet-DMLTests";
+			sourceTree = "<group>";
+		};
+		E49BDD4823D6889D00A954FE /* TestingArtifacts */ = {
+			isa = PBXGroup;
+			children = (
+				E49BDD4923D688AC00A954FE /* WeightsProcessor */,
+			);
+			path = TestingArtifacts;
+			sourceTree = "<group>";
+		};
+		E49BDD4923D688AC00A954FE /* WeightsProcessor */ = {
+			isa = PBXGroup;
+			children = (
+				E49BDD4D23D6890A00A954FE /* new_complex_weights */,
+				E49BDD4B23D6890A00A954FE /* new_simple_weights */,
+				E49BDD4A23D6890A00A954FE /* old_complex_weights */,
+				E49BDD4C23D6890A00A954FE /* old_simple_weights */,
+			);
+			path = WeightsProcessor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,6 +156,9 @@
 			dependencies = (
 			);
 			name = "Discreet-DML";
+			packageProductDependencies = (
+				E4BA35F323AC2CBB00F81825 /* Surge */,
+			);
 			productName = "Discreet-DML";
 			productReference = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */;
 			productType = "com.apple.product-type.framework";
@@ -148,6 +193,7 @@
 				TargetAttributes = {
 					E40978FA23A0A39F00F51C42 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1130;
 					};
 					E409790323A0A3A000F51C42 = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -163,6 +209,9 @@
 				Base,
 			);
 			mainGroup = E40978F123A0A39F00F51C42;
+			packageReferences = (
+				E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */,
+			);
 			productRefGroup = E40978FC23A0A39F00F51C42 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -185,6 +234,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49BDD4F23D6890A00A954FE /* new_simple_weights in Resources */,
+				E49BDD4E23D6890A00A954FE /* old_complex_weights in Resources */,
+				E49BDD5123D6890A00A954FE /* new_complex_weights in Resources */,
+				E49BDD5023D6890A00A954FE /* old_simple_weights in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */,
+				E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */,
+				E44F577223D3027500FE0619 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +258,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E409790A23A0A3A000F51C42 /* Discreet_DMLTests.swift in Sources */,
+				E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */,
+				E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +328,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -328,6 +386,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				NEW_SETTING = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -340,8 +399,10 @@
 		E409791023A0A3A000F51C42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V8MJQ33FN9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -355,6 +416,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DML";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -363,8 +425,10 @@
 		E409791123A0A3A000F51C42 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V8MJQ33FN9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -386,7 +450,9 @@
 		E409791323A0A3A000F51C42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8MJQ33FN9;
 				INFOPLIST_FILE = "Discreet-DMLTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -395,7 +461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -403,7 +469,9 @@
 		E409791423A0A3A000F51C42 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8MJQ33FN9;
 				INFOPLIST_FILE = "Discreet-DMLTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -412,7 +480,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -448,6 +516,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jounce/Surge";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E4BA35F323AC2CBB00F81825 /* Surge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */;
+			productName = Surge;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E40978F223A0A39F00F51C42 /* Project object */;
 }

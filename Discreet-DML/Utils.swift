@@ -9,12 +9,12 @@
 import Foundation
 import CoreML
 
-public func roundArr(arr: [Double], places: Int) -> [Double] {
+public func roundArr(arr: [Float32], places: Int) -> [Float32] {
     /*
      Util method to round numbers in an array to `places` decimal places.
      */
-    func roundNum(num: Double) -> Double {
-        let multiple: Double = pow(10, Double(places))
+    func roundNum(num: Float32) -> Float32 {
+        let multiple: Float32 = pow(10, Float32(places))
         return round(num * multiple) / multiple
     }
     return arr.map(roundNum)

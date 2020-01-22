@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Surge
 
 
 class WeightsProcessor {
@@ -56,12 +57,10 @@ class WeightsProcessor {
         return layerData
     }
     
-    public func calculateGradients(oldModelPath: String, newModelPath: String, learningRate:Float32) -> [[Float32]] {
+    private func calculateGradientsGPU(oldModelWeights: [[Float32]], newModelWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
         /*
-         Calculate the gradients given the learning rate and paths to the old model and new one.
+         Calculate the gradients using GPU given the learning rate and paths to the old model and new one.
          */
-        let oldModelWeights = readWeights(modelPath: oldModelPath)
-        let newModelWeights = readWeights(modelPath: newModelPath)
         var gradients = [[Float32]]()
 
         for (oldLayerWeights, newLayerWeights) in zip(oldModelWeights, newModelWeights) {
@@ -75,4 +74,25 @@ class WeightsProcessor {
         return gradients
     }
     
+    private func calculateGradientsSurge(oldModelWeights: [[Float32]], newModelWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
+        /*
+         Calculate the gradients using Surge given the learning rate and paths to the old model and new one.
+         */
+        var gradients = [[Float32]]()
+
+        for (oldLayerWeights, newLayerWeights) in zip(oldModelWeights, newModelWeights) {
+            gradients.append(Surge.div(Surge.sub(oldLayerWeights, newLayerWeights), learningRate))
+        }
+        return gradients
+    }
+    
+    public func calculateGradients(oldModelPath: String, newModelPath: String, learningRate: Float32, useGPU: Bool = true) -> [[Float32]] {
+        
+        let oldModelWeights = readWeights(modelPath: oldModelPath)
+        let newModelWeights = readWeights(modelPath: newModelPath)
+        
+        let gradientsCalculator = useGPU ? calculateGradientsGPU : calculateGradientsSurge
+        
+        return gradientsCalculator(oldModelWeights, newModelWeights, learningRate)
+    }
 }

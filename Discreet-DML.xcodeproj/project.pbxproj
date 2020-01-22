@@ -13,6 +13,7 @@
 		E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BDD5223D689A400A954FE /* TestingUtils.swift */; };
+		E4AF70E523D905B400D65376 /* Surge in Frameworks */ = {isa = PBXBuildFile; productRef = E4AF70E423D905B400D65376 /* Surge */; };
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4AF70E523D905B400D65376 /* Surge in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +68,7 @@
 				E40978FD23A0A39F00F51C42 /* Discreet-DML */,
 				E409790823A0A3A000F51C42 /* Discreet-DMLTests */,
 				E40978FC23A0A39F00F51C42 /* Products */,
+				E4AF70E323D905B400D65376 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +120,13 @@
 			path = WeightsProcessor;
 			sourceTree = "<group>";
 		};
+		E4AF70E323D905B400D65376 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -146,6 +156,7 @@
 			);
 			name = "Discreet-DML";
 			packageProductDependencies = (
+				E4AF70E423D905B400D65376 /* Surge */,
 			);
 			productName = "Discreet-DML";
 			productReference = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */;
@@ -516,6 +527,14 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E4AF70E423D905B400D65376 /* Surge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */;
+			productName = Surge;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E40978F223A0A39F00F51C42 /* Project object */;
 }

@@ -22,7 +22,35 @@ class WeightsProcessorTests: XCTestCase {
     
     func testSimpleGradients() {
         /*
-         Test gradient calculation for a model with one layer
+         Test gradient calculation for a model with one layer.
+         */
+        let oldSimpleWeightsPath: String = artifactsPath + "old_simple_weights"
+        let newSimpleWeightsPath: String = artifactsPath + "new_simple_weights"
+        let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldModelPath: oldSimpleWeightsPath, newModelPath: newSimpleWeightsPath, learningRate: 0.01, useGPU: false)
+        let roundedCalculatedGradients: [Float32] = roundArr(arr: calculatedGradients[0], places: 3)
+        let roundedExpectedGradients: [Float32] = roundArr(arr: expectedSimpleGradients[0], places: 3)
+        XCTAssertEqual(roundedExpectedGradients, roundedCalculatedGradients)
+    }
+
+    func testComplexGradients() {
+        /*
+         Test gradient calculation for a model with multiple layers.
+         */
+        let oldComplexWeightsPath: String = artifactsPath + "old_complex_weights"
+        let newComplexWeightsPath: String = artifactsPath + "new_complex_weights"
+        let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldModelPath: oldComplexWeightsPath, newModelPath: newComplexWeightsPath, learningRate: 0.01, useGPU: false)
+        for (calculatedGradient, expectedGradient) in zip(calculatedGradients, expectedComplexGradients) {
+            let roundedCalculatedGradient: [Float32] = roundArr(arr: calculatedGradient, places: 3)
+            let roundedExpectedGradient: [Float32] = roundArr(arr: expectedGradient, places: 3)
+            XCTAssertEqual(roundedExpectedGradient, roundedCalculatedGradient)
+        }
+    }
+    
+    func testSimpleGradientsGPU() {
+        /*
+         Test gradient calculation using GPU for a model with one layer.
+         
+         Trivially passes on simulators, since they do not use a GPU.
          */
         #if targetEnvironment(simulator)
         #else
@@ -35,9 +63,11 @@ class WeightsProcessorTests: XCTestCase {
         #endif
     }
 
-    func testComplexGradients() {
+    func testComplexGradientsGPU() {
         /*
-         Test gradient calculation for a model with multiple layers.
+         Test gradient calculation using GPU for a model with multiple layers.
+         
+         Trivially passes on simulators, since they do not use a GPU.
          */
         #if targetEnvironment(simulator)
         #else

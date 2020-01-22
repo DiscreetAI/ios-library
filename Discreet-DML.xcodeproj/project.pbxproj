@@ -15,7 +15,6 @@
 		E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BDD5223D689A400A954FE /* TestingUtils.swift */; };
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
-		E4BA35F423AC2CBB00F81825 /* Surge in Frameworks */ = {isa = PBXBuildFile; productRef = E4BA35F323AC2CBB00F81825 /* Surge */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4BA35F423AC2CBB00F81825 /* Surge in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +146,6 @@
 			);
 			name = "Discreet-DML";
 			packageProductDependencies = (
-				E4BA35F323AC2CBB00F81825 /* Surge */,
 			);
 			productName = "Discreet-DML";
 			productReference = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */;
@@ -519,14 +516,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E4BA35F323AC2CBB00F81825 /* Surge */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */;
-			productName = Surge;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E40978F223A0A39F00F51C42 /* Project object */;
 }

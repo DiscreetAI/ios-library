@@ -12,7 +12,7 @@ import CoreML
 @testable import Discreet_DML
 
 class WeightsProcessorTests: XCTestCase {
-    var weightsProcessor = WeightsProcessor()
+    var weightsProcessor = WeightsProcessor(mpsHandler: MPSHandler())
 
     // Folder to testing artifacts
     let artifactsPath: String = testingUtilsPath + "WeightsProcessor/"

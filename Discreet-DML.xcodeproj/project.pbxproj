@@ -18,7 +18,6 @@
 		E4AF70EC23D9289900D65376 /* MPSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF70EB23D9289900D65376 /* MPSHandler.swift */; };
 		E4AF70F023DA5A3B00D65376 /* CoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF70EF23DA5A3B00D65376 /* CoreMLClient.swift */; };
 		E4AF70F423DA605500D65376 /* CommunicationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF70F323DA605500D65376 /* CommunicationManagerTests.swift */; };
-		E4AF70F723DA60B900D65376 /* DummyCoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF70F623DA60B900D65376 /* DummyCoreMLClient.swift */; };
 		E4AF70F923DA822900D65376 /* DMLJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF70F823DA822900D65376 /* DMLJob.swift */; };
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
@@ -47,7 +46,6 @@
 		E4AF70EB23D9289900D65376 /* MPSHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSHandler.swift; sourceTree = "<group>"; };
 		E4AF70EF23DA5A3B00D65376 /* CoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClient.swift; sourceTree = "<group>"; };
 		E4AF70F323DA605500D65376 /* CommunicationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManagerTests.swift; sourceTree = "<group>"; };
-		E4AF70F623DA60B900D65376 /* DummyCoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCoreMLClient.swift; sourceTree = "<group>"; };
 		E4AF70F823DA822900D65376 /* DMLJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMLJob.swift; sourceTree = "<group>"; };
 		E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessor.swift; sourceTree = "<group>"; };
 		E4BA35F023AB187000F81825 /* BinaryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryUtils.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 		E4AF70F523DA609500D65376 /* CommunicationManager */ = {
 			isa = PBXGroup;
 			children = (
-				E4AF70F623DA60B900D65376 /* DummyCoreMLClient.swift */,
 			);
 			path = CommunicationManager;
 			sourceTree = "<group>";
@@ -287,7 +284,6 @@
 				E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */,
 				E4AF70F423DA605500D65376 /* CommunicationManagerTests.swift in Sources */,
 				E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */,
-				E4AF70F723DA60B900D65376 /* DummyCoreMLClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

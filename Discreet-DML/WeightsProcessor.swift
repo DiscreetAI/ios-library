@@ -16,9 +16,7 @@ class WeightsProcessor {
      */
     var mpsHandler: MPSHandler!
     
-    init() {
-        
-    }
+    init() {}
 
     init(mpsHandler: MPSHandler) {
         self.mpsHandler = mpsHandler

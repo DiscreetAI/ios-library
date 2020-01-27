@@ -1,26 +1,26 @@
+////
+////  CoreMLClient.swift
+////  Discreet-DML
+////
+////  Created by Neelesh on 1/23/20.
+////  Copyright © 2020 DiscreetAI. All rights reserved.
+////
 //
-//  CoreMLClient.swift
-//  Discreet-DML
+//import Foundation
+//import CoreML
 //
-//  Created by Neelesh on 1/23/20.
-//  Copyright © 2020 DiscreetAI. All rights reserved.
+//class CoreMLClient {
+//    /*
+//     Handler for dealing with the Core ML API.
 //
-
-import Foundation
-import CoreML
-
-class CoreMLClient {
-    /*
-     Handler for dealing with the Core ML API.
-     
-     TODO: Finish implementing this client.
-     */
-    var modelURL: URL!
-    init(modelURL: URL) {
-        self.modelURL = modelURL
-    }
-    
-    func train(job: DMLJob, callback: (DMLJob) -> (String)) {
-        
-    }
-}
+//     TODO: Finish implementing this client.
+//     */
+//    var modelURL: URL!
+//    init(modelURL: URL) {
+//        self.modelURL = modelURL
+//    }
+//
+//    func train(job: DMLJob, callback: (DMLJob) -> (String)) {
+//
+//    }
+//}

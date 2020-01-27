@@ -11,13 +11,6 @@ import XCTest
 import CoreML
 @testable import Discreet_DML
 
-
-class DummyMPSHandler : MPSHandler {
-    override init() {
-        
-    }
-}
-
 class WeightsProcessorTests: XCTestCase {
 
     // Folder to testing artifacts
@@ -30,7 +23,7 @@ class WeightsProcessorTests: XCTestCase {
         /*
          Test gradient calculation for a model with one layer.
          */
-        var weightsProcessor = WeightsProcessor(mpsHandler: DummyMPSHandler())
+        var weightsProcessor = WeightsProcessor()
         let oldSimpleWeightsPath: String = artifactsPath + "old_simple_weights"
         let newSimpleWeightsPath: String = artifactsPath + "new_simple_weights"
         let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldModelPath: oldSimpleWeightsPath, newModelPath: newSimpleWeightsPath, learningRate: 0.01, useGPU: false)
@@ -43,7 +36,7 @@ class WeightsProcessorTests: XCTestCase {
         /*
          Test gradient calculation for a model with multiple layers.
          */
-        var weightsProcessor = WeightsProcessor(mpsHandler: DummyMPSHandler())
+        var weightsProcessor = WeightsProcessor()
         let oldComplexWeightsPath: String = artifactsPath + "old_complex_weights"
         let newComplexWeightsPath: String = artifactsPath + "new_complex_weights"
         let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldModelPath: oldComplexWeightsPath, newModelPath: newComplexWeightsPath, learningRate: 0.01, useGPU: false)

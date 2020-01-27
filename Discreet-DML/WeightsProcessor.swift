@@ -15,6 +15,10 @@ class WeightsProcessor {
      Handle all processing of the physical weights file.
      */
     var mpsHandler: MPSHandler!
+    
+    init() {
+        
+    }
 
     init(mpsHandler: MPSHandler) {
         self.mpsHandler = mpsHandler

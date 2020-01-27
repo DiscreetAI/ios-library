@@ -14,6 +14,13 @@ class WeightsProcessor {
     /*
      Handle all processing of the physical weights file.
      */
+    var mpsHandler: MPSHandler!
+    
+    init() {}
+
+    init(mpsHandler: MPSHandler) {
+        self.mpsHandler = mpsHandler
+    }
     
     private func readWeights(modelPath: String) ->  [[Float32]] {
         /*
@@ -65,11 +72,11 @@ class WeightsProcessor {
 
         for (oldLayerWeights, newLayerWeights) in zip(oldModelWeights, newModelWeights) {
             let count = oldLayerWeights.count
-            let oldMPSMatrix = createMPSVector(bytes: oldLayerWeights, count: count)
-            let newMPSMatrix = createMPSVector(bytes: newLayerWeights, count: count)
-            var resultMatrix = matrixSubtraction(m1: oldMPSMatrix, m2: newMPSMatrix)
-            resultMatrix = divideMatrixByConstant(m1: resultMatrix, constant: learningRate)
-            gradients.append(getData(m1: resultMatrix))
+            let oldMPSMatrix = self.mpsHandler.createMPSVector(bytes: oldLayerWeights, count: count)
+            let newMPSMatrix = self.mpsHandler.createMPSVector(bytes: newLayerWeights, count: count)
+            var resultMatrix = self.mpsHandler.matrixSubtraction(m1: oldMPSMatrix, m2: newMPSMatrix)
+            resultMatrix = self.mpsHandler.divideMatrixByConstant(m1: resultMatrix, constant: learningRate)
+            gradients.append(self.mpsHandler.getData(m1: resultMatrix))
         }
         return gradients
     }

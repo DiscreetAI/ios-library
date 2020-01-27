@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E4058A7323D6A0FD00F8C03D /* MPSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4058A7223D6A0FD00F8C03D /* MPSUtils.swift */; };
+		E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */; };
 		E409790523A0A3A000F51C42 /* Discreet_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */; };
 		E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* Discreet_DML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */; };
@@ -16,6 +16,11 @@
 		E4AF70E523D905B400D65376 /* Surge in Frameworks */ = {isa = PBXBuildFile; productRef = E4AF70E423D905B400D65376 /* Surge */; };
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
+		E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */; };
+		E4D72E2323DF8D4F00BE3B75 /* CoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */; };
+		E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */; };
+		E4D72E3623DF9E3200BE3B75 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = E4D72E3523DF9E3200BE3B75 /* Starscream */; };
+		E4D72E3823DF9E7800BE3B75 /* CommunicationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E3723DF9E7800BE3B75 /* CommunicationManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E4058A7223D6A0FD00F8C03D /* MPSUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSUtils.swift; sourceTree = "<group>"; };
+		E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSHandler.swift; sourceTree = "<group>"; };
 		E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Discreet_DML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40978FE23A0A39F00F51C42 /* Discreet_DML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Discreet_DML.h; sourceTree = "<group>"; };
 		E40978FF23A0A39F00F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +45,10 @@
 		E49BDD5223D689A400A954FE /* TestingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
 		E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessor.swift; sourceTree = "<group>"; };
 		E4BA35F023AB187000F81825 /* BinaryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryUtils.swift; sourceTree = "<group>"; };
+		E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMLJob.swift; sourceTree = "<group>"; };
+		E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClient.swift; sourceTree = "<group>"; };
+		E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
+		E4D72E3723DF9E7800BE3B75 /* CommunicationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4AF70E523D905B400D65376 /* Surge in Frameworks */,
+				E4D72E3623DF9E3200BE3B75 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +99,10 @@
 				E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */,
 				E4BA35F023AB187000F81825 /* BinaryUtils.swift */,
 				E44F577123D3027400FE0619 /* Utils.swift */,
-				E4058A7223D6A0FD00F8C03D /* MPSUtils.swift */,
+				E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */,
+				E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */,
+				E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */,
+				E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */,
 			);
 			path = "Discreet-DML";
 			sourceTree = "<group>";
@@ -101,6 +114,7 @@
 				E409790B23A0A3A000F51C42 /* Info.plist */,
 				E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */,
 				E49BDD5223D689A400A954FE /* TestingUtils.swift */,
+				E4D72E3723DF9E7800BE3B75 /* CommunicationManagerTests.swift */,
 			);
 			path = "Discreet-DMLTests";
 			sourceTree = "<group>";
@@ -157,6 +171,7 @@
 			name = "Discreet-DML";
 			packageProductDependencies = (
 				E4AF70E423D905B400D65376 /* Surge */,
+				E4D72E3523DF9E3200BE3B75 /* Starscream */,
 			);
 			productName = "Discreet-DML";
 			productReference = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */;
@@ -210,6 +225,7 @@
 			mainGroup = E40978F123A0A39F00F51C42;
 			packageReferences = (
 				E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */,
+				E4D72E3423DF9E3200BE3B75 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = E40978FC23A0A39F00F51C42 /* Products */;
 			projectDirPath = "";
@@ -243,10 +259,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4D72E2323DF8D4F00BE3B75 /* CoreMLClient.swift in Sources */,
 				E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */,
 				E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */,
-				E4058A7323D6A0FD00F8C03D /* MPSUtils.swift in Sources */,
+				E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */,
+				E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */,
 				E44F577223D3027500FE0619 /* Utils.swift in Sources */,
+				E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */,
+				E4D72E3823DF9E7800BE3B75 /* CommunicationManagerTests.swift in Sources */,
 				E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,6 +546,14 @@
 				minimumVersion = 2.3.0;
 			};
 		};
+		E4D72E3423DF9E3200BE3B75 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -533,6 +561,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */;
 			productName = Surge;
+		};
+		E4D72E3523DF9E3200BE3B75 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4D72E3423DF9E3200BE3B75 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

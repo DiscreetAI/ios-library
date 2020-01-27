@@ -12,7 +12,6 @@ import CoreML
 @testable import Discreet_DML
 
 class WeightsProcessorTests: XCTestCase {
-    var weightsProcessor = WeightsProcessor()
 
     // Folder to testing artifacts
     let artifactsPath: String = testingUtilsPath + "WeightsProcessor/"
@@ -24,6 +23,7 @@ class WeightsProcessorTests: XCTestCase {
         /*
          Test gradient calculation for a model with one layer.
          */
+        var weightsProcessor = WeightsProcessor()
         let oldSimpleWeightsPath: String = artifactsPath + "old_simple_weights"
         let newSimpleWeightsPath: String = artifactsPath + "new_simple_weights"
         let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldModelPath: oldSimpleWeightsPath, newModelPath: newSimpleWeightsPath, learningRate: 0.01, useGPU: false)
@@ -36,6 +36,7 @@ class WeightsProcessorTests: XCTestCase {
         /*
          Test gradient calculation for a model with multiple layers.
          */
+        var weightsProcessor = WeightsProcessor()
         let oldComplexWeightsPath: String = artifactsPath + "old_complex_weights"
         let newComplexWeightsPath: String = artifactsPath + "new_complex_weights"
         let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldModelPath: oldComplexWeightsPath, newModelPath: newComplexWeightsPath, learningRate: 0.01, useGPU: false)
@@ -54,6 +55,7 @@ class WeightsProcessorTests: XCTestCase {
          */
         #if targetEnvironment(simulator)
         #else
+        var weightsProcessor = WeightsProcessor(mpsHandler: MPSHandler())
         let oldSimpleWeightsPath: String = artifactsPath + "old_simple_weights"
         let newSimpleWeightsPath: String = artifactsPath + "new_simple_weights"
         let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldModelPath: oldSimpleWeightsPath, newModelPath: newSimpleWeightsPath, learningRate: 0.01)
@@ -71,6 +73,7 @@ class WeightsProcessorTests: XCTestCase {
          */
         #if targetEnvironment(simulator)
         #else
+        var weightsProcessor = WeightsProcessor(mpsHandler: MPSHandler())
         let oldComplexWeightsPath: String = artifactsPath + "old_complex_weights"
         let newComplexWeightsPath: String = artifactsPath + "new_complex_weights"
         let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldModelPath: oldComplexWeightsPath, newModelPath: newComplexWeightsPath, learningRate: 0.01)

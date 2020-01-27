@@ -17,6 +17,7 @@
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
 		E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */; };
+		E4D72E2323DF8D4F00BE3B75 /* CoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessor.swift; sourceTree = "<group>"; };
 		E4BA35F023AB187000F81825 /* BinaryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryUtils.swift; sourceTree = "<group>"; };
 		E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMLJob.swift; sourceTree = "<group>"; };
+		E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				E44F577123D3027400FE0619 /* Utils.swift */,
 				E4058A7223D6A0FD00F8C03D /* MPSUtils.swift */,
 				E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */,
+				E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */,
 			);
 			path = "Discreet-DML";
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4D72E2323DF8D4F00BE3B75 /* CoreMLClient.swift in Sources */,
 				E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */,
 				E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */,
 				E4058A7323D6A0FD00F8C03D /* MPSUtils.swift in Sources */,

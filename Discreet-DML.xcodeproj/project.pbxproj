@@ -14,7 +14,6 @@
 		E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BDD5223D689A400A954FE /* TestingUtils.swift */; };
 		E4AF70E523D905B400D65376 /* Surge in Frameworks */ = {isa = PBXBuildFile; productRef = E4AF70E423D905B400D65376 /* Surge */; };
 		E4AF70E723D9135900D65376 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF70E623D9135900D65376 /* CommunicationManager.swift */; };
-		E4AF70EA23D919A300D65376 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = E4AF70E923D919A300D65376 /* Starscream */; };
 		E4AF70EC23D9289900D65376 /* MPSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF70EB23D9289900D65376 /* MPSHandler.swift */; };
 		E4AF70F023DA5A3B00D65376 /* CoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF70EF23DA5A3B00D65376 /* CoreMLClient.swift */; };
 		E4AF70F423DA605500D65376 /* CommunicationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF70F323DA605500D65376 /* CommunicationManagerTests.swift */; };
@@ -57,7 +56,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4AF70E523D905B400D65376 /* Surge in Frameworks */,
-				E4AF70EA23D919A300D65376 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +177,6 @@
 			name = "Discreet-DML";
 			packageProductDependencies = (
 				E4AF70E423D905B400D65376 /* Surge */,
-				E4AF70E923D919A300D65376 /* Starscream */,
 			);
 			productName = "Discreet-DML";
 			productReference = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */;
@@ -233,7 +230,6 @@
 			mainGroup = E40978F123A0A39F00F51C42;
 			packageReferences = (
 				E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */,
-				E4AF70E823D919A300D65376 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = E40978FC23A0A39F00F51C42 /* Products */;
 			projectDirPath = "";
@@ -544,14 +540,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E4AF70E823D919A300D65376 /* XCRemoteSwiftPackageReference "Starscream" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/daltoniam/Starscream";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 		E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Jounce/Surge";
@@ -567,11 +555,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */;
 			productName = Surge;
-		};
-		E4AF70E923D919A300D65376 /* Starscream */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E4AF70E823D919A300D65376 /* XCRemoteSwiftPackageReference "Starscream" */;
-			productName = Starscream;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

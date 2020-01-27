@@ -2,30 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "Starscream",
-        "repositoryURL": "https://github.com/daltoniam/Starscream",
-        "state": {
-          "branch": null,
-          "revision": "850f6204411cde04d16c129b70a2b9d1beba3a95",
-          "version": "4.0.0"
-        }
-      },
-      {
         "package": "Surge",
         "repositoryURL": "https://github.com/Jounce/Surge",
         "state": {
           "branch": null,
           "revision": "b9777a8d0c1df1ed0a22d238fb987c60d13513ac",
           "version": "2.3.0"
-        }
-      },
-      {
-        "package": "swift-nio-zlib-support",
-        "repositoryURL": "https://github.com/apple/swift-nio-zlib-support.git",
-        "state": {
-          "branch": null,
-          "revision": "37760e9a52030bb9011972c5213c3350fa9d41fd",
-          "version": "1.0.0"
         }
       }
     ]

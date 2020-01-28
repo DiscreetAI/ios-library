@@ -4,6 +4,7 @@ xcode_project: Discreet-DML.xcodeproj # path to your xcodeproj folder
 xcode_scheme: Discreet-DML
 workspace: Discreet-DML.xcworkspace
 xcode_destination: platform=iOS Simulator,OS=13.3,name=iPhone 11
+install: pod install
 branches:
     only:
       - "master"

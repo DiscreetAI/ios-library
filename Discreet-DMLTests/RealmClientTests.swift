@@ -5,10 +5,11 @@
 ////  Created by Neelesh on 1/27/20.
 ////  Copyright © 2020 DiscreetAI. All rights reserved.
 ////
-//import XCTest
-//@testable import Discreet_DML
-//
-//class RealmClientTests: XCTestCase {
+import XCTest
+import RealmSwift
+@testable import Discreet_DML
+
+class RealmClientTests: XCTestCase {
 //    var realmClient: RealmClient = RealmClient()
 //
 //    override func setUp() {
@@ -42,4 +43,7 @@
 //        var result = realmClient.getDataEntry(repoID: "test")
 //        XCTAssertNil(result)
 //    }
-//}
+    func testSanity() {
+        XCTAssertNil(nil)
+    }
+}

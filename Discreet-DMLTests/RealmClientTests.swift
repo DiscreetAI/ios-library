@@ -10,7 +10,7 @@ import RealmSwift
 @testable import Discreet_DML
 
 class RealmClientTests: XCTestCase {
-//    var realmClient: RealmClient = RealmClient()
+    
 //
 //    override func setUp() {
 //        realmClient.clear()
@@ -44,6 +44,7 @@ class RealmClientTests: XCTestCase {
 //        XCTAssertNil(result)
 //    }
     func testSanity() {
+        var realmClient: RealmClient = RealmClient()
         XCTAssertNil(nil)
     }
 }

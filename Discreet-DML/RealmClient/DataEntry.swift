@@ -13,6 +13,7 @@ public class DataEntry: Object {
      General dataset object. Uniquely identified by `repoID`.
      */
     @objc dynamic var repoID: String = ""
+    let labels: List<String> = List<String>()
 
     convenience init(repoID: String) {
         self.init()
@@ -22,21 +23,26 @@ public class DataEntry: Object {
     public override static func primaryKey() -> String? {
         return "repoID"
     }
+    
+    public func addLabels(labels: [String]) {
+        self.labels.append(objectsIn: labels)
+    }
 }
 
 public class ImageEntry: DataEntry {
     /*
      Dataset object representing a list of paths to images on device.
      */
-    var images: List<String> = List<String>()
+    let images: List<String> = List<String>()
 
-    convenience init(repoID: String, images: [String]) {
+    convenience init(repoID: String, images: [String], labels: [String]) {
         self.init(repoID: repoID)
-        addImages(images: images)
+        addImages(images: images, labels: labels)
     }
 
-    func addImages(images: [String]) {
+    func addImages(images: [String], labels: [String]) {
         self.images.append(objectsIn: images)
+        addLabels(labels: labels)
     }
 }
 
@@ -44,19 +50,20 @@ public class DoubleEntry: DataEntry {
     /*
      Dataset object representing a 2D array of Doubles.
      */
-    var data: List<DoubleDatapoint> = List<DoubleDatapoint>()
+    let data: List<DoubleDatapoint> = List<DoubleDatapoint>()
 
-    convenience init(repoID: String, datapoints: [[Double]]) {
+    convenience init(repoID: String, datapoints: [[Double]], labels: [String]) {
         self.init(repoID: repoID)
-        addData(datapoints: datapoints)
+        addData(datapoints: datapoints, labels: labels)
     }
 
-    func addData(datapoints: [[Double]]) {
+    func addData(datapoints: [[Double]], labels: [String]) {
         let doubleDatapoints = datapoints.map({
             (datapoint: [Double]) -> DoubleDatapoint in
             return DoubleDatapoint(datapoint: datapoint)
         })
         self.data.append(objectsIn: doubleDatapoints)
+        addLabels(labels: labels)
     }
 }
 

@@ -7,6 +7,7 @@
 //
 import XCTest
 import RealmSwift
+import Foundation
 @testable import Discreet_DML
 
 class RealmClientTests: XCTestCase {
@@ -21,7 +22,8 @@ class RealmClientTests: XCTestCase {
          Test storing data and retrieving it.
          */
         let data: [[Double]] = [[1.1, 2.2], [3.3, 4.4]]
-        realmClient.storeData(repoID: "test", data: data)
+        let labels: [String] = ["small", "large"]
+        realmClient.storeData(repoID: "test", data: data, labels: labels)
         let result: DoubleEntry? = realmClient.getDoubleEntry(repoID: "test")
         XCTAssertNotNil(result)
         if result != nil {
@@ -30,6 +32,7 @@ class RealmClientTests: XCTestCase {
                 return Array(datapoint.datapoint)
             })
             XCTAssertEqual(data, resultData)
+            //XCTAssertEqual(labels, Array(result!.labels))
         }
     }
 

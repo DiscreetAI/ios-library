@@ -14,12 +14,18 @@ class CoreMLClient {
      
      TODO: Finish implementing this client.
      */
-    var modelURL: URL!
-    init(modelURL: URL) {
-        self.modelURL = modelURL
+    var modelLoader: ModelLoader!
+    var realmClient: RealmClient!
+    
+    init() {}
+    
+    init(modelLoader: ModelLoader, realmClient: RealmClient) {
+        self.modelLoader = modelLoader
+        self.realmClient = realmClient
     }
 
     func train(job: DMLJob, callback: (DMLJob) -> (String)) {
-
+        let model = self.modelLoader.loadModel()
+        
     }
 }

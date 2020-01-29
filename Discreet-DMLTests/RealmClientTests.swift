@@ -25,21 +25,21 @@ class RealmClientTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let data: [[Double]] = [[1.1, 2.2], [3.3, 4.4]]
-        realmClient.storeStandardData(repoID: "test", data: data)
-        let result: RealmDataDouble? = realmClient.getStandardData(repoID: "test")
+        realmClient.storeData(repoID: "test", data: data)
+        let result: DoubleEntry? = realmClient.getDoubleEntry(repoID: "test")
         XCTAssertNotNil(result)
         if result != nil {
-            func getData(datapoint: RealmDatapointDouble) -> [Double] {
+            let resultData = Array(result!.data).map({
+                (datapoint: DoubleDatapoint) -> [Double] in
                 return Array(datapoint.datapoint)
-            }
-            let resultData = Array(result!.data).map(getData)
+            })
             XCTAssertEqual(data, resultData)
         }
         
     }
     
     func testBadGet() {
-        var result = realmClient.getStandardData(repoID: "test")
+        var result = realmClient.getDataEntry(repoID: "test")
         XCTAssertNil(result)
     }
 }

@@ -1,5 +1,0 @@
-language: swift
-osx_image: xcode11.3
-install: pod install
-script:
-    - set -o pipefail && xcodebuild -workspace Discreet-DML.xcworkspace -scheme Discreet-DML -destination platform\=iOS\ Simulator,OS\=13.2.2,name\=iPhone\ 11 build test | xcpretty

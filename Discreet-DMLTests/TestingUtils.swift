@@ -9,3 +9,13 @@
 import Foundation
 
 public var testingUtilsPath = URL(fileURLWithPath: #file).deletingLastPathComponent().path + "/TestingArtifacts/"
+
+public var testRepo = "testRepo"
+
+public var testSession = "testSession"
+
+public var testRound = 1
+
+public var registerName = "REGISTER"
+
+public var libraryName = "LIBRARY"

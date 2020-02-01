@@ -14,7 +14,26 @@
 		E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* Discreet_DML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */; };
 		E41D7BD923E0E34300D58478 /* DataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BD823E0E34300D58478 /* DataEntry.swift */; };
+		E41D7BE523E12B6E00D58478 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BE423E12B6E00D58478 /* ModelLoader.swift */; };
+		E41D7BE723E12BBB00D58478 /* MLMultiArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */; };
+		E41D7BEE23E13C5500D58478 /* BatchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BED23E13C5500D58478 /* BatchProvider.swift */; };
+		E41D7C0423E2489D00D58478 /* TrainingInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0323E2489D00D58478 /* TrainingInput.swift */; };
+		E41D7C0823E26EE200D58478 /* MetadataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0723E26EE200D58478 /* MetadataEntry.swift */; };
+		E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
+		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
+		E468505723E3BBD400D3D689 /* HandsEmpty.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */; };
+		E468505823E3BBD400D3D689 /* HandsTuri.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468505523E3BBD300D3D689 /* HandsTuri.mlmodel */; };
+		E468505923E3BBD400D3D689 /* HandskNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468505623E3BBD400D3D689 /* HandskNN.mlmodel */; };
+		E468505B23E3C3D000D3D689 /* Dataset in Resources */ = {isa = PBXBuildFile; fileRef = E468505A23E3C3D000D3D689 /* Dataset */; };
+		E468506123E3D2DB00D3D689 /* my_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468506023E3D2DB00D3D689 /* my_model.mlmodel */; };
+		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
+		E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506623E5424300D3D689 /* DummyCommunicationManager.swift */; };
+		E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */; };
+		E468506B23E542B600D3D689 /* DummyModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506A23E542B600D3D689 /* DummyModelLoader.swift */; };
+		E468506E23E5440500D3D689 /* DummyCoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506D23E5440500D3D689 /* DummyCoreMLClient.swift */; };
+		E468507023E5449C00D3D689 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506F23E5449C00D3D689 /* ImageUtils.swift */; };
+		E468507223E5498C00D3D689 /* CoreMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468507123E5498C00D3D689 /* CoreMLUtils.swift */; };
 		E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BDD5223D689A400A954FE /* TestingUtils.swift */; };
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
@@ -51,7 +70,26 @@
 		E409790B23A0A3A000F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessorTests.swift; sourceTree = "<group>"; };
 		E41D7BD823E0E34300D58478 /* DataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntry.swift; sourceTree = "<group>"; };
+		E41D7BE423E12B6E00D58478 /* ModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
+		E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMultiArrayUtils.swift; sourceTree = "<group>"; };
+		E41D7BED23E13C5500D58478 /* BatchProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchProvider.swift; sourceTree = "<group>"; };
+		E41D7C0323E2489D00D58478 /* TrainingInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingInput.swift; sourceTree = "<group>"; };
+		E41D7C0723E26EE200D58478 /* MetadataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataEntry.swift; sourceTree = "<group>"; };
+		E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoaderTests.swift; sourceTree = "<group>"; };
 		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
+		E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandsEmpty.mlmodel; sourceTree = "<group>"; };
+		E468505523E3BBD300D3D689 /* HandsTuri.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandsTuri.mlmodel; sourceTree = "<group>"; };
+		E468505623E3BBD400D3D689 /* HandskNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandskNN.mlmodel; sourceTree = "<group>"; };
+		E468505A23E3C3D000D3D689 /* Dataset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dataset; sourceTree = "<group>"; };
+		E468506023E3D2DB00D3D689 /* my_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = my_model.mlmodel; sourceTree = "<group>"; };
+		E468506423E5415100D3D689 /* DummyRealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
+		E468506623E5424300D3D689 /* DummyCommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCommunicationManager.swift; sourceTree = "<group>"; };
+		E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyWeightsProcessor.swift; sourceTree = "<group>"; };
+		E468506A23E542B600D3D689 /* DummyModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModelLoader.swift; sourceTree = "<group>"; };
+		E468506D23E5440500D3D689 /* DummyCoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCoreMLClient.swift; sourceTree = "<group>"; };
+		E468506F23E5449C00D3D689 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
+		E468507123E5498C00D3D689 /* CoreMLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLUtils.swift; sourceTree = "<group>"; };
 		E49BDD5223D689A400A954FE /* TestingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
 		E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessor.swift; sourceTree = "<group>"; };
 		E4BA35F023AB187000F81825 /* BinaryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryUtils.swift; sourceTree = "<group>"; };
@@ -118,17 +156,13 @@
 		E40978FD23A0A39F00F51C42 /* Discreet-DML */ = {
 			isa = PBXGroup;
 			children = (
+				E41D7BEC23E12E9000D58478 /* Communication Manager */,
+				E41D7BEB23E12E8600D58478 /* Utils */,
+				E41D7BEA23E12E5400D58478 /* RealmClient */,
+				E41D7BE923E12E2500D58478 /* CoreMLClient */,
+				E41D7BE823E12DB200D58478 /* WeightsProcessor */,
 				E40978FE23A0A39F00F51C42 /* Discreet_DML.h */,
 				E40978FF23A0A39F00F51C42 /* Info.plist */,
-				E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */,
-				E4BA35F023AB187000F81825 /* BinaryUtils.swift */,
-				E44F577123D3027400FE0619 /* Utils.swift */,
-				E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */,
-				E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */,
-				E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */,
-				E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */,
-				E4D72E3E23DFA7CE00BE3B75 /* RealmClient.swift */,
-				E41D7BD823E0E34300D58478 /* DataEntry.swift */,
 			);
 			path = "Discreet-DML";
 			sourceTree = "<group>";
@@ -136,19 +170,98 @@
 		E409790823A0A3A000F51C42 /* Discreet-DMLTests */ = {
 			isa = PBXGroup;
 			children = (
+				E468505623E3BBD400D3D689 /* HandskNN.mlmodel */,
+				E468505523E3BBD300D3D689 /* HandsTuri.mlmodel */,
 				E49BDD4823D6889D00A954FE /* TestingArtifacts */,
 				E409790B23A0A3A000F51C42 /* Info.plist */,
 				E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */,
 				E49BDD5223D689A400A954FE /* TestingUtils.swift */,
 				E4D72E3723DF9E7800BE3B75 /* CommunicationManagerTests.swift */,
 				E4D72E4223DFA7ED00BE3B75 /* RealmClientTests.swift */,
+				E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */,
+				E45288FD23E383A9003F422A /* CoreMLClientTests.swift */,
 			);
 			path = "Discreet-DMLTests";
+			sourceTree = "<group>";
+		};
+		E41D7BE823E12DB200D58478 /* WeightsProcessor */ = {
+			isa = PBXGroup;
+			children = (
+				E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */,
+				E4BA35F023AB187000F81825 /* BinaryUtils.swift */,
+				E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */,
+			);
+			path = WeightsProcessor;
+			sourceTree = "<group>";
+		};
+		E41D7BE923E12E2500D58478 /* CoreMLClient */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7BED23E13C5500D58478 /* BatchProvider.swift */,
+				E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */,
+				E41D7BE423E12B6E00D58478 /* ModelLoader.swift */,
+				E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */,
+				E41D7C0323E2489D00D58478 /* TrainingInput.swift */,
+			);
+			path = CoreMLClient;
+			sourceTree = "<group>";
+		};
+		E41D7BEA23E12E5400D58478 /* RealmClient */ = {
+			isa = PBXGroup;
+			children = (
+				E4D72E3E23DFA7CE00BE3B75 /* RealmClient.swift */,
+				E41D7BD823E0E34300D58478 /* DataEntry.swift */,
+				E41D7C0723E26EE200D58478 /* MetadataEntry.swift */,
+			);
+			path = RealmClient;
+			sourceTree = "<group>";
+		};
+		E41D7BEB23E12E8600D58478 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */,
+				E44F577123D3027400FE0619 /* Utils.swift */,
+				E468507123E5498C00D3D689 /* CoreMLUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E41D7BEC23E12E9000D58478 /* Communication Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */,
+			);
+			path = "Communication Manager";
+			sourceTree = "<group>";
+		};
+		E41D7C0B23E37E8300D58478 /* CoreMLClient */ = {
+			isa = PBXGroup;
+			children = (
+				E468506023E3D2DB00D3D689 /* my_model.mlmodel */,
+				E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */,
+				E468505A23E3C3D000D3D689 /* Dataset */,
+				E468506423E5415100D3D689 /* DummyRealmClient.swift */,
+				E468506623E5424300D3D689 /* DummyCommunicationManager.swift */,
+				E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */,
+				E468506A23E542B600D3D689 /* DummyModelLoader.swift */,
+				E468506F23E5449C00D3D689 /* ImageUtils.swift */,
+			);
+			path = CoreMLClient;
+			sourceTree = "<group>";
+		};
+		E468506C23E543BD00D3D689 /* CommunicationManager */ = {
+			isa = PBXGroup;
+			children = (
+				E468506D23E5440500D3D689 /* DummyCoreMLClient.swift */,
+			);
+			path = CommunicationManager;
 			sourceTree = "<group>";
 		};
 		E49BDD4823D6889D00A954FE /* TestingArtifacts */ = {
 			isa = PBXGroup;
 			children = (
+				E468506C23E543BD00D3D689 /* CommunicationManager */,
+				E41D7C0B23E37E8300D58478 /* CoreMLClient */,
 				E49BDD4923D688AC00A954FE /* WeightsProcessor */,
 			);
 			path = TestingArtifacts;
@@ -280,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E468505B23E3C3D000D3D689 /* Dataset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,15 +468,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E468507223E5498C00D3D689 /* CoreMLUtils.swift in Sources */,
+				E41D7C0823E26EE200D58478 /* MetadataEntry.swift in Sources */,
 				E4D72E2323DF8D4F00BE3B75 /* CoreMLClient.swift in Sources */,
 				E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */,
+				E41D7BE523E12B6E00D58478 /* ModelLoader.swift in Sources */,
+				E41D7C0423E2489D00D58478 /* TrainingInput.swift in Sources */,
 				E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */,
 				E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */,
 				E4D72E3F23DFA7CE00BE3B75 /* RealmClient.swift in Sources */,
 				E41D7BD923E0E34300D58478 /* DataEntry.swift in Sources */,
 				E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */,
+				E41D7BE723E12BBB00D58478 /* MLMultiArrayUtils.swift in Sources */,
 				E44F577223D3027500FE0619 /* Utils.swift in Sources */,
 				E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */,
+				E41D7BEE23E13C5500D58478 /* BatchProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,9 +491,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4D72E4323DFA7ED00BE3B75 /* RealmClientTests.swift in Sources */,
+				E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */,
 				E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */,
+				E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */,
+				E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */,
+				E468505823E3BBD400D3D689 /* HandsTuri.mlmodel in Sources */,
+				E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */,
+				E468506123E3D2DB00D3D689 /* my_model.mlmodel in Sources */,
+				E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */,
+				E468506B23E542B600D3D689 /* DummyModelLoader.swift in Sources */,
+				E468505923E3BBD400D3D689 /* HandskNN.mlmodel in Sources */,
+				E468505723E3BBD400D3D689 /* HandsEmpty.mlmodel in Sources */,
+				E468506E23E5440500D3D689 /* DummyCoreMLClient.swift in Sources */,
 				E4D72E3823DF9E7800BE3B75 /* CommunicationManagerTests.swift in Sources */,
 				E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */,
+				E468507023E5449C00D3D689 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

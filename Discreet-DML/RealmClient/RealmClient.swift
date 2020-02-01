@@ -29,6 +29,7 @@ public class RealmClient {
             if let doubleEntry = getDoubleEntry(repoID: repoID) {
                 doubleEntry.addData(datapoints: data, labels: labels)
             } else {
+                self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.DOUBLE))
                 self.realm.add(DoubleEntry(repoID: repoID, datapoints: data, labels: labels))
             }
         }
@@ -45,6 +46,7 @@ public class RealmClient {
             if let imageEntry = getImageEntry(repoID: repoID) {
                 imageEntry.addImages(images: data, labels: labels)
             } else {
+                self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.IMAGE))
                 self.realm.add(ImageEntry(repoID: repoID, images: data, labels: labels))
             }
         }
@@ -69,6 +71,10 @@ public class RealmClient {
          Retrieve ImageEntry with the `repoID` as the primary key.
          */
         return self.realm.object(ofType: ImageEntry.self, forPrimaryKey: repoID)
+    }
+    
+    public func getMetadataEntry(repoID: String) -> MetadataEntry? {
+        return self.realm.object(ofType: MetadataEntry.self, forPrimaryKey: repoID)
     }
 
     public func clear() {

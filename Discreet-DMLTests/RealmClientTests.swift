@@ -17,22 +17,52 @@ class RealmClientTests: XCTestCase {
         realmClient.clear()
     }
     
-    func testRealmGetStore() {
+    func testDoubleGetStore() {
         /*
-         Test storing data and retrieving it.
+         Test storing Double data and retrieving it.
          */
-        let data: [[Double]] = [[1.1, 2.2], [3.3, 4.4]]
-        let labels: [String] = ["small", "large"]
+        let data = [[1.1, 2.2], [3.3, 4.4]]
+        let labels = ["small", "large"]
+        
         realmClient.storeData(repoID: "test", data: data, labels: labels)
-        let result: DoubleEntry? = realmClient.getDoubleEntry(repoID: "test")
-        XCTAssertNotNil(result)
-        if result != nil {
-            let resultData = Array(result!.data).map({
-                (datapoint: DoubleDatapoint) -> [Double] in
-                return Array(datapoint.datapoint)
-            })
-            XCTAssertEqual(data, resultData)
-            //XCTAssertEqual(labels, Array(result!.labels))
+        
+        let metaDataEntry = realmClient.getMetadataEntry(repoID: "test")
+        XCTAssertNotNil(metaDataEntry)
+        if metaDataEntry != nil {
+            XCTAssertEqual(metaDataEntry!.dataType, DataType.DOUBLE.rawValue)
+        }
+        
+        let doubleEntry = realmClient.getDoubleEntry(repoID: "test")
+        XCTAssertNotNil(doubleEntry)
+        if doubleEntry != nil {
+            let (doubleData, doubleLabels) = doubleEntry!.getData()
+            XCTAssertEqual(data, doubleData)
+            XCTAssertEqual(labels, doubleLabels)
+        }
+    }
+    
+    func testImageGetStore() {
+        /*
+         Test storing image data and retrieving it.
+         */
+        let data = ["path1", "path2"]
+        let labels = ["small", "large"]
+        
+        realmClient.storeData(repoID: "test", data: data, labels: labels)
+        
+        let metaDataEntry = realmClient.getMetadataEntry(repoID: "test")
+        XCTAssertNotNil(metaDataEntry)
+        if metaDataEntry != nil {
+            XCTAssertEqual(metaDataEntry!.dataType, DataType.IMAGE.rawValue)
+        }
+        
+        let imageEntry = realmClient.getImageEntry(repoID: "test")
+        
+        XCTAssertNotNil(imageEntry)
+        if imageEntry != nil {
+            let (imageData, imageLabels) = imageEntry!.getData()
+            XCTAssertEqual(data, imageData)
+            XCTAssertEqual(labels, imageLabels)
         }
     }
 
@@ -40,7 +70,7 @@ class RealmClientTests: XCTestCase {
         /*
          Test getting with an invalid `repoID`.
          */
-        var result = realmClient.getDataEntry(repoID: "test")
+        let result = realmClient.getDataEntry(repoID: "test")
         XCTAssertNil(result)
     }
 }

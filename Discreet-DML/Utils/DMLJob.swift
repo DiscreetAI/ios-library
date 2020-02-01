@@ -9,17 +9,21 @@ import Foundation
 
 
 class DMLJob {
-    var sessionID: String!
-    var round: Int!
+    var repoID: String
+    var sessionID: String
+    var round: Int
     var gradients: [[Float32]]!
     var omega: Int!
+    var modelURL: URL!
 
-    init(sessionID: String, round: Int) {
+    init(repoID: String, sessionID: String, round: Int) {
+        self.repoID = repoID
         self.sessionID = sessionID
         self.round = round
     }
 
-    init(sessionID: String, round: Int, gradients: [[Float32]], omega: Int) {
+    init(repoID: String, sessionID: String, round: Int, gradients: [[Float32]], omega: Int) {
+        self.repoID = repoID
         self.sessionID = sessionID
         self.round = round
         self.gradients = gradients

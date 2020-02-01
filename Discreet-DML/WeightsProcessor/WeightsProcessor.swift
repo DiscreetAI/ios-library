@@ -14,11 +14,9 @@ class WeightsProcessor {
     /*
      Handle all processing of the physical weights file.
      */
-    var mpsHandler: MPSHandler!
-    
-    init() {}
+    var mpsHandler: MPSHandler?
 
-    init(mpsHandler: MPSHandler) {
+    init(mpsHandler: MPSHandler?) {
         self.mpsHandler = mpsHandler
     }
     
@@ -40,7 +38,7 @@ class WeightsProcessor {
         }
         let floatString = String(repeating: "f", count: 1)
         let prefixString: String = "="
-        let thisLayerData = try! unpack(prefixString + floatString, file.readData(ofLength: 4))
+        _ = try! unpack(prefixString + floatString, file.readData(ofLength: 4))
         for (layerNum, numBytes) in layerBytes {
             let numFloat: Int = numBytes / 4
             let floatString = String(repeating: "f", count: numFloat)
@@ -64,42 +62,42 @@ class WeightsProcessor {
         return layerData
     }
     
-    private func calculateGradientsGPU(oldModelWeights: [[Float32]], newModelWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
+    private func calculateGradientsGPU(oldWeights: [[Float32]], newWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
         /*
          Calculate the gradients using GPU given the learning rate and paths to the old model and new one.
          */
         var gradients = [[Float32]]()
 
-        for (oldLayerWeights, newLayerWeights) in zip(oldModelWeights, newModelWeights) {
+        for (oldLayerWeights, newLayerWeights) in zip(oldWeights, newWeights) {
             let count = oldLayerWeights.count
-            let oldMPSMatrix = self.mpsHandler.createMPSVector(bytes: oldLayerWeights, count: count)
-            let newMPSMatrix = self.mpsHandler.createMPSVector(bytes: newLayerWeights, count: count)
-            var resultMatrix = self.mpsHandler.matrixSubtraction(m1: oldMPSMatrix, m2: newMPSMatrix)
-            resultMatrix = self.mpsHandler.divideMatrixByConstant(m1: resultMatrix, constant: learningRate)
-            gradients.append(self.mpsHandler.getData(m1: resultMatrix))
+            let oldMPSMatrix = self.mpsHandler!.createMPSVector(bytes: oldLayerWeights, count: count)
+            let newMPSMatrix = self.mpsHandler!.createMPSVector(bytes: newLayerWeights, count: count)
+            var resultMatrix = self.mpsHandler!.matrixSubtraction(m1: oldMPSMatrix, m2: newMPSMatrix)
+            resultMatrix = self.mpsHandler!.divideMatrixByConstant(m1: resultMatrix, constant: learningRate)
+            gradients.append(self.mpsHandler!.getData(m1: resultMatrix))
         }
         return gradients
     }
     
-    private func calculateGradientsSurge(oldModelWeights: [[Float32]], newModelWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
+    private func calculateGradientsSurge(oldWeights: [[Float32]], newWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
         /*
          Calculate the gradients using Surge given the learning rate and paths to the old model and new one.
          */
         var gradients = [[Float32]]()
 
-        for (oldLayerWeights, newLayerWeights) in zip(oldModelWeights, newModelWeights) {
+        for (oldLayerWeights, newLayerWeights) in zip(oldWeights, newWeights) {
             gradients.append(Surge.div(Surge.sub(oldLayerWeights, newLayerWeights), learningRate))
         }
         return gradients
     }
     
-    public func calculateGradients(oldModelPath: String, newModelPath: String, learningRate: Float32, useGPU: Bool = true) -> [[Float32]] {
+    public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32, useGPU: Bool = true) -> [[Float32]] {
         
-        let oldModelWeights = readWeights(modelPath: oldModelPath)
-        let newModelWeights = readWeights(modelPath: newModelPath)
+        let oldWeights = readWeights(modelPath: oldWeightsPath)
+        let newWeights = readWeights(modelPath: newWeightsPath)
         
         let gradientsCalculator = useGPU ? calculateGradientsGPU : calculateGradientsSurge
         
-        return gradientsCalculator(oldModelWeights, newModelWeights, learningRate)
+        return gradientsCalculator(oldWeights, newWeights, learningRate)
     }
 }

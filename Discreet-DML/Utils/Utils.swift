@@ -31,15 +31,14 @@ public func jsonify(object: Any) -> String {
     return String(data: data, encoding: String.Encoding.utf8)!
 }
 
-public func parseJSON(jsonString: String) -> NSDictionary {
+public func parseJSON(stringOrFile: String, isString: Bool) -> Any {
     /*
      Turn a String into a Dictionary object
      
      TODO: Do proper error handling here.
      */
-    let data = Data(jsonString.utf8)
-    let json = try! JSONSerialization.jsonObject(with: data) as! NSDictionary
-    return json
+    let data = isString ? Data(stringOrFile.utf8) : try! Data(contentsOf: URL(fileURLWithPath: stringOrFile), options: .mappedIfSafe)
+    return try! JSONSerialization.jsonObject(with: data)
 }
 
 public func makeDictionaryString(keys: [String], values: [Any]) -> String {
@@ -51,4 +50,25 @@ public func makeDictionaryString(keys: [String], values: [Any]) -> String {
         dict[key] = value
     }
     return jsonify(object: dict)
+}
+
+public func makeWebSocketURL(repoID: String) -> URL {
+    /*
+     Make URL for cloud WebSocket given the repo ID.
+     */
+    return URL(string: "ws://\(repoID).au4c4pd2ch.us-west-1.elasticbeanstalk.com")!
+}
+
+public func makeModelDownloadURL(repoID: String) -> URL {
+    /*
+    Make URL for model hosted on cloud given the repo ID.
+    */
+     return URL(string: "http://\(repoID).au4c4pd2ch.us-west-1.elasticbeanstalk.com/ios/model.mlmodel")!
+}
+
+public func makeWeightsPath(modelURL: URL) -> String {
+    /*
+     Make path to the weights given the URL to the compiled model.
+     */
+    return modelURL.path + "/model.espresso.weights"
 }

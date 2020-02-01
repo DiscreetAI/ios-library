@@ -22,37 +22,31 @@ class CommunicationManager: WebSocketDelegate {
     /*
      Manage communication with cloud node. Includes handling new connections, disconnections, and training messages.
      */
-    var coreMLClient: CoreMLClient!
+    var coreMLClient: CoreMLClient?
+    var repoID: String!
     var socket: WebSocket!
-    var webSocketURL: URL!
     var reconnections: Int!
 
     var isConnected = false
     var state = State.idle
 
 
-    init(coreMLClient: CoreMLClient, reconnections: Int = 3) {
+    init(coreMLClient: CoreMLClient?, repoID: String, reconnections: Int = 3) {
         self.coreMLClient = coreMLClient
+        self.repoID = repoID
         self.reconnections = reconnections
     }
 
-    public func connect(webSocketURL: URL) {
+    public func connect() {
         /*
          Connect to the cloud node via WebSocket with the given URL. Save the URL in case future reconnections are needed.
          */
-        self.webSocketURL = webSocketURL
+        let webSocketURL = makeWebSocketURL(repoID: self.repoID)
         var request = URLRequest(url: webSocketURL)
         request.timeoutInterval = 5
         self.socket = WebSocket(request: request)
         self.socket.delegate = self
         self.socket.connect()
-    }
-
-    private func reconnect() {
-        /*
-         Reconnect with the cloud node using the saved URL.
-         */
-        connect(webSocketURL: self.webSocketURL)
     }
 
     public func didReceive(event: WebSocketEvent, client: WebSocket) {
@@ -117,7 +111,7 @@ class CommunicationManager: WebSocketDelegate {
         self.reconnections -= 1
         if self.reconnections > 0 {
             print("Reconnecting...")
-            reconnect()
+            connect()
         } else {
             print("Failed to connect!")
             self.isConnected = false
@@ -129,12 +123,12 @@ class CommunicationManager: WebSocketDelegate {
         /*
          Handler for new messages. Depending on the `action`, either begin training or set the state to `idle`.
          */
-        let message: NSDictionary = parseJSON(jsonString: jsonString)
+        let message: NSDictionary = parseJSON(stringOrFile: jsonString, isString: true) as! NSDictionary
         switch message["action"] as! String {
         case "TRAIN":
             print("Received TRAIN message.")
-            let job = DMLJob(sessionID: message["sessionID"] as! String, round: message["round"] as! Int)
-            self.coreMLClient.train(job: job, callback: handleTrainingComplete)
+            let job = DMLJob(repoID: self.repoID, sessionID: message["sessionID"] as! String, round: message["round"] as! Int)
+            self.coreMLClient!.train(job: job)
             state = State.training
             break
         case "STOP":
@@ -158,7 +152,7 @@ class CommunicationManager: WebSocketDelegate {
         /*
          Handler for Core ML when training has finished. Make the update message and send it.
          */
-        let resultsMessage = makeDictionaryString(keys: ["gradients", "omega"], values: [job.gradients, job.omega])
+        let resultsMessage = makeDictionaryString(keys: ["gradients", "omega"], values: [job.gradients!, job.omega!])
         let updateMessage = makeDictionaryString(keys: ["type", "round", "session_id", "results"], values: ["NEW_UPDATE", job.round, job.sessionID, resultsMessage])
         if self.socket != nil {
             self.socket.write(string: updateMessage)

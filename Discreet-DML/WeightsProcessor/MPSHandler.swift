@@ -71,7 +71,7 @@ public class MPSHandler {
         /*
          Copy the data from `m1` into a separate MPS Matrix.
          */
-        var m2 = createEmptyMPSMatrix(rows: m1.rows, cols: m1.columns)
+        let m2 = createEmptyMPSMatrix(rows: m1.rows, cols: m1.columns)
         let matrixDescriptor = MPSMatrixCopyDescriptor(sourceMatrix: m1, destinationMatrix: m2, offsets: MPSMatrixCopyOffsets())
         let kernel = MPSMatrixCopy(device: device, copyRows: m1.rows, copyColumns: m1.columns, sourcesAreTransposed: false, destinationsAreTransposed: false)
         let commandBuffer = commandQueue.makeCommandBuffer()!
@@ -112,7 +112,7 @@ public class MPSHandler {
         if !inplace {
             m2Result = copyMatrix(m1: m2)
         }
-        var identityMatrix = createIdentityMatrix(length: m1.rows)
+        let identityMatrix = createIdentityMatrix(length: m1.rows)
         matrixMultiplication(m1: identityMatrix, m2: m1, resultMatrix: m2Result, alpha: 1, beta: 1)
         return m2
     }
@@ -128,8 +128,8 @@ public class MPSHandler {
         /*
          Multiply every entry in `m1` by `constant`.
          */
-        var resultMatrix = createEmptyMPSMatrix(rows: m1.rows, cols: m1.columns)
-        var constantMatrix = createMPSVector(bytes: [constant], count: 1)
+        let resultMatrix = createEmptyMPSMatrix(rows: m1.rows, cols: m1.columns)
+        let constantMatrix = createMPSVector(bytes: [constant], count: 1)
         matrixMultiplication(m1: constantMatrix, m2: m1, resultMatrix: resultMatrix, alpha: 1, beta: 0)
         return resultMatrix
     }

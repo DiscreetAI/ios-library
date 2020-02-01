@@ -16,15 +16,24 @@ public class DataEntry: Object {
     let labels: List<String> = List<String>()
 
     convenience init(repoID: String) {
+        /*
+         repoID: repo ID associated with this entry.
+         */
         self.init()
         self.repoID = repoID
     }
 
     public override static func primaryKey() -> String? {
+        /*
+         The identifying attribute of this entry.
+         */
         return "repoID"
     }
     
     public func addLabels(labels: [String]) {
+        /*
+         Add labels to this entry (usually in conjunction with data).
+         */
         self.labels.append(objectsIn: labels)
     }
 }
@@ -36,13 +45,30 @@ public class ImageEntry: DataEntry {
     let images: List<String> = List<String>()
 
     convenience init(repoID: String, images: [String], labels: [String]) {
+        /*
+         repoID: repo ID associated with this entry.
+         images: 1D array of image paths.
+         labels: 1D array of labels for data.
+         */
         self.init(repoID: repoID)
         addImages(images: images, labels: labels)
     }
 
-    func addImages(images: [String], labels: [String]) {
+    public func addImages(images: [String], labels: [String]) {
+        /*
+         Add more images and labels to this entry.
+         */
         self.images.append(objectsIn: images)
         addLabels(labels: labels)
+    }
+    
+    public func getData() -> ([String], [String]) {
+        /*
+         Unwrap this entry as tuple of data and labels.
+         */
+        let unwrappedImages = Array(self.images)
+        let unwrappedLabels = Array(self.labels)
+        return (unwrappedImages, unwrappedLabels)
     }
 }
 
@@ -53,17 +79,37 @@ public class DoubleEntry: DataEntry {
     let data: List<DoubleDatapoint> = List<DoubleDatapoint>()
 
     convenience init(repoID: String, datapoints: [[Double]], labels: [String]) {
+        /*
+         repoID: repo ID associated with this entry.
+         datapoints: 2D array of Double data.
+         labels: 1D array of labels for data.
+         */
         self.init(repoID: repoID)
         addData(datapoints: datapoints, labels: labels)
     }
 
-    func addData(datapoints: [[Double]], labels: [String]) {
+    public func addData(datapoints: [[Double]], labels: [String]) {
+        /*
+        Add more datapoints and labels to this entry.
+        */
         let doubleDatapoints = datapoints.map({
             (datapoint: [Double]) -> DoubleDatapoint in
             return DoubleDatapoint(datapoint: datapoint)
         })
         self.data.append(objectsIn: doubleDatapoints)
         addLabels(labels: labels)
+    }
+    
+    public func getData() -> ([[Double]], [String]) {
+        /*
+        Unwrap this entry as tuple of data and labels.
+        */
+        let unwrappedData = Array(self.data).map({
+            (datapoint: DoubleDatapoint) -> [Double] in
+            return datapoint.getData()
+        })
+        let unwrappedLabels = Array(self.labels)
+        return (unwrappedData, unwrappedLabels)
     }
 }
 
@@ -74,7 +120,17 @@ public class DoubleDatapoint: Object {
     let datapoint: List<Double> = List<Double>()
 
     convenience init(datapoint: [Double]) {
+        /*
+         datapoint: 1D array of Double data
+         */
         self.init()
         self.datapoint.append(objectsIn: datapoint)
+    }
+    
+    func getData() -> [Double] {
+        /*
+         Unwrap entry as 1D array of Double array.
+         */
+        return Array(self.datapoint)
     }
 }

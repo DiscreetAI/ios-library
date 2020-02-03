@@ -1,4 +1,4 @@
-platform :ios, '13.3'
+platform :ios, '13.2'
 use_frameworks!
 
 target 'Discreet-DML' do

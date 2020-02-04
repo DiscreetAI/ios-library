@@ -14,12 +14,12 @@ public class DummyCommunicationManager: CommunicationManager {
      Dummy Communication Manager to simulate communication and set the `success` variable for the training test to pass.
      */
     var success = false
-    
+
     convenience init(coreMLClient: CoreMLClient) {
         self.init(coreMLClient: coreMLClient, repoID: testRepo)
     }
-    
-    override public func handleTrainingComplete(job: DMLJob) -> String {
+
+    override public func handleTrainingComplete(job: DMLJob) throws -> String {
         self.success = true
         return ""
     }

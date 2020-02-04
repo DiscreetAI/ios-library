@@ -22,15 +22,22 @@ class CommunicationManagerTests: XCTestCase {
         /*
          Test that the protocol for a new connection is correct.
          */
-        let registrationMessage = makeDictionaryString(keys: ["node_type", "type"], values: ["library", "REGISTER"])
-        let actual = communicationManager.handleNewEvent(event: WebSocketEvent.connected(["header": "headerValue"]))
-        XCTAssertNotNil(actual)
-        let expectedJSON = parseJSON(stringOrFile: registrationMessage, isString: true) as! NSDictionary
-        let actualJSON = parseJSON(stringOrFile: actual!, isString: true) as! NSDictionary
-        XCTAssertEqual(expectedJSON["type"] as! String, actualJSON["type"] as! String)
-        XCTAssertEqual(expectedJSON["node_type"] as! String, actualJSON["node_type"] as! String)
-        XCTAssertTrue(communicationManager.isConnected)
-        XCTAssertEqual(communicationManager.state, State.waiting)
+        do {
+            let actual = try communicationManager.handleNewEvent(event: WebSocketEvent.connected(["header": "headerValue"]))
+            XCTAssertNotNil(actual)
+            let expectedJSON = try parseJSON(stringOrFile: registrationMessage, isString: true) as! NSDictionary
+            let actualJSON = try parseJSON(stringOrFile: actual!, isString: true) as! NSDictionary
+            XCTAssertEqual(expectedJSON["type"] as! String, actualJSON["type"] as! String)
+            XCTAssertEqual(expectedJSON["node_type"] as! String, actualJSON["node_type"] as! String)
+            XCTAssertTrue(communicationManager.isConnected)
+            XCTAssertEqual(communicationManager.state, State.waiting)
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
+        }
+        
+        
     }
 
     func testDisconnection() {
@@ -40,44 +47,54 @@ class CommunicationManagerTests: XCTestCase {
         communicationManager.isConnected = true
         communicationManager.state = State.waiting
         communicationManager.reconnections = 1
-        let result = communicationManager.handleNewEvent(event: WebSocketEvent.disconnected("Reason", 1000))
-        XCTAssertNil(result)
-        XCTAssertFalse(communicationManager.isConnected)
-        XCTAssertEqual(communicationManager.state, State.idle)
+        XCTAssertThrowsError(try communicationManager.handleNewEvent(event: WebSocketEvent.disconnected("Reason", 1000))) { error in
+            XCTAssertEqual(error as! DMLError, DMLError.communicationManagerError(ErrorMessage.failedConnection)
+        )}
     }
 
     func testNewTrainMessage() {
         /*
          Test that the protocol for a new train message is correct.
          */
-        let result = communicationManager.handleNewEvent(event: WebSocketEvent.text(trainMessage))
-        XCTAssertNil(result)
-        XCTAssertEqual(communicationManager.state, State.training)
+        do {
+            let result = try communicationManager.handleNewEvent(event: WebSocketEvent.text(trainMessage))
+            XCTAssertNil(result)
+            XCTAssertEqual(communicationManager.state, State.training)
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
+        }
     }
 
     func testTrainingComplete() {
         /*
          Test that the message to be sent after training is correct.
          */
-        let resultsMessage = makeDictionaryString(keys: ["gradients", "omega"], values: [[[1]], 1])
-        let updateMessage = makeDictionaryString(keys: ["type", "round", "session_id", "results"], values: ["NEW_UPDATE", 1, "test", resultsMessage])
+        
+        do {
+            let job = DMLJob(repoID: "testRepo", sessionID: "test", round: 1, gradients: [[1]], omega: 1)
+            let actual = try communicationManager.handleTrainingComplete(job: job)
 
-        let job = DMLJob(repoID: "testRepo", sessionID: "test", round: 1, gradients: [[1]], omega: 1)
-        let actual = communicationManager.handleTrainingComplete(job: job)
+            let expectedJSON = try parseJSON(stringOrFile: updateMessage, isString: true) as! NSDictionary
+            let actualJSON = try parseJSON(stringOrFile: actual, isString: true) as! NSDictionary
 
-        let expectedJSON = parseJSON(stringOrFile: updateMessage, isString: true) as! NSDictionary
-        let actualJSON = parseJSON(stringOrFile: actual, isString: true) as! NSDictionary
+            XCTAssertEqual(expectedJSON["type"] as! String, actualJSON["type"] as! String)
+            XCTAssertEqual(expectedJSON["round"] as! Int, actualJSON["round"] as! Int)
+            XCTAssertEqual(expectedJSON["session_id"] as! String, actualJSON["session_id"] as! String)
 
-        XCTAssertEqual(expectedJSON["type"] as! String, actualJSON["type"] as! String)
-        XCTAssertEqual(expectedJSON["round"] as! Int, actualJSON["round"] as! Int)
-        XCTAssertEqual(expectedJSON["session_id"] as! String, actualJSON["session_id"] as! String)
+            let expectedResults = try parseJSON(stringOrFile: expectedJSON["results"] as! String, isString: true ) as! NSDictionary
+            let actualResults = try parseJSON(stringOrFile: actualJSON["results"] as! String, isString: true) as! NSDictionary
+            XCTAssertEqual(expectedResults["gradients"] as! [[Float32]], actualResults["gradients"] as! [[Float32]])
+            XCTAssertEqual(expectedResults["omega"] as! Int, actualResults["omega"] as! Int)
 
-        let expectedResults = parseJSON(stringOrFile: expectedJSON["results"] as! String, isString: true ) as! NSDictionary
-        let actualResults = parseJSON(stringOrFile: actualJSON["results"] as! String, isString: true) as! NSDictionary
-        XCTAssertEqual(expectedResults["gradients"] as! [[Float32]], actualResults["gradients"] as! [[Float32]])
-        XCTAssertEqual(expectedResults["omega"] as! Int, actualResults["omega"] as! Int)
-
-        XCTAssertEqual(communicationManager.state, State.waiting)
+            XCTAssertEqual(communicationManager.state, State.waiting)
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
+        }
+        
     }
 
 }

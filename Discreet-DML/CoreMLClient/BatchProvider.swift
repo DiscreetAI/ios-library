@@ -41,7 +41,7 @@ public class DoubleBatchProvider: MLBatchProvider {
         /*
          Get the corresponding MLFeatureProvider for the datapoint and label corresponding to this index.
          */
-        let input = MLMultiArray.from(self.data[index])
+        let input = try! MLMultiArray.from(self.data[index])
         let label = self.labels[index]
         return DoubleFeatureProvider(dense_1_input_0: input, classLabel: label)
     }
@@ -86,6 +86,6 @@ public class ImagesBatchProvider: MLBatchProvider {
         /*
         Get the corresponding MLFeatureProvider for the datapoint and label corresponding to this index.
         */
-        return ImagesFeatureProvider(image: self.images[index], label: self.labels[index], imageConstraint: self.imageConstraint)
+        return try! ImagesFeatureProvider(image: self.images[index], label: self.labels[index], imageConstraint: self.imageConstraint)
     }
 }

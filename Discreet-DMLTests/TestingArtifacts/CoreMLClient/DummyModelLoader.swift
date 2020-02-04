@@ -17,8 +17,8 @@ public class DummyModelLoader: ModelLoader {
         self.init(downloadModelURL: nil)
     }
     
-    override public func loadModel() -> URL {
-        let modelPath = artifactsPath + "my_model.mlmodel"
-        return compileModel(localModelURL: URL(fileURLWithPath: modelPath))
+    override public func loadModel() throws -> URL {
+        let modelPath = testingUtilsPath + "CoreMLClient/" + "my_model.mlmodel"
+        return try compileModel(localModelURL: URL(fileURLWithPath: modelPath))
     }
 }

@@ -13,6 +13,10 @@
 		E409790523A0A3A000F51C42 /* Discreet_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */; };
 		E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* Discreet_DML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */; };
+		E41B26DA23EA367A0095C1CD /* old_simple_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D623EA36790095C1CD /* old_simple_weights */; };
+		E41B26DB23EA367A0095C1CD /* new_complex_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D723EA367A0095C1CD /* new_complex_weights */; };
+		E41B26DC23EA367A0095C1CD /* new_simple_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D823EA367A0095C1CD /* new_simple_weights */; };
+		E41B26DD23EA367A0095C1CD /* old_complex_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D923EA367A0095C1CD /* old_complex_weights */; };
 		E41D7BD923E0E34300D58478 /* DataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BD823E0E34300D58478 /* DataEntry.swift */; };
 		E41D7BE523E12B6E00D58478 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BE423E12B6E00D58478 /* ModelLoader.swift */; };
 		E41D7BE723E12BBB00D58478 /* MLMultiArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */; };
@@ -23,6 +27,7 @@
 		E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E623E8DC2A0003F638 /* Orchestrator.swift */; };
 		E42C76E923E8DCD20003F638 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E823E8DCD20003F638 /* IntegrationTests.swift */; };
 		E42C76EC23E8E8F00003F638 /* DummyOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */; };
+		E42C76EE23E8F73E0003F638 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76ED23E8F73E0003F638 /* Errors.swift */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
 		E468505723E3BBD400D3D689 /* HandsEmpty.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */; };
@@ -70,6 +75,10 @@
 		E409790423A0A3A000F51C42 /* Discreet-DMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Discreet-DMLTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E409790B23A0A3A000F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessorTests.swift; sourceTree = "<group>"; };
+		E41B26D623EA36790095C1CD /* old_simple_weights */ = {isa = PBXFileReference; lastKnownFileType = file; name = old_simple_weights; path = WeightsProcessor/old_simple_weights; sourceTree = "<group>"; };
+		E41B26D723EA367A0095C1CD /* new_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = file; name = new_complex_weights; path = WeightsProcessor/new_complex_weights; sourceTree = "<group>"; };
+		E41B26D823EA367A0095C1CD /* new_simple_weights */ = {isa = PBXFileReference; lastKnownFileType = file; name = new_simple_weights; path = WeightsProcessor/new_simple_weights; sourceTree = "<group>"; };
+		E41B26D923EA367A0095C1CD /* old_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = file; name = old_complex_weights; path = WeightsProcessor/old_complex_weights; sourceTree = "<group>"; };
 		E41D7BD823E0E34300D58478 /* DataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntry.swift; sourceTree = "<group>"; };
 		E41D7BE423E12B6E00D58478 /* ModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
 		E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMultiArrayUtils.swift; sourceTree = "<group>"; };
@@ -80,6 +89,7 @@
 		E42C76E623E8DC2A0003F638 /* Orchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orchestrator.swift; sourceTree = "<group>"; };
 		E42C76E823E8DCD20003F638 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
+		E42C76ED23E8F73E0003F638 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
 		E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandsEmpty.mlmodel; sourceTree = "<group>"; };
@@ -186,6 +196,17 @@
 			path = "Discreet-DMLTests";
 			sourceTree = "<group>";
 		};
+		E41B26D523EA36510095C1CD /* WeightsProcessor */ = {
+			isa = PBXGroup;
+			children = (
+				E41B26D723EA367A0095C1CD /* new_complex_weights */,
+				E41B26D823EA367A0095C1CD /* new_simple_weights */,
+				E41B26D923EA367A0095C1CD /* old_complex_weights */,
+				E41B26D623EA36790095C1CD /* old_simple_weights */,
+			);
+			name = WeightsProcessor;
+			sourceTree = "<group>";
+		};
 		E41D7BE823E12DB200D58478 /* WeightsProcessor */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +245,7 @@
 				E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */,
 				E44F577123D3027400FE0619 /* Utils.swift */,
 				E468507123E5498C00D3D689 /* CoreMLUtils.swift */,
+				E42C76ED23E8F73E0003F638 /* Errors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -270,19 +292,12 @@
 		E49BDD4823D6889D00A954FE /* TestingArtifacts */ = {
 			isa = PBXGroup;
 			children = (
+				E41B26D523EA36510095C1CD /* WeightsProcessor */,
 				E42C76EA23E8E8DB0003F638 /* Orchestrator */,
 				E468506C23E543BD00D3D689 /* CommunicationManager */,
 				E41D7C0B23E37E8300D58478 /* CoreMLClient */,
-				E49BDD4923D688AC00A954FE /* WeightsProcessor */,
 			);
 			path = TestingArtifacts;
-			sourceTree = "<group>";
-		};
-		E49BDD4923D688AC00A954FE /* WeightsProcessor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WeightsProcessor;
 			sourceTree = "<group>";
 		};
 		E4AF70E323D905B400D65376 /* Frameworks */ = {
@@ -402,7 +417,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41B26DB23EA367A0095C1CD /* new_complex_weights in Resources */,
+				E41B26DD23EA367A0095C1CD /* old_complex_weights in Resources */,
+				E41B26DA23EA367A0095C1CD /* old_simple_weights in Resources */,
 				E468505B23E3C3D000D3D689 /* Dataset in Resources */,
+				E41B26DC23EA367A0095C1CD /* new_simple_weights in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +509,7 @@
 				E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */,
 				E41D7BE723E12BBB00D58478 /* MLMultiArrayUtils.swift in Sources */,
 				E44F577223D3027500FE0619 /* Utils.swift in Sources */,
+				E42C76EE23E8F73E0003F638 /* Errors.swift in Sources */,
 				E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */,
 				E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */,
 				E41D7BEE23E13C5500D58478 /* BatchProvider.swift in Sources */,

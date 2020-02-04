@@ -16,14 +16,15 @@ class Orchestrator {
     var coreMLClient: CoreMLClient
     var communicationManager: CommunicationManager
 
-    init(repoID: String, connect: Bool = true) {
+    init(repoID: String, connect: Bool = true) throws {
         /*
          repoID: repo ID corresponding to cloud node.
          connect: Boolean indicating whether we should immediately try connecting to the cloud node.
          */
         self.repoID = repoID
-        self.realmClient = RealmClient()
-        self.coreMLClient = CoreMLClient(modelLoader: ModelLoader(repoID: repoID), realmClient: self.realmClient, weightsProcessor: WeightsProcessor(mpsHandler: MPSHandler()))
+        self.realmClient = try! RealmClient()
+        let mpsHandler = try? MPSHandler()
+        self.coreMLClient = CoreMLClient(modelLoader: ModelLoader(repoID: repoID), realmClient: self.realmClient, weightsProcessor: WeightsProcessor(mpsHandler: mpsHandler))
         self.communicationManager = CommunicationManager(coreMLClient: self.coreMLClient, repoID: repoID)
         self.coreMLClient.configure(communicationManager: self.communicationManager)
         if connect {
@@ -38,14 +39,14 @@ class Orchestrator {
         /*
          Store 2D Double data.
          */
-        realmClient.storeData(repoID: self.repoID, data: data, labels: labels)
+        try! realmClient.storeData(repoID: self.repoID, data: data, labels: labels)
     }
 
     public func storeImages(images: [String], labels: [String]) {
         /*
          Store 1D array of image paths on device.
          */
-        realmClient.storeData(repoID: self.repoID, data: images, labels: labels)
+        try! realmClient.storeData(repoID: self.repoID, data: images, labels: labels)
     }
     
     public func connect() {

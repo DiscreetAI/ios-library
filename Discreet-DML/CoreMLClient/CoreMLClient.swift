@@ -46,12 +46,12 @@ class CoreMLClient {
         self.communicationManager = communicationManager
     }
 
-    func train(job: DMLJob) {
+    func train(job: DMLJob) throws {
         /*
          Load the model, prepare the model, and begin training the model.
          */
         self.currentJob = job
-        let modelURL = self.modelLoader!.loadModel()
+        let modelURL = try self.modelLoader!.loadModel()
         let metaDataEntry = realmClient!.getMetadataEntry(repoID: job.repoID)!
         let type = DataType(rawValue: metaDataEntry.dataType)
         
@@ -61,7 +61,13 @@ class CoreMLClient {
             batchProvider = DoubleBatchProvider(realmClient: self.realmClient!, repoID: job.repoID)
             break
         case .IMAGE:
-            let model = try! MLModel(contentsOf: modelURL)
+            var model: MLModel
+            do {
+                model = try MLModel(contentsOf: modelURL)
+            } catch {
+                print(error.localizedDescription)
+                throw DMLError.coreMLError(ErrorMessage.failedMLModel)
+            }
             let constraint = model.modelDescription.inputDescriptionsByName["image"]!.imageConstraint!
             batchProvider = ImagesBatchProvider(realmClient: realmClient!, repoID: job.repoID, imageConstraint: constraint)
         case .TEXT:
@@ -89,16 +95,18 @@ class CoreMLClient {
         
     }
     
-    public func finishedTraining(oldModelURL: URL, newModelURL: URL, learningRate: Double) {
+    public func finishedTraining(oldModelURL: URL, newModelURL: URL, learningRate: Double) throws {
         /*
          Callback for when training is finished. Calculate the gradients and communicate them to the cloud node.
          */
         print("Training complete.")
         let oldWeightsPath = makeWeightsPath(modelURL: oldModelURL)
         let newWeightsPath = makeWeightsPath(modelURL: newModelURL)
-        self.currentJob!.gradients = self.weightsProcessor!.calculateGradients(oldWeightsPath: oldWeightsPath, newWeightsPath: newWeightsPath, learningRate: Float32(learningRate)
+        print("Calculating gradients...")
+        self.currentJob!.gradients = try self.weightsProcessor!.calculateGradients(oldWeightsPath: oldWeightsPath, newWeightsPath: newWeightsPath, learningRate: Float32(learningRate)
         )
-        _ = self.communicationManager!.handleTrainingComplete(job: self.currentJob!)
+        print("Finished calculating gradients!")
+        _ = try self.communicationManager!.handleTrainingComplete(job: self.currentJob!)
         
     }
     
@@ -147,9 +155,23 @@ class CoreMLClient {
         let trainLoss = context.metrics[.lossValue] as! Double
         print("Final loss: \(trainLoss)")
 
-        let oldModelURL = renameModel(modelURL: self.currentJob!.modelURL)
-        saveUpdatedModel(context.model, to: self.currentJob!.modelURL)
+        
 
-        self.finishedTraining(oldModelURL: oldModelURL, newModelURL: self.currentJob!.modelURL, learningRate: context.parameters[.learningRate] as! Double)
+        do {
+            let oldModelURL = try renameModel(modelURL: self.currentJob!.modelURL)
+            try saveUpdatedModel(context.model, to: self.currentJob!.modelURL)
+            try self.finishedTraining(oldModelURL: oldModelURL, newModelURL: self.currentJob!.modelURL, learningRate: context.parameters[.learningRate] as! Double)
+            print("Saved new model and communicated gradients!")
+        } catch DMLError.coreMLError(ErrorMessage.failedRename) {
+            print(DMLError.coreMLError(ErrorMessage.failedRename))
+            print("Failed to rename old model!")
+        } catch DMLError.coreMLError(ErrorMessage.failedModelUpdate) {
+            print(DMLError.coreMLError(ErrorMessage.failedModelUpdate))
+            print("Failed to save new model!")
+        } catch {
+            print(error.localizedDescription)
+            print("Failed to communicate gradients!")
+        }
+        
     }
 }

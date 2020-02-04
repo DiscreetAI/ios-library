@@ -13,15 +13,14 @@ public class DummyRealmClient: RealmClient {
     /*
      Dummy class for simulating data stored in Realm.
      */
-    override init() {
-        
+    override init() throws {
+
     }
-    
+
     override public func getImageEntry(repoID: String) -> ImageEntry? {
-        let (images, labels) = makeImagePaths()
         return Optional(ImageEntry(repoID: repoID, images: testImages, labels: testLabels))
     }
-    
+
     override public func getMetadataEntry(repoID: String) -> MetadataEntry? {
         return Optional(MetadataEntry(repoID: repoID, dataType: DataType.IMAGE))
     }

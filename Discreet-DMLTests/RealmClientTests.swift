@@ -11,10 +11,10 @@ import Foundation
 @testable import Discreet_DML
 
 class RealmClientTests: XCTestCase {
-    var realmClient = RealmClient()
+    var realmClient = try! RealmClient()
     
     override func setUp() {
-        realmClient.clear()
+        try! realmClient.clear()
     }
     
     func testDoubleGetStore() {
@@ -24,7 +24,14 @@ class RealmClientTests: XCTestCase {
         let data = [[1.1, 2.2], [3.3, 4.4]]
         let labels = ["small", "large"]
         
-        realmClient.storeData(repoID: "test", data: data, labels: labels)
+        do {
+            try realmClient.storeData(repoID: "test", data: data, labels: labels)
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
+        }
+        
         
         let metaDataEntry = realmClient.getMetadataEntry(repoID: "test")
         XCTAssertNotNil(metaDataEntry)
@@ -48,7 +55,14 @@ class RealmClientTests: XCTestCase {
         let data = ["path1", "path2"]
         let labels = ["small", "large"]
         
-        realmClient.storeData(repoID: "test", data: data, labels: labels)
+        do {
+            try realmClient.storeData(repoID: "test", data: data, labels: labels)
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
+        }
+        
         
         let metaDataEntry = realmClient.getMetadataEntry(repoID: "test")
         XCTAssertNotNil(metaDataEntry)

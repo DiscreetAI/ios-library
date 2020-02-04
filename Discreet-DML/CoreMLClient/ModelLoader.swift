@@ -28,14 +28,16 @@ public class ModelLoader {
         self.downloadModelURL = downloadModelURL
     }
 
-    public func loadModel() -> URL {
+    public func loadModel() throws -> URL {
         /*
          Util method to download a .mlmodel file, compile it, and store it permanently.
          */
-        return compileModel(localModelURL: downloadModel())
+        let localModelURL = try downloadModel()
+        let compiledModelURL = try compileModel(localModelURL: localModelURL)
+        return compiledModelURL
     }
 
-    func downloadModel() -> URL {
+    func downloadModel() throws -> URL {
         /*
          Download the model at the URL `downloadModelURL`.
          */
@@ -45,45 +47,54 @@ public class ModelLoader {
 
         if FileManager().fileExists(atPath: destinationUrl.path) {
             print("File already exists [\(destinationUrl.path)], deleting...")
-            try! FileManager().removeItem(atPath: destinationUrl.path)
+            do {
+                try FileManager().removeItem(atPath: destinationUrl.path)
+            } catch {
+                print(error.localizedDescription)
+                throw DMLError.modelLoaderError(ErrorMessage.error)
+            }
+            
         }
         
         if let dataFromURL = NSData(contentsOf: self.downloadModelURL!) {
             if dataFromURL.write(to: destinationUrl, atomically: true) {
                 print("file saved [\(destinationUrl.path)]")
             } else {
-                print("error saving file")
+                throw DMLError.modelLoaderError(ErrorMessage.failedModelSave)
             }
         } else {
-            _ = NSError(domain:"Error downloading file", code:1002, userInfo:nil)
+            throw DMLError.modelLoaderError(ErrorMessage.failedDownload)
         }
 
         return destinationUrl
     }
 
-    func compileModel(localModelURL: URL) -> URL {
+    func compileModel(localModelURL: URL) throws -> URL {
         /*
          Compile the given local URL to the `.mlmodel` into `.mlmodelc`.
          */
-        let compiledUrl = try! MLModel.compileModel(at: localModelURL)
+        if let compiledUrl = try? MLModel.compileModel(at: localModelURL) {
+            let fileManager = FileManager.default
+            let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
-        let fileManager = FileManager.default
-        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let permanentUrl = documentsUrl.appendingPathComponent(compiledUrl.lastPathComponent)
 
-        let permanentUrl = documentsUrl.appendingPathComponent(compiledUrl.lastPathComponent)
-
-        do {
-            // if the file exists, replace it. Otherwise, copy the file to the destination.
-            if fileManager.fileExists(atPath: permanentUrl.path) {
-                print("File exists: \(permanentUrl.path)")
-                _ = try fileManager.replaceItemAt(permanentUrl, withItemAt: compiledUrl)
-            } else {
-                print("File doesn't exist")
-                try fileManager.copyItem(at: compiledUrl, to: permanentUrl)
+            do {
+                // if the file exists, replace it. Otherwise, copy the file to the destination.
+                if fileManager.fileExists(atPath: permanentUrl.path) {
+                    print("File exists: \(permanentUrl.path)")
+                    _ = try fileManager.replaceItemAt(permanentUrl, withItemAt: compiledUrl)
+                } else {
+                    print("File doesn't exist")
+                    try fileManager.copyItem(at: compiledUrl, to: permanentUrl)
+                }
+            } catch {
+                print(error.localizedDescription)
+                throw DMLError.modelLoaderError(ErrorMessage.failedCompiledModelSave)
             }
-        } catch {
-            print("Error during copy: \(error.localizedDescription)")
+            return permanentUrl
+        } else {
+            throw DMLError.modelLoaderError(ErrorMessage.failedCompile)
         }
-        return permanentUrl
     }
 }

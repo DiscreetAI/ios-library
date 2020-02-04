@@ -11,7 +11,7 @@ import CoreML
 @testable import Discreet_DML
 
 class ModelLoaderTests: XCTestCase {
-    let modelLoader = ModelLoader(downloadModelURL: URL(string: "https://ios-discreetai.s3-us-west-1.amazonaws.com/model.mlmodel")!)
+    let modelLoader = ModelLoader(downloadModelURL: testModelURL)
     
     func testLoad() {
         /*

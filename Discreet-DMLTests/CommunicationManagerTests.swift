@@ -50,7 +50,6 @@ class CommunicationManagerTests: XCTestCase {
         /*
          Test that the protocol for a new train message is correct.
          */
-        let trainMessage = makeDictionaryString(keys: ["sessionID", "round", "action"], values: ["test", 1, "TRAIN"])
         let result = communicationManager.handleNewEvent(event: WebSocketEvent.text(trainMessage))
         XCTAssertNil(result)
         XCTAssertEqual(communicationManager.state, State.training)

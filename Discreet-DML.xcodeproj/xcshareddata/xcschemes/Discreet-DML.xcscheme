@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Discreet-DML.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E409790323A0A3A000F51C42"
+               BuildableName = "Discreet-DMLTests.xctest"
+               BlueprintName = "Discreet-DMLTests"
+               ReferencedContainer = "container:Discreet-DML.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

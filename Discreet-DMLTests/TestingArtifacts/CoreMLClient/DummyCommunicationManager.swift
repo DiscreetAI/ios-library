@@ -20,7 +20,7 @@ public class DummyCommunicationManager: CommunicationManager {
     }
     
     override public func handleTrainingComplete(job: DMLJob) -> String {
-        success = true
+        self.success = true
         return ""
     }
 }

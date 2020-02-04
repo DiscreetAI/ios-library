@@ -93,6 +93,7 @@ class CoreMLClient {
         /*
          Callback for when training is finished. Calculate the gradients and communicate them to the cloud node.
          */
+        print("Training complete.")
         let oldWeightsPath = makeWeightsPath(modelURL: oldModelURL)
         let newWeightsPath = makeWeightsPath(modelURL: newModelURL)
         self.currentJob!.gradients = self.weightsProcessor!.calculateGradients(oldWeightsPath: oldWeightsPath, newWeightsPath: newWeightsPath, learningRate: Float32(learningRate)

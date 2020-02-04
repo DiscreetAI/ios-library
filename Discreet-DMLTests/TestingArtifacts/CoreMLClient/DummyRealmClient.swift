@@ -19,7 +19,7 @@ public class DummyRealmClient: RealmClient {
     
     override public func getImageEntry(repoID: String) -> ImageEntry? {
         let (images, labels) = makeImagePaths()
-        return Optional(ImageEntry(repoID: repoID, images: images, labels: labels))
+        return Optional(ImageEntry(repoID: repoID, images: testImages, labels: testLabels))
     }
     
     override public func getMetadataEntry(repoID: String) -> MetadataEntry? {

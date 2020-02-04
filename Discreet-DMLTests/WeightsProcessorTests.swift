@@ -26,7 +26,7 @@ class WeightsProcessorTests: XCTestCase {
         let weightsProcessor = WeightsProcessor(mpsHandler: nil)
         let oldSimpleWeightsPath: String = artifactsPath + "old_simple_weights"
         let newSimpleWeightsPath: String = artifactsPath + "new_simple_weights"
-        let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldWeightsPath: oldSimpleWeightsPath, newWeightsPath: newSimpleWeightsPath, learningRate: 0.01, useGPU: false)
+        let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldWeightsPath: oldSimpleWeightsPath, newWeightsPath: newSimpleWeightsPath, learningRate: 0.01)
         let roundedCalculatedGradients: [Float32] = roundArr(arr: calculatedGradients[0], places: 3)
         let roundedExpectedGradients: [Float32] = roundArr(arr: expectedSimpleGradients[0], places: 3)
         XCTAssertEqual(roundedExpectedGradients, roundedCalculatedGradients)
@@ -39,7 +39,7 @@ class WeightsProcessorTests: XCTestCase {
         let weightsProcessor = WeightsProcessor(mpsHandler: nil)
         let oldComplexWeightsPath: String = artifactsPath + "old_complex_weights"
         let newComplexWeightsPath: String = artifactsPath + "new_complex_weights"
-        let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldWeightsPath: oldComplexWeightsPath, newWeightsPath: newComplexWeightsPath, learningRate: 0.01, useGPU: false)
+        let calculatedGradients: [[Float32]] = weightsProcessor.calculateGradients(oldWeightsPath: oldComplexWeightsPath, newWeightsPath: newComplexWeightsPath, learningRate: 0.01)
         for (calculatedGradient, expectedGradient) in zip(calculatedGradients, expectedComplexGradients) {
             let roundedCalculatedGradient: [Float32] = roundArr(arr: calculatedGradient, places: 3)
             let roundedExpectedGradient: [Float32] = roundArr(arr: expectedGradient, places: 3)

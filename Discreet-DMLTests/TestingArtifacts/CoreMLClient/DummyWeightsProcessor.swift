@@ -17,7 +17,7 @@ public class DummyWeightsProcessor: WeightsProcessor {
         self.init(mpsHandler: nil)
     }
     
-    override public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32, useGPU: Bool = true) -> [[Float32]] {
+    override public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) -> [[Float32]] {
         return []
     }
 }

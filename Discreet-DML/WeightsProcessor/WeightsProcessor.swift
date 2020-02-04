@@ -15,9 +15,15 @@ class WeightsProcessor {
      Handle all processing of the physical weights file.
      */
     var mpsHandler: MPSHandler?
+    var useGPU: Bool
 
     init(mpsHandler: MPSHandler?) {
+        /*
+         mpsHandler: Client for dealing with operations in MPS.
+         useGPU: If we have a valid client, use it when we calculate gradients.
+         */
         self.mpsHandler = mpsHandler
+        self.useGPU = self.mpsHandler == nil ? false : true
     }
     
     private func readWeights(modelPath: String) ->  [[Float32]] {
@@ -83,6 +89,7 @@ class WeightsProcessor {
         /*
          Calculate the gradients using Surge given the learning rate and paths to the old model and new one.
          */
+        
         var gradients = [[Float32]]()
 
         for (oldLayerWeights, newLayerWeights) in zip(oldWeights, newWeights) {
@@ -91,13 +98,14 @@ class WeightsProcessor {
         return gradients
     }
     
-    public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32, useGPU: Bool = true) -> [[Float32]] {
-        
+    public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) -> [[Float32]] {
+        /*
+         Calculate gradients with the appropriate gradients calculator.
+         */
         let oldWeights = readWeights(modelPath: oldWeightsPath)
         let newWeights = readWeights(modelPath: newWeightsPath)
         
-        let gradientsCalculator = useGPU ? calculateGradientsGPU : calculateGradientsSurge
-        
+        let gradientsCalculator = self.useGPU ? calculateGradientsGPU : calculateGradientsSurge
         return gradientsCalculator(oldWeights, newWeights, learningRate)
     }
 }

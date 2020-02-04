@@ -20,11 +20,12 @@
 		E41D7C0423E2489D00D58478 /* TrainingInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0323E2489D00D58478 /* TrainingInput.swift */; };
 		E41D7C0823E26EE200D58478 /* MetadataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0723E26EE200D58478 /* MetadataEntry.swift */; };
 		E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */; };
+		E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E623E8DC2A0003F638 /* Orchestrator.swift */; };
+		E42C76E923E8DCD20003F638 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E823E8DCD20003F638 /* IntegrationTests.swift */; };
+		E42C76EC23E8E8F00003F638 /* DummyOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
 		E468505723E3BBD400D3D689 /* HandsEmpty.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */; };
-		E468505823E3BBD400D3D689 /* HandsTuri.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468505523E3BBD300D3D689 /* HandsTuri.mlmodel */; };
-		E468505923E3BBD400D3D689 /* HandskNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468505623E3BBD400D3D689 /* HandskNN.mlmodel */; };
 		E468505B23E3C3D000D3D689 /* Dataset in Resources */ = {isa = PBXBuildFile; fileRef = E468505A23E3C3D000D3D689 /* Dataset */; };
 		E468506123E3D2DB00D3D689 /* my_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468506023E3D2DB00D3D689 /* my_model.mlmodel */; };
 		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
@@ -57,11 +58,11 @@
 
 /* Begin PBXFileReference section */
 		0BDFAECCF0D7C93E76CC9572 /* Pods_Discreet_DMLTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Discreet_DMLTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F0691FC242C36C1146FE0B3 /* Pods-Discreet-DML.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DML.release.xcconfig"; path = "Target Support Files/Pods-Discreet-DML/Pods-Discreet-DML.release.xcconfig"; sourceTree = "<group>"; };
-		6D8745A0936F12732A4C88EA /* Pods-Discreet-DMLTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DMLTests.debug.xcconfig"; path = "Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests.debug.xcconfig"; sourceTree = "<group>"; };
-		75F4036A3F9913D1B82C8ECB /* Pods-Discreet-DMLTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DMLTests.release.xcconfig"; path = "Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests.release.xcconfig"; sourceTree = "<group>"; };
+		12AEAFF135B46365BDE0D58E /* Pods-Discreet-DMLTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DMLTests.debug.xcconfig"; path = "Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E2ED57B1C69C7748F41E354 /* Pods-Discreet-DML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DML.debug.xcconfig"; path = "Target Support Files/Pods-Discreet-DML/Pods-Discreet-DML.debug.xcconfig"; sourceTree = "<group>"; };
 		87B6CA85E88BFB5ABFD9A053 /* Pods_Discreet_DML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Discreet_DML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3FDE725A18A847B7618825D /* Pods-Discreet-DML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DML.debug.xcconfig"; path = "Target Support Files/Pods-Discreet-DML/Pods-Discreet-DML.debug.xcconfig"; sourceTree = "<group>"; };
+		9879DB198677BE66E4B46106 /* Pods-Discreet-DMLTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DMLTests.release.xcconfig"; path = "Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests.release.xcconfig"; sourceTree = "<group>"; };
+		C268DCB89E882B0D098BB970 /* Pods-Discreet-DML.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DML.release.xcconfig"; path = "Target Support Files/Pods-Discreet-DML/Pods-Discreet-DML.release.xcconfig"; sourceTree = "<group>"; };
 		E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSHandler.swift; sourceTree = "<group>"; };
 		E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Discreet_DML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40978FE23A0A39F00F51C42 /* Discreet_DML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Discreet_DML.h; sourceTree = "<group>"; };
@@ -76,11 +77,12 @@
 		E41D7C0323E2489D00D58478 /* TrainingInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingInput.swift; sourceTree = "<group>"; };
 		E41D7C0723E26EE200D58478 /* MetadataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataEntry.swift; sourceTree = "<group>"; };
 		E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoaderTests.swift; sourceTree = "<group>"; };
+		E42C76E623E8DC2A0003F638 /* Orchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orchestrator.swift; sourceTree = "<group>"; };
+		E42C76E823E8DCD20003F638 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
 		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
 		E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandsEmpty.mlmodel; sourceTree = "<group>"; };
-		E468505523E3BBD300D3D689 /* HandsTuri.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandsTuri.mlmodel; sourceTree = "<group>"; };
-		E468505623E3BBD400D3D689 /* HandskNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandskNN.mlmodel; sourceTree = "<group>"; };
 		E468505A23E3C3D000D3D689 /* Dataset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dataset; sourceTree = "<group>"; };
 		E468506023E3D2DB00D3D689 /* my_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = my_model.mlmodel; sourceTree = "<group>"; };
 		E468506423E5415100D3D689 /* DummyRealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
@@ -122,13 +124,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C959A43EE069B24C5864CEDE /* Pods */ = {
+		40DEAEC38CF5479E62B69B9F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E3FDE725A18A847B7618825D /* Pods-Discreet-DML.debug.xcconfig */,
-				4F0691FC242C36C1146FE0B3 /* Pods-Discreet-DML.release.xcconfig */,
-				6D8745A0936F12732A4C88EA /* Pods-Discreet-DMLTests.debug.xcconfig */,
-				75F4036A3F9913D1B82C8ECB /* Pods-Discreet-DMLTests.release.xcconfig */,
+				4E2ED57B1C69C7748F41E354 /* Pods-Discreet-DML.debug.xcconfig */,
+				C268DCB89E882B0D098BB970 /* Pods-Discreet-DML.release.xcconfig */,
+				12AEAFF135B46365BDE0D58E /* Pods-Discreet-DMLTests.debug.xcconfig */,
+				9879DB198677BE66E4B46106 /* Pods-Discreet-DMLTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -140,7 +142,7 @@
 				E409790823A0A3A000F51C42 /* Discreet-DMLTests */,
 				E40978FC23A0A39F00F51C42 /* Products */,
 				E4AF70E323D905B400D65376 /* Frameworks */,
-				C959A43EE069B24C5864CEDE /* Pods */,
+				40DEAEC38CF5479E62B69B9F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +165,7 @@
 				E41D7BE823E12DB200D58478 /* WeightsProcessor */,
 				E40978FE23A0A39F00F51C42 /* Discreet_DML.h */,
 				E40978FF23A0A39F00F51C42 /* Info.plist */,
+				E42C76E623E8DC2A0003F638 /* Orchestrator.swift */,
 			);
 			path = "Discreet-DML";
 			sourceTree = "<group>";
@@ -170,8 +173,6 @@
 		E409790823A0A3A000F51C42 /* Discreet-DMLTests */ = {
 			isa = PBXGroup;
 			children = (
-				E468505623E3BBD400D3D689 /* HandskNN.mlmodel */,
-				E468505523E3BBD300D3D689 /* HandsTuri.mlmodel */,
 				E49BDD4823D6889D00A954FE /* TestingArtifacts */,
 				E409790B23A0A3A000F51C42 /* Info.plist */,
 				E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */,
@@ -180,6 +181,7 @@
 				E4D72E4223DFA7ED00BE3B75 /* RealmClientTests.swift */,
 				E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */,
 				E45288FD23E383A9003F422A /* CoreMLClientTests.swift */,
+				E42C76E823E8DCD20003F638 /* IntegrationTests.swift */,
 			);
 			path = "Discreet-DMLTests";
 			sourceTree = "<group>";
@@ -249,6 +251,14 @@
 			path = CoreMLClient;
 			sourceTree = "<group>";
 		};
+		E42C76EA23E8E8DB0003F638 /* Orchestrator */ = {
+			isa = PBXGroup;
+			children = (
+				E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */,
+			);
+			path = Orchestrator;
+			sourceTree = "<group>";
+		};
 		E468506C23E543BD00D3D689 /* CommunicationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +270,7 @@
 		E49BDD4823D6889D00A954FE /* TestingArtifacts */ = {
 			isa = PBXGroup;
 			children = (
+				E42C76EA23E8E8DB0003F638 /* Orchestrator */,
 				E468506C23E543BD00D3D689 /* CommunicationManager */,
 				E41D7C0B23E37E8300D58478 /* CoreMLClient */,
 				E49BDD4923D688AC00A954FE /* WeightsProcessor */,
@@ -312,8 +323,6 @@
 			dependencies = (
 			);
 			name = "Discreet-DML";
-			packageProductDependencies = (
-			);
 			productName = "Discreet-DML";
 			productReference = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */;
 			productType = "com.apple.product-type.framework";
@@ -481,6 +490,7 @@
 				E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */,
 				E41D7BE723E12BBB00D58478 /* MLMultiArrayUtils.swift in Sources */,
 				E44F577223D3027500FE0619 /* Utils.swift in Sources */,
+				E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */,
 				E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */,
 				E41D7BEE23E13C5500D58478 /* BatchProvider.swift in Sources */,
 			);
@@ -495,16 +505,16 @@
 				E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */,
 				E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */,
 				E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */,
-				E468505823E3BBD400D3D689 /* HandsTuri.mlmodel in Sources */,
+				E42C76E923E8DCD20003F638 /* IntegrationTests.swift in Sources */,
 				E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */,
 				E468506123E3D2DB00D3D689 /* my_model.mlmodel in Sources */,
 				E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */,
 				E468506B23E542B600D3D689 /* DummyModelLoader.swift in Sources */,
-				E468505923E3BBD400D3D689 /* HandskNN.mlmodel in Sources */,
 				E468505723E3BBD400D3D689 /* HandsEmpty.mlmodel in Sources */,
 				E468506E23E5440500D3D689 /* DummyCoreMLClient.swift in Sources */,
 				E4D72E3823DF9E7800BE3B75 /* CommunicationManagerTests.swift in Sources */,
 				E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */,
+				E42C76EC23E8E8F00003F638 /* DummyOrchestrator.swift in Sources */,
 				E468507023E5449C00D3D689 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,7 +658,7 @@
 		};
 		E409791023A0A3A000F51C42 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3FDE725A18A847B7618825D /* Pods-Discreet-DML.debug.xcconfig */;
+			baseConfigurationReference = 4E2ED57B1C69C7748F41E354 /* Pods-Discreet-DML.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -675,7 +685,7 @@
 		};
 		E409791123A0A3A000F51C42 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F0691FC242C36C1146FE0B3 /* Pods-Discreet-DML.release.xcconfig */;
+			baseConfigurationReference = C268DCB89E882B0D098BB970 /* Pods-Discreet-DML.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -701,7 +711,7 @@
 		};
 		E409791323A0A3A000F51C42 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D8745A0936F12732A4C88EA /* Pods-Discreet-DMLTests.debug.xcconfig */;
+			baseConfigurationReference = 12AEAFF135B46365BDE0D58E /* Pods-Discreet-DMLTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -721,7 +731,7 @@
 		};
 		E409791423A0A3A000F51C42 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75F4036A3F9913D1B82C8ECB /* Pods-Discreet-DMLTests.release.xcconfig */;
+			baseConfigurationReference = 9879DB198677BE66E4B46106 /* Pods-Discreet-DMLTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

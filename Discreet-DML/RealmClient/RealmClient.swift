@@ -14,41 +14,54 @@ public class RealmClient {
      */
     var realm: Realm!
 
-    init() {
-        self.realm = try! Realm()
+    init() throws {
+        do {
+            self.realm = try Realm()
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.realmError(ErrorMessage.failedRealmSetup)
+        }
     }
 
-    public func storeData(repoID: String, data: [[Double]], labels: [String]) {
+    public func storeData(repoID: String, data: [[Double]], labels: [String]) throws {
         /*
          Store a 2D Double array and labels under the given `repoID`.
 
          If data for this `repoID` already exists, simply append the given data.
          */
-
-        try! self.realm.write {
-            if let doubleEntry = getDoubleEntry(repoID: repoID) {
-                doubleEntry.addData(datapoints: data, labels: labels)
-            } else {
-                self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.DOUBLE))
-                self.realm.add(DoubleEntry(repoID: repoID, datapoints: data, labels: labels))
+        do {
+            try self.realm.write {
+                if let doubleEntry = getDoubleEntry(repoID: repoID) {
+                    doubleEntry.addData(datapoints: data, labels: labels)
+                } else {
+                    self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.DOUBLE))
+                    self.realm.add(DoubleEntry(repoID: repoID, datapoints: data, labels: labels))
+                }
             }
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.realmError(ErrorMessage.failedRealmWrite)
         }
     }
 
-    public func storeData(repoID: String, data: [String], labels: [String]) {
+    public func storeData(repoID: String, data: [String], labels: [String]) throws {
         /*
          Store a 1D String array of image paths under the given `repoID`.
 
          If data for this `repoID` already exists, simply append the given data.
          */
-
-        try! self.realm.write {
-            if let imageEntry = getImageEntry(repoID: repoID) {
-                imageEntry.addImages(images: data, labels: labels)
-            } else {
-                self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.IMAGE))
-                self.realm.add(ImageEntry(repoID: repoID, images: data, labels: labels))
+        do {
+            try self.realm.write {
+                if let imageEntry = getImageEntry(repoID: repoID) {
+                    imageEntry.addImages(images: data, labels: labels)
+                } else {
+                    self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.IMAGE))
+                    self.realm.add(ImageEntry(repoID: repoID, images: data, labels: labels))
+                }
             }
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.realmError(ErrorMessage.failedRealmWrite)
         }
     }
 
@@ -77,12 +90,18 @@ public class RealmClient {
         return self.realm.object(ofType: MetadataEntry.self, forPrimaryKey: repoID)
     }
 
-    public func clear() {
+    public func clear() throws {
         /*
          Clear the Realm DB of all objects.
          */
-        try! realm.write {
-            self.realm.deleteAll()
+        do {
+            try realm.write {
+                self.realm.deleteAll()
+            }
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.realmError(ErrorMessage.failedRealmClear)
         }
+        
     }
 }

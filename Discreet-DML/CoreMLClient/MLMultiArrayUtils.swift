@@ -12,13 +12,19 @@ extension MLMultiArray {
     /*
      Utils for loading data into or from MLMultiArrays
      */
-    static func from(_ arr: [Double]) -> MLMultiArray {
+    static func from(_ arr: [Double]) throws -> MLMultiArray {
         /*
          Load 1D Double Array as MLMultiArray
          */
         var shape = Array(repeating: 1, count: 1)
         shape[shape.count - 1] = arr.count
-        let o = try! MLMultiArray(shape: shape as [NSNumber], dataType: .int32)
+        var o: MLMultiArray
+        do {
+            o = try MLMultiArray(shape: shape as [NSNumber], dataType: .int32)
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.dataError(ErrorMessage.failedDoubleData)
+        }
         let ptr = UnsafeMutablePointer<Double>(OpaquePointer(o.dataPointer))
         for (i, item) in arr.enumerated() {
             ptr[i] = Double(item)

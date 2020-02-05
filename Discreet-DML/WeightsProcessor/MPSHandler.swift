@@ -16,12 +16,19 @@ public class MPSHandler {
     var device: MTLDevice!
     var commandQueue: MTLCommandQueue!
 
-    init() {
+    init() throws {
         /*
          Set up the device and command queue.
          */
-        device = MTLCreateSystemDefaultDevice()!
-        commandQueue = device.makeCommandQueue()!
+        device = MTLCreateSystemDefaultDevice()
+        commandQueue = device.makeCommandQueue()
+        
+        #if targetEnvironment(simulator)
+        print("Cannot use Metal Performance Shaders, currently in a simulator.")
+        throw DMLError.mpsError(ErrorMessage.badDevice)
+        #else
+        print("Using Metal Performance Shaders.")
+        #endif
     }
 
     private func createMPSMatrix(buffer: MTLBuffer, rows: Int, cols: Int) -> MPSMatrix {

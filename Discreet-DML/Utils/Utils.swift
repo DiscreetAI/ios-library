@@ -21,27 +21,40 @@ public func roundArr(arr: [Float32], places: Int) -> [Float32] {
 }
 
 
-public func jsonify(object: Any) -> String {
+public func jsonify(object: Any) throws -> String {
     /*
      Turn an object (Dictionary, Int, etc.) into a String
      
      TODO: Do proper error handling here.
      */
-    let data: Data = try! JSONSerialization.data(withJSONObject: object, options: [])
+    var data: Data
+    do {
+        data = try JSONSerialization.data(withJSONObject: object, options: [])
+    } catch {
+        print(error.localizedDescription)
+        throw DMLError.communicationManagerError(ErrorMessage.failedJsonify)
+    }
     return String(data: data, encoding: String.Encoding.utf8)!
 }
 
-public func parseJSON(stringOrFile: String, isString: Bool) -> Any {
+public func parseJSON(stringOrFile: String, isString: Bool) throws -> Any {
     /*
-     Turn a String into a Dictionary object
+     Turn a String into JSON.
      
      TODO: Do proper error handling here.
      */
-    let data = isString ? Data(stringOrFile.utf8) : try! Data(contentsOf: URL(fileURLWithPath: stringOrFile), options: .mappedIfSafe)
-    return try! JSONSerialization.jsonObject(with: data)
+    var data: Data
+    do {
+        data = isString ? Data(stringOrFile.utf8) : try Data(contentsOf: URL(fileURLWithPath: stringOrFile), options: .mappedIfSafe)
+        return try JSONSerialization.jsonObject(with: data)
+    } catch {
+        print(error.localizedDescription)
+        throw DMLError.communicationManagerError(ErrorMessage.failedParse)
+    }
+    
 }
 
-public func makeDictionaryString(keys: [String], values: [Any]) -> String {
+public func makeDictionaryString(keys: [String], values: [Any]) throws -> String {
     /*
      Make a Dictionary with the given keys and values, and then turn it into a String.
      */
@@ -49,7 +62,7 @@ public func makeDictionaryString(keys: [String], values: [Any]) -> String {
     for (key, value) in zip(keys, values) {
         dict[key] = value
     }
-    return jsonify(object: dict)
+    return try jsonify(object: dict)
 }
 
 public func makeWebSocketURL(repoID: String) -> URL {
@@ -71,4 +84,12 @@ public func makeWeightsPath(modelURL: URL) -> String {
      Make path to the weights given the URL to the compiled model.
      */
     return modelURL.path + "/model.espresso.weights"
+}
+
+public func getMPSHandler() -> MPSHandler? {
+    #if targetEnvironment(simulator)
+    return nil
+    #else
+    return MPSHandler()
+    #endif
 }

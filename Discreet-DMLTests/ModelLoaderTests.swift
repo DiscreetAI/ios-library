@@ -11,14 +11,27 @@ import CoreML
 @testable import Discreet_DML
 
 class ModelLoaderTests: XCTestCase {
-    let modelLoader = ModelLoader(downloadModelURL: testModelURL)
-    
     func testLoad() {
         /*
         Download the model from S3, and compile it. Load it to ensure that the previous actions succeeded.
         */
-        let modelURL = modelLoader.loadModel()
-        let model = try? MLModel(contentsOf: modelURL)
-        XCTAssertNotNil(model)
+        do {
+            let modelLoader = ModelLoader(downloadModelURL: testModelURL)
+            let modelURL = try modelLoader.loadModel()
+            let model = try? MLModel(contentsOf: modelURL)
+            XCTAssertNotNil(model)
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
+        }
+        
+    }
+    
+    func testBadDownload() {
+        let modelLoader = ModelLoader(downloadModelURL: URL(string: "http://badserver.com/model.mlmodel")!)
+        XCTAssertThrowsError(try modelLoader.loadModel()) { error in
+            XCTAssertEqual(error as! DMLError, DMLError.modelLoaderError(ErrorMessage.failedDownload))
+        }
     }
 }

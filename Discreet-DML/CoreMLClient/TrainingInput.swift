@@ -78,7 +78,7 @@ class ImagesFeatureProvider: MLFeatureProvider {
         self.label = label
     }
     
-    init(image: String, label: String, imageConstraint: MLImageConstraint) {
+    init(image: String, label: String, imageConstraint: MLImageConstraint) throws {
         /*
          image: The path to the image.
          label: The label corresponding to this image.
@@ -86,7 +86,14 @@ class ImagesFeatureProvider: MLFeatureProvider {
          */
         let imageURL = URL(fileURLWithPath: image)
         let imageOptions: [MLFeatureValue.ImageOption: Any] = [:]
-        let featureValue = try! MLFeatureValue(imageAt: imageURL, constraint: imageConstraint, options: imageOptions)
+        var featureValue: MLFeatureValue
+        do {
+            featureValue = try MLFeatureValue(imageAt: imageURL, constraint: imageConstraint, options: imageOptions)
+        } catch {
+            print(error.localizedDescription)
+            print("Failed to load the image at \(image)!")
+            throw DMLError.dataError(ErrorMessage.failedImagePath)
+        }
         self.image = featureValue.imageBufferValue!
         self.label = label
     }

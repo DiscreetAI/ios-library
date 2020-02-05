@@ -26,30 +26,59 @@ class WeightsProcessor {
         self.useGPU = self.mpsHandler == nil ? false : true
     }
     
-    private func readWeights(modelPath: String) ->  [[Float32]] {
+    private func readWeights(modelPath: String) throws ->  [[Float32]] {
         /*
          Read weights given the on device path.
          */
-        let file: FileHandle = try! FileHandle(forReadingFrom: URL(string: modelPath)!)
-        let b = try! unpack("<i", file.readData(ofLength: 4))
+        var file: FileHandle
+        do {
+            file = try FileHandle(forReadingFrom: URL(string: modelPath)!)
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.weightsProcessorError(ErrorMessage.failedFileHandle)
+        }
+        var b: [Unpackable]
+        do {
+            b = try unpack("<i", file.readData(ofLength: 4))
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
+        }
         let num_layers = b[0] as! Int
         // initialize array and dict
         var layerBytes = [(Int, Int)]()
         var layerData = [[Float32]]()
         while layerBytes.count < num_layers {
-            let ret = try! unpack("<iiii", file.readData(ofLength: 16))
+            var ret: [Unpackable]
+            do {
+                ret = try unpack("<iiii", file.readData(ofLength: 16))
+            } catch {
+                print(error.localizedDescription)
+                throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
+            }
             let layerNum = ret[1] as? Int
             let numBytes = ret[3] as? Int
             layerBytes.append((layerNum!, numBytes!))
         }
         let floatString = String(repeating: "f", count: 1)
         let prefixString: String = "="
-        _ = try! unpack(prefixString + floatString, file.readData(ofLength: 4))
+        do {
+            _ = try unpack(prefixString + floatString, file.readData(ofLength: 4))
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
+        }
         for (layerNum, numBytes) in layerBytes {
             let numFloat: Int = numBytes / 4
             let floatString = String(repeating: "f", count: numFloat)
             let prefixString: String = "="
-            let thisLayerData = try! unpack(prefixString + floatString, file.readData(ofLength: numBytes))
+            var thisLayerData: [Unpackable]
+            do {
+                thisLayerData = try unpack(prefixString + floatString, file.readData(ofLength: numBytes))
+            } catch {
+                print(error.localizedDescription)
+                throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
+            }
             if numBytes > 0 {
                 let parsedDataDouble: [Double] = thisLayerData as! [Double]
                 let parsedDataFloat32 = parsedDataDouble.map {
@@ -98,12 +127,12 @@ class WeightsProcessor {
         return gradients
     }
     
-    public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) -> [[Float32]] {
+    public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) throws -> [[Float32]] {
         /*
          Calculate gradients with the appropriate gradients calculator.
          */
-        let oldWeights = readWeights(modelPath: oldWeightsPath)
-        let newWeights = readWeights(modelPath: newWeightsPath)
+        let oldWeights = try readWeights(modelPath: oldWeightsPath)
+        let newWeights = try readWeights(modelPath: newWeightsPath)
         
         let gradientsCalculator = self.useGPU ? calculateGradientsGPU : calculateGradientsSurge
         return gradientsCalculator(oldWeights, newWeights, learningRate)

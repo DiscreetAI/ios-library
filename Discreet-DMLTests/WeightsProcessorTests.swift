@@ -116,4 +116,13 @@ class WeightsProcessorTests: XCTestCase {
             XCTAssertEqual(error as! DMLError, DMLError.weightsProcessorError(ErrorMessage.failedFileHandle))
         }
     }
+    
+    func testRandom() {
+        let modelURL = URL(fileURLWithPath: testingUtilsPath + "Orchestrator/my_model.mlmodel")
+        let modelLoader = DummyModelLoader(downloadModelURL: modelURL)
+        let compiledURL = try! modelLoader.compileModel(localModelURL: modelURL)
+        let weightsPath = compiledURL.path + "/model.espresso.weights"
+        let weightsProcessor = WeightsProcessor(mpsHandler: nil)
+        let weights = try! weightsProcessor.readWeights(modelPath: weightsPath)
+    }
 }

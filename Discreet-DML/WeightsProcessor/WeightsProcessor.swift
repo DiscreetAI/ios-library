@@ -26,7 +26,7 @@ class WeightsProcessor {
         self.useGPU = self.mpsHandler == nil ? false : true
     }
     
-    private func readWeights(modelPath: String) throws ->  [[Float32]] {
+    public func readWeights(modelPath: String) throws ->  [[Float32]] {
         /*
          Read weights given the on device path.
          */
@@ -47,7 +47,7 @@ class WeightsProcessor {
         let num_layers = b[0] as! Int
         // initialize array and dict
         var layerBytes = [(Int, Int)]()
-        var layerData = [[Float32]]()
+        var layerData = [[[Float32]]]()
         while layerBytes.count < num_layers {
             var ret: [Unpackable]
             do {
@@ -68,28 +68,31 @@ class WeightsProcessor {
             print(error.localizedDescription)
             throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
         }
+        var thisLayerData: [[Float32]] = []
         for (layerNum, numBytes) in layerBytes {
             let numFloat: Int = numBytes / 4
             let floatString = String(repeating: "f", count: numFloat)
             let prefixString: String = "="
-            var thisLayerData: [Unpackable]
+            var weightsData: [Unpackable]
             do {
-                thisLayerData = try unpack(prefixString + floatString, file.readData(ofLength: numBytes))
+                weightsData = try unpack(prefixString + floatString, file.readData(ofLength: numBytes))
             } catch {
                 print(error.localizedDescription)
                 throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
             }
+            if layerNum % 2 == 0 {
+                if layerNum % 2 == 0 {
+                    layerData.append()
+                    thisLayerData = []
+                }
+                continue
+            }
             if numBytes > 0 {
-                let parsedDataDouble: [Double] = thisLayerData as! [Double]
+                let parsedDataDouble: [Double] = weightsData as! [Double]
                 let parsedDataFloat32 = parsedDataDouble.map {
                     return Float32($0)
                 }
-                if (layerNum + 1) % 4 != 0 {
-                    continue
-                }
-                layerData.append(parsedDataFloat32)
-            } else {
-                layerData.append([])
+                thisLayerData.insert(parsedDataFloat32, at: 0)
             }
         }
         file.closeFile()

@@ -73,7 +73,7 @@ class CommunicationManagerTests: XCTestCase {
          */
         
         do {
-            let job = DMLJob(repoID: "testRepo", sessionID: "test", round: 1, gradients: [[1]], omega: 1)
+            let job = DMLJob(repoID: testRepo, sessionID: testSession, round: testRound, gradients: simpleGradients, omega: 1)
             let actual = try communicationManager.handleTrainingComplete(job: job)
 
             let expectedJSON = try parseJSON(stringOrFile: updateMessage, isString: true) as! NSDictionary

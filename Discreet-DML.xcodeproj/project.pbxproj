@@ -17,6 +17,7 @@
 		E41B26DB23EA367A0095C1CD /* new_complex_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D723EA367A0095C1CD /* new_complex_weights */; };
 		E41B26DC23EA367A0095C1CD /* new_simple_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D823EA367A0095C1CD /* new_simple_weights */; };
 		E41B26DD23EA367A0095C1CD /* old_complex_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D923EA367A0095C1CD /* old_complex_weights */; };
+		E41B26F123ED00DD0095C1CD /* my_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E41B26F023ED00DC0095C1CD /* my_model.mlmodel */; };
 		E41D7BD923E0E34300D58478 /* DataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BD823E0E34300D58478 /* DataEntry.swift */; };
 		E41D7BE523E12B6E00D58478 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BE423E12B6E00D58478 /* ModelLoader.swift */; };
 		E41D7BE723E12BBB00D58478 /* MLMultiArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */; };
@@ -32,7 +33,6 @@
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
 		E468505723E3BBD400D3D689 /* HandsEmpty.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */; };
 		E468505B23E3C3D000D3D689 /* Dataset in Resources */ = {isa = PBXBuildFile; fileRef = E468505A23E3C3D000D3D689 /* Dataset */; };
-		E468506123E3D2DB00D3D689 /* my_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468506023E3D2DB00D3D689 /* my_model.mlmodel */; };
 		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
 		E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506623E5424300D3D689 /* DummyCommunicationManager.swift */; };
 		E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */; };
@@ -40,6 +40,7 @@
 		E468506E23E5440500D3D689 /* DummyCoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506D23E5440500D3D689 /* DummyCoreMLClient.swift */; };
 		E468507023E5449C00D3D689 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506F23E5449C00D3D689 /* ImageUtils.swift */; };
 		E468507223E5498C00D3D689 /* CoreMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468507123E5498C00D3D689 /* CoreMLUtils.swift */; };
+		E476E5CE23ED0562008B8D8A /* mnist in Resources */ = {isa = PBXBuildFile; fileRef = E476E5CD23ED0562008B8D8A /* mnist */; };
 		E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BDD5223D689A400A954FE /* TestingUtils.swift */; };
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
@@ -79,6 +80,7 @@
 		E41B26D723EA367A0095C1CD /* new_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = file; name = new_complex_weights; path = WeightsProcessor/new_complex_weights; sourceTree = "<group>"; };
 		E41B26D823EA367A0095C1CD /* new_simple_weights */ = {isa = PBXFileReference; lastKnownFileType = file; name = new_simple_weights; path = WeightsProcessor/new_simple_weights; sourceTree = "<group>"; };
 		E41B26D923EA367A0095C1CD /* old_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = file; name = old_complex_weights; path = WeightsProcessor/old_complex_weights; sourceTree = "<group>"; };
+		E41B26F023ED00DC0095C1CD /* my_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = my_model.mlmodel; sourceTree = "<group>"; };
 		E41D7BD823E0E34300D58478 /* DataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntry.swift; sourceTree = "<group>"; };
 		E41D7BE423E12B6E00D58478 /* ModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
 		E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMultiArrayUtils.swift; sourceTree = "<group>"; };
@@ -94,7 +96,6 @@
 		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
 		E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandsEmpty.mlmodel; sourceTree = "<group>"; };
 		E468505A23E3C3D000D3D689 /* Dataset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dataset; sourceTree = "<group>"; };
-		E468506023E3D2DB00D3D689 /* my_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = my_model.mlmodel; sourceTree = "<group>"; };
 		E468506423E5415100D3D689 /* DummyRealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
 		E468506623E5424300D3D689 /* DummyCommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCommunicationManager.swift; sourceTree = "<group>"; };
 		E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyWeightsProcessor.swift; sourceTree = "<group>"; };
@@ -102,6 +103,7 @@
 		E468506D23E5440500D3D689 /* DummyCoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCoreMLClient.swift; sourceTree = "<group>"; };
 		E468506F23E5449C00D3D689 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		E468507123E5498C00D3D689 /* CoreMLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLUtils.swift; sourceTree = "<group>"; };
+		E476E5CD23ED0562008B8D8A /* mnist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mnist; sourceTree = "<group>"; };
 		E49BDD5223D689A400A954FE /* TestingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
 		E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessor.swift; sourceTree = "<group>"; };
 		E4BA35F023AB187000F81825 /* BinaryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryUtils.swift; sourceTree = "<group>"; };
@@ -261,7 +263,8 @@
 		E41D7C0B23E37E8300D58478 /* CoreMLClient */ = {
 			isa = PBXGroup;
 			children = (
-				E468506023E3D2DB00D3D689 /* my_model.mlmodel */,
+				E476E5CD23ED0562008B8D8A /* mnist */,
+				E41B26F023ED00DC0095C1CD /* my_model.mlmodel */,
 				E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */,
 				E468505A23E3C3D000D3D689 /* Dataset */,
 				E468506423E5415100D3D689 /* DummyRealmClient.swift */,
@@ -417,6 +420,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E476E5CE23ED0562008B8D8A /* mnist in Resources */,
 				E41B26DB23EA367A0095C1CD /* new_complex_weights in Resources */,
 				E41B26DD23EA367A0095C1CD /* old_complex_weights in Resources */,
 				E41B26DA23EA367A0095C1CD /* old_simple_weights in Resources */,
@@ -527,7 +531,6 @@
 				E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */,
 				E42C76E923E8DCD20003F638 /* IntegrationTests.swift in Sources */,
 				E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */,
-				E468506123E3D2DB00D3D689 /* my_model.mlmodel in Sources */,
 				E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */,
 				E468506B23E542B600D3D689 /* DummyModelLoader.swift in Sources */,
 				E468505723E3BBD400D3D689 /* HandsEmpty.mlmodel in Sources */,
@@ -535,6 +538,7 @@
 				E4D72E3823DF9E7800BE3B75 /* CommunicationManagerTests.swift in Sources */,
 				E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */,
 				E42C76EC23E8E8F00003F638 /* DummyOrchestrator.swift in Sources */,
+				E41B26F123ED00DD0095C1CD /* my_model.mlmodel in Sources */,
 				E468507023E5449C00D3D689 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

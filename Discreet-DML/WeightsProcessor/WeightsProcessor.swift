@@ -130,15 +130,8 @@ class WeightsProcessor {
 
         for (oldLayerWeights, newLayerWeights) in zip(oldWeights, newWeights) {
             var layerGradients = [[Float32]]()
-            for (var oldWeight, var newWeight) in zip(oldLayerWeights, newLayerWeights) {
-                if oldWeight.count > newWeight.count {
-                    oldWeight = oldWeight.dropLast(oldWeight.count - newWeight.count)
-                    print("rip")
-                } else if oldWeight.count < newWeight.count {
-                    newWeight = newWeight.dropLast(newWeight.count - oldWeight.count)
-                    print("rip2")
-                }
-                let difference = Surge.sub(oldWeight, newWeight)
+            for (oldWeight, newWeight) in zip(oldLayerWeights, newLayerWeights) {
+                let difference = Surge.sub(oldWeight.dropLast(oldWeight.count - newWeight.count), newWeight)
                 let quotient = Surge.div(difference, learningRate)
                 layerGradients.append(quotient)
             }

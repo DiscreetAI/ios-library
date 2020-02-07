@@ -21,8 +21,6 @@ class CoreMLClientTests: XCTestCase {
         let maxIterations = maxTime/iterationTime
         var numIterations = 0.0
         
-        
-        
         do {
             let coreMLClient = CoreMLClient(modelLoader: DummyModelLoader(), realmClient: try DummyRealmClient(), weightsProcessor: DummyWeightsProcessor())
             let communicationManager = DummyCommunicationManager(coreMLClient: coreMLClient)

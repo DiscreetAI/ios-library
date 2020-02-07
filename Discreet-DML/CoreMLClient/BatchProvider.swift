@@ -80,6 +80,13 @@ public class ImagesBatchProvider: MLBatchProvider {
         self.count = self.images.count
         self.imageConstraint = imageConstraint
     }
+    
+    init(imageConstraint: MLImageConstraint) {
+        self.images = []
+        self.labels = []
+        self.count = 0
+        self.imageConstraint = imageConstraint
+    }
 
 
     public func features(at index: Int) -> MLFeatureProvider {

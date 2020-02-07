@@ -85,7 +85,7 @@ class CoreMLClient {
         forEvents: [.trainingBegin, .miniBatchEnd, .epochEnd],
         progressHandler: progressHandler,
         completionHandler: completionHandler)
-        
+                
         guard let updateTask = try? MLUpdateTask(forModelAt: modelURL, trainingData: batchProvider, configuration: nil, progressHandlers: handlers)
             else {
                 print("Could't create an MLUpdateTask.")

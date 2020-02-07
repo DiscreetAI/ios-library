@@ -25,9 +25,11 @@ class IntegrationTests: XCTestCase {
          - Communication Manager communication (we shouldn't rely on cloud node for testing, and yet there isn't a simple way of setting up a local test server)
          - MPS (Cocoapods does not support all dependencies for Mac Catalyst, so we must only test on iOS, and we don't have a physical iOS device yet).
          - Downloading the converted model from a cloud node instead of just S3 (Again shouldn't rely on cloud node for testing)
+         
+         WARNING: This test takes a long time to run (about 2 minutes).
          */
         let iterationTime: Double = 0.5
-        let maxTime: Double = 50
+        let maxTime: Double = 125
         let maxIterations = maxTime/iterationTime
         var numIterations = 0.0
 

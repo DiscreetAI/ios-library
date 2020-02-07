@@ -17,21 +17,17 @@ public var testSession = "testSession"
 
 public var testRound = 1
 
-public var testGradients = [[[1]]]
+public var testGradients: [[[Float32]]] = [[[1]]]
 
 public var testOmega = 1
 
-public var registerName = "REGISTER"
+public var registrationMessage = try! makeDictionaryString(keys: ["node_type", "type"], values: [libraryName, registerName])
 
-public var libraryName = "LIBRARY"
+public var trainMessage = try! makeDictionaryString(keys: ["sessionID", "round", "action"], values: [testSession, testRound, trainName])
 
-public var registrationMessage = try! makeDictionaryString(keys: ["node_type", "type"], values: ["library", "REGISTER"])
+public var resultsMessage = try! makeDictionaryString(keys: ["gradients", "omega"], values: [testGradients, testRound])
 
-public var trainMessage = try! makeDictionaryString(keys: ["sessionID", "round", "action"], values: ["test", 1, "TRAIN"])
-
-public var resultsMessage = try! makeDictionaryString(keys: ["gradients", "omega"], values: [[[1]], 1])
-
-public var updateMessage = try! makeDictionaryString(keys: ["type", "round", "session_id", "results"], values: ["NEW_UPDATE", 1, "test", resultsMessage])
+public var updateMessage = try! makeDictionaryString(keys: ["type", "round", "session_id", "results"], values: [newUpdateName, testRound, testSession, resultsMessage])
 
 public var (testImages, testLabels) = makeImagePaths()
 

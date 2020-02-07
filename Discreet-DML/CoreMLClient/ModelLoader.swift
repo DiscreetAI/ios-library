@@ -73,7 +73,6 @@ public class ModelLoader {
         /*
          Compile the given local URL to the `.mlmodel` into `.mlmodelc`.
          */
-        print(localModelURL.path)
         let compiled = try? MLModel.compileModel(at: localModelURL)
         if let compiledUrl = try? MLModel.compileModel(at: localModelURL) {
             let fileManager = FileManager.default

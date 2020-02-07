@@ -99,7 +99,7 @@ class CommunicationManager: WebSocketDelegate {
          */
         self.isConnected = true
         self.reconnections = 3
-        let registrationMessage = try makeDictionaryString(keys: ["type", "node_type"], values: ["REGISTER", "library"])
+        let registrationMessage = try makeDictionaryString(keys: ["type", "node_type"], values: [registerName, libraryName])
         state = State.waiting
         return registrationMessage
     }
@@ -123,13 +123,13 @@ class CommunicationManager: WebSocketDelegate {
          */
         let message: NSDictionary = try parseJSON(stringOrFile: jsonString, isString: true) as! NSDictionary
         switch message["action"] as! String {
-        case "TRAIN":
+        case trainName:
             print("Received TRAIN message.")
             let job = DMLJob(repoID: self.repoID, sessionID: message["sessionID"] as! String, round: message["round"] as! Int)
             try self.coreMLClient!.train(job: job)
             state = State.training
             break
-        case "STOP":
+        case stopName:
             print("Received STOP message.")
             self.state = State.idle
             self.socket.disconnect()

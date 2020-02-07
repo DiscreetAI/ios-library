@@ -73,6 +73,7 @@ public class ModelLoader {
         /*
          Compile the given local URL to the `.mlmodel` into `.mlmodelc`.
          */
+        let compiled = try? MLModel.compileModel(at: localModelURL)
         if let compiledUrl = try? MLModel.compileModel(at: localModelURL) {
             let fileManager = FileManager.default
             let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

@@ -9,6 +9,16 @@
 import Foundation
 import CoreML
 
+public var registerName = "REGISTER"
+
+public var libraryName = "LIBRARY"
+
+public var trainName = "TRAIN"
+
+public var newUpdateName = "NEW_UPDATE"
+
+public var stopName = "STOP"
+
 public func roundArr(arr: [Float32], places: Int) -> [Float32] {
     /*
      Util method to round numbers in an array to `places` decimal places.

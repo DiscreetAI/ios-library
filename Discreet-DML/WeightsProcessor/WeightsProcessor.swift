@@ -26,7 +26,7 @@ class WeightsProcessor {
         self.useGPU = self.mpsHandler == nil ? false : true
     }
     
-    private func readWeights(modelPath: String) throws ->  [[Float32]] {
+    public func readWeights(modelPath: String) throws ->  [[[Float32]]] {
         /*
          Read weights given the on device path.
          */
@@ -47,7 +47,7 @@ class WeightsProcessor {
         let num_layers = b[0] as! Int
         // initialize array and dict
         var layerBytes = [(Int, Int)]()
-        var layerData = [[Float32]]()
+        var layerData = [[[Float32]]]()
         while layerBytes.count < num_layers {
             var ret: [Unpackable]
             do {
@@ -68,28 +68,31 @@ class WeightsProcessor {
             print(error.localizedDescription)
             throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
         }
+        var thisLayerData: [[Float32]] = []
         for (layerNum, numBytes) in layerBytes {
             let numFloat: Int = numBytes / 4
             let floatString = String(repeating: "f", count: numFloat)
             let prefixString: String = "="
-            var thisLayerData: [Unpackable]
+            var weightsData: [Unpackable]
             do {
-                thisLayerData = try unpack(prefixString + floatString, file.readData(ofLength: numBytes))
+                weightsData = try unpack(prefixString + floatString, file.readData(ofLength: numBytes))
             } catch {
                 print(error.localizedDescription)
                 throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
             }
+            if layerNum % 2 == 0 {
+                continue
+            }
             if numBytes > 0 {
-                let parsedDataDouble: [Double] = thisLayerData as! [Double]
+                let parsedDataDouble: [Double] = weightsData as! [Double]
                 let parsedDataFloat32 = parsedDataDouble.map {
                     return Float32($0)
                 }
-                if (layerNum + 1) % 4 != 0 {
-                    continue
+                thisLayerData.insert(parsedDataFloat32, at: 0)
+                if (layerNum + 1) % 4 == 0 {
+                    layerData.append(thisLayerData)
+                    thisLayerData = []
                 }
-                layerData.append(parsedDataFloat32)
-            } else {
-                layerData.append([])
             }
         }
         file.closeFile()
@@ -97,37 +100,54 @@ class WeightsProcessor {
         return layerData
     }
     
-    private func calculateGradientsGPU(oldWeights: [[Float32]], newWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
+    private func calculateGradientsGPU(oldWeights: [[[Float32]]], newWeights: [[[Float32]]], learningRate:Float32) -> [[[Float32]]] {
         /*
          Calculate the gradients using GPU given the learning rate and paths to the old model and new one.
          */
-        var gradients = [[Float32]]()
+        var gradients = [[[Float32]]]()
 
         for (oldLayerWeights, newLayerWeights) in zip(oldWeights, newWeights) {
-            let count = oldLayerWeights.count
-            let oldMPSMatrix = self.mpsHandler!.createMPSVector(bytes: oldLayerWeights, count: count)
-            let newMPSMatrix = self.mpsHandler!.createMPSVector(bytes: newLayerWeights, count: count)
-            var resultMatrix = self.mpsHandler!.matrixSubtraction(m1: oldMPSMatrix, m2: newMPSMatrix)
-            resultMatrix = self.mpsHandler!.divideMatrixByConstant(m1: resultMatrix, constant: learningRate)
-            gradients.append(self.mpsHandler!.getData(m1: resultMatrix))
+            var layerGradients = [[Float32]]()
+            for (oldWeight, newWeight) in zip(oldLayerWeights, newLayerWeights) {
+                let count = oldLayerWeights.count
+                let oldMPSMatrix = self.mpsHandler!.createMPSVector(bytes: oldWeight, count: count)
+                let newMPSMatrix = self.mpsHandler!.createMPSVector(bytes: newWeight, count: count)
+                var resultMatrix = self.mpsHandler!.matrixSubtraction(m1: oldMPSMatrix, m2: newMPSMatrix)
+                resultMatrix = self.mpsHandler!.divideMatrixByConstant(m1: resultMatrix, constant: learningRate)
+                layerGradients.append(self.mpsHandler!.getData(m1: resultMatrix))
+            }
+            gradients.append(layerGradients)
         }
         return gradients
     }
     
-    private func calculateGradientsSurge(oldWeights: [[Float32]], newWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
+    private func calculateGradientsSurge(oldWeights: [[[Float32]]], newWeights: [[[Float32]]], learningRate:Float32) -> [[[Float32]]] {
         /*
          Calculate the gradients using Surge given the learning rate and paths to the old model and new one.
          */
         
-        var gradients = [[Float32]]()
+        var gradients = [[[Float32]]]()
 
         for (oldLayerWeights, newLayerWeights) in zip(oldWeights, newWeights) {
-            gradients.append(Surge.div(Surge.sub(oldLayerWeights, newLayerWeights), learningRate))
+            var layerGradients = [[Float32]]()
+            for (var oldWeight, var newWeight) in zip(oldLayerWeights, newLayerWeights) {
+                if oldWeight.count > newWeight.count {
+                    oldWeight = oldWeight.dropLast(oldWeight.count - newWeight.count)
+                    print("rip")
+                } else if oldWeight.count < newWeight.count {
+                    newWeight = newWeight.dropLast(newWeight.count - oldWeight.count)
+                    print("rip2")
+                }
+                let difference = Surge.sub(oldWeight, newWeight)
+                let quotient = Surge.div(difference, learningRate)
+                layerGradients.append(quotient)
+            }
+            gradients.append(layerGradients)
         }
         return gradients
     }
     
-    public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) throws -> [[Float32]] {
+    public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) throws -> [[[Float32]]] {
         /*
          Calculate gradients with the appropriate gradients calculator.
          */

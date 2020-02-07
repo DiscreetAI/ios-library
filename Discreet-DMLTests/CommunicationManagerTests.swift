@@ -73,7 +73,7 @@ class CommunicationManagerTests: XCTestCase {
          */
         
         do {
-            let job = DMLJob(repoID: "testRepo", sessionID: "test", round: 1, gradients: [[1]], omega: 1)
+            let job = DMLJob(repoID: testRepo, sessionID: testSession, round: testRound, gradients: testGradients, omega: testOmega)
             let actual = try communicationManager.handleTrainingComplete(job: job)
 
             let expectedJSON = try parseJSON(stringOrFile: updateMessage, isString: true) as! NSDictionary
@@ -85,7 +85,7 @@ class CommunicationManagerTests: XCTestCase {
 
             let expectedResults = try parseJSON(stringOrFile: expectedJSON["results"] as! String, isString: true ) as! NSDictionary
             let actualResults = try parseJSON(stringOrFile: actualJSON["results"] as! String, isString: true) as! NSDictionary
-            XCTAssertEqual(expectedResults["gradients"] as! [[Float32]], actualResults["gradients"] as! [[Float32]])
+            XCTAssertEqual(expectedResults["gradients"] as! [[[Float32]]], actualResults["gradients"] as! [[[Float32]]])
             XCTAssertEqual(expectedResults["omega"] as! Int, actualResults["omega"] as! Int)
 
             XCTAssertEqual(communicationManager.state, State.waiting)

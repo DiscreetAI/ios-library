@@ -14,13 +14,11 @@ import CoreML
 class WeightsProcessorTests: XCTestCase {
     let artifactsPath: String = testingUtilsPath + "WeightsProcessor/"
     
-    private func compareGradients(expectedGradients: [[[Float32]]], calculatedGradients: [[[Float32]]]) {
-        for (calculatedLayerGradient, expectedLayerGradient) in zip(calculatedGradients, expectedGradients) {
-            for (calculatedGradient, expectedGradient) in zip(calculatedLayerGradient, expectedLayerGradient) {
-                let roundedCalculatedGradient: [Float32] = roundArr(arr: calculatedGradient, places: 3)
-                let roundedExpectedGradient: [Float32] = roundArr(arr: expectedGradient, places: 3)
-                XCTAssertEqual(roundedExpectedGradient, roundedCalculatedGradient)
-            }
+    private func compareGradients(expectedGradients: [[Float32]], calculatedGradients: [[Float32]]) {
+        for (calculatedGradient, expectedGradient) in zip(calculatedGradients, expectedGradients) {
+            let roundedCalculatedGradient: [Float32] = roundArr(arr: calculatedGradient, places: 3)
+            let roundedExpectedGradient: [Float32] = roundArr(arr: expectedGradient, places: 3)
+            XCTAssertEqual(roundedExpectedGradient, roundedCalculatedGradient)
         }
     }
 
@@ -31,7 +29,7 @@ class WeightsProcessorTests: XCTestCase {
         let weightsProcessor = WeightsProcessor(mpsHandler: nil)
         let oldSimpleWeightsPath: String = self.artifactsPath + "old_simple_weights"
         let newSimpleWeightsPath: String = self.artifactsPath + "new_simple_weights"
-        var calculatedGradients: [[[Float32]]]
+        var calculatedGradients: [[Float32]]
         do {
             calculatedGradients = try weightsProcessor.calculateGradients(oldWeightsPath: oldSimpleWeightsPath, newWeightsPath: newSimpleWeightsPath, learningRate: 0.01)
             compareGradients(expectedGradients: simpleGradients, calculatedGradients: calculatedGradients)
@@ -49,7 +47,7 @@ class WeightsProcessorTests: XCTestCase {
         let weightsProcessor = WeightsProcessor(mpsHandler: nil)
         let oldComplexWeightsPath: String = self.artifactsPath + "old_complex_weights"
         let newComplexWeightsPath: String = self.artifactsPath + "new_complex_weights"
-        var calculatedGradients: [[[Float32]]]
+        var calculatedGradients: [[Float32]]
         do {
             calculatedGradients = try weightsProcessor.calculateGradients(oldWeightsPath: oldComplexWeightsPath, newWeightsPath: newComplexWeightsPath, learningRate: 0.01)
             compareGradients(expectedGradients: complexGradients, calculatedGradients: calculatedGradients)

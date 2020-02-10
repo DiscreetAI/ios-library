@@ -31,8 +31,6 @@
 		E42C76EE23E8F73E0003F638 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76ED23E8F73E0003F638 /* Errors.swift */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
-		E468505723E3BBD400D3D689 /* HandsEmpty.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */; };
-		E468505B23E3C3D000D3D689 /* Dataset in Resources */ = {isa = PBXBuildFile; fileRef = E468505A23E3C3D000D3D689 /* Dataset */; };
 		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
 		E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506623E5424300D3D689 /* DummyCommunicationManager.swift */; };
 		E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */; };
@@ -94,8 +92,6 @@
 		E42C76ED23E8F73E0003F638 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
-		E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandsEmpty.mlmodel; sourceTree = "<group>"; };
-		E468505A23E3C3D000D3D689 /* Dataset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dataset; sourceTree = "<group>"; };
 		E468506423E5415100D3D689 /* DummyRealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
 		E468506623E5424300D3D689 /* DummyCommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCommunicationManager.swift; sourceTree = "<group>"; };
 		E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyWeightsProcessor.swift; sourceTree = "<group>"; };
@@ -265,8 +261,6 @@
 			children = (
 				E476E5CD23ED0562008B8D8A /* mnist */,
 				E41B26F023ED00DC0095C1CD /* my_model.mlmodel */,
-				E468505423E3BBD300D3D689 /* HandsEmpty.mlmodel */,
-				E468505A23E3C3D000D3D689 /* Dataset */,
 				E468506423E5415100D3D689 /* DummyRealmClient.swift */,
 				E468506623E5424300D3D689 /* DummyCommunicationManager.swift */,
 				E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */,
@@ -424,7 +418,6 @@
 				E41B26DB23EA367A0095C1CD /* new_complex_weights in Resources */,
 				E41B26DD23EA367A0095C1CD /* old_complex_weights in Resources */,
 				E41B26DA23EA367A0095C1CD /* old_simple_weights in Resources */,
-				E468505B23E3C3D000D3D689 /* Dataset in Resources */,
 				E41B26DC23EA367A0095C1CD /* new_simple_weights in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,7 +526,6 @@
 				E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */,
 				E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */,
 				E468506B23E542B600D3D689 /* DummyModelLoader.swift in Sources */,
-				E468505723E3BBD400D3D689 /* HandsEmpty.mlmodel in Sources */,
 				E468506E23E5440500D3D689 /* DummyCoreMLClient.swift in Sources */,
 				E4D72E3823DF9E7800BE3B75 /* CommunicationManagerTests.swift in Sources */,
 				E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */,

@@ -42,8 +42,11 @@ public class ModelLoader {
          Download the model at the URL `downloadModelURL`.
          */
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        print(downloadModelURL!.path)
+    
 
         let destinationUrl = documentsUrl.appendingPathComponent(self.downloadModelURL!.lastPathComponent)
+        print(destinationUrl.path)
 
         if FileManager().fileExists(atPath: destinationUrl.path) {
             print("File already exists [\(destinationUrl.path)], deleting...")
@@ -73,7 +76,6 @@ public class ModelLoader {
         /*
          Compile the given local URL to the `.mlmodel` into `.mlmodelc`.
          */
-        let compiled = try? MLModel.compileModel(at: localModelURL)
         if let compiledUrl = try? MLModel.compileModel(at: localModelURL) {
             let fileManager = FileManager.default
             let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

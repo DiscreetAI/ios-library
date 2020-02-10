@@ -39,9 +39,16 @@ class CommunicationManager: WebSocketDelegate {
 
     public func connect() {
         /*
-         Connect to the cloud node via WebSocket with the given URL. Save the URL in case future reconnections are needed.
+         Connect to the cloud node via WebSocket by using the repo ID to form the URL.
          */
         let webSocketURL = makeWebSocketURL(repoID: self.repoID)
+        self.connect(webSocketURL: webSocketURL)
+    }
+    
+    public func connect(webSocketURL: URL) {
+        /*
+         Connect to the cloud node via WebSocket with the given URL.
+         */
         var request = URLRequest(url: webSocketURL)
         request.timeoutInterval = 5
         self.socket = WebSocket(request: request)
@@ -53,9 +60,8 @@ class CommunicationManager: WebSocketDelegate {
         /*
          Higher level function for dealing with new event. If our handler deems that there is a message to be sent, then send it.
          */
-        print("New event with client \(client)!")
-
         if let message = try! handleNewEvent(event: event) {
+            print("Sending new message...")
             socket.write(string: message)
         }
     }
@@ -65,11 +71,11 @@ class CommunicationManager: WebSocketDelegate {
          Inspect the provided event, and take the necessary actions. If there is a message to be sent to the cloud node, return it.
          */
         switch event {
-        case .connected(let headers):
-            print("websocket is connected: \(headers)")
+        case .connected(_):
+            print("WebSocket is connected, sending registration message.")
             return try handleNewConnection()
         case .disconnected(let reason, let code):
-            print("websocket is disconnected: \(reason) with code: \(code)")
+            print("WebSocket is disconnected: \(reason) with code: \(code)")
             try handleDisconnection()
         case .text(let string):
             print("Received new message!")
@@ -125,7 +131,9 @@ class CommunicationManager: WebSocketDelegate {
         switch message["action"] as! String {
         case trainName:
             print("Received TRAIN message.")
-            let job = DMLJob(repoID: self.repoID, sessionID: message["sessionID"] as! String, round: message["round"] as! Int)
+            let sessionID = message["session_id"] as! String
+            let round = message["round"] as! Int
+            let job = DMLJob(repoID: self.repoID, sessionID: sessionID, round: round)
             try self.coreMLClient!.train(job: job)
             state = State.training
             break
@@ -152,6 +160,20 @@ class CommunicationManager: WebSocketDelegate {
          */
         let resultsMessage = try makeDictionaryString(keys: ["gradients", "omega"], values: [job.gradients!, job.omega!])
         let updateMessage = try makeDictionaryString(keys: ["type", "round", "session_id", "results"], values: ["NEW_UPDATE", job.round, job.sessionID, resultsMessage])
+        
+        let file = "gradients.txt"
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+
+            let fileURL = dir.appendingPathComponent(file)
+
+            //writing
+            do {
+                try updateMessage.write(to: fileURL, atomically: false, encoding: .utf8)
+            } catch {
+                print("FUCK")
+            }
+        }
+        
         if self.socket != nil {
             self.socket.write(string: updateMessage)
         }

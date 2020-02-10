@@ -51,8 +51,15 @@ class Orchestrator {
     
     public func connect() {
         /*
-         Connect to cloud node.
-         */
+        Connect to the cloud node via WebSocket by using the repo ID to form the URL.
+        */
         self.communicationManager.connect()
+    }
+    
+    public func connect(webSocketURL: URL) {
+        /*
+         Connect to cloud node with the provided WebSocket URL.
+         */
+        self.communicationManager.connect(webSocketURL: webSocketURL)
     }
 }

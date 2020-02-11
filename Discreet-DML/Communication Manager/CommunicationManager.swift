@@ -93,8 +93,10 @@ class CommunicationManager: WebSocketDelegate {
             break
         case .cancelled:
             self.isConnected = false
-        case .error(_):
+        case .error(let error):
             print("WebSocket is disconnected!")
+            let errorMessage = error!
+            print(errorMessage.localizedDescription)
             self.isConnected = false
         }
         return nil
@@ -125,7 +127,6 @@ class CommunicationManager: WebSocketDelegate {
             print("Reconnecting...")
             connect()
         } else {
-            self.isConnected = false
             throw DMLError.communicationManagerError(ErrorMessage.failedConnection)
         }
     }

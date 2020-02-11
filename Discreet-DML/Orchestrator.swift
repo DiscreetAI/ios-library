@@ -62,4 +62,11 @@ class Orchestrator {
          */
         self.communicationManager.connect(webSocketURL: webSocketURL)
     }
+    
+    public func isConnected() -> Bool {
+        /*
+         Return whether the library is connected to the cloud node.
+         */
+        return self.communicationManager.isConnected
+    }
 }

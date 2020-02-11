@@ -83,6 +83,7 @@ class CommunicationManager: WebSocketDelegate {
         case .binary(let data):
             print("Received data: \(data.count)")
         case .ping(_):
+            self.socket.write(ping: Data())
             break
         case .pong(_):
             break
@@ -93,8 +94,10 @@ class CommunicationManager: WebSocketDelegate {
         case .cancelled:
             self.isConnected = false
         case .error(let error):
+            print("WebSocket is disconnected!")
+            let errorMessage = error!
+            print(errorMessage.localizedDescription)
             self.isConnected = false
-            handleError(error: error!)
         }
         return nil
     }
@@ -107,6 +110,11 @@ class CommunicationManager: WebSocketDelegate {
         self.reconnections = 3
         let registrationMessage = try makeDictionaryString(keys: ["type", "node_type"], values: [registerName, libraryName])
         state = State.waiting
+        
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            self.socket.write(ping: Data())
+        }
+        
         return registrationMessage
     }
 
@@ -145,13 +153,6 @@ class CommunicationManager: WebSocketDelegate {
         default:
             print("Received unknown message.")
         }
-    }
-
-    private func handleError(error: Error) {
-        /*
-         Handler for errors with WebSocket. For now, just print the error.
-         */
-        print("Error occurred: \(error)")
     }
 
     public func handleTrainingComplete(job: DMLJob) throws -> String {

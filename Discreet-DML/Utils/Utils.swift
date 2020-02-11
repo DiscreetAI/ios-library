@@ -95,11 +95,3 @@ public func makeWeightsPath(modelURL: URL) -> String {
      */
     return modelURL.path + "/model.espresso.weights"
 }
-
-public func getMPSHandler() -> MPSHandler? {
-    #if targetEnvironment(simulator)
-    return nil
-    #else
-    return MPSHandler()
-    #endif
-}

@@ -57,7 +57,6 @@ public class ModelLoader {
             
         }
         
-        
         if let dataFromURL = NSData(contentsOf: self.downloadModelURL!) {
             if dataFromURL.write(to: destinationUrl, atomically: true) {
                 print("file saved [\(destinationUrl.path)]")

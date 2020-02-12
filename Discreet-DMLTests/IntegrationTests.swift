@@ -83,8 +83,8 @@ class IntegrationTests: XCTestCase {
          
          WARNING: This test takes an even longer amount of time to run (about 10 minutes max).
          */
-        let repoID = "f93bb383416a5140c328ee1bd177eb6c"
-        let orchestrator2 = try! Orchestrator(repoID: repoID)
+        
+        let orchestrator2 = try! Orchestrator(repoID: testRemoteRepo)
         orchestrator2.storeImages(images: testImages, labels: testLabels)
         let iterationTime: Double = 0.5
         let maxTime: Double = 600

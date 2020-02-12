@@ -86,7 +86,7 @@ public func makeModelDownloadURL(repoID: String) -> URL {
     /*
     Make URL for model hosted on cloud given the repo ID.
     */
-     return URL(string: "http://\(repoID).au4c4pd2ch.us-west-1.elasticbeanstalk.com/ios/model.mlmodel")!
+     return URL(string: "http://\(repoID).au4c4pd2ch.us-west-1.elasticbeanstalk.com/my_model.mlmodel")!
 }
 
 public func makeWeightsPath(modelURL: URL) -> String {

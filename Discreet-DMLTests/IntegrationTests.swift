@@ -73,4 +73,26 @@ class IntegrationTests: XCTestCase {
             numIterations += 1
         }
     }
+    
+    func testEndToEnd() {
+        /*
+         MUST READ: Steps for testing.
+         
+         1. Run this test
+         2. Run Explora cells with the appropriate repo ID
+         
+         WARNING: This test takes an even longer amount of time to run (about 10 minutes max).
+         */
+        
+        let orchestrator2 = try! Orchestrator(repoID: testRemoteRepo)
+        orchestrator2.storeImages(images: testImages, labels: testLabels)
+        let iterationTime: Double = 0.5
+        let maxTime: Double = 600
+        let maxIterations = maxTime/iterationTime
+        var numIterations = 0.0
+        while numIterations < maxIterations {
+            RunLoop.current.run(until: Date(timeIntervalSinceNow: iterationTime))
+            numIterations += 1
+        }
+    }
 }

@@ -15,6 +15,8 @@ public var testWebSocketURL = URL(string: "ws://localhost:8999")!
 
 public var testRepo = "testRepo"
 
+public var testRemoteRepo = "f93bb383416a5140c328ee1bd177eb6c"
+
 public var testSession = "testSession"
 
 public var testRound = 1

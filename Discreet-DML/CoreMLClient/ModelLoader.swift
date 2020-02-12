@@ -42,14 +42,12 @@ public class ModelLoader {
          Download the model at the URL `downloadModelURL`.
          */
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        print(downloadModelURL!.path)
     
 
         let destinationUrl = documentsUrl.appendingPathComponent(self.downloadModelURL!.lastPathComponent)
-        print(destinationUrl.path)
 
         if FileManager().fileExists(atPath: destinationUrl.path) {
-            print("File already exists [\(destinationUrl.path)], deleting...")
+            print("File already exists at [\(destinationUrl.path)], deleting...")
             do {
                 try FileManager().removeItem(atPath: destinationUrl.path)
             } catch {
@@ -58,6 +56,7 @@ public class ModelLoader {
             }
             
         }
+        
         
         if let dataFromURL = NSData(contentsOf: self.downloadModelURL!) {
             if dataFromURL.write(to: destinationUrl, atomically: true) {
@@ -85,10 +84,8 @@ public class ModelLoader {
             do {
                 // if the file exists, replace it. Otherwise, copy the file to the destination.
                 if fileManager.fileExists(atPath: permanentUrl.path) {
-                    print("File exists: \(permanentUrl.path)")
                     _ = try fileManager.replaceItemAt(permanentUrl, withItemAt: compiledUrl)
                 } else {
-                    print("File doesn't exist")
                     try fileManager.copyItem(at: compiledUrl, to: permanentUrl)
                 }
             } catch {

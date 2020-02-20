@@ -42,7 +42,6 @@ public class ModelLoader {
          Download the model at the URL `downloadModelURL`.
          */
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    
 
         let destinationUrl = documentsUrl.appendingPathComponent(self.downloadModelURL!.lastPathComponent)
 

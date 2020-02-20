@@ -107,8 +107,9 @@ class WeightsProcessor {
          */
         var gradients = [[Float32]]()
 
-        for (oldWeight, newWeight) in zip(oldWeights, newWeights) {
-            let count = oldWeights.count
+        for (var oldWeight, newWeight) in zip(oldWeights, newWeights) {
+            oldWeight = oldWeight.dropLast(oldWeight.count - newWeight.count)
+            let count = oldWeight.count
             let oldMPSMatrix = self.mpsHandler!.createMPSVector(bytes: oldWeight, count: count)
             let newMPSMatrix = self.mpsHandler!.createMPSVector(bytes: newWeight, count: count)
             var resultMatrix = self.mpsHandler!.matrixSubtraction(m1: oldMPSMatrix, m2: newMPSMatrix)
@@ -139,8 +140,15 @@ class WeightsProcessor {
         /*
          Calculate gradients with the appropriate gradients calculator.
          */
+        print("Reading weights...")
+        let info = ProcessInfo.processInfo
+        let begin = info.systemUptime
+        // do something
         let oldWeights = try readWeights(modelPath: oldWeightsPath)
         let newWeights = try readWeights(modelPath: newWeightsPath)
+        let diff = (info.systemUptime - begin)
+        print("Finished reading weights!")
+        print("Took \(diff) seconds to finish!")
         
         let gradientsCalculator = self.useGPU ? calculateGradientsGPU : calculateGradientsSurge
         return gradientsCalculator(oldWeights, newWeights, learningRate)

@@ -14,6 +14,7 @@ public enum ErrorMessage: String {
     case failedParse = "Failed to parse JSON message from cloud node!"
     case failedConnection = "Failed to connect to cloud node!"
     case failedRealmSetup = "Failed to setup Realm database!"
+    case failedRealmRead = "Failed to find entry with provided repo ID!"
     case failedRealmWrite = "Failed to add entry to Realm database!"
     case failedRealmClear = "Failed to clear Realm database!"
     case failedDownload = "Model could not be downloaded!"

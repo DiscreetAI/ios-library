@@ -64,6 +64,59 @@ public class RealmClient {
             throw DMLError.realmError(ErrorMessage.failedRealmWrite)
         }
     }
+    
+    public func removeImageDatapoint(repoID: String, image: String) throws {
+        /*
+         Remove image datapoint with provided image path.
+         */
+        do {
+            try self.realm.write {
+                if let imageEntry = getImageEntry(repoID: repoID) {
+                    var (images, labels) = imageEntry.getData()
+                    
+                    for i in 0...images.count {
+                        if images[i] == image {
+                            images.remove(at: i)
+                            labels.remove(at: i)
+                            imageEntry.setData(images: images, labels: labels)
+                            return
+                        }
+                    }
+                } else {
+                    throw DMLError.realmError(ErrorMessage.failedRealmRead)
+                }
+                
+                
+            }
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.realmError(ErrorMessage.failedRealmWrite)
+        }
+    }
+    
+    public func removeImageDatapoint(repoID: String, index: Int) throws {
+        /*
+         Remove image datapoint at provided index.
+         */
+        do {
+            try self.realm.write {
+                if let imageEntry = getImageEntry(repoID: repoID) {
+                    var (images, labels) = imageEntry.getData()
+                    print("Images", images)
+                    print("Labels", labels)
+                    print("Index", index)
+                    images.remove(at: index)
+                    labels.remove(at: index)
+                    imageEntry.setData(images: images, labels: labels)
+                } else {
+                    throw DMLError.realmError(ErrorMessage.failedRealmRead)
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.realmError(ErrorMessage.failedRealmWrite)
+        }
+    }
 
     public func getDataEntry(repoID: String) -> DataEntry? {
         /*

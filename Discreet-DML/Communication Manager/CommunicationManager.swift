@@ -9,13 +9,16 @@
 import Foundation
 import Starscream
 
-enum State {
+enum State : String {
     /*
      State of the library.
      */
-    case idle
-    case waiting
-    case training
+    case notConnected = "Connecting to server..."
+    case idle = "Waiting for training requests..."
+    case waiting = "Waiting for the next round..."
+    case notCharging = "Received training request! Device must \nbe charged before continuing with training."
+    case training = "Your device is now training..."
+    case trainingComplete = "Training complete!"
 }
 
 class CommunicationManager: WebSocketDelegate {
@@ -26,15 +29,28 @@ class CommunicationManager: WebSocketDelegate {
     var repoID: String!
     var socket: WebSocket!
     var reconnections: Int!
+    var currentJob: DMLJob?
 
     var isConnected = false
-    var state = State.idle
+    var state = State.notConnected
 
 
     init(coreMLClient: CoreMLClient?, repoID: String, reconnections: Int = 3) {
         self.coreMLClient = coreMLClient
         self.repoID = repoID
         self.reconnections = reconnections
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            if self.currentJob != nil && self.state != State.training {
+                  if UIDevice.current.batteryState == .charging || UIDevice.current.batteryState == .full {
+                    try! self.coreMLClient!.train(job: self.currentJob!)
+                    self.state = State.training
+                } else {
+                    self.state = State.notCharging
+                }
+            }
+        }
     }
 
     public func connect() {
@@ -109,7 +125,7 @@ class CommunicationManager: WebSocketDelegate {
         self.isConnected = true
         self.reconnections = 3
         let registrationMessage = try makeDictionaryString(keys: ["type", "node_type"], values: [registerName, libraryName])
-        state = State.waiting
+        state = State.idle
         
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
             self.socket.write(ping: Data())
@@ -142,13 +158,11 @@ class CommunicationManager: WebSocketDelegate {
             let sessionID = message["session_id"] as! String
             let round = message["round"] as! Int
             let job = DMLJob(repoID: self.repoID, sessionID: sessionID, round: round)
-            try self.coreMLClient!.train(job: job)
-            state = State.training
+            self.currentJob = job
             break
         case stopName:
             print("Received STOP message.")
-            self.state = State.idle
-            self.socket.disconnect()
+            state = State.trainingComplete
             break
         default:
             print("Received unknown message.")
@@ -161,23 +175,11 @@ class CommunicationManager: WebSocketDelegate {
          */
         let resultsMessage = try makeDictionaryString(keys: ["gradients", "omega"], values: [job.gradients!, job.omega!])
         let updateMessage = try makeDictionaryString(keys: ["type", "round", "session_id", "results"], values: ["NEW_UPDATE", job.round, job.sessionID, resultsMessage])
-        
-        let file = "gradients.txt"
-        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-
-            let fileURL = dir.appendingPathComponent(file)
-
-            //writing
-            do {
-                try updateMessage.write(to: fileURL, atomically: false, encoding: .utf8)
-            } catch {
-                print("FUCK")
-            }
-        }
-        
+                
         if self.socket != nil {
             self.socket.write(string: updateMessage)
         }
+        self.currentJob = nil
         self.state = State.waiting
         return updateMessage
     }

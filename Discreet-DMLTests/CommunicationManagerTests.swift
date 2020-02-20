@@ -30,7 +30,7 @@ class CommunicationManagerTests: XCTestCase {
             XCTAssertEqual(expectedJSON["type"] as! String, actualJSON["type"] as! String)
             XCTAssertEqual(expectedJSON["node_type"] as! String, actualJSON["node_type"] as! String)
             XCTAssertTrue(communicationManager.isConnected)
-            XCTAssertEqual(communicationManager.state, State.waiting)
+            XCTAssertEqual(communicationManager.state, State.idle)
         } catch {
             print("An unexpected error occurred during the test.")
             print(error.localizedDescription)
@@ -57,7 +57,9 @@ class CommunicationManagerTests: XCTestCase {
          Test that the protocol for a new train message is correct.
          */
         do {
+            communicationManager.currentJob = DMLJob(repoID: testRepo, sessionID: testSession, round: testRound)
             let result = try communicationManager.handleNewEvent(event: WebSocketEvent.text(trainMessage))
+            RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
             XCTAssertNil(result)
             XCTAssertEqual(communicationManager.state, State.training)
         } catch {

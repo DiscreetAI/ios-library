@@ -30,6 +30,7 @@ class CommunicationManager: WebSocketDelegate {
     var socket: WebSocket!
     var reconnections: Int!
     var currentJob: DMLJob?
+    var timer: Timer?
 
     var isConnected = false
     var state = State.notConnected
@@ -40,17 +41,7 @@ class CommunicationManager: WebSocketDelegate {
         self.repoID = repoID
         self.reconnections = reconnections
         UIDevice.current.isBatteryMonitoringEnabled = true
-        
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            if self.currentJob != nil && self.state != State.training {
-                  if UIDevice.current.batteryState == .charging || UIDevice.current.batteryState == .full {
-                    try! self.coreMLClient!.train(job: self.currentJob!)
-                    self.state = State.training
-                } else {
-                    self.state = State.notCharging
-                }
-            }
-        }
+        self.setUpJobQueue()
     }
 
     public func connect() {
@@ -168,6 +159,32 @@ class CommunicationManager: WebSocketDelegate {
             print("Received unknown message.")
         }
     }
+    
+    @objc private func validateTrainingState() {
+        print("called")
+        if self.currentJob != nil && self.state != State.training {
+            if self.isValidTrainingState() {
+                try! self.coreMLClient!.train(job: self.currentJob!)
+                self.state = State.training
+                self.timer?.invalidate()
+                self.timer = nil
+            } else {
+                self.state = State.notCharging
+            }
+        }
+    }
+    
+    private func setUpJobQueue() {
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(validateTrainingState), userInfo: nil, repeats: true)
+    }
+    
+    public func isValidTrainingState() -> Bool {
+        #if targetEnvironment(simulator)
+        return true
+        #else
+        return UIDevice.current.batteryState == .charging || UIDevice.current.batteryState == .full
+        #endif
+    }
 
     public func handleTrainingComplete(job: DMLJob) throws -> String {
         /*
@@ -181,6 +198,7 @@ class CommunicationManager: WebSocketDelegate {
         }
         self.currentJob = nil
         self.state = State.waiting
+        self.setUpJobQueue()
         return updateMessage
     }
 

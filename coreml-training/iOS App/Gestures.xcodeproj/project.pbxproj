@@ -9,15 +9,11 @@
 /* Begin PBXBuildFile section */
 		7B322ADF22FEEDB2002C7C38 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B322ADE22FEEDB2002C7C38 /* Labels.swift */; };
 		7B322AE122FEFFE2002C7C38 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B322AE022FEFFE2002C7C38 /* Globals.swift */; };
-		7B43804B22B3C1730034AE3C /* Dataset in Resources */ = {isa = PBXBuildFile; fileRef = 7B43804A22B3C1730034AE3C /* Dataset */; };
 		7B43804D22B3C3410034AE3C /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 7B43804C22B3C3410034AE3C /* README.markdown */; };
 		7B43805322B3F2360034AE3C /* EvaluateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43805222B3F2360034AE3C /* EvaluateViewController.swift */; };
-		7B43806322B422E00034AE3C /* HandsTuri.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7B43806222B422E00034AE3C /* HandsTuri.mlmodel */; };
 		7B43806522B424CD0034AE3C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43806422B424CD0034AE3C /* Helpers.swift */; };
 		7B43806722B527640034AE3C /* ImageDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43806622B527640034AE3C /* ImageDataset.swift */; };
 		7B43806B22B574CA0034AE3C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43806A22B574CA0034AE3C /* ImageLoader.swift */; };
-		7B43806D22B650650034AE3C /* HandsEmpty.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7B43806C22B650650034AE3C /* HandsEmpty.mlmodel */; };
-		7B43806F22B6600D0034AE3C /* HandskNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7B43806E22B6600D0034AE3C /* HandskNN.mlmodel */; };
 		7B43807222B6783E0034AE3C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43807122B6783E0034AE3C /* CameraViewController.swift */; };
 		7B43807522B680C70034AE3C /* TrainNeuralNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43807422B680C70034AE3C /* TrainNeuralNetworkViewController.swift */; };
 		7B72E0F9238DC2D100A1F15F /* NeuralNetworkTrainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B72E0F7238DC2D100A1F15F /* NeuralNetworkTrainer.swift */; };
@@ -93,15 +89,11 @@
 		5F8DB395C3D17C4F441C0664 /* Pods_Gestures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gestures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B322ADE22FEEDB2002C7C38 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		7B322AE022FEFFE2002C7C38 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
-		7B43804A22B3C1730034AE3C /* Dataset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Dataset; path = ../Dataset; sourceTree = "<group>"; };
 		7B43804C22B3C3410034AE3C /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.markdown; path = ../README.markdown; sourceTree = "<group>"; };
 		7B43805222B3F2360034AE3C /* EvaluateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateViewController.swift; sourceTree = "<group>"; };
-		7B43806222B422E00034AE3C /* HandsTuri.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandsTuri.mlmodel; sourceTree = "<group>"; };
 		7B43806422B424CD0034AE3C /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		7B43806622B527640034AE3C /* ImageDataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataset.swift; sourceTree = "<group>"; };
 		7B43806A22B574CA0034AE3C /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		7B43806C22B650650034AE3C /* HandsEmpty.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandsEmpty.mlmodel; sourceTree = "<group>"; };
-		7B43806E22B6600D0034AE3C /* HandskNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandskNN.mlmodel; sourceTree = "<group>"; };
 		7B43807122B6783E0034AE3C /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		7B43807422B680C70034AE3C /* TrainNeuralNetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainNeuralNetworkViewController.swift; sourceTree = "<group>"; };
 		7B72E0F7238DC2D100A1F15F /* NeuralNetworkTrainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeuralNetworkTrainer.swift; sourceTree = "<group>"; };
@@ -191,17 +183,6 @@
 			name = "User Interface";
 			sourceTree = "<group>";
 		};
-		7B43806122B422E00034AE3C /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7B43806C22B650650034AE3C /* HandsEmpty.mlmodel */,
-				7B43806E22B6600D0034AE3C /* HandskNN.mlmodel */,
-				7B43806222B422E00034AE3C /* HandsTuri.mlmodel */,
-			);
-			name = Models;
-			path = ../Models;
-			sourceTree = "<group>";
-		};
 		7B43806822B5738B0034AE3C /* Data screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,8 +235,6 @@
 			children = (
 				E4000DC523FB96A6003454A4 /* Discreet-DML.xcodeproj */,
 				7B43804C22B3C3410034AE3C /* README.markdown */,
-				7B43804A22B3C1730034AE3C /* Dataset */,
-				7B43806122B422E00034AE3C /* Models */,
 				7B8AF1A320D8311600DE58D5 /* Sources */,
 				E4BA35E323AB0AA800F81825 /* GesturesTests */,
 				7B8AF1A220D8311600DE58D5 /* Products */,
@@ -429,7 +408,6 @@
 				7BABEFFA22B7E9C2005C8BCF /* Main.storyboard in Resources */,
 				7BABEFF322B7E9A5005C8BCF /* EvaluateCell.xib in Resources */,
 				7B43804D22B3C3410034AE3C /* README.markdown in Resources */,
-				7B43804B22B3C1730034AE3C /* Dataset in Resources */,
 				7BABEFF822B7E9B6005C8BCF /* SectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,12 +487,9 @@
 				7B8AF1B720D8324E00DE58D5 /* DataViewController.swift in Sources */,
 				7B322ADF22FEEDB2002C7C38 /* Labels.swift in Sources */,
 				7BDCA4B122E09DBC00AA1F57 /* Models.swift in Sources */,
-				7B43806F22B6600D0034AE3C /* HandskNN.mlmodel in Sources */,
 				7B43806522B424CD0034AE3C /* Helpers.swift in Sources */,
 				7BE1EF3422BD1CE600DC3AAE /* ExampleCell.swift in Sources */,
-				7B43806322B422E00034AE3C /* HandsTuri.mlmodel in Sources */,
 				7B89B55122B6D235002DBA36 /* Settings.swift in Sources */,
-				7B43806D22B650650034AE3C /* HandsEmpty.mlmodel in Sources */,
 				7B43807522B680C70034AE3C /* TrainNeuralNetworkViewController.swift in Sources */,
 				7B8AF1B920D835BD00DE58D5 /* ImagesByLabel.swift in Sources */,
 				7BF7B37F214422CE0010448E /* UIImage+Resize.swift in Sources */,

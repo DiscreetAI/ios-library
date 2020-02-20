@@ -23,7 +23,6 @@ public class Orchestrator {
          */
         self.repoID = repoID
         self.realmClient = try! RealmClient()
-        //try! self.realmClient.clear()
         let mpsHandler = try? MPSHandler()
         self.coreMLClient = CoreMLClient(modelLoader: ModelLoader(repoID: repoID), realmClient: self.realmClient, weightsProcessor: WeightsProcessor(mpsHandler: mpsHandler))
         self.communicationManager = CommunicationManager(coreMLClient: self.coreMLClient, repoID: repoID)

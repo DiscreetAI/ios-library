@@ -9,7 +9,7 @@
 import Foundation
 import Starscream
 
-public enum State : String {
+enum State : String {
     /*
      State of the library.
      */

@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreML
-import UIKit
 
 public class DoubleBatchProvider: MLBatchProvider {
     /*

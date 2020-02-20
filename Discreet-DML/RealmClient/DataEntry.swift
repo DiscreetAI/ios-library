@@ -72,6 +72,9 @@ public class ImageEntry: DataEntry {
     }
     
     public func setData(images: [String], labels: [String]) {
+        /*
+         Set the data for this entry with the given image paths and labels.
+         */
         self.images.removeAll()
         self.labels.removeAll()
         self.addImages(images: images, labels: labels)

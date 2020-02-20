@@ -80,9 +80,7 @@ class CoreMLClient {
         
         job.omega = batchProvider.count
         job.modelURL = modelURL
-        
-        print(job.omega)
-        
+                
         let handlers = MLUpdateProgressHandlers(
         forEvents: [.trainingBegin, .miniBatchEnd, .epochEnd],
         progressHandler: progressHandler,

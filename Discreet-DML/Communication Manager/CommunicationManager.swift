@@ -161,7 +161,11 @@ class CommunicationManager: WebSocketDelegate {
     }
     
     @objc private func validateTrainingState() {
-        print("called")
+        /*
+         Function to be called by job queue timer.
+         
+         Checks whether there is a job on the queue and whether the device is in a valid training state.
+         */
         if self.currentJob != nil && self.state != State.training {
             if self.isValidTrainingState() {
                 try! self.coreMLClient!.train(job: self.currentJob!)
@@ -175,10 +179,18 @@ class CommunicationManager: WebSocketDelegate {
     }
     
     private func setUpJobQueue() {
+        /*
+         Start up the timer so that it checks for train jobs.
+         */
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(validateTrainingState), userInfo: nil, repeats: true)
     }
     
     public func isValidTrainingState() -> Bool {
+        /*
+         Return whether the device is in a valid training state.
+         
+         Currently, the device is in a valid training state if the device is a simulator or a physical phone that is charging.
+         */
         #if targetEnvironment(simulator)
         return true
         #else

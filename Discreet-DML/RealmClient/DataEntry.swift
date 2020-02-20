@@ -70,6 +70,12 @@ public class ImageEntry: DataEntry {
         let unwrappedLabels = Array(self.labels)
         return (unwrappedImages, unwrappedLabels)
     }
+    
+    public func setData(images: [String], labels: [String]) {
+        self.images.removeAll()
+        self.labels.removeAll()
+        self.addImages(images: images, labels: labels)
+    }
 }
 
 public class DoubleEntry: DataEntry {

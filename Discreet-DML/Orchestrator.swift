@@ -7,7 +7,7 @@
 //
 import Foundation
 
-class Orchestrator {
+public class Orchestrator {
     /*
      Higher level class to set up the other components in the library.
      */
@@ -16,20 +16,20 @@ class Orchestrator {
     var coreMLClient: CoreMLClient
     var communicationManager: CommunicationManager
 
-    init(repoID: String, connect: Bool = true) throws {
+    public init(repoID: String, connect: Bool = true) throws {
         /*
          repoID: repo ID corresponding to cloud node.
          connect: Boolean indicating whether we should immediately try connecting to the cloud node.
          */
         self.repoID = repoID
         self.realmClient = try! RealmClient()
+        //try! self.realmClient.clear()
         let mpsHandler = try? MPSHandler()
         self.coreMLClient = CoreMLClient(modelLoader: ModelLoader(repoID: repoID), realmClient: self.realmClient, weightsProcessor: WeightsProcessor(mpsHandler: mpsHandler))
         self.communicationManager = CommunicationManager(coreMLClient: self.coreMLClient, repoID: repoID)
         self.coreMLClient.configure(communicationManager: self.communicationManager)
         if connect {
             self.communicationManager.connect()
-            print("Connected to cloud node!")
         } else {
             print("Call orchestrator.connect() to manually connect!")
         }
@@ -47,6 +47,28 @@ class Orchestrator {
          Store 1D array of image paths on device.
          */
         try! realmClient.storeData(repoID: self.repoID, data: images, labels: labels)
+    }
+    
+    public func removeImage(image: String) {
+        /*
+         Remove image corresponding to the given path.
+         */
+        try! self.realmClient.removeImageDatapoint(repoID: self.repoID, image: image)
+    }
+    
+    public func removeImage(index: Int) {
+        /*
+         Remove image at the given index.
+         */
+        try! self.realmClient.removeImageDatapoint(repoID: self.repoID, index: index)
+    }
+    
+    public func getImages() -> ([String], [String]) {
+        /*
+         Retrieve the images and labels corresponding to the repo ID.
+         */
+        let imageEntry = self.realmClient.getImageEntry(repoID: self.repoID)!
+        return imageEntry.getData()
     }
     
     public func connect() {
@@ -68,5 +90,19 @@ class Orchestrator {
          Return whether the library is connected to the cloud node.
          */
         return self.communicationManager.isConnected
+    }
+    
+    public func getState() -> String {
+        /*
+         Return the state of the library.
+         */
+        return self.communicationManager.state.rawValue
+    }
+    
+    public func clearData() {
+        /*
+         Clear the data in Realm.
+         */
+        try! self.realmClient.clear()
     }
 }

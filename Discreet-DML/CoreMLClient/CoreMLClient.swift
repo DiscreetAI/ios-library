@@ -57,8 +57,8 @@ class CoreMLClient {
         
         var batchProvider: MLBatchProvider
         switch type {
-        case .DOUBLE:
-            batchProvider = DoubleBatchProvider(realmClient: self.realmClient!, repoID: job.repoID)
+        case .TEXT:
+            batchProvider = TextBatchProvider(realmClient: self.realmClient!, repoID: job.repoID)
             break
         case .IMAGE:
             var model: MLModel
@@ -70,9 +70,6 @@ class CoreMLClient {
             }
             let constraint = model.modelDescription.inputDescriptionsByName["image"]!.imageConstraint!
             batchProvider = ImagesBatchProvider(realmClient: realmClient!, repoID: job.repoID, imageConstraint: constraint)
-        case .TEXT:
-            print("Not supported yet!")
-            return
         default:
             print("Unrecognized type!")
             return

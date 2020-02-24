@@ -9,38 +9,48 @@
 import Foundation
 import CoreML
 
-class DoubleFeatureProvider : MLFeatureProvider {
+class TextFeatureProvider : MLFeatureProvider {
     /*
      MLFeatureProvider for Double data.
      */
-    var dense_1_input_0: MLMultiArray
-    var classLabel: String
+    var input: MLMultiArray
+    var label: String
+    
     var featureNames: Set<String> {
         get {
-            return ["dense_1_input:0", "classLabel"]
+            return ["input", "label"]
         }
     }
     
     func featureValue(for featureName: String) -> MLFeatureValue? {
         /*
-         Return a MLFeatureValue based on whether the feature is the datapoint or label.
-         */
-        if (featureName == "dense_1_input:0") {
-            return MLFeatureValue(multiArray: dense_1_input_0)
+        Return a MLFeatureValue based on whether the feature is the datapoint or label.
+        */
+        if (featureName == "input") {
+            return MLFeatureValue(multiArray: input)
         }
-        if (featureName == "classLabel") {
-            return MLFeatureValue(string: classLabel)
+        if (featureName == "label") {
+            return MLFeatureValue(string: label)
         }
         return nil
     }
     
-    init(dense_1_input_0: MLMultiArray, classLabel: String) {
+    init(input: MLMultiArray, label: String) {
         /*
-         dense_1_input_0: The MLMultiArray encompassing the data.
-         classLabel: The corresponding label.
+         image: The pixel buffer corresponding to the image.
+         label: The label corresponding to this image.
          */
-        self.dense_1_input_0 = dense_1_input_0
-        self.classLabel = classLabel
+        self.input = input
+        self.label = label
+    }
+    
+    init(input: [Int], label: String) {
+        /*
+         image: The pixel buffer corresponding to the image.
+         label: The label corresponding to this image.
+         */
+        self.input = try! MLMultiArray.from(input)
+        self.label = label
     }
 }
 

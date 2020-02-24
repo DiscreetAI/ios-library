@@ -9,22 +9,22 @@
 import Foundation
 import CoreML
 
-public class DoubleBatchProvider: MLBatchProvider {
+public class TextBatchProvider: MLBatchProvider {
     /*
-     MLBatchProvider subclass for Double data.
+     MLBatchProvider subclass for encoded Text data.
      */
-    var data: [[Double]]
+    var encodings: [[Int]]
     var labels: [String]
     public var count: Int
     
-    init(data: [[Double]], labels: [String]) {
+    init(encodings: [[Int]], labels: [String]) {
         /*
-         data: 2D array of Double data.
-         labels: 1D array of labels for data.
+         data: 2D array of Int encodings.
+         labels: 1D array of labels for encodings.
          */
-        self.data = data
+        self.encodings = encodings
         self.labels = labels
-        self.count = data.count
+        self.count = encodings.count
     }
     
     init(realmClient: RealmClient, repoID: String) {
@@ -32,18 +32,18 @@ public class DoubleBatchProvider: MLBatchProvider {
          realmClient: instance of RealmClient to get data from.
          repoID: repo ID to uniquely access data from RealmClient with.
          */
-        let doubleEntry = realmClient.getDoubleEntry(repoID: repoID)!
-        (self.data, self.labels) = doubleEntry.getData()
-        self.count = self.data.count
+        let textEntry = realmClient.getTextEntry(repoID: repoID)!
+        (self.encodings, self.labels) = textEntry.getData()
+        self.count = self.encodings.count
     }
     
     public func features(at index: Int) -> MLFeatureProvider {
         /*
          Get the corresponding MLFeatureProvider for the datapoint and label corresponding to this index.
          */
-        let input = try! MLMultiArray.from(self.data[index])
+        let input = self.encodings[index]
         let label = self.labels[index]
-        return DoubleFeatureProvider(dense_1_input_0: input, classLabel: label)
+        return TextFeatureProvider(input: input, label: label)
     }
 }
 

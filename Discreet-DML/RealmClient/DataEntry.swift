@@ -81,65 +81,65 @@ public class ImageEntry: DataEntry {
     }
 }
 
-public class DoubleEntry: DataEntry {
+public class EncodingEntry: DataEntry {
     /*
-     Dataset object representing a 2D array of Doubles.
+     Dataset object representing a 2D array of Ints.
      */
-    let data: List<DoubleDatapoint> = List<DoubleDatapoint>()
+    let encodings: List<EncodingDatapoint> = List<EncodingDatapoint>()
 
-    convenience init(repoID: String, datapoints: [[Double]], labels: [String]) {
+    convenience init(repoID: String, encodings: [[Int]], labels: [String]) {
         /*
          repoID: repo ID associated with this entry.
-         datapoints: 2D array of Double data.
+         encodings: 2D array of Int data.
          labels: 1D array of labels for data.
          */
         self.init(repoID: repoID)
-        addData(datapoints: datapoints, labels: labels)
+        addData(encodings: encodings, labels: labels)
     }
 
-    public func addData(datapoints: [[Double]], labels: [String]) {
+    public func addData(encodings: [[Int]], labels: [String]) {
         /*
-        Add more datapoints and labels to this entry.
+        Add more encodings and labels to this entry.
         */
-        let doubleDatapoints = datapoints.map({
-            (datapoint: [Double]) -> DoubleDatapoint in
-            return DoubleDatapoint(datapoint: datapoint)
+        let encodings = encodings.map({
+            (encodingDatapoint: [Int]) -> EncodingDatapoint in
+            return EncodingDatapoint(encodingDatapoint: encodingDatapoint)
         })
-        self.data.append(objectsIn: doubleDatapoints)
+        self.encodings.append(objectsIn: encodings)
         addLabels(labels: labels)
     }
     
-    public func getData() -> ([[Double]], [String]) {
+    public func getData() -> ([[Int]], [String]) {
         /*
-        Unwrap this entry as tuple of data and labels.
+        Unwrap this entry as tuple of encodings and labels.
         */
-        let unwrappedData = Array(self.data).map({
-            (datapoint: DoubleDatapoint) -> [Double] in
-            return datapoint.getData()
+        let unwrappedData = Array(self.encodings).map({
+            (encoding: EncodingDatapoint) -> [Int] in
+            return encoding.getData()
         })
         let unwrappedLabels = Array(self.labels)
         return (unwrappedData, unwrappedLabels)
     }
 }
 
-public class DoubleDatapoint: Object {
+public class EncodingDatapoint: Object {
     /*
-     Datapoint object representing a 1D array of Doubles.
+     Encoding object representing a 1D array of Ints.
      */
-    let datapoint: List<Double> = List<Double>()
+    let encodingDatapoint: List<Int> = List<Int>()
 
-    convenience init(datapoint: [Double]) {
+    convenience init(encodingDatapoint: [Int]) {
         /*
-         datapoint: 1D array of Double data
+         Encoding: 1D array of Int data
          */
         self.init()
-        self.datapoint.append(objectsIn: datapoint)
+        self.encodingDatapoint.append(objectsIn: encodingDatapoint)
     }
     
-    func getData() -> [Double] {
+    func getData() -> [Int] {
         /*
-         Unwrap entry as 1D array of Double array.
+         Unwrap entry as 1D array of Int array.
          */
-        return Array(self.datapoint)
+        return Array(self.encodingDatapoint)
     }
 }

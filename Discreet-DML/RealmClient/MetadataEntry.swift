@@ -13,7 +13,6 @@ public enum DataType: String {
     /*
      Enum denoting type of data for this repo ID.
      */
-    case DOUBLE = "Double"
     case IMAGE = "Image"
     case TEXT = "Text"
 }

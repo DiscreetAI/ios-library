@@ -23,19 +23,19 @@ public class RealmClient {
         }
     }
 
-    public func storeData(repoID: String, data: [[Double]], labels: [String]) throws {
+    public func storeTextData(repoID: String, encodings: [[Int]], labels: [String]) throws {
         /*
-         Store a 2D Double array and labels under the given `repoID`.
+         Store a 2D Int array and labels under the given `repoID`.
 
          If data for this `repoID` already exists, simply append the given data.
          */
         do {
             try self.realm.write {
-                if let doubleEntry = getDoubleEntry(repoID: repoID) {
-                    doubleEntry.addData(datapoints: data, labels: labels)
+                if let EncodingEntry = getTextEntry(repoID: repoID) {
+                    EncodingEntry.addData(encodings: encodings, labels: labels)
                 } else {
-                    self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.DOUBLE))
-                    self.realm.add(DoubleEntry(repoID: repoID, datapoints: data, labels: labels))
+                    self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.TEXT))
+                    self.realm.add(EncodingEntry(repoID: repoID, encodings: encodings, labels: labels))
                 }
             }
         } catch {
@@ -44,7 +44,7 @@ public class RealmClient {
         }
     }
 
-    public func storeData(repoID: String, data: [String], labels: [String]) throws {
+    public func storeImageData(repoID: String, images: [String], labels: [String]) throws {
         /*
          Store a 1D String array of image paths under the given `repoID`.
 
@@ -53,10 +53,10 @@ public class RealmClient {
         do {
             try self.realm.write {
                 if let imageEntry = getImageEntry(repoID: repoID) {
-                    imageEntry.addImages(images: data, labels: labels)
+                    imageEntry.addImages(images: images, labels: labels)
                 } else {
                     self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.IMAGE))
-                    self.realm.add(ImageEntry(repoID: repoID, images: data, labels: labels))
+                    self.realm.add(ImageEntry(repoID: repoID, images: images, labels: labels))
                 }
             }
         } catch {
@@ -125,11 +125,11 @@ public class RealmClient {
         return self.realm.object(ofType: DataEntry.self, forPrimaryKey: repoID)
     }
 
-    public func getDoubleEntry(repoID: String) -> DoubleEntry? {
+    public func getTextEntry(repoID: String) -> EncodingEntry? {
         /*
-         Retrieve DoubleEntry with the `repoID` as the primary key.
+         Retrieve TextEntry with the `repoID` as the primary key.
          */
-        return self.realm.object(ofType: DoubleEntry.self, forPrimaryKey: repoID)
+        return self.realm.object(ofType: EncodingEntry.self, forPrimaryKey: repoID)
     }
 
     public func getImageEntry(repoID: String) -> ImageEntry? {

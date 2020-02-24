@@ -34,18 +34,18 @@ public class Orchestrator {
         }
     }
 
-    public func storeData(data: [[Double]], labels: [String]) {
+    public func storeEncodings(data: [[Int]], labels: [String]) {
         /*
          Store 2D Double data.
          */
-        try! realmClient.storeData(repoID: self.repoID, data: data, labels: labels)
+        try! realmClient.storeTextData(repoID: self.repoID, encodings: data, labels: labels)
     }
 
     public func storeImages(images: [String], labels: [String]) {
         /*
          Store 1D array of image paths on device.
          */
-        try! realmClient.storeData(repoID: self.repoID, data: images, labels: labels)
+        try! realmClient.storeImageData(repoID: self.repoID, images: images, labels: labels)
     }
     
     public func removeImage(image: String) {

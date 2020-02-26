@@ -9,11 +9,9 @@
 import Foundation
 
 public class BasicEncoder {
-    var encoder = [String: Int]()
+    var encoder: [String: Int]
     init(vocabList: [String]) {
-        for (i, word) in zip(1...vocabList.count, vocabList) {
-            encoder[word] = i
-        }
+        self.encoder = Dictionary(uniqueKeysWithValues: zip(vocabList, 1...vocabList.count))
     }
     
     private func encodeWord(word: String) -> Int {

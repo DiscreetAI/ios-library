@@ -31,6 +31,7 @@
 		E4301B3C2405CD6C00ED9CA4 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */; };
 		E4301B3E2405CD6D00ED9CA4 /* Discreet_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */; };
 		E4301B452405F79B00ED9CA4 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B442405F79B00ED9CA4 /* Encoder.swift */; };
+		E4301B472406009000ED9CA4 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B462406009000ED9CA4 /* EncoderTests.swift */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
 		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
@@ -104,6 +105,7 @@
 		E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		E4301B3D2405CD6D00ED9CA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4301B442405F79B00ED9CA4 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		E4301B462406009000ED9CA4 /* EncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderTests.swift; sourceTree = "<group>"; };
 		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
 		E468506423E5415100D3D689 /* DummyRealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */,
 				E45288FD23E383A9003F422A /* CoreMLClientTests.swift */,
 				E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */,
+				E4301B462406009000ED9CA4 /* EncoderTests.swift */,
 			);
 			path = "Discreet-DMLTests";
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4301B472406009000ED9CA4 /* EncoderTests.swift in Sources */,
 				E4D72E4323DFA7ED00BE3B75 /* RealmClientTests.swift in Sources */,
 				E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */,
 				E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */,

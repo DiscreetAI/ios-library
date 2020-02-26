@@ -39,6 +39,8 @@ var testEncodings = [[1, 2], [3, 4]]
 
 var testLabels = ["small", "large"]
 
+var testText = "and the quick brown fox jumped over lazy dog"
+
 var (realImages, realLabels) = makeImagePaths()
 
 var testModelURL = URL(string: "https://ios-discreetai.s3-us-west-1.amazonaws.com/my_model.mlmodel")!

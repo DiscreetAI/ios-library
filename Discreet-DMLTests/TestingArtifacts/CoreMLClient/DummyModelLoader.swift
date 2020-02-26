@@ -9,7 +9,7 @@
 import Foundation
 @testable import Discreet_DML
 
-public class DummyModelLoader: ModelLoader {
+class DummyModelLoader: ModelLoader {
     /*
      Dummy model loader that simply compiles an already downloaded model and returns the URL.
      */
@@ -17,7 +17,7 @@ public class DummyModelLoader: ModelLoader {
         self.init(downloadModelURL: nil)
     }
     
-    override public func loadModel() throws -> URL {
+    override func loadModel() throws -> URL {
         let modelPath = testingUtilsPath + "CoreMLClient/" + "my_model.mlmodel"
         return try compileModel(localModelURL: URL(fileURLWithPath: modelPath))
     }

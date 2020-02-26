@@ -25,9 +25,11 @@
 		E41D7C0823E26EE200D58478 /* MetadataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0723E26EE200D58478 /* MetadataEntry.swift */; };
 		E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */; };
 		E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E623E8DC2A0003F638 /* Orchestrator.swift */; };
-		E42C76E923E8DCD20003F638 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E823E8DCD20003F638 /* IntegrationTests.swift */; };
+		E42C76E923E8DCD20003F638 /* OrchestratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */; };
 		E42C76EC23E8E8F00003F638 /* DummyOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */; };
 		E42C76EE23E8F73E0003F638 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76ED23E8F73E0003F638 /* Errors.swift */; };
+		E4301B3C2405CD6C00ED9CA4 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */; };
+		E4301B3E2405CD6D00ED9CA4 /* Discreet_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
 		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
@@ -51,6 +53,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		E409790623A0A3A000F51C42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E40978F223A0A39F00F51C42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E40978FA23A0A39F00F51C42;
+			remoteInfo = "Discreet-DML";
+		};
+		E4301B3F2405CD6D00ED9CA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E40978F223A0A39F00F51C42 /* Project object */;
 			proxyType = 1;
@@ -87,9 +96,12 @@
 		E41D7C0723E26EE200D58478 /* MetadataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataEntry.swift; sourceTree = "<group>"; };
 		E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoaderTests.swift; sourceTree = "<group>"; };
 		E42C76E623E8DC2A0003F638 /* Orchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orchestrator.swift; sourceTree = "<group>"; };
-		E42C76E823E8DCD20003F638 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrchestratorTests.swift; sourceTree = "<group>"; };
 		E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
 		E42C76ED23E8F73E0003F638 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		E4301B392405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Discreet_DMLIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		E4301B3D2405CD6D00ED9CA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
 		E468506423E5415100D3D689 /* DummyRealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
@@ -128,6 +140,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4301B362405CD6C00ED9CA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4301B3E2405CD6D00ED9CA4 /* Discreet_DML.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -147,6 +167,7 @@
 			children = (
 				E40978FD23A0A39F00F51C42 /* Discreet-DML */,
 				E409790823A0A3A000F51C42 /* Discreet-DMLTests */,
+				E4301B3A2405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */,
 				E40978FC23A0A39F00F51C42 /* Products */,
 				E4AF70E323D905B400D65376 /* Frameworks */,
 				40DEAEC38CF5479E62B69B9F /* Pods */,
@@ -158,6 +179,7 @@
 			children = (
 				E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */,
 				E409790423A0A3A000F51C42 /* Discreet-DMLTests.xctest */,
+				E4301B392405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,7 +210,7 @@
 				E4D72E4223DFA7ED00BE3B75 /* RealmClientTests.swift */,
 				E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */,
 				E45288FD23E383A9003F422A /* CoreMLClientTests.swift */,
-				E42C76E823E8DCD20003F638 /* IntegrationTests.swift */,
+				E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */,
 			);
 			path = "Discreet-DMLTests";
 			sourceTree = "<group>";
@@ -277,6 +299,15 @@
 			path = Orchestrator;
 			sourceTree = "<group>";
 		};
+		E4301B3A2405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */,
+				E4301B3D2405CD6D00ED9CA4 /* Info.plist */,
+			);
+			path = Discreet_DMLIntegrationTests;
+			sourceTree = "<group>";
+		};
 		E468506C23E543BD00D3D689 /* CommunicationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,13 +390,31 @@
 			productReference = E409790423A0A3A000F51C42 /* Discreet-DMLTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E4301B382405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4301B412405CD6D00ED9CA4 /* Build configuration list for PBXNativeTarget "Discreet_DMLIntegrationTests" */;
+			buildPhases = (
+				E4301B352405CD6C00ED9CA4 /* Sources */,
+				E4301B362405CD6C00ED9CA4 /* Frameworks */,
+				E4301B372405CD6C00ED9CA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4301B402405CD6D00ED9CA4 /* PBXTargetDependency */,
+			);
+			name = Discreet_DMLIntegrationTests;
+			productName = Discreet_DMLIntegrationTests;
+			productReference = E4301B392405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		E40978F223A0A39F00F51C42 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = DiscreetAI;
 				TargetAttributes = {
@@ -375,6 +424,9 @@
 					};
 					E409790323A0A3A000F51C42 = {
 						CreatedOnToolsVersion = 11.2.1;
+					};
+					E4301B382405CD6C00ED9CA4 = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
@@ -398,6 +450,7 @@
 			targets = (
 				E40978FA23A0A39F00F51C42 /* Discreet-DML */,
 				E409790323A0A3A000F51C42 /* Discreet-DMLTests */,
+				E4301B382405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -419,6 +472,13 @@
 				E41B26DD23EA367A0095C1CD /* old_complex_weights in Resources */,
 				E41B26DA23EA367A0095C1CD /* old_simple_weights in Resources */,
 				E41B26DC23EA367A0095C1CD /* new_simple_weights in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4301B372405CD6C00ED9CA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +582,7 @@
 				E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */,
 				E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */,
 				E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */,
-				E42C76E923E8DCD20003F638 /* IntegrationTests.swift in Sources */,
+				E42C76E923E8DCD20003F638 /* OrchestratorTests.swift in Sources */,
 				E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */,
 				E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */,
 				E468506B23E542B600D3D689 /* DummyModelLoader.swift in Sources */,
@@ -535,6 +595,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4301B352405CD6C00ED9CA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4301B3C2405CD6C00ED9CA4 /* IntegrationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -542,6 +610,11 @@
 			isa = PBXTargetDependency;
 			target = E40978FA23A0A39F00F51C42 /* Discreet-DML */;
 			targetProxy = E409790623A0A3A000F51C42 /* PBXContainerItemProxy */;
+		};
+		E4301B402405CD6D00ED9CA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E40978FA23A0A39F00F51C42 /* Discreet-DML */;
+			targetProxy = E4301B3F2405CD6D00ED9CA4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -769,6 +842,46 @@
 			};
 			name = Release;
 		};
+		E4301B422405CD6D00ED9CA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = V8MJQ33FN9;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = Discreet_DMLIntegrationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLIntegrationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E4301B432405CD6D00ED9CA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8MJQ33FN9;
+				INFOPLIST_FILE = Discreet_DMLIntegrationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLIntegrationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -795,6 +908,15 @@
 			buildConfigurations = (
 				E409791323A0A3A000F51C42 /* Debug */,
 				E409791423A0A3A000F51C42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4301B412405CD6D00ED9CA4 /* Build configuration list for PBXNativeTarget "Discreet_DMLIntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4301B422405CD6D00ED9CA4 /* Debug */,
+				E4301B432405CD6D00ED9CA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

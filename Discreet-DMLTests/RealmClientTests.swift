@@ -17,34 +17,28 @@ class RealmClientTests: XCTestCase {
         try! realmClient.clear()
     }
     
-    func testDoubleGetStore() {
+    func testTextGetStore() {
         /*
          Test storing Double data and retrieving it.
          */
-        let data = [[1.1, 2.2], [3.3, 4.4]]
-        let labels = ["small", "large"]
-        
         do {
-            try realmClient.storeData(repoID: "test", data: data, labels: labels)
+            try realmClient.addTextData(repoID: testRepo, encodings: testEncodings, labels: testLabels)
+            let metaDataEntry = realmClient.getMetadataEntry(repoID: testRepo)
+            XCTAssertNotNil(metaDataEntry)
+            if metaDataEntry != nil {
+                XCTAssertEqual(metaDataEntry!.dataType, DataType.TEXT.rawValue)
+                let encodingEntry = realmClient.getTextEntry(repoID: testRepo)
+                XCTAssertNotNil(encodingEntry)
+                if encodingEntry != nil {
+                    let (retrievedEncodings, retrievedLabels) = encodingEntry!.getData()
+                    XCTAssertEqual(testEncodings, retrievedEncodings)
+                    XCTAssertEqual(testLabels, retrievedLabels)
+                }
+            }
         } catch {
             print("An unexpected error occurred during the test.")
             print(error.localizedDescription)
             XCTFail()
-        }
-        
-        
-        let metaDataEntry = realmClient.getMetadataEntry(repoID: "test")
-        XCTAssertNotNil(metaDataEntry)
-        if metaDataEntry != nil {
-            XCTAssertEqual(metaDataEntry!.dataType, DataType.DOUBLE.rawValue)
-        }
-        
-        let doubleEntry = realmClient.getDoubleEntry(repoID: "test")
-        XCTAssertNotNil(doubleEntry)
-        if doubleEntry != nil {
-            let (doubleData, doubleLabels) = doubleEntry!.getData()
-            XCTAssertEqual(data, doubleData)
-            XCTAssertEqual(labels, doubleLabels)
         }
     }
     
@@ -52,31 +46,45 @@ class RealmClientTests: XCTestCase {
         /*
          Test storing image data and retrieving it.
          */
-        let data = ["path1", "path2"]
-        let labels = ["small", "large"]
-        
         do {
-            try realmClient.storeData(repoID: "test", data: data, labels: labels)
+            try realmClient.addImageData(repoID: testRepo, images: testImages, labels: testLabels)
+            let metaDataEntry = realmClient.getMetadataEntry(repoID: testRepo)
+            XCTAssertNotNil(metaDataEntry)
+            if metaDataEntry != nil {
+                XCTAssertEqual(metaDataEntry!.dataType, DataType.IMAGE.rawValue)
+                let imageEntry = realmClient.getImageEntry(repoID: testRepo)
+                
+                XCTAssertNotNil(imageEntry)
+                if imageEntry != nil {
+                    let (imageData, imageLabels) = imageEntry!.getData()
+                    XCTAssertEqual(testImages, imageData)
+                    XCTAssertEqual(testLabels, imageLabels)
+                }
+            }
         } catch {
             print("An unexpected error occurred during the test.")
             print(error.localizedDescription)
             XCTFail()
         }
-        
-        
-        let metaDataEntry = realmClient.getMetadataEntry(repoID: "test")
-        XCTAssertNotNil(metaDataEntry)
-        if metaDataEntry != nil {
-            XCTAssertEqual(metaDataEntry!.dataType, DataType.IMAGE.rawValue)
-        }
-        
-        let imageEntry = realmClient.getImageEntry(repoID: "test")
-        
-        XCTAssertNotNil(imageEntry)
-        if imageEntry != nil {
-            let (imageData, imageLabels) = imageEntry!.getData()
-            XCTAssertEqual(data, imageData)
-            XCTAssertEqual(labels, imageLabels)
+    }
+    
+    func testRemoveImageDatapoint() {
+        do {
+            try realmClient.addImageData(repoID: testRepo, images: testImages, labels: testLabels)
+            
+            try realmClient.removeImageDatapoint(repoID: testRepo, index: 1)
+            let data1 = realmClient.getImageEntry(repoID: testRepo)!.getData()
+            XCTAssertEqual(data1.0, [testImages[0]])
+            XCTAssertEqual(data1.1, [testLabels[0]])
+            
+            try realmClient.removeImageDatapoint(repoID: testRepo, image: "path1")
+            let data2 = realmClient.getImageEntry(repoID: testRepo)!.getData()
+            XCTAssertEqual(data2.0, [])
+            XCTAssertEqual(data2.1, [])
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
         }
     }
 
@@ -84,7 +92,7 @@ class RealmClientTests: XCTestCase {
         /*
          Test getting with an invalid `repoID`.
          */
-        let result = realmClient.getDataEntry(repoID: "test")
+        let result = realmClient.getDataEntry(repoID: "badRepo")
         XCTAssertNil(result)
     }
 }

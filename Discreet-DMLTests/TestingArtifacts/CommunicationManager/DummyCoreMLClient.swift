@@ -9,7 +9,7 @@
 import Foundation
 @testable import Discreet_DML
 
-public class DummyCoreMLClient : CoreMLClient {
+class DummyCoreMLClient : CoreMLClient {
     /*
      Dummy client so that dependency injection can be used during Communication Manager tests.
      */
@@ -17,5 +17,5 @@ public class DummyCoreMLClient : CoreMLClient {
         self.init(modelLoader: nil, realmClient: nil, weightsProcessor: nil)
     }
     
-    override public func train(job: DMLJob) {}
+    override func train(job: DMLJob) {}
 }

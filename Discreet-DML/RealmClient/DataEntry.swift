@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-public class DataEntry: Object {
+class DataEntry: Object {
     /*
      General dataset object. Uniquely identified by `repoID`.
      */
@@ -23,22 +23,29 @@ public class DataEntry: Object {
         self.repoID = repoID
     }
 
-    public override static func primaryKey() -> String? {
+    override static func primaryKey() -> String? {
         /*
          The identifying attribute of this entry.
          */
         return "repoID"
     }
     
-    public func addLabels(labels: [String]) {
+    func addLabels(labels: [String]) {
         /*
          Add labels to this entry (usually in conjunction with data).
          */
         self.labels.append(objectsIn: labels)
     }
+    
+    func getDatapointCount() -> Int {
+        /*
+         Return the number of datapoints.
+         */
+        return self.labels.count
+    }
 }
 
-public class ImageEntry: DataEntry {
+class ImageEntry: DataEntry {
     /*
      Dataset object representing a list of paths to images on device.
      */
@@ -54,7 +61,7 @@ public class ImageEntry: DataEntry {
         addImages(images: images, labels: labels)
     }
 
-    public func addImages(images: [String], labels: [String]) {
+    func addImages(images: [String], labels: [String]) {
         /*
          Add more images and labels to this entry.
          */
@@ -62,7 +69,7 @@ public class ImageEntry: DataEntry {
         addLabels(labels: labels)
     }
     
-    public func getData() -> ([String], [String]) {
+    func getData() -> ([String], [String]) {
         /*
          Unwrap this entry as tuple of data and labels.
          */
@@ -71,7 +78,7 @@ public class ImageEntry: DataEntry {
         return (unwrappedImages, unwrappedLabels)
     }
     
-    public func setData(images: [String], labels: [String]) {
+    func setData(images: [String], labels: [String]) {
         /*
          Set the data for this entry with the given image paths and labels.
          */
@@ -81,7 +88,7 @@ public class ImageEntry: DataEntry {
     }
 }
 
-public class EncodingEntry: DataEntry {
+class EncodingEntry: DataEntry {
     /*
      Dataset object representing a 2D array of Ints.
      */
@@ -97,7 +104,7 @@ public class EncodingEntry: DataEntry {
         addData(encodings: encodings, labels: labels)
     }
 
-    public func addData(encodings: [[Int]], labels: [String]) {
+    func addData(encodings: [[Int]], labels: [String]) {
         /*
         Add more encodings and labels to this entry.
         */
@@ -109,7 +116,7 @@ public class EncodingEntry: DataEntry {
         addLabels(labels: labels)
     }
     
-    public func getData() -> ([[Int]], [String]) {
+    func getData() -> ([[Int]], [String]) {
         /*
         Unwrap this entry as tuple of encodings and labels.
         */
@@ -122,7 +129,7 @@ public class EncodingEntry: DataEntry {
     }
 }
 
-public class EncodingDatapoint: Object {
+class EncodingDatapoint: Object {
     /*
      Encoding object representing a 1D array of Ints.
      */

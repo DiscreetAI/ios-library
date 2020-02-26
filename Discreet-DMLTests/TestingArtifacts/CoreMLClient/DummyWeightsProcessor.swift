@@ -9,7 +9,7 @@
 import Foundation
 @testable import Discreet_DML
 
-public class DummyWeightsProcessor: WeightsProcessor {
+class DummyWeightsProcessor: WeightsProcessor {
     /*
      Dummy class to simulate gradients calculation.
      */
@@ -17,7 +17,7 @@ public class DummyWeightsProcessor: WeightsProcessor {
         self.init(mpsHandler: nil)
     }
     
-    override public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) throws -> [[Float32]] {
+    override func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) throws -> [[Float32]] {
         return []
     }
 }

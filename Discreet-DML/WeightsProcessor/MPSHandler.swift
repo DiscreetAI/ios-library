@@ -9,7 +9,7 @@
 import Foundation
 import MetalPerformanceShaders
 
-public class MPSHandler {
+class MPSHandler {
     /*
      Handling for dealing with all operations with MPS
      */
@@ -104,14 +104,14 @@ public class MPSHandler {
         commandBuffer.waitUntilCompleted()
     }
 
-    public func createMPSVector(bytes: [Float32], count: Int) -> MPSMatrix {
+    func createMPSVector(bytes: [Float32], count: Int) -> MPSMatrix {
         /*
          Create an MPS Matrix given a 1D array of data.
          */
         return createFilledMPSMatrix(bytes: bytes, rows: 1, cols: count)
     }
 
-    public func matrixAddition(m1: MPSMatrix, m2: MPSMatrix, inplace: Bool = true) -> MPSMatrix {
+    func matrixAddition(m1: MPSMatrix, m2: MPSMatrix, inplace: Bool = true) -> MPSMatrix {
         /*
          Add `m1` to `m2` and store the result in `m2`. If `inplace` is false, copy `m2` first.
          */
@@ -124,14 +124,14 @@ public class MPSHandler {
         return m2
     }
 
-    public func matrixSubtraction(m1: MPSMatrix, m2: MPSMatrix) -> MPSMatrix {
+    func matrixSubtraction(m1: MPSMatrix, m2: MPSMatrix) -> MPSMatrix {
         /*
          Subtract `m2` from `m1`.
          */
         return matrixAddition(m1: m1, m2: multiplyMatrixByConstant(m1: m2, constant: -1))
     }
 
-    public func multiplyMatrixByConstant(m1: MPSMatrix, constant: Float32) -> MPSMatrix {
+    func multiplyMatrixByConstant(m1: MPSMatrix, constant: Float32) -> MPSMatrix {
         /*
          Multiply every entry in `m1` by `constant`.
          */
@@ -141,14 +141,14 @@ public class MPSHandler {
         return resultMatrix
     }
 
-    public func divideMatrixByConstant(m1: MPSMatrix, constant: Float32) -> MPSMatrix {
+    func divideMatrixByConstant(m1: MPSMatrix, constant: Float32) -> MPSMatrix {
         /*
          Divide every entry in `m1` by `constant`.
          */
         return multiplyMatrixByConstant(m1: m1, constant: 1/constant)
     }
 
-    public func getData(m1: MPSMatrix) -> [Float32] {
+    func getData(m1: MPSMatrix) -> [Float32] {
         /*
          Get the underlying array of data from an MPS Matrix.
          */

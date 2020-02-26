@@ -92,7 +92,7 @@ class CoreMLClient {
         
     }
     
-    public func finishedTraining(oldModelURL: URL, newModelURL: URL, learningRate: Double) throws {
+    func finishedTraining(oldModelURL: URL, newModelURL: URL, learningRate: Double) throws {
         /*
          Callback for when training is finished. Calculate the gradients and communicate them to the cloud node.
          */

@@ -9,13 +9,13 @@
 import Foundation
 import CoreML
 
-public class TextBatchProvider: MLBatchProvider {
+class TextBatchProvider: MLBatchProvider {
     /*
      MLBatchProvider subclass for encoded Text data.
      */
     var encodings: [[Int]]
     var labels: [String]
-    public var count: Int
+    var count: Int
     
     init(encodings: [[Int]], labels: [String]) {
         /*
@@ -37,7 +37,7 @@ public class TextBatchProvider: MLBatchProvider {
         self.count = self.encodings.count
     }
     
-    public func features(at index: Int) -> MLFeatureProvider {
+    func features(at index: Int) -> MLFeatureProvider {
         /*
          Get the corresponding MLFeatureProvider for the datapoint and label corresponding to this index.
          */
@@ -47,7 +47,7 @@ public class TextBatchProvider: MLBatchProvider {
     }
 }
 
-public class ImagesBatchProvider: MLBatchProvider {
+class ImagesBatchProvider: MLBatchProvider {
     /*
      MLBatchProvider class for images.
      */
@@ -55,7 +55,7 @@ public class ImagesBatchProvider: MLBatchProvider {
     var images: [String]
     var labels: [String]
     var imageConstraint: MLImageConstraint
-    public var count: Int
+    var count: Int
 
     init(images: [String], labels: [String], imageConstraint: MLImageConstraint) {
         /*
@@ -89,7 +89,7 @@ public class ImagesBatchProvider: MLBatchProvider {
     }
 
 
-    public func features(at index: Int) -> MLFeatureProvider {
+    func features(at index: Int) -> MLFeatureProvider {
         /*
         Get the corresponding MLFeatureProvider for the datapoint and label corresponding to this index.
         */

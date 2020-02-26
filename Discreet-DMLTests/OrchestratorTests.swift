@@ -113,7 +113,7 @@ class OrchestratorTests: XCTestCase {
         var numIterations = 0.0
 
         do {
-            try orchestrator.addImages(images: testImages, labels: testLabels)
+            try orchestrator.addImages(images: realImages, labels: realLabels)
             let result = try orchestrator.communicationManager.handleNewEvent(event: WebSocketEvent.text(trainMessage))
             XCTAssertNil(result)
             let dummyCommunicationManager: DummyCommunicationManager = orchestrator.communicationManager as! DummyCommunicationManager

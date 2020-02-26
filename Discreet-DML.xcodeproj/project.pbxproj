@@ -30,6 +30,7 @@
 		E42C76EE23E8F73E0003F638 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76ED23E8F73E0003F638 /* Errors.swift */; };
 		E4301B3C2405CD6C00ED9CA4 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */; };
 		E4301B3E2405CD6D00ED9CA4 /* Discreet_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* Discreet_DML.framework */; };
+		E4301B452405F79B00ED9CA4 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B442405F79B00ED9CA4 /* Encoder.swift */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
 		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
@@ -102,6 +103,7 @@
 		E4301B392405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Discreet_DMLIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		E4301B3D2405CD6D00ED9CA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4301B442405F79B00ED9CA4 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
 		E468506423E5415100D3D689 /* DummyRealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				E41D7BE423E12B6E00D58478 /* ModelLoader.swift */,
 				E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */,
 				E41D7C0323E2489D00D58478 /* TrainingInput.swift */,
+				E4301B442405F79B00ED9CA4 /* Encoder.swift */,
 			);
 			path = CoreMLClient;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				E41D7C0423E2489D00D58478 /* TrainingInput.swift in Sources */,
 				E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */,
 				E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */,
+				E4301B452405F79B00ED9CA4 /* Encoder.swift in Sources */,
 				E4D72E3F23DFA7CE00BE3B75 /* RealmClient.swift in Sources */,
 				E41D7BD923E0E34300D58478 /* DataEntry.swift in Sources */,
 				E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */,

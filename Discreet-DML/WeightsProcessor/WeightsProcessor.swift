@@ -26,7 +26,7 @@ class WeightsProcessor {
         self.useGPU = self.mpsHandler == nil ? false : true
     }
     
-    public func readWeights(modelPath: String) throws ->  [[Float32]] {
+    func readWeights(modelPath: String) throws ->  [[Float32]] {
         /*
          Read weights given the on device path.
          */
@@ -136,7 +136,7 @@ class WeightsProcessor {
         return gradients
     }
     
-    public func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) throws -> [[Float32]] {
+    func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) throws -> [[Float32]] {
         /*
          Calculate gradients with the appropriate gradients calculator.
          */

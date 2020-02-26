@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-public class RealmClient {
+class RealmClient {
     /*
      Client to interact with Realm.
      */
@@ -22,8 +22,10 @@ public class RealmClient {
             throw DMLError.realmError(ErrorMessage.failedRealmSetup)
         }
     }
+    
+    
 
-    public func storeTextData(repoID: String, encodings: [[Int]], labels: [String]) throws {
+    func addTextData(repoID: String, encodings: [[Int]], labels: [String]) throws {
         /*
          Store a 2D Int array and labels under the given `repoID`.
 
@@ -44,7 +46,7 @@ public class RealmClient {
         }
     }
 
-    public func storeImageData(repoID: String, images: [String], labels: [String]) throws {
+    func addImageData(repoID: String, images: [String], labels: [String]) throws {
         /*
          Store a 1D String array of image paths under the given `repoID`.
 
@@ -65,85 +67,111 @@ public class RealmClient {
         }
     }
     
-    public func removeImageDatapoint(repoID: String, image: String) throws {
+    func removeImageDatapoint(repoID: String, image: String) throws {
         /*
          Remove image datapoint with provided image path.
          */
-        do {
-            try self.realm.write {
-                if let imageEntry = getImageEntry(repoID: repoID) {
-                    var (images, labels) = imageEntry.getData()
-                    
-                    for i in 0...images.count {
-                        if images[i] == image {
-                            images.remove(at: i)
-                            labels.remove(at: i)
+        if let imageEntry = getImageEntry(repoID: repoID) {
+            var (images, labels) = imageEntry.getData()
+            for i in 0..<images.count {
+                if images[i] == image {
+                    images.remove(at: i)
+                    labels.remove(at: i)
+                    do {
+                        try self.realm.write {
                             imageEntry.setData(images: images, labels: labels)
-                            return
                         }
+                    } catch {
+                        print(error.localizedDescription)
+                        throw DMLError.realmError(ErrorMessage.failedRealmWrite)
                     }
-                } else {
-                    throw DMLError.realmError(ErrorMessage.failedRealmRead)
+                    return
                 }
-                
-                
             }
-        } catch {
-            print(error.localizedDescription)
-            throw DMLError.realmError(ErrorMessage.failedRealmWrite)
+            print("Failed to find image path:", image)
+            throw DMLError.userError(ErrorMessage.invalidImagePath)
+        } else {
+            throw DMLError.userError(ErrorMessage.failedRealmRead)
         }
+        
     }
     
-    public func removeImageDatapoint(repoID: String, index: Int) throws {
+    func removeImageDatapoint(repoID: String, index: Int) throws {
         /*
          Remove image datapoint at provided index.
          */
-        do {
-            try self.realm.write {
-                if let imageEntry = getImageEntry(repoID: repoID) {
-                    var (images, labels) = imageEntry.getData()
-                    print("Images", images)
-                    print("Labels", labels)
-                    print("Index", index)
-                    images.remove(at: index)
-                    labels.remove(at: index)
-                    imageEntry.setData(images: images, labels: labels)
-                } else {
-                    throw DMLError.realmError(ErrorMessage.failedRealmRead)
-                }
+        if let imageEntry = getImageEntry(repoID: repoID) {
+            var (images, labels) = imageEntry.getData()
+            if index < 0  || index > images.count {
+                throw DMLError.userError(ErrorMessage.invalidDatapointIndex)
             }
-        } catch {
-            print(error.localizedDescription)
-            throw DMLError.realmError(ErrorMessage.failedRealmWrite)
+            images.remove(at: index)
+            labels.remove(at: index)
+            do {
+                try self.realm.write {
+                    imageEntry.setData(images: images, labels: labels)
+                }
+            } catch {
+                print(error.localizedDescription)
+                throw DMLError.realmError(ErrorMessage.failedRealmWrite)
+            }
+        } else {
+            throw DMLError.realmError(ErrorMessage.failedRealmRead)
         }
+        
     }
 
-    public func getDataEntry(repoID: String) -> DataEntry? {
+    func getDataEntry(repoID: String) -> DataEntry? {
         /*
          Retrieve data entry with the `repoID` as the primary key.
          */
         return self.realm.object(ofType: DataEntry.self, forPrimaryKey: repoID)
     }
 
-    public func getTextEntry(repoID: String) -> EncodingEntry? {
+    func getTextEntry(repoID: String) -> EncodingEntry? {
         /*
          Retrieve TextEntry with the `repoID` as the primary key.
          */
         return self.realm.object(ofType: EncodingEntry.self, forPrimaryKey: repoID)
     }
 
-    public func getImageEntry(repoID: String) -> ImageEntry? {
+    func getImageEntry(repoID: String) -> ImageEntry? {
         /*
          Retrieve ImageEntry with the `repoID` as the primary key.
          */
         return self.realm.object(ofType: ImageEntry.self, forPrimaryKey: repoID)
     }
     
-    public func getMetadataEntry(repoID: String) -> MetadataEntry? {
+    func getMetadataEntry(repoID: String) -> MetadataEntry? {
+        /*
+         Retrieve MetadataEntry with the `repoID` as the primary key.
+         */
         return self.realm.object(ofType: MetadataEntry.self, forPrimaryKey: repoID)
     }
+    
+    func getDatapointCount(repoID: String) throws -> Int {
+        /*
+         Get the datapoint count for the DataEntry corresponding to the given repo ID.
+         */
+        if let metaDataEntry = self.getMetadataEntry(repoID: repoID) {
+            let type = DataType(rawValue: metaDataEntry.dataType)
+            var entry: DataEntry
+            switch type {
+            case .TEXT:
+                entry = self.getTextEntry(repoID: repoID)!
+                break
+            case .IMAGE:
+                entry = self.getImageEntry(repoID: repoID)!
+            default:
+                throw DMLError.realmError(ErrorMessage.error)
+            }
+            return entry.getDatapointCount()
+        } else {
+            throw DMLError.userError(ErrorMessage.failedRealmRead)
+        }
+    }
 
-    public func clear() throws {
+    func clear() throws {
         /*
          Clear the Realm DB of all objects.
          */
@@ -156,5 +184,34 @@ public class RealmClient {
             throw DMLError.realmError(ErrorMessage.failedRealmClear)
         }
         
+    }
+    
+    func clear(repoID: String) throws {
+        /*
+         Clear the entries corresponding to the given repo ID, if they exist.
+         */
+        if let metaDataEntry = self.getMetadataEntry(repoID: repoID) {
+            let type = DataType(rawValue: metaDataEntry.dataType)
+            var entry: DataEntry
+            switch type {
+            case .TEXT:
+                entry = self.getTextEntry(repoID: repoID)!
+                break
+            case .IMAGE:
+                entry = self.getImageEntry(repoID: repoID)!
+            default:
+                throw DMLError.realmError(ErrorMessage.error)
+            }
+            do {
+                try self.realm.write {
+                    realm.delete(entry)
+                    realm.delete(metaDataEntry)
+                }
+            } catch {
+                throw DMLError.realmError(ErrorMessage.failedRealmWrite)
+            }
+        } else {
+            print("No entries found with the provided repo ID!")
+        }
     }
 }

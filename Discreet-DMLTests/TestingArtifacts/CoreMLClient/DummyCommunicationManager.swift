@@ -9,7 +9,7 @@
 import Foundation
 @testable import Discreet_DML
 
-public class DummyCommunicationManager: CommunicationManager {
+class DummyCommunicationManager: CommunicationManager {
     /*
      Dummy Communication Manager to simulate communication and set the `success` variable for the training test to pass.
      */
@@ -19,7 +19,9 @@ public class DummyCommunicationManager: CommunicationManager {
         self.init(coreMLClient: coreMLClient, repoID: testRepo)
     }
 
-    override public func handleTrainingComplete(job: DMLJob) throws -> String {
+    override func handleTrainingComplete(job: DMLJob) throws -> String {
+        self.currentJob = nil
+        self.state = State.waiting
         self.success = true
         return ""
     }

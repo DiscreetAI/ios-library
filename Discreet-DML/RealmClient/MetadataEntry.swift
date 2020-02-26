@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-public enum DataType: String {
+enum DataType: String {
     /*
      Enum denoting type of data for this repo ID.
      */
@@ -17,7 +17,7 @@ public enum DataType: String {
     case TEXT = "Text"
 }
 
-public class MetadataEntry: Object {
+class MetadataEntry: Object {
     /*
      General dataset object. Uniquely identified by `repoID`.
      */
@@ -34,7 +34,7 @@ public class MetadataEntry: Object {
         self.dataType = dataType.rawValue
     }
 
-    public override static func primaryKey() -> String? {
+    override static func primaryKey() -> String? {
         /*
         The identifying attribute of this entry.
         */

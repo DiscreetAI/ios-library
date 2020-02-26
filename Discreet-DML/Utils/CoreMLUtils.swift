@@ -9,7 +9,7 @@
 import Foundation
 import CoreML
 
-public func renameModel(modelURL: URL) throws -> URL {
+func renameModel(modelURL: URL) throws -> URL {
     /*
      Rename the model at `modelURL` to `old_model.modelc`.
      */
@@ -31,7 +31,7 @@ public func renameModel(modelURL: URL) throws -> URL {
     return newURL
 }
 
-public func saveUpdatedModel(_ model: MLModel & MLWritable, to url: URL) throws {
+func saveUpdatedModel(_ model: MLModel & MLWritable, to url: URL) throws {
     /*
      Save `model` at the given URL.
      */

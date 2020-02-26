@@ -8,7 +8,7 @@
 import Foundation
 import CoreML
 
-public class ModelLoader {
+class ModelLoader {
     /*
      Utility class for preparing model to be trained with.
      */
@@ -28,7 +28,7 @@ public class ModelLoader {
         self.downloadModelURL = downloadModelURL
     }
 
-    public func loadModel() throws -> URL {
+    func loadModel() throws -> URL {
         /*
          Util method to download a .mlmodel file, compile it, and store it permanently.
          */

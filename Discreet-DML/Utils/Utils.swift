@@ -9,17 +9,17 @@
 import Foundation
 import CoreML
 
-public var registerName = "REGISTER"
+var registerName = "REGISTER"
 
-public var libraryName = "LIBRARY"
+var libraryName = "LIBRARY"
 
-public var trainName = "TRAIN"
+var trainName = "TRAIN"
 
-public var newUpdateName = "NEW_UPDATE"
+var newUpdateName = "NEW_UPDATE"
 
-public var stopName = "STOP"
+var stopName = "STOP"
 
-public func roundArr(arr: [Float32], places: Int) -> [Float32] {
+func roundArr(arr: [Float32], places: Int) -> [Float32] {
     /*
      Util method to round numbers in an array to `places` decimal places.
      */
@@ -31,7 +31,7 @@ public func roundArr(arr: [Float32], places: Int) -> [Float32] {
 }
 
 
-public func jsonify(object: Any) throws -> String {
+func jsonify(object: Any) throws -> String {
     /*
      Turn an object (Dictionary, Int, etc.) into a String
      
@@ -47,7 +47,7 @@ public func jsonify(object: Any) throws -> String {
     return String(data: data, encoding: String.Encoding.utf8)!
 }
 
-public func parseJSON(stringOrFile: String, isString: Bool) throws -> Any {
+func parseJSON(stringOrFile: String, isString: Bool) throws -> Any {
     /*
      Turn a String into JSON.
      
@@ -64,7 +64,7 @@ public func parseJSON(stringOrFile: String, isString: Bool) throws -> Any {
     
 }
 
-public func makeDictionaryString(keys: [String], values: [Any]) throws -> String {
+func makeDictionaryString(keys: [String], values: [Any]) throws -> String {
     /*
      Make a Dictionary with the given keys and values, and then turn it into a String.
      */
@@ -75,21 +75,25 @@ public func makeDictionaryString(keys: [String], values: [Any]) throws -> String
     return try jsonify(object: dict)
 }
 
-public func makeWebSocketURL(repoID: String) -> URL {
+func makeWebSocketURL(repoID: String) -> URL {
     /*
      Make URL for cloud WebSocket given the repo ID.
      */
     return URL(string: "ws://\(repoID).au4c4pd2ch.us-west-1.elasticbeanstalk.com")!
 }
 
-public func makeModelDownloadURL(repoID: String) -> URL {
+func makeCloudNodeURL(repoID: String) -> URL {
     /*
     Make URL for model hosted on cloud given the repo ID.
     */
-     return URL(string: "http://\(repoID).au4c4pd2ch.us-west-1.elasticbeanstalk.com/my_model.mlmodel")!
+     return URL(string: "http://\(repoID).au4c4pd2ch.us-west-1.elasticbeanstalk.com")!
 }
 
-public func makeWeightsPath(modelURL: URL) -> String {
+func makeModelDownloadURL(repoID: String) -> URL {
+    return makeCloudNodeURL(repoID: repoID).appendingPathComponent("/my_model.mlmodel")
+}
+
+func makeWeightsPath(modelURL: URL) -> String {
     /*
      Make path to the weights given the URL to the compiled model.
      */

@@ -30,7 +30,8 @@ class CommunicationManager: WebSocketDelegate {
     var socket: WebSocket!
     var reconnections: Int!
     var currentJob: DMLJob?
-    var timer: Timer?
+    var jobTimer: Timer?
+    var pingTimer: Timer?
 
     var isConnected = false
     var state = State.notConnected
@@ -44,7 +45,7 @@ class CommunicationManager: WebSocketDelegate {
         self.setUpJobQueue()
     }
 
-    public func connect() {
+    func connect() {
         /*
          Connect to the cloud node via WebSocket by using the repo ID to form the URL.
          */
@@ -52,7 +53,7 @@ class CommunicationManager: WebSocketDelegate {
         self.connect(webSocketURL: webSocketURL)
     }
     
-    public func connect(webSocketURL: URL) {
+    func connect(webSocketURL: URL) {
         /*
          Connect to the cloud node via WebSocket with the given URL.
          */
@@ -63,7 +64,7 @@ class CommunicationManager: WebSocketDelegate {
         self.socket.connect()
     }
 
-    public func didReceive(event: WebSocketEvent, client: WebSocket) {
+    func didReceive(event: WebSocketEvent, client: WebSocket) {
         /*
          Higher level function for dealing with new event. If our handler deems that there is a message to be sent, then send it.
          */
@@ -73,7 +74,7 @@ class CommunicationManager: WebSocketDelegate {
         }
     }
 
-    public func handleNewEvent(event: WebSocketEvent) throws -> String? {
+    func handleNewEvent(event: WebSocketEvent) throws -> String? {
         /*
          Inspect the provided event, and take the necessary actions. If there is a message to be sent to the cloud node, return it.
          */
@@ -105,6 +106,8 @@ class CommunicationManager: WebSocketDelegate {
             let errorMessage = error!
             print(errorMessage.localizedDescription)
             self.isConnected = false
+            self.pingTimer?.invalidate()
+            self.pingTimer = nil
         }
         return nil
     }
@@ -115,14 +118,13 @@ class CommunicationManager: WebSocketDelegate {
          */
         self.isConnected = true
         self.reconnections = 3
-        let registrationMessage = try makeDictionaryString(keys: ["type", "node_type"], values: [registerName, libraryName])
         state = State.idle
         
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            self.socket.write(ping: Data())
+        if self.socket != nil {
+            self.setUpPingTimer()
         }
         
-        return registrationMessage
+        return try makeDictionaryString(keys: ["type", "node_type"], values: [registerName, libraryName])
     }
 
     private func handleDisconnection() throws {
@@ -170,8 +172,8 @@ class CommunicationManager: WebSocketDelegate {
             if self.isValidTrainingState() {
                 try! self.coreMLClient!.train(job: self.currentJob!)
                 self.state = State.training
-                self.timer?.invalidate()
-                self.timer = nil
+                self.jobTimer?.invalidate()
+                self.jobTimer = nil
             } else {
                 self.state = State.notCharging
             }
@@ -182,10 +184,16 @@ class CommunicationManager: WebSocketDelegate {
         /*
          Start up the timer so that it checks for train jobs.
          */
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(validateTrainingState), userInfo: nil, repeats: true)
+        self.jobTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(validateTrainingState), userInfo: nil, repeats: true)
     }
     
-    public func isValidTrainingState() -> Bool {
+    private func setUpPingTimer() {
+        self.pingTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            self.socket.write(ping: Data())
+        }
+    }
+    
+    func isValidTrainingState() -> Bool {
         /*
          Return whether the device is in a valid training state.
          
@@ -198,7 +206,7 @@ class CommunicationManager: WebSocketDelegate {
         #endif
     }
 
-    public func handleTrainingComplete(job: DMLJob) throws -> String {
+    func handleTrainingComplete(job: DMLJob) throws -> String {
         /*
          Handler for Core ML when training has finished. Make the update message and send it.
          */
@@ -214,11 +222,15 @@ class CommunicationManager: WebSocketDelegate {
         return updateMessage
     }
 
-    public func reset() {
+    func reset() {
         /*
          Reset the Communication Manager back to its default state. Primarily useful for debugging and tests.
          */
         self.state = State.idle
         self.isConnected = false
+        self.jobTimer?.invalidate()
+        self.jobTimer = nil
+        self.pingTimer?.invalidate()
+        self.pingTimer = nil
     }
 }

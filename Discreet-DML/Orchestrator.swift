@@ -150,6 +150,10 @@ public class Orchestrator {
         try self.realmClient.clear(repoID: self.repoID)
     }
     
+    public func getBasicEncoder(vocabList: [String]) -> BasicEncoder {
+        return BasicEncoder(vocabList: vocabList)
+    }
+    
     private func validateInternetConnection() throws {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))

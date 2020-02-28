@@ -52,7 +52,7 @@ class IntegrationTests: XCTestCase {
          */
         
         let orchestrator2 = try! Orchestrator(repoID: testRemoteRepo)
-        try! orchestrator2.addImages(images: testImages, labels: testLabels)
+        try! orchestrator2.addImages(images: realImages, labels: realLabels)
         try! orchestrator2.connect()
         let iterationTime: Double = 0.5
         let maxTime: Double = 600

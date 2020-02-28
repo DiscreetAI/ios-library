@@ -39,6 +39,8 @@ var testEncodings = [[1, 2], [3, 4]]
 
 var testLabels = ["small", "large"]
 
+var testEncodingLabels = [0, 6]
+
 var testText = "and the quick brown fox jumped over lazy dog"
 
 var (realImages, realLabels) = makeImagePaths()

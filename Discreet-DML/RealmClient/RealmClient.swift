@@ -25,7 +25,7 @@ class RealmClient {
     
     
 
-    func addTextData(repoID: String, encodings: [[Int]], labels: [String]) throws {
+    func addTextData(repoID: String, encodings: [[Int]], labels: [Int]) throws {
         /*
          Store a 2D Int array and labels under the given `repoID`.
 
@@ -34,7 +34,7 @@ class RealmClient {
         do {
             try self.realm.write {
                 if let EncodingEntry = getTextEntry(repoID: repoID) {
-                    EncodingEntry.addData(encodings: encodings, labels: labels)
+                    EncodingEntry.addEncodings(encodings: encodings, labels: labels)
                 } else {
                     self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.TEXT))
                     self.realm.add(EncodingEntry(repoID: repoID, encodings: encodings, labels: labels))
@@ -155,17 +155,14 @@ class RealmClient {
          */
         if let metaDataEntry = self.getMetadataEntry(repoID: repoID) {
             let type = DataType(rawValue: metaDataEntry.dataType)
-            var entry: DataEntry
             switch type {
             case .TEXT:
-                entry = self.getTextEntry(repoID: repoID)!
-                break
+                return self.getTextEntry(repoID: repoID)!.getDatapointCount()
             case .IMAGE:
-                entry = self.getImageEntry(repoID: repoID)!
+                return self.getImageEntry(repoID: repoID)!.getDatapointCount()
             default:
                 throw DMLError.realmError(ErrorMessage.error)
             }
-            return entry.getDatapointCount()
         } else {
             throw DMLError.userError(ErrorMessage.failedRealmRead)
         }

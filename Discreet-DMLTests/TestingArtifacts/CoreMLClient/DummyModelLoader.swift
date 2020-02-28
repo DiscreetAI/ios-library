@@ -9,7 +9,7 @@
 import Foundation
 @testable import Discreet_DML
 
-class DummyModelLoader: ModelLoader {
+class DummyImageModelLoader: ModelLoader {
     /*
      Dummy model loader that simply compiles an already downloaded model and returns the URL.
      */
@@ -19,6 +19,20 @@ class DummyModelLoader: ModelLoader {
     
     override func loadModel() throws -> URL {
         let modelPath = testingUtilsPath + "CoreMLClient/" + "my_model.mlmodel"
+        return try compileModel(localModelURL: URL(fileURLWithPath: modelPath))
+    }
+}
+
+class DummyTextModelLoader: ModelLoader {
+    /*
+     Dummy model loader that simply compiles an already downloaded model and returns the URL.
+     */
+    convenience init() {
+        self.init(downloadModelURL: nil)
+    }
+    
+    override func loadModel() throws -> URL {
+        let modelPath = testingUtilsPath + "CoreMLClient/" + "neural_ngram_updatable.mlmodel"
         return try compileModel(localModelURL: URL(fileURLWithPath: modelPath))
     }
 }

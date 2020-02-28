@@ -22,7 +22,7 @@ class RealmClientTests: XCTestCase {
          Test storing Double data and retrieving it.
          */
         do {
-            try realmClient.addTextData(repoID: testRepo, encodings: testEncodings, labels: testLabels)
+            try realmClient.addTextData(repoID: testRepo, encodings: testEncodings, labels: testEncodingLabels)
             let metaDataEntry = realmClient.getMetadataEntry(repoID: testRepo)
             XCTAssertNotNil(metaDataEntry)
             if metaDataEntry != nil {
@@ -32,7 +32,7 @@ class RealmClientTests: XCTestCase {
                 if encodingEntry != nil {
                     let (retrievedEncodings, retrievedLabels) = encodingEntry!.getData()
                     XCTAssertEqual(testEncodings, retrievedEncodings)
-                    XCTAssertEqual(testLabels, retrievedLabels)
+                    XCTAssertEqual(testEncodingLabels, retrievedLabels)
                 }
             }
         } catch {

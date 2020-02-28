@@ -18,7 +18,7 @@ class MenuViewController: UITableViewController {
     Models.copyEmptyNeuralNetwork()
     
     if orchestrator == nil {
-      orchestrator = try! Orchestrator(repoID: "f93bb383416a5140c328ee1bd177eb6c", connect: false)
+      orchestrator = try! Orchestrator(repoID: "507c3715ffbc4cb5914e94a6eaeeaaf0")
     }
   }
 

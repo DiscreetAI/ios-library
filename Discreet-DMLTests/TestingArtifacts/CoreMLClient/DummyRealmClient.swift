@@ -9,7 +9,7 @@
 import Foundation
 @testable import Discreet_DML
 
-class DummyRealmClient: RealmClient {
+class DummyImageRealmClient: RealmClient {
     /*
      Dummy class for simulating data stored in Realm.
      */
@@ -23,5 +23,22 @@ class DummyRealmClient: RealmClient {
 
     override func getMetadataEntry(repoID: String) -> MetadataEntry? {
         return Optional(MetadataEntry(repoID: repoID, dataType: DataType.IMAGE))
+    }
+}
+
+class DummyTextRealmClient: RealmClient {
+    /*
+     Dummy class for simulating data stored in Realm.
+     */
+    override init() throws {
+
+    }
+
+    override func getMetadataEntry(repoID: String) -> MetadataEntry? {
+        return Optional(MetadataEntry(repoID: repoID, dataType: DataType.TEXT))
+    }
+    
+    override func getTextEntry(repoID: String) -> EncodingEntry? {
+        return Optional(EncodingEntry(repoID: repoID, encodings: realEncodings, labels: realEncodingLabels))
     }
 }

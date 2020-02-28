@@ -43,6 +43,8 @@
 		E468507223E5498C00D3D689 /* CoreMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468507123E5498C00D3D689 /* CoreMLUtils.swift */; };
 		E476E5CE23ED0562008B8D8A /* mnist in Resources */ = {isa = PBXBuildFile; fileRef = E476E5CD23ED0562008B8D8A /* mnist */; };
 		E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BDD5223D689A400A954FE /* TestingUtils.swift */; };
+		E4ABEE4D24071C5400D5199E /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABEE4C24071C5400D5199E /* TextUtils.swift */; };
+		E4ABEE4F2407235D00D5199E /* neural_ngram_updatable.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E4ABEE4E2407235C00D5199E /* neural_ngram_updatable.mlmodel */; };
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
 		E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */; };
@@ -117,6 +119,8 @@
 		E468507123E5498C00D3D689 /* CoreMLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLUtils.swift; sourceTree = "<group>"; };
 		E476E5CD23ED0562008B8D8A /* mnist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mnist; sourceTree = "<group>"; };
 		E49BDD5223D689A400A954FE /* TestingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
+		E4ABEE4C24071C5400D5199E /* TextUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtils.swift; sourceTree = "<group>"; };
+		E4ABEE4E2407235C00D5199E /* neural_ngram_updatable.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = neural_ngram_updatable.mlmodel; sourceTree = "<group>"; };
 		E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessor.swift; sourceTree = "<group>"; };
 		E4BA35F023AB187000F81825 /* BinaryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryUtils.swift; sourceTree = "<group>"; };
 		E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMLJob.swift; sourceTree = "<group>"; };
@@ -171,7 +175,7 @@
 			children = (
 				E40978FD23A0A39F00F51C42 /* Discreet-DML */,
 				E409790823A0A3A000F51C42 /* Discreet-DMLTests */,
-				E4301B3A2405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */,
+				E4301B3A2405CD6C00ED9CA4 /* Discreet-DMLIntegrationTests */,
 				E40978FC23A0A39F00F51C42 /* Products */,
 				E4AF70E323D905B400D65376 /* Frameworks */,
 				40DEAEC38CF5479E62B69B9F /* Pods */,
@@ -286,6 +290,7 @@
 		E41D7C0B23E37E8300D58478 /* CoreMLClient */ = {
 			isa = PBXGroup;
 			children = (
+				E4ABEE4E2407235C00D5199E /* neural_ngram_updatable.mlmodel */,
 				E476E5CD23ED0562008B8D8A /* mnist */,
 				E41B26F023ED00DC0095C1CD /* my_model.mlmodel */,
 				E468506423E5415100D3D689 /* DummyRealmClient.swift */,
@@ -293,6 +298,7 @@
 				E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */,
 				E468506A23E542B600D3D689 /* DummyModelLoader.swift */,
 				E468506F23E5449C00D3D689 /* ImageUtils.swift */,
+				E4ABEE4C24071C5400D5199E /* TextUtils.swift */,
 			);
 			path = CoreMLClient;
 			sourceTree = "<group>";
@@ -305,13 +311,13 @@
 			path = Orchestrator;
 			sourceTree = "<group>";
 		};
-		E4301B3A2405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */ = {
+		E4301B3A2405CD6C00ED9CA4 /* Discreet-DMLIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
 				E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */,
 				E4301B3D2405CD6D00ED9CA4 /* Info.plist */,
 			);
-			path = Discreet_DMLIntegrationTests;
+			path = "Discreet-DMLIntegrationTests";
 			sourceTree = "<group>";
 		};
 		E468506C23E543BD00D3D689 /* CommunicationManager */ = {
@@ -584,12 +590,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4ABEE4F2407235D00D5199E /* neural_ngram_updatable.mlmodel in Sources */,
 				E4301B472406009000ED9CA4 /* EncoderTests.swift in Sources */,
 				E4D72E4323DFA7ED00BE3B75 /* RealmClientTests.swift in Sources */,
 				E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */,
 				E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */,
 				E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */,
 				E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */,
+				E4ABEE4D24071C5400D5199E /* TextUtils.swift in Sources */,
 				E42C76E923E8DCD20003F638 /* OrchestratorTests.swift in Sources */,
 				E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */,
 				E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */,

@@ -26,6 +26,20 @@ extension MLMultiArray {
         return o
     }
     
+    static func from(_ arr: [Int], dims: Int) -> MLMultiArray {
+        /*
+        Load 1D Int Array as MLMultiArray
+        */
+        var shape = Array(repeating: 1, count: dims)
+        shape[shape.count - 1] = arr.count
+        let o = try! MLMultiArray(shape: shape as [NSNumber], dataType: .int32)
+        let ptr = UnsafeMutablePointer<Int32>(OpaquePointer(o.dataPointer))
+        for (i, item) in arr.enumerated() {
+            ptr[i] = Int32(item)
+        }
+        return o
+    }
+    
     static func from(_ arr: [Double]) throws -> MLMultiArray {
         /*
          Load 1D Double Array as MLMultiArray

@@ -10,16 +10,11 @@ class TrainNeuralNetworkViewController: UIViewController {
     var model: MLModel!
     var trainingDataset: ImageDataset!
     var validationDataset: ImageDataset!
-    var trainer: NeuralNetworkTrainer!
     var lastState: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        trainer = NeuralNetworkTrainer(modelURL: Models.trainedNeuralNetworkURL,
-                                       trainingDataset: trainingDataset,
-                                       validationDataset: validationDataset,
-                                       imageConstraint: imageConstraint(model: model))
         if !orchestrator.isConnected() {
             lastState = orchestrator.getState()
             self.statusLabel.text = lastState
@@ -27,7 +22,7 @@ class TrainNeuralNetworkViewController: UIViewController {
             self.statusLabel.numberOfLines = 0
             self.statusLabel.sizeToFit()
             
-            orchestrator.clearData()
+            try! orchestrator.clearData()
             var images = [String]()
             var labels = [String]()
             
@@ -48,9 +43,9 @@ class TrainNeuralNetworkViewController: UIViewController {
                 labels.append(label)
             }
             
-            orchestrator.storeImages(images: images, labels: labels)
+            try! orchestrator.addImages(images: images, labels: labels)
             
-            orchestrator.connect()
+            try! orchestrator.connect()
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 let newStatus = orchestrator.getState()
@@ -80,7 +75,7 @@ class TrainNeuralNetworkViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         // The user tapped the back button.
-        stopTraining()
+        //stopTraining()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,23 +83,23 @@ class TrainNeuralNetworkViewController: UIViewController {
     }
     
     @objc func appWillResignActive() {
-        stopTraining()
+        //stopTraining()
     }
     
     @IBAction func oneEpochTapped(_ sender: Any) {
-        startTraining(epochs: 1)
+        //startTraining(epochs: 1)
     }
     
     @IBAction func tenEpochsTapped(_ sender: Any) {
-        startTraining(epochs: 10)
+        //startTraining(epochs: 10)
     }
     
     @IBAction func fiftyEpochsTapped(_ sender: Any) {
-        startTraining(epochs: 50)
+        //startTraining(epochs: 50)
     }
     
     @IBAction func stopTapped(_ sender: Any) {
-        stopTraining()
+        //stopTraining()
     }
     
     @IBAction func learningRateSliderMoved(_ sender: UISlider) {
@@ -123,47 +118,7 @@ class TrainNeuralNetworkViewController: UIViewController {
     }
 }
 
-extension TrainNeuralNetworkViewController {
-    func startTraining(epochs: Int) {
-        guard trainingDataset.count > 0 else {
-            statusLabel.text = "No training images"
-            return
-        }
-        
-        updateButtons()
-        
-        trainer.train(epochs: epochs, learningRate: settings.learningRate, callback: trainingCallback)
-    }
-    
-    func stopTraining() {
-        trainer.cancel()
-        trainingStopped()
-    }
-    
-    func trainingStopped() {
-        updateButtons()
-    }
-    
-    func trainingCallback(callback: NeuralNetworkTrainer.Callback) {
-        DispatchQueue.main.async {
-            switch callback {
-            case let .epochEnd(trainLoss, valLoss, valAcc):
-                history.addEvent(trainLoss: trainLoss, validationLoss: valLoss, validationAccuracy: valAcc)
-                
-                let indexPath = IndexPath(row: history.count - 1, section: 0)
-                
-            case .completed(let updatedModel):
-                self.trainingStopped()
-                
-                // Replace our model with the newly trained one.
-                self.model = updatedModel
-                
-            case .error:
-                self.trainingStopped()
-            }
-        }
-    }
-}
+
 
 extension TrainNeuralNetworkViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -19,12 +19,10 @@ func makeImagePaths() -> ([String], [String]) {
             labels.append(label)
         }
     }
-    
     return (examples, labels)
 }
 
 private func fileURLs(at url: URL) -> [URL] {
-    print(url.path)
     return contentsOfDirectory(at: url)!
 }
 

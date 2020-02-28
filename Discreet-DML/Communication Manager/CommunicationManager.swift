@@ -162,29 +162,23 @@ class CommunicationManager: WebSocketDelegate {
         }
     }
     
-    @objc private func validateTrainingState() {
-        /*
-         Function to be called by job queue timer.
-         
-         Checks whether there is a job on the queue and whether the device is in a valid training state.
-         */
-        if self.currentJob != nil && self.state != State.training {
-            if self.isValidTrainingState() {
-                try! self.coreMLClient!.train(job: self.currentJob!)
-                self.state = State.training
-                self.jobTimer?.invalidate()
-                self.jobTimer = nil
-            } else {
-                self.state = State.notCharging
-            }
-        }
-    }
-    
     private func setUpJobQueue() {
         /*
          Start up the timer so that it checks for train jobs.
          */
-        self.jobTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(validateTrainingState), userInfo: nil, repeats: true)
+        self.jobTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            print(self.currentJob != nil, self.state != State.training)
+            if self.currentJob != nil && self.state != State.training {
+                if self.isValidTrainingState() {
+                    self.state = State.training
+                    self.jobTimer?.invalidate()
+                    self.jobTimer = nil
+                    try! self.coreMLClient!.train(job: self.currentJob!)
+                } else {
+                    self.state = State.notCharging
+                }
+            }
+        }
     }
     
     private func setUpPingTimer() {

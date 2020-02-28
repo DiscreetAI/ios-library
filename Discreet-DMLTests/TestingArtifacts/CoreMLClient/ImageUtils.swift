@@ -24,6 +24,7 @@ func makeImagePaths() -> ([String], [String]) {
 }
 
 private func fileURLs(at url: URL) -> [URL] {
+    print(url.path)
     return contentsOfDirectory(at: url)!
 }
 

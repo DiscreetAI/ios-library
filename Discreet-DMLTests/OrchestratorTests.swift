@@ -108,7 +108,7 @@ class OrchestratorTests: XCTestCase {
          WARNING: This test takes a long time to run (about 2 minutes).
          */
         let iterationTime: Double = 0.5
-        let maxTime: Double = 125
+        let maxTime: Double = 300
         let maxIterations = maxTime/iterationTime
         var numIterations = 0.0
 

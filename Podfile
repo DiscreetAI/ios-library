@@ -12,3 +12,9 @@ target 'Discreet-DMLTests' do
   pod 'Starscream', '~> 4.0.0'
   pod 'Surge', '~> 2.3.0'
 end
+
+target 'Discreet_DMLIntegrationTests' do
+  pod 'RealmSwift', '>= 0.92.3'
+  pod 'Starscream', '~> 4.0.0'
+  pod 'Surge', '~> 2.3.0'
+end

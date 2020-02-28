@@ -29,7 +29,7 @@ class IntegrationTests: XCTestCase {
          */
         let orchestrator2 = try! Orchestrator(repoID: testRepo)
         orchestrator2.coreMLClient.modelLoader = ModelLoader(downloadModelURL: URL(string: "http://127.0.0.1:8999/my_model.mlmodel")!)
-        try! orchestrator2.addImages(images: testImages, labels: testLabels)
+        try! orchestrator2.addImages(images: realImages, labels: realLabels)
         try! orchestrator2.connect(webSocketURL: testWebSocketURL)
         let iterationTime: Double = 0.5
         let maxTime: Double = 600
@@ -52,7 +52,7 @@ class IntegrationTests: XCTestCase {
          */
         
         let orchestrator2 = try! Orchestrator(repoID: testRemoteRepo)
-        try! orchestrator2.addImages(images: testImages, labels: testLabels)
+        try! orchestrator2.addImages(images: realImages, labels: realLabels)
         try! orchestrator2.connect()
         let iterationTime: Double = 0.5
         let maxTime: Double = 600

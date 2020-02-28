@@ -24,10 +24,6 @@ extension Models {
     urlForModelInDocumentsDirectory(.trainedNeuralNetwork)
   }
 
-  private static func urlForModelInBundle(_ model: Models) -> URL {
-    Bundle.main.url(forResource: model.rawValue, withExtension: "mlmodelc")!
-  }
-
   private static func urlForModelInDocumentsDirectory(_ model: Models) -> URL {
     Gestures.urlForModelInDocumentsDirectory(model.rawValue)
   }
@@ -73,9 +69,7 @@ extension Models {
   }
 
   private static func copyModelToDocumentsDirectory(from: Models, to: Models) {
-    let fromURL = urlForModelInBundle(from)
-    let toURL = urlForModelInDocumentsDirectory(to)
-    copyIfNotExists(from: fromURL, to: toURL)
+
   }
 
   static func deleteTrainedNearestNeighbors() {

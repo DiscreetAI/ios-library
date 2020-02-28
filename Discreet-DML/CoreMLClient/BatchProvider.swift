@@ -14,10 +14,10 @@ class TextBatchProvider: MLBatchProvider {
      MLBatchProvider subclass for encoded Text data.
      */
     var encodings: [[Int]]
-    var labels: [String]
+    var labels: [Int]
     var count: Int
     
-    init(encodings: [[Int]], labels: [String]) {
+    init(encodings: [[Int]], labels: [Int]) {
         /*
          data: 2D array of Int encodings.
          labels: 1D array of labels for encodings.

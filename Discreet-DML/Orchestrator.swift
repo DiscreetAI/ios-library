@@ -30,7 +30,7 @@ public class Orchestrator {
         self.coreMLClient.configure(communicationManager: self.communicationManager)
     }
     
-    public convenience init(repoID: String, encodings: [[Int]], labels: [String]) throws {
+    public convenience init(repoID: String, encodings: [[Int]], labels: [Int]) throws {
         /*
          repoID: repo ID corresponding to cloud node.
          */
@@ -48,7 +48,7 @@ public class Orchestrator {
         try self.connect()
     }
 
-    public func addEncodings(encodings: [[Int]], labels: [String]) throws {
+    public func addEncodings(encodings: [[Int]], labels: [Int]) throws {
         /*
          Store 2D Int data.
          */
@@ -190,7 +190,7 @@ public class Orchestrator {
         }
     }
     
-    private func validateData(data: [Any], labels: [String]) throws {
+    private func validateData(data: [Any], labels: [Any]) throws {
         if data.count != labels.count || data.count == 0 {
             throw DMLError.userError(ErrorMessage.invalidStore)
         }
@@ -207,7 +207,7 @@ public class Orchestrator {
         }
     }
     
-    private func validateEncodings(encodings: [[Int]], labels: [String]) throws {
+    private func validateEncodings(encodings: [[Int]], labels: [Int]) throws {
         try validateData(data: encodings, labels: labels)
     }
 }

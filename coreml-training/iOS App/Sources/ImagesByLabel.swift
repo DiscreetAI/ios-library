@@ -46,7 +46,7 @@ class ImagesByLabel {
         print("Successfully saved \(imageURL.path) to the app!")
     }
     
-    orchestrator.storeImages(images: [imageURL.path], labels: [label])
+    try! orchestrator.addImages(images: [imageURL.path], labels: [label])
     // The new image is always added at the end, so we can simply append
     // the new index to the group for this label.
     groups[label]!.append(dataset.count - 1)
@@ -54,7 +54,7 @@ class ImagesByLabel {
 
   func removeImage(for label: String, at index: Int) {
     dataset.removeImage(at: flatIndex(for: label, at: index))
-    orchestrator.removeImage(index: index)
+    try! orchestrator.removeImage(index: index)
     // All the image indices following the deleted image are now off by one,
     // so recompute all the groups.
     updateGroups()

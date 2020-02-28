@@ -18,7 +18,7 @@ class OrchestratorTests: XCTestCase {
     }
     
     func testInvalidRepoID() {
-        XCTAssertThrowsError(try Orchestrator(repoID: testRepo, encodings: testEncodings, labels: testLabels)) { error in
+        XCTAssertThrowsError(try Orchestrator(repoID: testRepo, encodings: testEncodings, labels: testEncodingLabels)) { error in
             XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidRepoID))
         }
     }

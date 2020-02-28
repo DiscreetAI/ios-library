@@ -13,7 +13,6 @@ class DataEntry: Object {
      General dataset object. Uniquely identified by `repoID`.
      */
     @objc dynamic var repoID: String = ""
-    let labels: List<String> = List<String>()
 
     convenience init(repoID: String) {
         /*
@@ -29,20 +28,6 @@ class DataEntry: Object {
          */
         return "repoID"
     }
-    
-    func addLabels(labels: [String]) {
-        /*
-         Add labels to this entry (usually in conjunction with data).
-         */
-        self.labels.append(objectsIn: labels)
-    }
-    
-    func getDatapointCount() -> Int {
-        /*
-         Return the number of datapoints.
-         */
-        return self.labels.count
-    }
 }
 
 class ImageEntry: DataEntry {
@@ -50,6 +35,7 @@ class ImageEntry: DataEntry {
      Dataset object representing a list of paths to images on device.
      */
     let images: List<String> = List<String>()
+    let labels: List<String> = List<String>()
 
     convenience init(repoID: String, images: [String], labels: [String]) {
         /*
@@ -58,7 +44,7 @@ class ImageEntry: DataEntry {
          labels: 1D array of labels for data.
          */
         self.init(repoID: repoID)
-        addImages(images: images, labels: labels)
+        self.addImages(images: images, labels: labels)
     }
 
     func addImages(images: [String], labels: [String]) {
@@ -66,7 +52,7 @@ class ImageEntry: DataEntry {
          Add more images and labels to this entry.
          */
         self.images.append(objectsIn: images)
-        addLabels(labels: labels)
+        self.labels.append(objectsIn: labels)
     }
     
     func getData() -> ([String], [String]) {
@@ -86,6 +72,13 @@ class ImageEntry: DataEntry {
         self.labels.removeAll()
         self.addImages(images: images, labels: labels)
     }
+    
+    func getDatapointCount() -> Int {
+        /*
+         Return the number of datapoints.
+         */
+        return self.labels.count
+    }
 }
 
 class EncodingEntry: DataEntry {
@@ -93,18 +86,19 @@ class EncodingEntry: DataEntry {
      Dataset object representing a 2D array of Ints.
      */
     let encodings: List<EncodingDatapoint> = List<EncodingDatapoint>()
+    let labels: List<Int> = List<Int>()
 
-    convenience init(repoID: String, encodings: [[Int]], labels: [String]) {
+    convenience init(repoID: String, encodings: [[Int]], labels: [Int]) {
         /*
          repoID: repo ID associated with this entry.
          encodings: 2D array of Int data.
          labels: 1D array of labels for data.
          */
         self.init(repoID: repoID)
-        addData(encodings: encodings, labels: labels)
+        self.addEncodings(encodings: encodings, labels: labels)
     }
 
-    func addData(encodings: [[Int]], labels: [String]) {
+    func addEncodings(encodings: [[Int]], labels: [Int]) {
         /*
         Add more encodings and labels to this entry.
         */
@@ -113,10 +107,10 @@ class EncodingEntry: DataEntry {
             return EncodingDatapoint(encodingDatapoint: encodingDatapoint)
         })
         self.encodings.append(objectsIn: encodings)
-        addLabels(labels: labels)
+        self.labels.append(objectsIn: labels)
     }
     
-    func getData() -> ([[Int]], [String]) {
+    func getData() -> ([[Int]], [Int]) {
         /*
         Unwrap this entry as tuple of encodings and labels.
         */
@@ -126,6 +120,13 @@ class EncodingEntry: DataEntry {
         })
         let unwrappedLabels = Array(self.labels)
         return (unwrappedData, unwrappedLabels)
+    }
+    
+    func getDatapointCount() -> Int {
+        /*
+         Return the number of datapoints.
+         */
+        return self.labels.count
     }
 }
 

@@ -61,7 +61,6 @@ func parseJSON(stringOrFile: String, isString: Bool) throws -> Any {
         print(error.localizedDescription)
         throw DMLError.communicationManagerError(ErrorMessage.failedParse)
     }
-    
 }
 
 func makeDictionaryString(keys: [String], values: [Any]) throws -> String {

@@ -14,11 +14,11 @@ class TextFeatureProvider : MLFeatureProvider {
      MLFeatureProvider for Double data.
      */
     var input: MLMultiArray
-    var label: String
+    var label: MLMultiArray
     
     var featureNames: Set<String> {
         get {
-            return ["input", "label"]
+            return ["input.1", "14_true"]
         }
     }
     
@@ -26,16 +26,16 @@ class TextFeatureProvider : MLFeatureProvider {
         /*
         Return a MLFeatureValue based on whether the feature is the datapoint or label.
         */
-        if (featureName == "input") {
+        if (featureName == "input.1") {
             return MLFeatureValue(multiArray: input)
         }
-        if (featureName == "label") {
-            return MLFeatureValue(string: label)
+        if (featureName == "14_true") {
+            return MLFeatureValue(multiArray: label)
         }
         return nil
     }
     
-    init(input: MLMultiArray, label: String) {
+    init(input: MLMultiArray, label: MLMultiArray) {
         /*
          image: The pixel buffer corresponding to the image.
          label: The label corresponding to this image.
@@ -44,13 +44,13 @@ class TextFeatureProvider : MLFeatureProvider {
         self.label = label
     }
     
-    init(input: [Int], label: String) {
+    init(input: [Int], label: Int) {
         /*
          image: The pixel buffer corresponding to the image.
          label: The label corresponding to this image.
          */
-        self.input = try! MLMultiArray.from(input)
-        self.label = label
+        self.input = MLMultiArray.from(input, dims: 2)
+        self.label = MLMultiArray.from([label])
     }
 }
 

@@ -20,8 +20,7 @@ class DummyCommunicationManager: CommunicationManager {
     }
 
     override func handleTrainingComplete(job: DMLJob) throws -> String {
-        self.currentJob = nil
-        self.state = State.waiting
+        try! super.handleTrainingComplete(job: job)
         self.success = true
         return ""
     }

@@ -183,15 +183,6 @@
 		E40CEDD5240897FE002D4CCD /* neural_ngram_updatable.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E40CED0E240897FE002D4CCD /* neural_ngram_updatable.mlmodel */; };
 		E40CEDD6240897FE002D4CCD /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40CED0F240897FE002D4CCD /* DummyRealmClient.swift */; };
 		E40CEDD7240897FE002D4CCD /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40CED13240897FE002D4CCD /* ImageUtils.swift */; };
-		E40CEDD8240897FE002D4CCD /* model.espresso.shape in Resources */ = {isa = PBXBuildFile; fileRef = E40CED16240897FE002D4CCD /* model.espresso.shape */; };
-		E40CEDD9240897FE002D4CCD /* model.espresso.net in Resources */ = {isa = PBXBuildFile; fileRef = E40CED17240897FE002D4CCD /* model.espresso.net */; };
-		E40CEDDA240897FE002D4CCD /* model.espresso.weights in Resources */ = {isa = PBXBuildFile; fileRef = E40CED18240897FE002D4CCD /* model.espresso.weights */; };
-		E40CEDDB240897FE002D4CCD /* model.rank.info.json in Resources */ = {isa = PBXBuildFile; fileRef = E40CED19240897FE002D4CCD /* model.rank.info.json */; };
-		E40CEDDC240897FE002D4CCD /* coremldata.bin in Resources */ = {isa = PBXBuildFile; fileRef = E40CED1B240897FE002D4CCD /* coremldata.bin */; };
-		E40CEDDD240897FE002D4CCD /* coremldata.bin in Resources */ = {isa = PBXBuildFile; fileRef = E40CED1D240897FE002D4CCD /* coremldata.bin */; };
-		E40CEDDE240897FE002D4CCD /* coremldata.bin in Resources */ = {isa = PBXBuildFile; fileRef = E40CED1E240897FE002D4CCD /* coremldata.bin */; };
-		E40CEDDF240897FE002D4CCD /* coremldata.bin in Resources */ = {isa = PBXBuildFile; fileRef = E40CED21240897FE002D4CCD /* coremldata.bin */; };
-		E40CEDE0240897FE002D4CCD /* coremldata.bin in Resources */ = {isa = PBXBuildFile; fileRef = E40CED22240897FE002D4CCD /* coremldata.bin */; };
 		E40CEDE1240897FE002D4CCD /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = E40CED23240897FE002D4CCD /* data.json */; };
 		E40CEDE2240897FE002D4CCD /* DummyModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40CED27240897FE002D4CCD /* DummyModelLoader.swift */; };
 		E40CEDE3240897FE002D4CCD /* DummyCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40CED29240897FE002D4CCD /* DummyCommunicationManager.swift */; };
@@ -445,15 +436,6 @@
 		E40CED0E240897FE002D4CCD /* neural_ngram_updatable.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = neural_ngram_updatable.mlmodel; sourceTree = "<group>"; };
 		E40CED0F240897FE002D4CCD /* DummyRealmClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
 		E40CED13240897FE002D4CCD /* ImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
-		E40CED16240897FE002D4CCD /* model.espresso.shape */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model.espresso.shape; sourceTree = "<group>"; };
-		E40CED17240897FE002D4CCD /* model.espresso.net */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model.espresso.net; sourceTree = "<group>"; };
-		E40CED18240897FE002D4CCD /* model.espresso.weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = model.espresso.weights; sourceTree = "<group>"; };
-		E40CED19240897FE002D4CCD /* model.rank.info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = model.rank.info.json; sourceTree = "<group>"; };
-		E40CED1B240897FE002D4CCD /* coremldata.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = coremldata.bin; sourceTree = "<group>"; };
-		E40CED1D240897FE002D4CCD /* coremldata.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = coremldata.bin; sourceTree = "<group>"; };
-		E40CED1E240897FE002D4CCD /* coremldata.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = coremldata.bin; sourceTree = "<group>"; };
-		E40CED21240897FE002D4CCD /* coremldata.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = coremldata.bin; sourceTree = "<group>"; };
-		E40CED22240897FE002D4CCD /* coremldata.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = coremldata.bin; sourceTree = "<group>"; };
 		E40CED23240897FE002D4CCD /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		E40CED27240897FE002D4CCD /* DummyModelLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyModelLoader.swift; sourceTree = "<group>"; };
 		E40CED29240897FE002D4CCD /* DummyCommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyCommunicationManager.swift; sourceTree = "<group>"; };
@@ -638,25 +620,14 @@
 			isa = PBXGroup;
 			children = (
 				E40CEC5F240897FE002D4CCD /* mnist */,
-				E40CED0A240897FE002D4CCD /* (A Document Being Saved By xctest 3) */,
 				E40CED0B240897FE002D4CCD /* TextUtils.swift */,
 				E40CED0C240897FE002D4CCD /* DummyWeightsProcessor.swift */,
-				E40CED0D240897FE002D4CCD /* (A Document Being Saved By xctest 9) */,
 				E40CED0E240897FE002D4CCD /* neural_ngram_updatable.mlmodel */,
 				E40CED0F240897FE002D4CCD /* DummyRealmClient.swift */,
-				E40CED10240897FE002D4CCD /* (A Document Being Saved By xctest 4) */,
-				E40CED11240897FE002D4CCD /* (A Document Being Saved By xctest 10) */,
-				E40CED12240897FE002D4CCD /* (A Document Being Saved By xctest 7) */,
 				E40CED13240897FE002D4CCD /* ImageUtils.swift */,
-				E40CED14240897FE002D4CCD /* (A Document Being Saved By xctest) */,
 				E40CED23240897FE002D4CCD /* data.json */,
-				E40CED24240897FE002D4CCD /* (A Document Being Saved By xctest 6) */,
-				E40CED25240897FE002D4CCD /* (A Document Being Saved By xctest 5) */,
-				E40CED26240897FE002D4CCD /* (A Document Being Saved By xctest 11) */,
 				E40CED27240897FE002D4CCD /* DummyModelLoader.swift */,
-				E40CED28240897FE002D4CCD /* (A Document Being Saved By xctest 2) */,
 				E40CED29240897FE002D4CCD /* DummyCommunicationManager.swift */,
-				E40CED2A240897FE002D4CCD /* (A Document Being Saved By xctest 8) */,
 				E40CED2B240897FE002D4CCD /* my_model.mlmodel */,
 			);
 			path = CoreMLClient;
@@ -907,132 +878,6 @@
 				E40CED09240897FE002D4CCD /* 0.png */,
 			);
 			path = 5;
-			sourceTree = "<group>";
-		};
-		E40CED0A240897FE002D4CCD /* (A Document Being Saved By xctest 3) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 3)";
-			sourceTree = "<group>";
-		};
-		E40CED0D240897FE002D4CCD /* (A Document Being Saved By xctest 9) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 9)";
-			sourceTree = "<group>";
-		};
-		E40CED10240897FE002D4CCD /* (A Document Being Saved By xctest 4) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 4)";
-			sourceTree = "<group>";
-		};
-		E40CED11240897FE002D4CCD /* (A Document Being Saved By xctest 10) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 10)";
-			sourceTree = "<group>";
-		};
-		E40CED12240897FE002D4CCD /* (A Document Being Saved By xctest 7) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 7)";
-			sourceTree = "<group>";
-		};
-		E40CED14240897FE002D4CCD /* (A Document Being Saved By xctest) */ = {
-			isa = PBXGroup;
-			children = (
-				E40CED15240897FE002D4CCD /* neural_ngram_updatable.mlmodelc */,
-			);
-			path = "(A Document Being Saved By xctest)";
-			sourceTree = "<group>";
-		};
-		E40CED15240897FE002D4CCD /* neural_ngram_updatable.mlmodelc */ = {
-			isa = PBXGroup;
-			children = (
-				E40CED16240897FE002D4CCD /* model.espresso.shape */,
-				E40CED17240897FE002D4CCD /* model.espresso.net */,
-				E40CED18240897FE002D4CCD /* model.espresso.weights */,
-				E40CED19240897FE002D4CCD /* model.rank.info.json */,
-				E40CED1A240897FE002D4CCD /* model */,
-				E40CED1C240897FE002D4CCD /* neural_network_optionals */,
-				E40CED1E240897FE002D4CCD /* coremldata.bin */,
-				E40CED1F240897FE002D4CCD /* updateParameters */,
-			);
-			path = neural_ngram_updatable.mlmodelc;
-			sourceTree = "<group>";
-		};
-		E40CED1A240897FE002D4CCD /* model */ = {
-			isa = PBXGroup;
-			children = (
-				E40CED1B240897FE002D4CCD /* coremldata.bin */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		E40CED1C240897FE002D4CCD /* neural_network_optionals */ = {
-			isa = PBXGroup;
-			children = (
-				E40CED1D240897FE002D4CCD /* coremldata.bin */,
-			);
-			path = neural_network_optionals;
-			sourceTree = "<group>";
-		};
-		E40CED1F240897FE002D4CCD /* updateParameters */ = {
-			isa = PBXGroup;
-			children = (
-				E40CED20240897FE002D4CCD /* NetworkUpdateParameters */,
-				E40CED22240897FE002D4CCD /* coremldata.bin */,
-			);
-			path = updateParameters;
-			sourceTree = "<group>";
-		};
-		E40CED20240897FE002D4CCD /* NetworkUpdateParameters */ = {
-			isa = PBXGroup;
-			children = (
-				E40CED21240897FE002D4CCD /* coremldata.bin */,
-			);
-			path = NetworkUpdateParameters;
-			sourceTree = "<group>";
-		};
-		E40CED24240897FE002D4CCD /* (A Document Being Saved By xctest 6) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 6)";
-			sourceTree = "<group>";
-		};
-		E40CED25240897FE002D4CCD /* (A Document Being Saved By xctest 5) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 5)";
-			sourceTree = "<group>";
-		};
-		E40CED26240897FE002D4CCD /* (A Document Being Saved By xctest 11) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 11)";
-			sourceTree = "<group>";
-		};
-		E40CED28240897FE002D4CCD /* (A Document Being Saved By xctest 2) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 2)";
-			sourceTree = "<group>";
-		};
-		E40CED2A240897FE002D4CCD /* (A Document Being Saved By xctest 8) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "(A Document Being Saved By xctest 8)";
 			sourceTree = "<group>";
 		};
 		E40CED2C240897FE002D4CCD /* Orchestrator */ = {
@@ -1316,8 +1161,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E40CED84240897FE002D4CCD /* 202.png in Resources */,
-				E40CEDDF240897FE002D4CCD /* coremldata.bin in Resources */,
-				E40CEDDB240897FE002D4CCD /* model.rank.info.json in Resources */,
 				E40CED5E240897FE002D4CCD /* 141.png in Resources */,
 				E40CED8A240897FE002D4CCD /* 94.png in Resources */,
 				E40CEDAA240897FE002D4CCD /* 135.png in Resources */,
@@ -1325,12 +1168,8 @@
 				E40CED9F240897FE002D4CCD /* 142.png in Resources */,
 				E40CED7D240897FE002D4CCD /* 23.png in Resources */,
 				E40CED57240897FE002D4CCD /* 15.png in Resources */,
-				E40CEDDE240897FE002D4CCD /* coremldata.bin in Resources */,
 				E40CED9D240897FE002D4CCD /* 127.png in Resources */,
 				E40CED48240897FE002D4CCD /* 21.png in Resources */,
-				E40CEDDD240897FE002D4CCD /* coremldata.bin in Resources */,
-				E40CEDD9240897FE002D4CCD /* model.espresso.net in Resources */,
-				E40CEDDC240897FE002D4CCD /* coremldata.bin in Resources */,
 				E40CED85240897FE002D4CCD /* 160.png in Resources */,
 				E40CED46240897FE002D4CCD /* 114.png in Resources */,
 				E40CEDB3240897FE002D4CCD /* 76.png in Resources */,
@@ -1389,7 +1228,6 @@
 				E40CEDAC240897FE002D4CCD /* 27.png in Resources */,
 				E40CEDCA240897FE002D4CCD /* 35.png in Resources */,
 				E40CED58240897FE002D4CCD /* 103.png in Resources */,
-				E40CEDD8240897FE002D4CCD /* model.espresso.shape in Resources */,
 				E40CEDA3240897FE002D4CCD /* 74.png in Resources */,
 				E40CEDD2240897FE002D4CCD /* 0.png in Resources */,
 				E40CED99240897FE002D4CCD /* 115.png in Resources */,
@@ -1424,7 +1262,6 @@
 				E40CED5F240897FE002D4CCD /* 79.png in Resources */,
 				E40CED35240897FE002D4CCD /* 110.png in Resources */,
 				E40CED90240897FE002D4CCD /* 146.png in Resources */,
-				E40CEDDA240897FE002D4CCD /* model.espresso.weights in Resources */,
 				E40CED2E240897FE002D4CCD /* new_complex_weights in Resources */,
 				E40CED61240897FE002D4CCD /* 52.png in Resources */,
 				E40CED63240897FE002D4CCD /* 62.png in Resources */,
@@ -1470,7 +1307,6 @@
 				E40CED43240897FE002D4CCD /* 88.png in Resources */,
 				E40CED9A240897FE002D4CCD /* 139.png in Resources */,
 				E40CEDBD240897FE002D4CCD /* 25.png in Resources */,
-				E40CEDE0240897FE002D4CCD /* coremldata.bin in Resources */,
 				E40CED86240897FE002D4CCD /* 17.png in Resources */,
 				E40CED91240897FE002D4CCD /* 46.png in Resources */,
 				E40CED60240897FE002D4CCD /* 84.png in Resources */,

@@ -42,7 +42,6 @@ class CommunicationManager: WebSocketDelegate {
         self.repoID = repoID
         self.reconnections = reconnections
         UIDevice.current.isBatteryMonitoringEnabled = true
-        self.setUpJobQueue()
     }
 
     func connect() {
@@ -152,6 +151,7 @@ class CommunicationManager: WebSocketDelegate {
             let round = message["round"] as! Int
             let job = DMLJob(repoID: self.repoID, sessionID: sessionID, round: round)
             self.currentJob = job
+            self.setUpJobQueue()
             break
         case stopName:
             print("Received STOP message.")
@@ -162,29 +162,20 @@ class CommunicationManager: WebSocketDelegate {
         }
     }
     
-    @objc private func validateTrainingState() {
-        /*
-         Function to be called by job queue timer.
-         
-         Checks whether there is a job on the queue and whether the device is in a valid training state.
-         */
-        if self.currentJob != nil && self.state != State.training {
-            if self.isValidTrainingState() {
-                try! self.coreMLClient!.train(job: self.currentJob!)
-                self.state = State.training
-                self.jobTimer?.invalidate()
-                self.jobTimer = nil
-            } else {
-                self.state = State.notCharging
-            }
-        }
-    }
-    
     private func setUpJobQueue() {
         /*
          Start up the timer so that it checks for train jobs.
          */
-        self.jobTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(validateTrainingState), userInfo: nil, repeats: true)
+        self.jobTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+            if self.state != State.training {
+                if self.isValidTrainingState() {
+                    self.state = State.training
+                    try! self.coreMLClient!.train(job: self.currentJob!)
+                } else {
+                    self.state = State.notCharging
+                }
+            }
+        }
     }
     
     private func setUpPingTimer() {
@@ -212,13 +203,16 @@ class CommunicationManager: WebSocketDelegate {
          */
         let resultsMessage = try makeDictionaryString(keys: ["gradients", "omega"], values: [job.gradients!, job.omega!])
         let updateMessage = try makeDictionaryString(keys: ["type", "round", "session_id", "results"], values: ["NEW_UPDATE", job.round, job.sessionID, resultsMessage])
-                
+        
+        self.jobTimer?.invalidate()
+        self.jobTimer = nil
+        
         if self.socket != nil {
             self.socket.write(string: updateMessage)
         }
+        
         self.currentJob = nil
         self.state = State.waiting
-        self.setUpJobQueue()
         return updateMessage
     }
 

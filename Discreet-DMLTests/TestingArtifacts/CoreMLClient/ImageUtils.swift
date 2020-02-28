@@ -19,7 +19,6 @@ func makeImagePaths() -> ([String], [String]) {
             labels.append(label)
         }
     }
-    
     return (examples, labels)
 }
 

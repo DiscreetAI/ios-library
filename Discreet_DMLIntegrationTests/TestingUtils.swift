@@ -9,7 +9,7 @@
 import Foundation
 @testable import Discreet_DML
 
-var testingUtilsPath = URL(fileURLWithPath: #file).deletingLastPathComponent().path + "/TestingArtifacts/"
+var testingUtilsPath = URL(fileURLWithPath: #file).deletingLastPathComponent().deletingLastPathComponent().path + "/Discreet-DMLTests/TestingArtifacts/"
 
 var testWebSocketURL = URL(string: "ws://localhost:8999")!
 

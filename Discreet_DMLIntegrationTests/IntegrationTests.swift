@@ -11,12 +11,6 @@ import Starscream
 @testable import Discreet_DML
 
 class IntegrationTests: XCTestCase {
-    let orchestrator = try! DummyOrchestrator(repoID: testRepo)
-
-    override func setUp() {
-        try! orchestrator.realmClient.clear()
-    }
-    
     func testCloudIntegration() {
         /*
          MUST READ: Steps for testing.
@@ -28,6 +22,7 @@ class IntegrationTests: XCTestCase {
          WARNING: This test takes an even longer amount of time to run (about 10 minutes max).
          */
         let orchestrator2 = try! Orchestrator(repoID: testRepo)
+        try! orchestrator2.realmClient.clear()
         orchestrator2.coreMLClient.modelLoader = ModelLoader(downloadModelURL: URL(string: "http://127.0.0.1:8999/my_model.mlmodel")!)
         try! orchestrator2.addImages(images: realImages, labels: realLabels)
         try! orchestrator2.connect(webSocketURL: testWebSocketURL)

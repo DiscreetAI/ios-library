@@ -1,26 +1,42 @@
-//
-//  ModelLoader.swift
-//  Discreet-DML
-//
-//  Created by Neelesh on 1/28/20.
-//  Copyright © 2020 DiscreetAI. All rights reserved.
-//
+///
+///  ModelLoader.swift
+///  Discreet-DML
+///
+///  Created by Neelesh on 1/28/20.
+///  Copyright © 2020 DiscreetAI. All rights reserved.
+///
+
 import Foundation
 import CoreML
 
+
+/**
+ Utility class for preparing model to be trained with.
+ */
 class ModelLoader {
-    /*
-     Utility class for preparing model to be trained with.
-     */
+    
+    /// The URL of the model to be downloaded.
     var downloadModelURL: URL?
     
+    /**
+     Initializes the Model Loader by forming the download URL from the repo ID.
+     
+     - Parameters:
+        - repoID: The repo ID corresponding to the dataset of this library.
+     */
     init(repoID: String) {
         /*
-         repoID: The repo ID of the corresponding cloud node.
+         
          */
         self.downloadModelURL = makeModelDownloadURL(repoID: repoID)
     }
     
+    /**
+     Initializes the Model Loader by taking in the download URL directly. Used for testing.
+    
+     - Parameters:
+        - downloadModelURL: The URL of the model to be downloaded.
+    */
     init(downloadModelURL: URL?) {
         /*
          downloadModelURL: The URL of the model to be directly downloaded from.
@@ -28,19 +44,27 @@ class ModelLoader {
         self.downloadModelURL = downloadModelURL
     }
 
+    /**
+     Download a .mlmodel file, compile it, and store it permanently.
+     
+     - Throws: `DMLError` if an error occurred during model loading.
+     
+     - Returns: URL of the compiled model on device.
+     */
     func loadModel() throws -> URL {
-        /*
-         Util method to download a .mlmodel file, compile it, and store it permanently.
-         */
         let localModelURL = try downloadModel()
         let compiledModelURL = try compileModel(localModelURL: localModelURL)
         return compiledModelURL
     }
 
+    /**
+     Download the model at the URL `downloadModelURL`.
+     
+     - Throws: `DMLError` if an error occurred during the model download.
+     
+     - Returns: URL of the `.mlmodel` file on device.
+     */
     func downloadModel() throws -> URL {
-        /*
-         Download the model at the URL `downloadModelURL`.
-         */
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
         let destinationUrl = documentsUrl.appendingPathComponent(self.downloadModelURL!.lastPathComponent)
@@ -53,7 +77,6 @@ class ModelLoader {
                 print(error.localizedDescription)
                 throw DMLError.modelLoaderError(ErrorMessage.error)
             }
-            
         }
         
         if let dataFromURL = NSData(contentsOf: self.downloadModelURL!) {
@@ -65,13 +88,23 @@ class ModelLoader {
         } else {
             throw DMLError.modelLoaderError(ErrorMessage.failedDownload)
         }
-
+        
         return destinationUrl
     }
 
+    /**
+     Compile the given local URL to the `.mlmodel` into `.mlmodelc` binary files.
+     
+     - Parameters:
+        - localModelURL: Path to the `.mlmodel` file on device.
+     
+     - Throws: `DMLError` if an error occurred during model compilation.
+    
+     - Returns: URL of the compiled model on device.
+     */
     func compileModel(localModelURL: URL) throws -> URL {
         /*
-         Compile the given local URL to the `.mlmodel` into `.mlmodelc`.
+         
          */
         if let compiledUrl = try? MLModel.compileModel(at: localModelURL) {
             let fileManager = FileManager.default
@@ -80,7 +113,6 @@ class ModelLoader {
             let permanentUrl = documentsUrl.appendingPathComponent(compiledUrl.lastPathComponent)
 
             do {
-                // if the file exists, replace it. Otherwise, copy the file to the destination.
                 if fileManager.fileExists(atPath: permanentUrl.path) {
                     _ = try fileManager.replaceItemAt(permanentUrl, withItemAt: compiledUrl)
                 } else {

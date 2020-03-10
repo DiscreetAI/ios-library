@@ -11,7 +11,7 @@ import Foundation
 
 class DummyImageRealmClient: RealmClient {
     /*
-     Dummy class for simulating data stored in Realm.
+     Dummy class for simulating image data stored in Realm.
      */
     override init() throws {
 
@@ -28,7 +28,7 @@ class DummyImageRealmClient: RealmClient {
 
 class DummyTextRealmClient: RealmClient {
     /*
-     Dummy class for simulating data stored in Realm.
+     Dummy class for simulating text data stored in Realm.
      */
     override init() throws {
 
@@ -38,7 +38,7 @@ class DummyTextRealmClient: RealmClient {
         return Optional(MetadataEntry(repoID: repoID, dataType: DataType.TEXT))
     }
     
-    override func getTextEntry(repoID: String) -> EncodingEntry? {
-        return Optional(EncodingEntry(repoID: repoID, encodings: realEncodings, labels: realEncodingLabels))
+    override func getTextEntry(repoID: String) -> TextEntry? {
+        return Optional(TextEntry(repoID: repoID, encodings: realEncodings, labels: realEncodingLabels))
     }
 }

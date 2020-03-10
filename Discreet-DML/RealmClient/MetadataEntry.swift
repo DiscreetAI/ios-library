@@ -13,8 +13,8 @@ enum DataType: String {
     /*
      Enum denoting type of data for this repo ID.
      */
-    case IMAGE = "Image"
-    case TEXT = "Text"
+    case IMAGE = "IMAGE"
+    case TEXT = "TEXT"
 }
 
 class MetadataEntry: Object {

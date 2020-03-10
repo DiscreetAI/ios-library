@@ -197,8 +197,8 @@
 		E41D7BD923E0E34300D58478 /* DataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BD823E0E34300D58478 /* DataEntry.swift */; };
 		E41D7BE523E12B6E00D58478 /* ModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BE423E12B6E00D58478 /* ModelLoader.swift */; };
 		E41D7BE723E12BBB00D58478 /* MLMultiArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */; };
-		E41D7BEE23E13C5500D58478 /* BatchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BED23E13C5500D58478 /* BatchProvider.swift */; };
-		E41D7C0423E2489D00D58478 /* TrainingInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0323E2489D00D58478 /* TrainingInput.swift */; };
+		E41D7BEE23E13C5500D58478 /* TextBatchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7BED23E13C5500D58478 /* TextBatchProvider.swift */; };
+		E41D7C0423E2489D00D58478 /* TextFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0323E2489D00D58478 /* TextFeatureProvider.swift */; };
 		E41D7C0823E26EE200D58478 /* MetadataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0723E26EE200D58478 /* MetadataEntry.swift */; };
 		E41D7C0A23E2871900D58478 /* ModelLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */; };
 		E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E623E8DC2A0003F638 /* Orchestrator.swift */; };
@@ -225,6 +225,11 @@
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
 		E4C8C9FF2408994400F3BAD7 /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8C9FE2408994400F3BAD7 /* TestingUtils.swift */; };
+		E4C8CA01240F0D6D00F3BAD7 /* ImageBatchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CA00240F0D6D00F3BAD7 /* ImageBatchProvider.swift */; };
+		E4C8CA05240F0DF800F3BAD7 /* ImageFeatureProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CA04240F0DF800F3BAD7 /* ImageFeatureProvider.swift */; };
+		E4C8CA09240F0EC200F3BAD7 /* TextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CA08240F0EC200F3BAD7 /* TextEntry.swift */; };
+		E4C8CA0B240F0EF100F3BAD7 /* ImageEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CA0A240F0EF100F3BAD7 /* ImageEntry.swift */; };
+		E4C8CA0D241784D400F3BAD7 /* DummyDMLJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CA0C241784D400F3BAD7 /* DummyDMLJob.swift */; };
 		E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */; };
 		E4D72E2323DF8D4F00BE3B75 /* CoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */; };
 		E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */; };
@@ -451,8 +456,8 @@
 		E41D7BD823E0E34300D58478 /* DataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntry.swift; sourceTree = "<group>"; };
 		E41D7BE423E12B6E00D58478 /* ModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoader.swift; sourceTree = "<group>"; };
 		E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLMultiArrayUtils.swift; sourceTree = "<group>"; };
-		E41D7BED23E13C5500D58478 /* BatchProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchProvider.swift; sourceTree = "<group>"; };
-		E41D7C0323E2489D00D58478 /* TrainingInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingInput.swift; sourceTree = "<group>"; };
+		E41D7BED23E13C5500D58478 /* TextBatchProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBatchProvider.swift; sourceTree = "<group>"; };
+		E41D7C0323E2489D00D58478 /* TextFeatureProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFeatureProvider.swift; sourceTree = "<group>"; };
 		E41D7C0723E26EE200D58478 /* MetadataEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataEntry.swift; sourceTree = "<group>"; };
 		E41D7C0923E2871900D58478 /* ModelLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoaderTests.swift; sourceTree = "<group>"; };
 		E42C76E623E8DC2A0003F638 /* Orchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orchestrator.swift; sourceTree = "<group>"; };
@@ -480,6 +485,11 @@
 		E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessor.swift; sourceTree = "<group>"; };
 		E4BA35F023AB187000F81825 /* BinaryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryUtils.swift; sourceTree = "<group>"; };
 		E4C8C9FE2408994400F3BAD7 /* TestingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
+		E4C8CA00240F0D6D00F3BAD7 /* ImageBatchProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBatchProvider.swift; sourceTree = "<group>"; };
+		E4C8CA04240F0DF800F3BAD7 /* ImageFeatureProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeatureProvider.swift; sourceTree = "<group>"; };
+		E4C8CA08240F0EC200F3BAD7 /* TextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntry.swift; sourceTree = "<group>"; };
+		E4C8CA0A240F0EF100F3BAD7 /* ImageEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntry.swift; sourceTree = "<group>"; };
+		E4C8CA0C241784D400F3BAD7 /* DummyDMLJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDMLJob.swift; sourceTree = "<group>"; };
 		E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMLJob.swift; sourceTree = "<group>"; };
 		E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClient.swift; sourceTree = "<group>"; };
 		E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
@@ -912,12 +922,10 @@
 		E41D7BE923E12E2500D58478 /* CoreMLClient */ = {
 			isa = PBXGroup;
 			children = (
-				E41D7BED23E13C5500D58478 /* BatchProvider.swift */,
+				E4C8CA03240F0DD400F3BAD7 /* Image */,
+				E4C8CA02240F0DAD00F3BAD7 /* Text */,
 				E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */,
 				E41D7BE423E12B6E00D58478 /* ModelLoader.swift */,
-				E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */,
-				E41D7C0323E2489D00D58478 /* TrainingInput.swift */,
-				E4301B442405F79B00ED9CA4 /* Encoder.swift */,
 			);
 			path = CoreMLClient;
 			sourceTree = "<group>";
@@ -925,6 +933,8 @@
 		E41D7BEA23E12E5400D58478 /* RealmClient */ = {
 			isa = PBXGroup;
 			children = (
+				E4C8CA07240F0E9D00F3BAD7 /* Text */,
+				E4C8CA06240F0E9100F3BAD7 /* Image */,
 				E4D72E3E23DFA7CE00BE3B75 /* RealmClient.swift */,
 				E41D7BD823E0E34300D58478 /* DataEntry.swift */,
 				E41D7C0723E26EE200D58478 /* MetadataEntry.swift */,
@@ -990,6 +1000,7 @@
 			isa = PBXGroup;
 			children = (
 				E468506D23E5440500D3D689 /* DummyCoreMLClient.swift */,
+				E4C8CA0C241784D400F3BAD7 /* DummyDMLJob.swift */,
 			);
 			path = CommunicationManager;
 			sourceTree = "<group>";
@@ -1014,6 +1025,42 @@
 				D62811CAAC41F0A7140DDF2F /* Pods_Discreet_DMLIntegrationTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4C8CA02240F0DAD00F3BAD7 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				E41D7BE623E12BBB00D58478 /* MLMultiArrayUtils.swift */,
+				E41D7BED23E13C5500D58478 /* TextBatchProvider.swift */,
+				E41D7C0323E2489D00D58478 /* TextFeatureProvider.swift */,
+				E4301B442405F79B00ED9CA4 /* Encoder.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		E4C8CA03240F0DD400F3BAD7 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8CA00240F0D6D00F3BAD7 /* ImageBatchProvider.swift */,
+				E4C8CA04240F0DF800F3BAD7 /* ImageFeatureProvider.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		E4C8CA06240F0E9100F3BAD7 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8CA0A240F0EF100F3BAD7 /* ImageEntry.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		E4C8CA07240F0E9D00F3BAD7 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8CA08240F0EC200F3BAD7 /* TextEntry.swift */,
+			);
+			path = Text;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1443,19 +1490,23 @@
 				E4D72E2323DF8D4F00BE3B75 /* CoreMLClient.swift in Sources */,
 				E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */,
 				E41D7BE523E12B6E00D58478 /* ModelLoader.swift in Sources */,
-				E41D7C0423E2489D00D58478 /* TrainingInput.swift in Sources */,
+				E41D7C0423E2489D00D58478 /* TextFeatureProvider.swift in Sources */,
 				E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */,
+				E4C8CA01240F0D6D00F3BAD7 /* ImageBatchProvider.swift in Sources */,
 				E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */,
 				E4301B452405F79B00ED9CA4 /* Encoder.swift in Sources */,
 				E4D72E3F23DFA7CE00BE3B75 /* RealmClient.swift in Sources */,
 				E41D7BD923E0E34300D58478 /* DataEntry.swift in Sources */,
 				E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */,
 				E41D7BE723E12BBB00D58478 /* MLMultiArrayUtils.swift in Sources */,
+				E4C8CA0B240F0EF100F3BAD7 /* ImageEntry.swift in Sources */,
 				E44F577223D3027500FE0619 /* Utils.swift in Sources */,
+				E4C8CA05240F0DF800F3BAD7 /* ImageFeatureProvider.swift in Sources */,
 				E42C76EE23E8F73E0003F638 /* Errors.swift in Sources */,
 				E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */,
 				E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */,
-				E41D7BEE23E13C5500D58478 /* BatchProvider.swift in Sources */,
+				E41D7BEE23E13C5500D58478 /* TextBatchProvider.swift in Sources */,
+				E4C8CA09240F0EC200F3BAD7 /* TextEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1470,6 +1521,7 @@
 				E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */,
 				E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */,
 				E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */,
+				E4C8CA0D241784D400F3BAD7 /* DummyDMLJob.swift in Sources */,
 				E4ABEE4D24071C5400D5199E /* TextUtils.swift in Sources */,
 				E42C76E923E8DCD20003F638 /* OrchestratorTests.swift in Sources */,
 				E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */,

@@ -1,55 +1,89 @@
-//
-//  CoreMLClient.swift
-//  Discreet-DML
-//
-//  Created by Neelesh on 1/23/20.
-//  Copyright © 2020 DiscreetAI. All rights reserved.
-//
+///
+///  CoreMLClient.swift
+///  Discreet-DML
+///
+///  Created by Neelesh on 1/23/20.
+///  Copyright © 2020 DiscreetAI. All rights reserved.
+///
+
 import Foundation
 import CoreML
 
 
+/**
+ Client for dealing with the Core ML API.
+*/
 class CoreMLClient {
-    /*
-     Handler for dealing with the Core ML API.
-     */
+    
+    /// An instance of the Model Loader for retrieving the model.
     var modelLoader: ModelLoader?
+    
+    /// An instance of the Realm Client for retrieving the data.
     var realmClient: RealmClient?
+    
+    /// An instance of the Weights Processor for calculating the gradients.
     var weightsProcessor: WeightsProcessor?
+    
+    /// An instance of the Communication Manager for communicating the update message.
     var communicationManager: CommunicationManager?
     
+    /// The URL of the model on device.
     var modelURL: URL?
-    var currentJob: DMLJob?
-    var losses: [String: [Double]]
     
+    /// The job currently being handled.
+    var currentJob: DMLJob?
+    
+    /// Metrics for the current training job. Currently just loss.
+    /// TODO: Do something with these metrics and add more metrics.
+    var losses = [String: [Double]]()
+    
+    /**
+     Initializes the Core ML Client for training on jobs. Still needs to be configured with the Communication Manager before training. Set up the metrics too.
+     
+     TODO: Throw a DMLError if training is attempted while the client is not configured with the Communication Manager.
+     
+     - Parameters:
+        - modelLoader: An instance of the Model Loader for retrieving the model.
+        - realmClient: An instance of the Realm Client for retrieving the data.
+        - weightsProcessor: An instance of the Weights Processor for calculating the gradients.
+     */
     init(modelLoader: ModelLoader?, realmClient: RealmClient?, weightsProcessor: WeightsProcessor?) {
-        /*
-         modelLoader: instance of Model Loader
-         realmClient: instance of Realm Client
-         weightsProcessor: instance of Weights Processor
-         */
         self.modelLoader = modelLoader
         self.realmClient = realmClient
         self.weightsProcessor = weightsProcessor
-        
+        self.resetMetrics()
+    }
+    
+    /**
+     Reset the metrics. Called on initialization or after training.
+     */
+    func resetMetrics() {
         let batchLoss: [Double] = []
         let trainLoss: [Double] = []
         self.losses = ["batchLoss": batchLoss, "trainLoss": trainLoss]
     }
     
+    /**
+     Configure the Core ML Client with an instance of the Communication Manager.
+     
+     NOTE: Since Core ML Client and Communication Manager are dependent on each other, this method is needed.
+     
+     - Parameters:
+        - communicationManager: An instance of the Communication Manager for communicating the update message.
+     */
     func configure(communicationManager: CommunicationManager?) {
-        /*
-         communicationManager: instance of Communication Manager
-         
-         NOTE: Since Core ML Client and Communication Manager are dependent on each other, this method is needed.
-         */
         self.communicationManager = communicationManager
     }
 
+    /**
+     Load the model, prepare the model and begin training the model.
+     
+     - Parameters:
+        - job: The DML Job associated with this training round.
+     
+     - Throws: `DMLError` if an error occurred during loading, preparing or training.
+     */
     func train(job: DMLJob) throws {
-        /*
-         Load the model, prepare the model, and begin training the model.
-         */
         self.currentJob = job
         let modelURL = try self.modelLoader!.loadModel()
         let metaDataEntry = realmClient!.getMetadataEntry(repoID: job.repoID)!
@@ -92,9 +126,14 @@ class CoreMLClient {
         
     }
     
+    /**
+     Callback for when training is finished. Calculate the gradients and communicate them to the cloud node.
+     
+     - Throws: `DMLError` if an error occurred during gradient calculation or communication of the update message.
+     */
     func finishedTraining(oldModelURL: URL, newModelURL: URL, learningRate: Double) throws {
         /*
-         Callback for when training is finished. Calculate the gradients and communicate them to the cloud node.
+         
          */
         print("Training complete.")
         let oldWeightsPath = makeWeightsPath(modelURL: oldModelURL)
@@ -107,28 +146,19 @@ class CoreMLClient {
         
     }
     
+    /**
+     Progress handler for the model to use as it trains.
+     */
     func progressHandler(context: MLUpdateContext) {
-        /*
-         Progress handler for the model to use as it trains.
-         */
         switch context.event {
         case .trainingBegin:
-          // This is the first event you receive, just before training actually
-          // starts. At this point, context.metrics is empty.
             print("Training begin")
-
         case .miniBatchEnd:
-          // This event is triggered after each mini-batch. You can get the
-          // index of this batch and the training loss from context.metrics.
             let batchIndex = context.metrics[.miniBatchIndex] as! Int
             let batchLoss = context.metrics[.lossValue] as! Double
             print("Mini batch \(batchIndex), loss: \(batchLoss)")
             self.losses["batchLoss"]!.append(batchLoss)
-          
-
         case .epochEnd:
-
-            // The only metric Core ML gives us is the training loss.
             let trainLoss = context.metrics[.lossValue] as! Double
             self.losses["trainLoss"]!.append(trainLoss)
         default:
@@ -136,14 +166,12 @@ class CoreMLClient {
         }
     }
     
+    /**
+     Completion handler for the model to use after training as finished. Handler any errors encountered here, since handlers cannot throw errors.
+     */
     func completionHandler(context: MLUpdateContext) {
-        /*
-         Completion handler for the model to use after training as finished.
-         */
         print("Training completed with state \(context.task.state.rawValue)")
-        
-        // This happens when there is some kind of error, for example if the
-        // batch provider returns an invalid MLFeatureProvider object.
+ 
         if context.task.state == .failed {
           print("An error occurred.")
           return
@@ -152,12 +180,10 @@ class CoreMLClient {
         let trainLoss = context.metrics[.lossValue] as! Double
         print("Final loss: \(trainLoss)")
 
-        
-
         do {
-            let oldModelURL = try renameModel(modelURL: self.currentJob!.modelURL)
-            try saveUpdatedModel(context.model, to: self.currentJob!.modelURL)
-            try self.finishedTraining(oldModelURL: oldModelURL, newModelURL: self.currentJob!.modelURL, learningRate: context.parameters[.learningRate] as! Double)
+            let oldModelURL = try renameModel(modelURL: self.currentJob!.modelURL!)
+            try saveUpdatedModel(context.model, to: self.currentJob!.modelURL!)
+            try self.finishedTraining(oldModelURL: oldModelURL, newModelURL: self.currentJob!.modelURL!, learningRate: context.parameters[.learningRate] as! Double)
             print("Saved new model and communicated gradients!")
         } catch DMLError.coreMLError(ErrorMessage.failedRename) {
             print(DMLError.coreMLError(ErrorMessage.failedRename))
@@ -169,6 +195,5 @@ class CoreMLClient {
             print(error.localizedDescription)
             print("Failed to communicate gradients!")
         }
-        
     }
 }

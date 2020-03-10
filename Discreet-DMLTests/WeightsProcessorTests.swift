@@ -26,7 +26,7 @@ class WeightsProcessorTests: XCTestCase {
         /*
          Test gradient calculation for a model with one layer.
          */
-        let weightsProcessor = WeightsProcessor(mpsHandler: nil)
+        let weightsProcessor = WeightsProcessor()
         let oldSimpleWeightsPath: String = self.artifactsPath + "old_simple_weights"
         let newSimpleWeightsPath: String = self.artifactsPath + "new_simple_weights"
         var calculatedGradients: [[Float32]]
@@ -44,7 +44,7 @@ class WeightsProcessorTests: XCTestCase {
         /*
          Test gradient calculation for a model with multiple layers.
          */
-        let weightsProcessor = WeightsProcessor(mpsHandler: nil)
+        let weightsProcessor = WeightsProcessor()
         let oldComplexWeightsPath: String = self.artifactsPath + "old_complex_weights"
         let newComplexWeightsPath: String = self.artifactsPath + "new_complex_weights"
         var calculatedGradients: [[Float32]]
@@ -106,7 +106,7 @@ class WeightsProcessorTests: XCTestCase {
     }
     
     func testMissingWeightsFile() {
-        let weightsProcessor = WeightsProcessor(mpsHandler: nil)
+        let weightsProcessor = WeightsProcessor()
         let oldSimpleWeightsPath: String = artifactsPath + "missing_old_weights"
         let newSimpleWeightsPath: String = artifactsPath + "missing_new_weights"
         XCTAssertThrowsError(try weightsProcessor.calculateGradients(oldWeightsPath: oldSimpleWeightsPath, newWeightsPath: newSimpleWeightsPath, learningRate: 0.01)) { error in

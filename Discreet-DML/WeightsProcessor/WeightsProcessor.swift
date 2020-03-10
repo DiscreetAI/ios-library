@@ -9,27 +9,45 @@
 import Foundation
 import Surge
 
-
+/**
+ Handle all processing of the physical weights file.
+*/
 class WeightsProcessor {
-    /*
-     Handle all processing of the physical weights file.
-     */
+    
+    /// An instance of the MPS Handler for interacting with Metal Performance Shaders
     var mpsHandler: MPSHandler?
+    /// A boolean dictating whether the GPU should be used for gradient calculation.
     var useGPU: Bool
 
-    init(mpsHandler: MPSHandler?) {
-        /*
-         mpsHandler: Client for dealing with operations in MPS.
-         useGPU: If we have a valid client, use it when we calculate gradients.
-         */
+    /**
+     Initialize the Weights Processor for testing.
+     */
+    init() {
+        self.mpsHandler = nil
+        self.useGPU = false
+    }
+    /**
+     Initialize the Weights Processor for production.
+          
+     - Parameters:
+        - mpsHandler: Client for dealing with operations in MPS.
+     */
+    init(mpsHandler: MPSHandler) {
         self.mpsHandler = mpsHandler
-        self.useGPU = self.mpsHandler == nil ? false : true
+        self.useGPU = true
     }
     
-    func readWeights(modelPath: String) throws ->  [[Float32]] {
-        /*
-         Read weights given the on device path.
-         */
+    /**
+     Read the weights from the weights file given its on device path.
+     
+     - Parameters:
+        - modelPath: The path to the weights file
+     
+     - Throws: `DMLError` if an error occurred during the reading of the weights.
+     
+     - Returns: A 2D array consisting of the weights of the model.
+     */
+    private func readWeights(modelPath: String) throws ->  [[Float32]] {
         var file: FileHandle
         do {
             file = try FileHandle(forReadingFrom: URL(string: modelPath)!)
@@ -45,7 +63,6 @@ class WeightsProcessor {
             throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
         }
         let num_layers = b[0] as! Int
-        // initialize array and dict
         var layerBytes = [(Int, Int)]()
         var layerData = [[Float32]]()
         while layerBytes.count < num_layers {
@@ -101,10 +118,17 @@ class WeightsProcessor {
         return layerData
     }
     
+    /**
+     Calculate the gradients using GPU given the learning rate and paths to the old model and new one.
+     
+     - Parameters:
+        - oldWeights: The old weights of the model.
+        - newWeights: The new weights of the model.
+        - learningRate: The learning rate of the model.
+     
+     - Returns: The gradients resulting from this round of training.
+     */
     private func calculateGradientsGPU(oldWeights: [[Float32]], newWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
-        /*
-         Calculate the gradients using GPU given the learning rate and paths to the old model and new one.
-         */
         var gradients = [[Float32]]()
 
         for (var oldWeight, newWeight) in zip(oldWeights, newWeights) {
@@ -120,11 +144,17 @@ class WeightsProcessor {
         return gradients
     }
     
+    /**
+    Calculate the gradients using Surge given the learning rate and paths to the old model and new one.
+    
+    - Parameters:
+       - oldWeights: The old weights of the model.
+       - newWeights: The new weights of the model.
+       - learningRate: The learning rate of the model.
+    
+    - Returns: The gradients resulting from this round of training.
+    */
     private func calculateGradientsSurge(oldWeights: [[Float32]], newWeights: [[Float32]], learningRate:Float32) -> [[Float32]] {
-        /*
-         Calculate the gradients using Surge given the learning rate and paths to the old model and new one.
-         */
-        
         var gradients = [[Float32]]()
 
         for (oldWeight, newWeight) in zip(oldWeights, newWeights) {
@@ -136,14 +166,22 @@ class WeightsProcessor {
         return gradients
     }
     
+    /**
+     Read the old and new weights and calculate the gradients with the appropriate gradients calculator.
+    
+     - Parameters:
+        - oldWeightsPath: The path to the old weights of the model.
+        - newWeightsPath: The path to the new weights of the model.
+        - learningRate: The learning rate of the model.
+     
+     - Throws: `DMLError` if an error occurred during the reading of the model weights.
+    
+     - Returns: The gradients resulting from this round of training.
+    */
     func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) throws -> [[Float32]] {
-        /*
-         Calculate gradients with the appropriate gradients calculator.
-         */
         print("Reading weights...")
         let info = ProcessInfo.processInfo
         let begin = info.systemUptime
-        // do something
         let oldWeights = try readWeights(modelPath: oldWeightsPath)
         let newWeights = try readWeights(modelPath: newWeightsPath)
         let diff = (info.systemUptime - begin)

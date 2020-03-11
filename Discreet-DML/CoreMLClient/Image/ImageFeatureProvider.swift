@@ -1,30 +1,41 @@
-//
-//  ImageFeatureProvider.swift
-//  Discreet-DML
-//
-//  Created by Neelesh on 3/3/20.
-//  Copyright © 2020 DiscreetAI. All rights reserved.
-//
+///
+///  ImageFeatureProvider.swift
+///  Discreet-DML
+///
+///  Created by Neelesh on 3/3/20.
+///  Copyright © 2020 DiscreetAI. All rights reserved.
+///
 
 import Foundation
 import CoreML
 
+/**
+ MLFeatureProvider subclass for an image path and label.
+*/
 class ImagesFeatureProvider: MLFeatureProvider {
-    /*
-     MLFeatureProvider for images.
-     */
+    
+    /// The input image as a pixel buffer.
     var image: CVPixelBuffer
+    
+    /// The corresponding label for this image.
     var label: String
+    
+    /// The possible feature names. Currently just the input image and label.
     var featureNames: Set<String> {
         get {
             return ["image", "label"]
         }
     }
     
+    /**
+     Determine the correct feature based on the feature name.
+    
+     - Parameters:
+        - featureName: The name of the desired feature.
+    
+     - Returns: An optional consisting of the desired feature or `nil`.
+    */
     func featureValue(for featureName: String) -> MLFeatureValue? {
-        /*
-        Return a MLFeatureValue based on whether the feature is the datapoint or label.
-        */
         if (featureName == "image") {
             return MLFeatureValue(pixelBuffer: image)
         }
@@ -34,21 +45,17 @@ class ImagesFeatureProvider: MLFeatureProvider {
         return nil
     }
     
-    init(image: CVPixelBuffer, label: String) {
-        /*
-         image: The pixel buffer corresponding to the image.
-         label: The label corresponding to this image.
-         */
-        self.image = image
-        self.label = label
-    }
+    /**
+     Initialize the `TextFeatureValue` by turning the input text datapoint and label into MLMultiArrays.
     
+     - Parameters:
+        - image: The path to the image.
+        - label: The corresponding label for this datapoint
+        - imageConstraint: The constraints of the input image.
+     
+     - Throws: `DMLError` if the image could not be loaded from the provided path.
+    */
     init(image: String, label: String, imageConstraint: MLImageConstraint) throws {
-        /*
-         image: The path to the image.
-         label: The label corresponding to this image.
-         imageConstraint: Constraints for the input image.
-         */
         let imageURL = URL(fileURLWithPath: image)
         let imageOptions: [MLFeatureValue.ImageOption: Any] = [:]
         var featureValue: MLFeatureValue

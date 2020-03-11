@@ -1,10 +1,10 @@
-//
-//  WeightsProcessor.swift
-//  Discreet-DML
-//
-//  Created by Neelesh on 12/18/19.
-//  Copyright © 2019 DiscreetAI. All rights reserved.
-//
+///
+///  WeightsProcessor.swift
+///  Discreet-DML
+///
+///  Created by Neelesh on 12/18/19.
+///  Copyright © 2019 DiscreetAI. All rights reserved.
+///
 
 import Foundation
 import Surge
@@ -133,9 +133,8 @@ class WeightsProcessor {
 
         for (var oldWeight, newWeight) in zip(oldWeights, newWeights) {
             oldWeight = oldWeight.dropLast(oldWeight.count - newWeight.count)
-            let count = oldWeight.count
-            let oldMPSMatrix = self.mpsHandler!.createMPSVector(bytes: oldWeight, count: count)
-            let newMPSMatrix = self.mpsHandler!.createMPSVector(bytes: newWeight, count: count)
+            let oldMPSMatrix = self.mpsHandler!.createMPSVector(bytes: oldWeight)
+            let newMPSMatrix = self.mpsHandler!.createMPSVector(bytes: newWeight)
             var resultMatrix = self.mpsHandler!.matrixSubtraction(m1: oldMPSMatrix, m2: newMPSMatrix)
             resultMatrix = self.mpsHandler!.divideMatrixByConstant(m1: resultMatrix, constant: learningRate)
             gradients.append(self.mpsHandler!.getData(m1: resultMatrix))

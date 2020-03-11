@@ -12,9 +12,10 @@ import XCTest
 class DummyOrchestrator: Orchestrator {
     override init(repoID: String) throws {
         try super.init(repoID: repoID)
-        self.communicationManager = DummyCommunicationManager(coreMLClient: self.coreMLClient)
-        self.coreMLClient.weightsProcessor = WeightsProcessor(mpsHandler: nil)
-        self.coreMLClient.modelLoader = ModelLoader(downloadModelURL: testModelURL)
-        self.coreMLClient.configure(communicationManager: self.communicationManager)
+        let coreMLClient = self.communicationManager.coreMLClient!
+        self.communicationManager = DummyCommunicationManager(coreMLClient: coreMLClient)
+        coreMLClient.weightsProcessor = WeightsProcessor()
+        coreMLClient.modelLoader = ModelLoader(downloadModelURL: testModelURL)
+        coreMLClient.configure(communicationManager: self.communicationManager)
     }
 }

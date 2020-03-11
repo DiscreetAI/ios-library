@@ -1,60 +1,55 @@
-//
-//  ImageBatchProvider.swift
-//  Discreet-DML
-//
-//  Created by Neelesh on 3/3/20.
-//  Copyright © 2020 DiscreetAI. All rights reserved.
-//
+///
+///  ImageBatchProvider.swift
+///  Discreet-DML
+///
+///  Created by Neelesh on 3/3/20.
+///  Copyright © 2020 DiscreetAI. All rights reserved.
+///
 
 import Foundation
 import CoreML
 
+/**
+ MLBatchProvider subclass for image paths and labels.
+ */
 class ImagesBatchProvider: MLBatchProvider {
-    /*
-     MLBatchProvider class for images.
-     */
-    
+
+    /// The 1D array of image paths referring to images stored in the application.
     var images: [String]
+    
+    /// The labels for each of the images at the image paths.
     var labels: [String]
+    
+    /// The constraints of the input image.
     var imageConstraint: MLImageConstraint
+    
+    /// The number of datapoints.
     var count: Int
 
-    init(images: [String], labels: [String], imageConstraint: MLImageConstraint) {
-        /*
-        images: 1D array of image paths.
-        labels: 1D array of labels for data.
-        imageConstraint: Constraints for the input image.
-        */
-        self.images = images
-        self.labels = labels
-        self.count = images.count
-        self.imageConstraint = imageConstraint
-    }
-
+    /**
+     Initialize the batch provider with the given instance of the Realm Client and the repo ID and the image contraints.
+    
+     - Parameters:
+        - realmClient: instance of RealmClient to get data from.
+        - repoID: The repo ID corresponding to the dataset of this library.
+        - imageConstraint: The constraints of the input image.
+    */
     init(realmClient: RealmClient, repoID: String, imageConstraint: MLImageConstraint) {
-        /*
-        realmClient: instance of RealmClient to get data from.
-        repoID: repo ID to uniquely access data from RealmClient with.
-        imageConstraint: Constraints for the input image.
-        */
         let imageEntry = realmClient.getImageEntry(repoID: repoID)!
         (self.images, self.labels) = imageEntry.getData()
         self.count = self.images.count
         self.imageConstraint = imageConstraint
     }
+
+    /**
+     Retrieve the `ImageFeatureProvider` formed from the image path and label at the given index.
     
-    init(imageConstraint: MLImageConstraint) {
-        self.images = []
-        self.labels = []
-        self.count = 0
-        self.imageConstraint = imageConstraint
-    }
-
-
+     - Parameters:
+        - index: Index at which to get the image path and label.
+    
+     - Returns: A `ImageFeatureProvider` corresponding ot the image path and label.
+    */
     func features(at index: Int) -> MLFeatureProvider {
-        /*
-        Get the corresponding MLFeatureProvider for the datapoint and label corresponding to this index.
-        */
         return try! ImagesFeatureProvider(image: self.images[index], label: self.labels[index], imageConstraint: self.imageConstraint)
     }
 }

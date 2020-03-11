@@ -1,18 +1,25 @@
-//
-//  CoreMLUtils.swift
-//  Discreet-DML
-//
-//  Created by Neelesh on 1/31/20.
-//  Copyright © 2020 DiscreetAI. All rights reserved.
-//
+///
+///  CoreMLUtils.swift
+///  Discreet-DML
+///
+///  Created by Neelesh on 1/31/20.
+///  Copyright © 2020 DiscreetAI. All rights reserved.
+///
 
 import Foundation
 import CoreML
 
+/**
+ Rename the model at `modelURL` to `old_model.modelc`.
+ 
+ - Parameters:
+    - modelURL: The URL of the compiled model on device
+ 
+ - Throws: `DMLError` if an error occurred during the renaming of the model.
+ 
+ - Returns: The URL of the renamed model.
+ */
 func renameModel(modelURL: URL) throws -> URL {
-    /*
-     Rename the model at `modelURL` to `old_model.modelc`.
-     */
     let newName = "old_model.mlmodelc"
     let newURL = modelURL.deletingLastPathComponent().appendingPathComponent(newName)
     let fileManager = FileManager.default
@@ -31,6 +38,15 @@ func renameModel(modelURL: URL) throws -> URL {
     return newURL
 }
 
+/**
+ Save the provided model at the given URL.
+ 
+ - Parameters:
+    - model: The model to be saved.
+    - url: The URL to save the model at.
+ 
+ - Throws: `DMLError` if an error occurred during saving the model.
+ */
 func saveUpdatedModel(_ model: MLModel & MLWritable, to url: URL) throws {
     /*
      Save `model` at the given URL.

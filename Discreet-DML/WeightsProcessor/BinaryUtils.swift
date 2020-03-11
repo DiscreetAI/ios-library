@@ -1,9 +1,9 @@
 //
-//  BinaryUtils.swift
-//  Discreet-DML
+//  BinUtils.swift
+//  BinUtils
 //
-//  Created by Neelesh on 1/18/20.
-//  Copyright © 2020 DiscreetAI. All rights reserved.
+//  Created by Nicolas Seriot on 12/03/16.
+//  Copyright © 2016 Nicolas Seriot. All rights reserved.
 //
 
 import Foundation

@@ -13,10 +13,6 @@ class DummyWeightsProcessor: WeightsProcessor {
     /*
      Dummy class to simulate gradients calculation.
      */
-    convenience init() {
-        self.init(mpsHandler: nil)
-    }
-    
     override func calculateGradients(oldWeightsPath: String, newWeightsPath: String, learningRate: Float32) throws -> [[Float32]] {
         return []
     }

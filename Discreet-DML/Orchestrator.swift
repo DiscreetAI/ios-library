@@ -81,7 +81,7 @@ public class Orchestrator {
     }
 
     /**
-     Validate and store more encodings for this repo ID.
+     Validate and store more encodings and labelsfor this repo ID.
      
      - Parameters:
         - encodings: The encoded text data, which is an array of text datapoint, each of which consists of a 1D array of integer encodings.
@@ -95,7 +95,7 @@ public class Orchestrator {
     }
 
     /**
-    Validate and store more image paths for this repo ID.
+    Validate and store more image paths and labels for this repo ID.
     
     - Parameters:
        - images: The 1D array of image paths referring to images stored in the application.
@@ -113,7 +113,7 @@ public class Orchestrator {
     
     
     /**
-    Validate the provided image paths. Then replace any imagedata already stored for the given repo ID with the provided image paths.
+    Validate the provided image paths. Then replace any imagedata already stored for the given repo ID with the provided image paths and labels.
     
     - Parameters:
        - images: The 1D array of image paths referring to images stored in the application.

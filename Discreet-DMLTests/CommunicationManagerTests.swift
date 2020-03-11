@@ -74,7 +74,7 @@ class CommunicationManagerTests: XCTestCase {
          Test that the message to be sent after training is correct.
          */
         do {
-            let job = DummyDMLJob(repoID: testRepo, sessionID: testSession, round: testRound, gradients: testGradients, omega: testOmega)
+            let job = DummyDMLJob(repoID: testRepo, sessionID: testSession, round: testRound)
             let actual = try communicationManager.handleTrainingComplete(job: job)
 
             let expectedJSON = try parseJSON(stringOrFile: updateMessage, isString: true) as! NSDictionary

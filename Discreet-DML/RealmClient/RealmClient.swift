@@ -1,19 +1,28 @@
-//
-//  RealmClient.swift
-//  Discreet-DML
-//
-//  Created by Neelesh on 1/27/20.
-//  Copyright © 2020 DiscreetAI. All rights reserved.
-//
+///
+///  RealmClient.swift
+///  Discreet-DML
+///
+///  Created by Neelesh on 1/27/20.
+///  Copyright © 2020 DiscreetAI. All rights reserved.
+///
+
 import Foundation
 import RealmSwift
 
+
+/**
+ Client to interact with Realm.
+*/
 class RealmClient {
-    /*
-     Client to interact with Realm.
-     */
+    
+    /// An instance of Realm for storing/retrieving objects.
     var realm: Realm!
 
+    /**
+     Initialize the Realm Client.
+     
+     - Throws: `DMLError` if an error occurred during Realm setup.
+     */
     init() throws {
         do {
             self.realm = try Realm()
@@ -23,21 +32,24 @@ class RealmClient {
         }
     }
     
-    
-
+    /**
+     Add the encodings and labels under the given `repoID`. Create a `MetadataEntry` and `TextEntry` if they don't exist and set the encodings/labels to the `TextEntry`
+     
+     - Parameters:
+        - repoID: The repo ID corresponding to the dataset of this library.
+        - encodings: The encoded text data, which is an array of text datapoint, each of which consists of a 1D array of integer encodings.
+        - labels: The labels for each of the text datapoints.
+     
+     - Throws: `DMLError` if an error occurred while writing to Realm.
+     */
     func addTextData(repoID: String, encodings: [[Int]], labels: [Int]) throws {
-        /*
-         Store a 2D Int array and labels under the given `repoID`.
-
-         If data for this `repoID` already exists, simply append the given data.
-         */
         do {
             try self.realm.write {
-                if let EncodingEntry = getTextEntry(repoID: repoID) {
-                    EncodingEntry.addEncodings(encodings: encodings, labels: labels)
+                if let TextEntry = getTextEntry(repoID: repoID) {
+                    TextEntry.addEncodings(encodings: encodings, labels: labels)
                 } else {
                     self.realm.add(MetadataEntry(repoID: repoID, dataType: DataType.TEXT))
-                    self.realm.add(EncodingEntry(repoID: repoID, encodings: encodings, labels: labels))
+                    self.realm.add(TextEntry(repoID: repoID, encodings: encodings, labels: labels))
                 }
             }
         } catch {
@@ -46,12 +58,17 @@ class RealmClient {
         }
     }
 
+    /**
+     Add the images and labels under the given `repoID`. Create a `MetadataEntry` and `ImageEntry` if they don't exist and set the images/labels to the `ImageEntry`
+    
+     - Parameters:
+        - repoID: The repo ID corresponding to the dataset of this library.
+        - images: The 1D array of image paths referring to images stored in the application.
+        - labels: The labels for each of the images at the image paths.
+    
+     - Throws: `DMLError` if an error occurred while writing to Realm.
+    */
     func addImageData(repoID: String, images: [String], labels: [String]) throws {
-        /*
-         Store a 1D String array of image paths under the given `repoID`.
-
-         If data for this `repoID` already exists, simply append the given data.
-         */
         do {
             try self.realm.write {
                 if let imageEntry = getImageEntry(repoID: repoID) {
@@ -67,10 +84,16 @@ class RealmClient {
         }
     }
     
+    /**
+     Remove an image path (and its corresponding label) from the data stored for the entry corresponding to the given repo ID.
+    
+     - Parameters:
+        - repoID: The repo ID corresponding to the dataset of this library.
+        - image: The image path to remove from the stored data.
+    
+     - Throws: `DMLError` if the image path does not exist.
+    */
     func removeImageDatapoint(repoID: String, image: String) throws {
-        /*
-         Remove image datapoint with provided image path.
-         */
         if let imageEntry = getImageEntry(repoID: repoID) {
             var (images, labels) = imageEntry.getData()
             for i in 0..<images.count {
@@ -96,6 +119,15 @@ class RealmClient {
         
     }
     
+    /**
+     Remove the image path at the given index (and its corresponding label) from the data stored for the entry corresponding to the given repo ID.
+    
+     - Parameters:
+        - repoID: The repo ID corresponding to the dataset of this library.
+        - image: The image path to remove from the stored data.
+     
+     - Throws: `DMLError` if the provided index is invalid..
+    */
     func removeImageDatapoint(repoID: String, index: Int) throws {
         /*
          Remove image datapoint at provided index.
@@ -121,38 +153,66 @@ class RealmClient {
         
     }
 
+    /**
+     Retrieve data entry with the `repoID` as the primary key.
+     
+     - Parameters:
+        - repoID: The repo ID corresponding to the dataset of this library.
+     
+     - Returns: An optional containing a `DataEntry` if retrieval succeeded and `nil` otherwise.
+     */
     func getDataEntry(repoID: String) -> DataEntry? {
-        /*
-         Retrieve data entry with the `repoID` as the primary key.
-         */
         return self.realm.object(ofType: DataEntry.self, forPrimaryKey: repoID)
     }
 
-    func getTextEntry(repoID: String) -> EncodingEntry? {
+    /**
+     Retrieve `TextEntry` with the `repoID` as the primary key.
+    
+     - Parameters:
+        - repoID: The repo ID corresponding to the dataset of this library.
+    
+     - Returns: An optional containing a `TextEntry` if retrieval succeeded and `nil` otherwise.
+    */
+    func getTextEntry(repoID: String) -> TextEntry? {
         /*
-         Retrieve TextEntry with the `repoID` as the primary key.
+         
          */
-        return self.realm.object(ofType: EncodingEntry.self, forPrimaryKey: repoID)
+        return self.realm.object(ofType: TextEntry.self, forPrimaryKey: repoID)
     }
 
+    /**
+     Retrieve `ImageEntry` with the `repoID` as the primary key.
+    
+     - Parameters:
+        - repoID: The repo ID corresponding to the dataset of this library.
+    
+     - Returns: An optional containing a `ImageEntry` if retrieval succeeded and `nil` otherwise.
+    */
     func getImageEntry(repoID: String) -> ImageEntry? {
-        /*
-         Retrieve ImageEntry with the `repoID` as the primary key.
-         */
         return self.realm.object(ofType: ImageEntry.self, forPrimaryKey: repoID)
     }
     
+    /**
+     Retrieve `MetadataEntry` with the `repoID` as the primary key.
+    
+     - Parameters:
+        - repoID: The repo ID corresponding to the dataset of this library.
+    
+     - Returns: An optional containing a `MetadataEntry` if retrieval succeeded and `nil` otherwise.
+    */
     func getMetadataEntry(repoID: String) -> MetadataEntry? {
-        /*
-         Retrieve MetadataEntry with the `repoID` as the primary key.
-         */
         return self.realm.object(ofType: MetadataEntry.self, forPrimaryKey: repoID)
     }
     
+    /**
+     Get the datapoint count for the `DataEntry` corresponding to the given repo ID.
+    
+     - Parameters:
+       - repoID: The repo ID corresponding to the dataset of this library.
+    
+     - Returns: The datapoint count.
+    */
     func getDatapointCount(repoID: String) throws -> Int {
-        /*
-         Get the datapoint count for the DataEntry corresponding to the given repo ID.
-         */
         if let metaDataEntry = self.getMetadataEntry(repoID: repoID) {
             let type = DataType(rawValue: metaDataEntry.dataType)
             switch type {
@@ -168,10 +228,12 @@ class RealmClient {
         }
     }
 
+    /**
+     Clear the Realm DB of all objects.
+     
+     - Throws: `DMLError` if clearing failed.
+     */
     func clear() throws {
-        /*
-         Clear the Realm DB of all objects.
-         */
         do {
             try realm.write {
                 self.realm.deleteAll()
@@ -183,10 +245,12 @@ class RealmClient {
         
     }
     
+    /**
+     Clear the entries corresponding to the given repo ID, if they exist.
+    
+     - Throws: `DMLError` if clearing failed.
+    */
     func clear(repoID: String) throws {
-        /*
-         Clear the entries corresponding to the given repo ID, if they exist.
-         */
         if let metaDataEntry = self.getMetadataEntry(repoID: repoID) {
             let type = DataType(rawValue: metaDataEntry.dataType)
             var entry: DataEntry

@@ -56,5 +56,16 @@ var complexGradients: [[Float32]] = [
     [79.56541442871094, -84.7736587524414, 48.14379119873047, 28.75021743774414], [0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
+func roundArr(arr: [Float32], places: Int) -> [Float32] {
+    /*
+     Util method to round numbers in an array to `places` decimal places.
+     */
+    func roundNum(num: Float32) -> Float32 {
+        let multiple: Float32 = pow(10, Float32(places))
+        return round(num * multiple) / multiple
+    }
+    return arr.map(roundNum)
+}
+
 
 

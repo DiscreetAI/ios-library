@@ -11,12 +11,26 @@ import RealmSwift
 
 
 /**
+ Enum denoting type of data for this repo ID.
+*/
+enum DataType: String {
+    
+    /// Image data.
+    case IMAGE = "IMAGE"
+    
+    /// Text data.
+    case TEXT = "TEXT"
+}
+
+/**
  General dataset object. Uniquely identified by `repoID/datasetID`.
 */
 class DataEntry: Object {
     
+    /// The data type of this entry.
     @objc dynamic var dataType: String = ""
     
+    /// The primary key of this entry.
     @objc dynamic var primaryKey: String = ""
 
     /**

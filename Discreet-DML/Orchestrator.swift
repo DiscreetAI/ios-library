@@ -33,7 +33,7 @@ public class Orchestrator {
      
      - Throws: `DMLError` if an error occurred during the setup of the library.
      */
-    public init(repoID: String) throws {
+    public init(repoID: String, connectImmediately: Bool = true) throws {
         self.repoID = repoID
         self.realmClient = try RealmClient(repoID: self.repoID)
         var weightsProcessor: WeightsProcessor
@@ -46,10 +46,14 @@ public class Orchestrator {
         let coreMLClient = CoreMLClient(modelLoader: ModelLoader(repoID: repoID), realmClient: self.realmClient, weightsProcessor: weightsProcessor)
         self.communicationManager = CommunicationManager(coreMLClient: coreMLClient, repoID: repoID)
         coreMLClient.configure(communicationManager: self.communicationManager)
+        
+        if connectImmediately {
+            try self.connect()
+        }
     }
     
     /**
-     Validate and store more encodings and labelsfor this repo ID.
+     Validate and store more encodings and labels for this repo ID.
      
      - Parameters:
         - datasetID: The dataset ID corresponding to the desired dataset.
@@ -105,7 +109,7 @@ public class Orchestrator {
         - datasetID: The dataset ID corresponding to the desired dataset.
         - image: The image path to remove from the stored data.
      
-     - Throws: `DMLError` if the image path does not exist OR the library is connected to the cloud node and the image path is the last datapoint (the library cannot have 0 datapoints at any point the library is connected).
+     - Throws: `DMLError` if the image path does not exist .
      */
     public func removeImage(datasetID: String, image: String) throws {
         try validateDataType(datasetID: datasetID, expectedType: DataType.IMAGE)
@@ -119,7 +123,7 @@ public class Orchestrator {
         - datasetID: The dataset ID corresponding to the desired dataset.
         - image: The image path to remove from the stored data.
      
-     - Throws: `DMLError` if the provided index is invalid OR the library is connected to the cloud node and the image path is the last datapoint (the library cannot have 0 datapoints at any point the library is connected).
+     - Throws: `DMLError` if the provided index is invalid .
      */
     public func removeImage(datasetID: String, index: Int) throws {
         try validateDataType(datasetID: datasetID, expectedType: DataType.IMAGE)
@@ -143,7 +147,6 @@ public class Orchestrator {
             throw DMLError.userError(ErrorMessage.failedRealmRead)
         }
     }
-    
     
     /**
      Connect to the cloud node via WebSocket by using the repo ID to form the URL.
@@ -205,7 +208,7 @@ public class Orchestrator {
      Get the default text encoder, which is formed from the provided vocabulary list.
      
      - Parameters:
-     - vocabList: The vocab list of words that the encoder can expect to encode.
+        - vocabList: The vocab list of words that the encoder can expect to encode.
      
      - Returns: A basic encoder. Encodes `vocabList[0] -> 1`, `vocabList[1] -> 2`, etc. with unknown input encoded as `0`.
      */

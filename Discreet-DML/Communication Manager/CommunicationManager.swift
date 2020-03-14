@@ -99,7 +99,6 @@ class CommunicationManager: WebSocketDelegate {
         - webSocketURL: Remote URL corresponding to the WebSocket on the cloud node.
     */
     func connect(webSocketURL: URL) {
-        print(webSocketURL.path)
         var request = URLRequest(url: webSocketURL)
         request.timeoutInterval = 5
         self.socket = WebSocket(request: request)

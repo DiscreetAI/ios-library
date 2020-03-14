@@ -90,6 +90,7 @@ class CoreMLClient {
         
         if (type == nil) {
             _ = try self.communicationManager?.handleNoDataset(job: job)
+            return
         }
         
         var batchProvider: MLBatchProvider
@@ -109,9 +110,14 @@ class CoreMLClient {
             batchProvider = ImagesBatchProvider(realmClient: realmClient!, datasetID: job.datasetID, imageConstraint: constraint)
         }
         
+        if (batchProvider.count == 0) {
+            _ = try self.communicationManager?.handleNoDataset(job: job)
+            return
+        }
+        
         job.omega = batchProvider.count
         job.modelURL = modelURL
-                        
+        
         let handlers = MLUpdateProgressHandlers(
         forEvents: [.trainingBegin, .miniBatchEnd, .epochEnd],
         progressHandler: progressHandler,

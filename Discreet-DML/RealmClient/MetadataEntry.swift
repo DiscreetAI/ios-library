@@ -11,18 +11,6 @@ import RealmSwift
 
 
 /**
- Enum denoting type of data for this repo ID.
-*/
-enum DataType: String {
-    
-    /// Image data.
-    case IMAGE = "IMAGE"
-    
-    /// Text data.
-    case TEXT = "TEXT"
-}
-
-/**
  Dataset object corresponding to the metadata of a dataset.
  
  TODO: Add more information here.

@@ -10,7 +10,8 @@ import XCTest
 @testable import Discreet_DML
 
 class DummyOrchestrator: Orchestrator {
-    override init(repoID: String) throws {
+    
+    override init(repoID: String, connectImmediately: Bool = true) throws {
         try super.init(repoID: repoID)
         let coreMLClient = self.communicationManager.coreMLClient!
         self.communicationManager = DummyCommunicationManager(coreMLClient: coreMLClient)

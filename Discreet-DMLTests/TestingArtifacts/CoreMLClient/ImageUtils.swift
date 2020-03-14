@@ -8,7 +8,7 @@
 
 import Foundation
 
-var imagesFolder = URL(fileURLWithPath: testingUtilsPath + "CoreMLClient/mnist")
+var imagesFolder = URL(fileURLWithPath: testingUtilsPath).deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("Discreet-DMLTests/TestingArtifacts/CoreMLClient/mnist")
 
 func makeImagePaths() -> ([String], [String]) {
     var examples: [String] = []

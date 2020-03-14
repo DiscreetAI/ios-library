@@ -22,12 +22,9 @@ class ModelLoader {
      Initializes the Model Loader by forming the download URL from the repo ID.
      
      - Parameters:
-        - repoID: The repo ID corresponding to the dataset of this library.
+        - repoID: The repo ID corresponding to the registered application.
      */
     init(repoID: String) {
-        /*
-         
-         */
         self.downloadModelURL = makeModelDownloadURL(repoID: repoID)
     }
     

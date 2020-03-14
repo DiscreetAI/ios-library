@@ -27,8 +27,8 @@ class WeightsProcessorTests: XCTestCase {
          Test gradient calculation for a model with one layer.
          */
         let weightsProcessor = WeightsProcessor()
-        let oldSimpleWeightsPath: String = self.artifactsPath + "old_simple_weights"
-        let newSimpleWeightsPath: String = self.artifactsPath + "new_simple_weights"
+        let oldSimpleWeightsPath: String = artifactsPath + "old_simple_weights"
+        let newSimpleWeightsPath: String = artifactsPath + "new_simple_weights"
         var calculatedGradients: [[Float32]]
         do {
             calculatedGradients = try weightsProcessor.calculateGradients(oldWeightsPath: oldSimpleWeightsPath, newWeightsPath: newSimpleWeightsPath, learningRate: 0.01)

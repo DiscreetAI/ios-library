@@ -30,7 +30,7 @@ enum ErrorMessage: String {
     case failedRealmSetup = "Failed to setup Realm database!"
     
     /// A data entry with the provided repo ID could not be found in Realm.
-    case failedRealmRead = "Failed to find entry with provided repo ID!"
+    case failedRealmRead = "Failed to find entry with provided dataset ID!"
     
     /// Realm failed to add or update the entry from its DB.
     case failedRealmWrite = "Failed to add entry to Realm database!"
@@ -73,15 +73,12 @@ enum ErrorMessage: String {
     
     /// An attempt at creating an MPS Handler was made while the device is currently a simulator.
     case badDevice = "This device does not support MPS!"
-    
-    /// User error for trying to connect to the cloud node without datapoints.
-    case noDatapoints = "No datapoints exist for this Realm entry! Call one of the store functions to store data first!"
-    
+        
     /// User error for provided an invalid image path.
     case invalidImagePath = "Provided image path is invalid! Image could not be found!"
     
-    /// User error for trying to remove an image datapoint while there is only one datapoint left and the library is connected to the cloud node.
-    case invalidImageRemove = "Number of datapoints must be greater than 0 while device is connected to cloud node!"
+    /// User error for calling the wrong method with a particular dataset type.
+    case invalidDataType = "Invalid data type! Image methods can only be called for an image dataset, and text methods can only be called for a text dataset!"
     
     /// User error for trying to remove an image path and label with an invalid index.
     case invalidDatapointIndex = "Invalid index for entry!"

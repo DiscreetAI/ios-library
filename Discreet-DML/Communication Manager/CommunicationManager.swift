@@ -54,7 +54,7 @@ class CommunicationManager: WebSocketDelegate {
     var reconnections: Int
     
     /// The current training job for this library (if applicable).
-    var currentJob: DMLJob?
+    var currentJobs = [DMLJob]()
     
     /// The job timer used for running jobs only when the library is in a valid training state.
     var jobTimer: Timer?
@@ -218,11 +218,14 @@ class CommunicationManager: WebSocketDelegate {
         switch message["action"] as! String {
         case trainName:
             print("Received TRAIN message.")
+            let datasetID = message["dataset_id"] as! String
             let sessionID = message["session_id"] as! String
             let round = message["round"] as! Int
-            let job = DMLJob(repoID: self.repoID, sessionID: sessionID, round: round)
-            self.currentJob = job
-            self.setUpJobTimer()
+            let job = DMLJob(datasetID: datasetID, sessionID: sessionID, round: round)
+            self.currentJobs.append(job)
+            if (self.jobTimer == nil) {
+                self.setUpJobTimer()
+            }
             break
         case stopName:
             print("Received STOP message.")
@@ -234,14 +237,16 @@ class CommunicationManager: WebSocketDelegate {
     }
     
     /**
-     Start up the job  timer so that it checks for train jobs.
+     Start up the job timer so that it checks for train jobs.
     */
     private func setUpJobTimer() {
         self.jobTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
             if self.state != State.training {
                 if self.isValidTrainingState() {
                     self.state = State.training
-                    try! self.coreMLClient!.train(job: self.currentJob!)
+                    for job in self.currentJobs {
+                        try! self.coreMLClient!.train(job: job)
+                    }
                 } else {
                     self.state = State.notCharging
                 }
@@ -284,7 +289,7 @@ class CommunicationManager: WebSocketDelegate {
     */
     func handleTrainingComplete(job: DMLJob) throws -> String {
         let resultsMessage = try makeDictionaryString(keys: ["gradients", "omega"], values: [job.gradients!, job.omega!])
-        let updateMessage = try makeDictionaryString(keys: ["type", "round", "session_id", "results"], values: ["NEW_UPDATE", job.round, job.sessionID, resultsMessage])
+        let updateMessage = try makeDictionaryString(keys: ["type", "round", "dataset_id", "session_id", "results"], values: ["NEW_UPDATE", job.round, job.datasetID, job.sessionID, resultsMessage])
         
         self.jobTimer?.invalidate()
         self.jobTimer = nil
@@ -293,9 +298,40 @@ class CommunicationManager: WebSocketDelegate {
             self.socket?.write(string: updateMessage)
         }
         
-        self.currentJob = nil
+        if let index = self.currentJobs.firstIndex(where: {$0.datasetID == job.datasetID}) {
+            self.currentJobs.remove(at: index)
+        }
+        
         self.state = State.waiting
         return updateMessage
+    }
+    
+    /**
+     Handler for the Core ML Client if no dataset/datapoints were found for the specified dataset. Make the no dataset message and send it.
+     
+     - Parameters:
+        - job: The DML Job associated with this training round.
+     
+     - Throws: `DMLError` if the update message could not be formed.
+     
+     - Returns: A string representing the no dataset message. Primarily used for testing.
+    */
+    func handleNoDataset(job: DMLJob) throws -> String {
+        let noDatasetMessage = try makeDictionaryString(keys: ["type", "round", "dataset_id", "session_id"], values: ["NO_DATASET", job.round, job.datasetID, job.sessionID])
+        
+        self.jobTimer?.invalidate()
+        self.jobTimer = nil
+        
+        if self.socket != nil {
+            self.socket?.write(string: noDatasetMessage)
+        }
+        
+        if let index = self.currentJobs.firstIndex(where: {$0.datasetID == job.datasetID}) {
+            self.currentJobs.remove(at: index)
+        }
+    
+        self.state = State.waiting
+        return noDatasetMessage
     }
 
     /**

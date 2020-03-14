@@ -29,10 +29,10 @@ class TextBatchProvider: MLBatchProvider {
      
      - Parameters:
         - realmClient: instance of RealmClient to get data from.
-        - repoID: The repo ID corresponding to the dataset of this library.
+        - datasetID: The dataset ID corresponding to the desired dataset.
      */
-    init(realmClient: RealmClient, repoID: String) {
-        let textEntry = realmClient.getTextEntry(repoID: repoID)!
+    init(realmClient: RealmClient, datasetID: String) {
+        let textEntry = realmClient.getTextEntry(datasetID: datasetID)!
         (self.encodings, self.labels) = textEntry.getData()
         self.count = self.encodings.count
     }

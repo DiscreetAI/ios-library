@@ -31,11 +31,11 @@ class ImagesBatchProvider: MLBatchProvider {
     
      - Parameters:
         - realmClient: instance of RealmClient to get data from.
-        - repoID: The repo ID corresponding to the dataset of this library.
+        - datasetID: The dataset ID corresponding to the desired dataset.
         - imageConstraint: The constraints of the input image.
     */
-    init(realmClient: RealmClient, repoID: String, imageConstraint: MLImageConstraint) {
-        let imageEntry = realmClient.getImageEntry(repoID: repoID)!
+    init(realmClient: RealmClient, datasetID: String, imageConstraint: MLImageConstraint) {
+        let imageEntry = realmClient.getImageEntry(datasetID: datasetID)!
         (self.images, self.labels) = imageEntry.getData()
         self.count = self.images.count
         self.imageConstraint = imageConstraint

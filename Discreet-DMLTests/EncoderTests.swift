@@ -12,7 +12,7 @@ import XCTest
 class EncoderTests: XCTestCase {
     func testBasicEncoder() {
         do {
-            let orchestrator = try! Orchestrator(repoID: testRepo)
+            let orchestrator = try! Orchestrator(repoID: testRepo, connectImmediately: false)
             let vocabList = testText.components(separatedBy: " ")
             let encoder = orchestrator.getBasicEncoder(vocabList: vocabList)
             let text = testText + " and jumped again"

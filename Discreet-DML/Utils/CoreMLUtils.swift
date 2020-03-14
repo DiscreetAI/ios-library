@@ -48,9 +48,6 @@ func renameModel(modelURL: URL) throws -> URL {
  - Throws: `DMLError` if an error occurred during saving the model.
  */
 func saveUpdatedModel(_ model: MLModel & MLWritable, to url: URL) throws {
-    /*
-     Save `model` at the given URL.
-     */
     do {
         if FileManager().fileExists(atPath: url.path) {
             print("File already exists [\(url.path)], deleting...")

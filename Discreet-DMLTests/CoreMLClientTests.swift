@@ -22,10 +22,10 @@ class CoreMLClientTests: XCTestCase {
         var numIterations = 0.0
         
         do {
-            let coreMLClient = CoreMLClient(modelLoader: DummyImageModelLoader(), realmClient: try DummyImageRealmClient(), weightsProcessor: DummyWeightsProcessor())
+            let coreMLClient = CoreMLClient(modelLoader: DummyImageModelLoader(), realmClient: try DummyImageRealmClient(repoID: testRepo), weightsProcessor: DummyWeightsProcessor())
             let communicationManager = DummyCommunicationManager(coreMLClient: coreMLClient)
             coreMLClient.configure(communicationManager: communicationManager)
-            let job = DMLJob(repoID: testRepo, sessionID: testSession, round: testRound)
+            let job = DMLJob(datasetID: testDataset, sessionID: testSession, round: testRound)
             try coreMLClient.train(job: job)
             
             while !communicationManager.success && numIterations < maxIterations {
@@ -48,10 +48,10 @@ class CoreMLClientTests: XCTestCase {
         var numIterations = 0.0
         
         do {
-            let coreMLClient = CoreMLClient(modelLoader: DummyTextModelLoader(), realmClient: try DummyTextRealmClient(), weightsProcessor: DummyWeightsProcessor())
+            let coreMLClient = CoreMLClient(modelLoader: DummyTextModelLoader(), realmClient: try DummyTextRealmClient(repoID: testRepo), weightsProcessor: DummyWeightsProcessor())
             let communicationManager = DummyCommunicationManager(coreMLClient: coreMLClient)
             coreMLClient.configure(communicationManager: communicationManager)
-            let job = DMLJob(repoID: testRepo, sessionID: testSession, round: testRound)
+            let job = DMLJob(datasetID: testDataset, sessionID: testSession, round: testRound)
             try coreMLClient.train(job: job)
             
             while !communicationManager.success && numIterations < maxIterations {

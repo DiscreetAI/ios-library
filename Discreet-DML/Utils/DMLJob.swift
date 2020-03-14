@@ -13,8 +13,8 @@ import Foundation
  */
 class DMLJob {
     
-    /// The repo ID corresponding to the dataset of this library.
-    var repoID: String
+    /// The dataset ID corresponding to the desired dataset.
+    var datasetID: String
     
     /// The session ID corresponding to this current training session.
     var sessionID: String
@@ -36,12 +36,12 @@ class DMLJob {
      Initializes the DML job with the information already known before training. The remaining information is manually set after training.
      
      - Parameters:
-        - repoID: The repo ID corresponding to the dataset of this library.
+        - datasetID: The dataset ID corresponding to the desired dataset.
         - sessionID: The session ID corresponding to this current training session.
         - round: The current round in this training session.
      */
-    init(repoID: String, sessionID: String, round: Int) {
-        self.repoID = repoID
+    init(datasetID: String, sessionID: String, round: Int) {
+        self.datasetID = datasetID
         self.sessionID = sessionID
         self.round = round
     }

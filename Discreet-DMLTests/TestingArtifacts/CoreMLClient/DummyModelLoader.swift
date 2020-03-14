@@ -17,9 +17,8 @@ class DummyImageModelLoader: ModelLoader {
         self.init(downloadModelURL: nil)
     }
     
-    override func loadModel() throws -> URL {
-        let modelPath = testingUtilsPath + "CoreMLClient/" + "my_model.mlmodel"
-        return try compileModel(localModelURL: URL(fileURLWithPath: modelPath))
+    override func downloadModel() throws -> URL {
+        return testImageModelURL
     }
 }
 
@@ -31,8 +30,7 @@ class DummyTextModelLoader: ModelLoader {
         self.init(downloadModelURL: nil)
     }
     
-    override func loadModel() throws -> URL {
-        let modelPath = testingUtilsPath + "CoreMLClient/" + "neural_ngram_updatable.mlmodel"
-        return try compileModel(localModelURL: URL(fileURLWithPath: modelPath))
+    override func downloadModel() throws -> URL {
+        return testTextModelURL
     }
 }

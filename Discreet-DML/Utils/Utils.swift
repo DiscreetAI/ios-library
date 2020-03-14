@@ -90,7 +90,7 @@ func makeDictionaryString(keys: [String], values: [Any]) throws -> String {
  Make the WebSocket URL for the Communication Manager.
  
  - Parameters:
-    - repoID: The repo ID corresponding to the dataset of this library.
+    - repoID: The repo ID corresponding to the registered application.
  
  - Returns: The WebSocket URL.
  */
@@ -102,7 +102,7 @@ func makeWebSocketURL(repoID: String) -> URL {
  Make the base cloud node URL for the Orchestrator and Model Loader.
  
  - Parameters:
-    - repoID: The repo ID corresponding to the dataset of this library.
+    - repoID: The repo ID corresponding to the registered application.
  
  - Returns: The base cloud node URL.
  */
@@ -114,7 +114,7 @@ func makeCloudNodeURL(repoID: String) -> URL {
  Make the model download URL for the Model Loader.
 
  - Parameters:
-    - repoID: The repo ID corresponding to the dataset of this library.
+    - repoID: The repo ID corresponding to the registered application.
 
  - Returns: The model download URL.
 */
@@ -131,8 +131,18 @@ func makeModelDownloadURL(repoID: String) -> URL {
  - Returns: The path to the weights of the model.
  */
 func makeWeightsPath(modelURL: URL) -> String {
-    /*
-     Make path to the weights given the URL to the compiled model.
-     */
     return modelURL.path + "/model.espresso.weights"
+}
+
+/**
+ Make the primary key to retrieve a data entry from Realm.
+ 
+ - Parameters:
+    - repoID: The repo ID corresponding to the registered application.
+    - datasetID: The dataset ID corresponding to the desired dataset.
+ 
+ - Returns: The primary key of the desired data entry.
+ */
+func makePrimaryKey(repoID: String, datasetID: String) -> String {
+    return repoID + "/" + datasetID
 }

@@ -13,16 +13,13 @@ class DummyImageRealmClient: RealmClient {
     /*
      Dummy class for simulating image data stored in Realm.
      */
-    override init() throws {
 
+    override func getImageEntry(datasetID: String) -> ImageEntry? {
+        return Optional(ImageEntry(repoID: self.repoID, datasetID: datasetID, images: realImages, labels: realLabels))
     }
 
-    override func getImageEntry(repoID: String) -> ImageEntry? {
-        return Optional(ImageEntry(repoID: repoID, images: realImages, labels: realLabels))
-    }
-
-    override func getMetadataEntry(repoID: String) -> MetadataEntry? {
-        return Optional(MetadataEntry(repoID: repoID, dataType: DataType.IMAGE))
+    override func getDataEntryType(datasetID: String) -> DataType? {
+        return DataType.IMAGE
     }
 }
 
@@ -30,15 +27,13 @@ class DummyTextRealmClient: RealmClient {
     /*
      Dummy class for simulating text data stored in Realm.
      */
-    override init() throws {
-
-    }
-
-    override func getMetadataEntry(repoID: String) -> MetadataEntry? {
-        return Optional(MetadataEntry(repoID: repoID, dataType: DataType.TEXT))
+    
+    
+    override func getTextEntry(datasetID: String) -> TextEntry? {
+        return Optional(TextEntry(repoID: self.repoID, datasetID: datasetID, encodings: realEncodings, labels: realEncodingLabels))
     }
     
-    override func getTextEntry(repoID: String) -> TextEntry? {
-        return Optional(TextEntry(repoID: repoID, encodings: realEncodings, labels: realEncodingLabels))
+    override func getDataEntryType(datasetID: String) -> DataType? {
+        return DataType.TEXT
     }
 }

@@ -11,31 +11,45 @@ import Starscream
 @testable import Discreet_DML
 
 class OrchestratorTests: XCTestCase {
-    let orchestrator = try! DummyOrchestrator(repoID: testRepo)
+    let orchestrator = try! DummyOrchestrator(repoID: testRepo, connectImmediately: false)
 
     override func setUp() {
         try! orchestrator.realmClient.clear()
     }
     
     func testInvalidRepoID() {
-        XCTAssertThrowsError(try Orchestrator(repoID: testRepo, encodings: testEncodings, labels: testEncodingLabels)) { error in
+        /*
+         Test validation of the repo ID.
+         */
+        do {
+            let badOrchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
+            XCTAssertThrowsError(try badOrchestrator.connect()) { error in
             XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidRepoID))
+            
+            }
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
         }
     }
     
     func testInvalidData() {
+        /*
+         Test validation with the addition of new data.
+         */
         do {
-            let orchestrator = try Orchestrator(repoID: testRepo)
+            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
             
-            XCTAssertThrowsError(try orchestrator.addImages(images: testImages, labels: testLabels)) { error in
+            XCTAssertThrowsError(try orchestrator.addImages(datasetID: testDataset, images: testImages, labels: testLabels)) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidImagePath))
             }
             
-            XCTAssertThrowsError(try orchestrator.addImages(images: [], labels: [])) { error in
+            XCTAssertThrowsError(try orchestrator.addImages(datasetID: testDataset, images: [], labels: [])) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidStore))
             }
             
-            XCTAssertThrowsError(try orchestrator.addImages(images: realImages, labels: testLabels)) { error in
+            XCTAssertThrowsError(try orchestrator.addImages(datasetID: testDataset, images: realImages, labels: testLabels)) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidStore))
             }
         } catch {
@@ -46,48 +60,23 @@ class OrchestratorTests: XCTestCase {
     }
     
     func testInvalidImageRemove() {
+        /*
+         Test validation with removing an image.
+         */
         do {
-            let orchestrator = try Orchestrator(repoID: testRepo)
-            try! orchestrator.addImages(images: Array(realImages[0...1]), labels: Array(realLabels[0...1]))
+            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
+            try! orchestrator.addImages(datasetID: testDataset, images: Array(realImages[0...1]), labels: Array(realLabels[0...1]))
             
-            XCTAssertThrowsError(try orchestrator.removeImage(image: "badPath")) { error in
+            XCTAssertThrowsError(try orchestrator.removeImage(datasetID: testDataset, image: "badPath")) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidImagePath))
             }
             
-            XCTAssertThrowsError(try orchestrator.removeImage(index: 10)) { error in
+            XCTAssertThrowsError(try orchestrator.removeImage(datasetID: testDataset, index: 10)) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidDatapointIndex))
             }
             
-            XCTAssertThrowsError(try orchestrator.removeImage(index: -1)) { error in
+            XCTAssertThrowsError(try orchestrator.removeImage(datasetID: testDataset, index: -1)) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidDatapointIndex))
-            }
-            
-            try orchestrator.removeImage(index: 0)
-            orchestrator.communicationManager.isConnected = true
-            
-            XCTAssertThrowsError(try orchestrator.removeImage(index: 0)) { error in
-                XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidImageRemove))
-            }
-        } catch {
-            print("An unexpected error occurred during the test.")
-            print(error.localizedDescription)
-            XCTFail()
-        }
-    }
-    
-    func testConnectWithoutDatapoints() {
-        do {
-            let orchestrator = try Orchestrator(repoID: testRepo)
-            
-            XCTAssertThrowsError(try orchestrator.connect(webSocketURL: testWebSocketURL)) { error in
-                XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.failedRealmRead))
-            }
-            
-            try orchestrator.addImages(images: Array(realImages[0..<1]), labels: Array(realLabels[0..<1]))
-            try orchestrator.removeImage(index: 0)
-            
-            XCTAssertThrowsError(try orchestrator.connect(webSocketURL: testWebSocketURL)) { error in
-                XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.noDatapoints))
             }
         } catch {
             print("An unexpected error occurred during the test.")
@@ -113,7 +102,7 @@ class OrchestratorTests: XCTestCase {
         var numIterations = 0.0
 
         do {
-            try orchestrator.addImages(images: realImages, labels: realLabels)
+            try orchestrator.addImages(datasetID: testDataset, images: realImages, labels: realLabels)
             let result = try orchestrator.communicationManager.handleNewEvent(event: WebSocketEvent.text(trainMessage))
             XCTAssertNil(result)
             let dummyCommunicationManager: DummyCommunicationManager = orchestrator.communicationManager as! DummyCommunicationManager

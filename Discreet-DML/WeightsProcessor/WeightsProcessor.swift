@@ -63,7 +63,6 @@ class WeightsProcessor {
             throw DMLError.weightsProcessorError(ErrorMessage.failedUnpack)
         }
         let num_layers = b[0] as! Int
-        print(num_layers)
         var layerBytes = [(Int, Int)]()
         var layerData = [[Float32]]()
         while layerBytes.count < num_layers {

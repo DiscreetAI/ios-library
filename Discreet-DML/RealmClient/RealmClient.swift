@@ -198,12 +198,12 @@ class RealmClient {
     }
     
     /**
-    Retrieve data entry using the `datasetID` to form the primary key.
+     Retrieve data entry using the `datasetID` to form the primary key.
     
-    - Parameters:
-       - datasetID: The dataset ID corresponding to the desired dataset.
+     - Parameters:
+        - datasetID: The dataset ID corresponding to the desired dataset.
     
-    - Returns: An optional containing a `DataEntry` if retrieval succeeded and `nil` otherwise.
+     - Returns: An optional containing a `DataEntry` if retrieval succeeded and `nil` otherwise.
     */
     func getDataEntry(datasetID: String) -> DataEntry? {
         return self.metadataEntry.getDataEntry(datasetID: datasetID)

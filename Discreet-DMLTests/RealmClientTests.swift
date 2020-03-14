@@ -23,7 +23,6 @@ class RealmClientTests: XCTestCase {
          */
         do {
             try realmClient.addTextData(datasetID: testDataset, encodings: testEncodings, labels: testEncodingLabels)
-            
             XCTAssert(realmClient.containsDataEntry(datasetID: testDataset))
             if realmClient.containsDataEntry(datasetID: testDataset) {
             

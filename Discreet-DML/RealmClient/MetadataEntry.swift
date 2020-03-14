@@ -14,10 +14,10 @@ import RealmSwift
  Dataset object corresponding to the metadata of a dataset.
  
  TODO: Add more information here.
-*/
+ */
 class MetadataEntry: Object {
     
-   /// The repo ID corresponding to the registered application.
+    /// The repo ID corresponding to the registered application.
     @objc dynamic var repoID: String = ""
     
     /// The list of data entries that exist for this repo ID.
@@ -66,13 +66,13 @@ class MetadataEntry: Object {
     }
     
     /**
-    Retrieve data entry using the `datasetID` to form the primary key.
-    
-    - Parameters:
-       - datasetID: The dataset ID corresponding to the desired dataset.
-    
-    - Returns: An optional containing a `DataEntry` if retrieval succeeded and `nil` otherwise.
-    */
+     Retrieve data entry using the `datasetID` to form the primary key.
+     
+     - Parameters:
+        - datasetID: The dataset ID corresponding to the desired dataset.
+     
+     - Returns: An optional containing a `DataEntry` if retrieval succeeded and `nil` otherwise.
+     */
     func getDataEntry(datasetID: String) -> DataEntry? {
         let primaryKey = makePrimaryKey(repoID: self.repoID, datasetID: datasetID)
         
@@ -89,10 +89,10 @@ class MetadataEntry: Object {
     }
     
     /**
-    The primary key of the metadata entry object.
-    
-    - Returns: `repoID`,  the name of the primary key.
-    */
+     The primary key of the metadata entry object.
+     
+     - Returns: `repoID`,  the name of the primary key.
+     */
     override static func primaryKey() -> String? {
         return "repoID"
     }

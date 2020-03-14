@@ -24,12 +24,14 @@ class TextEntry: DataEntry {
      Initializes the `TextEntry` object with the starting encodings and labels.
     
      - Parameters:
-        - repoID: The repo ID corresponding to the dataset of this library.
+        - repoID: The repo ID corresponding to the registered application.
+        - datasetID: The dataset ID corresponding to the desired dataset.
         - encodings: The encoded text data, which is an array of text datapoint, each of which consists of a 1D array of integer encodings.
         - labels: The labels for each of the text datapoints.
     */
-    convenience init(repoID: String, encodings: [[Int]], labels: [Int]) {
-        self.init(repoID: repoID)
+    convenience init(repoID: String, datasetID: String, encodings: [[Int]], labels: [Int]) {
+        self.init(repoID: repoID, datasetID: datasetID)
+        self.dataType = DataType.TEXT.rawValue
         self.addEncodings(encodings: encodings, labels: labels)
     }
 
@@ -77,7 +79,7 @@ class TextEntry: DataEntry {
 }
 
 /**
- Dataset object representing a 1D array of Ints.
+ Dataset object representing a 1D array of integer encodings.
 */
 class TextDatapoint: Object {
     
@@ -88,7 +90,7 @@ class TextDatapoint: Object {
      Initializes the text datapoint with a list of encodings.
      
      - Parameters:
-        - textDatapoint: List consisting of integer encodings.
+        - textDatapoint: 1D array consisting of integer encodings.
      */
     convenience init(textDatapoint: [Int]) {
         self.init()

@@ -86,13 +86,16 @@ class CoreMLClient {
     func train(job: DMLJob) throws {
         self.currentJob = job
         let modelURL = try self.modelLoader!.loadModel()
-        let metaDataEntry = realmClient!.getMetadataEntry(repoID: job.repoID)!
-        let type = DataType(rawValue: metaDataEntry.dataType)
+        let type = self.realmClient?.getDataEntryType(datasetID: job.datasetID)
+        
+        if (type == nil) {
+            _ = try self.communicationManager?.handleNoDataset(job: job)
+        }
         
         var batchProvider: MLBatchProvider
-        switch type {
+        switch type! {
         case .TEXT:
-            batchProvider = TextBatchProvider(realmClient: self.realmClient!, repoID: job.repoID)
+            batchProvider = TextBatchProvider(realmClient: self.realmClient!, datasetID: job.datasetID)
             break
         case .IMAGE:
             var model: MLModel
@@ -103,15 +106,12 @@ class CoreMLClient {
                 throw DMLError.coreMLError(ErrorMessage.failedMLModel)
             }
             let constraint = model.modelDescription.inputDescriptionsByName["image"]!.imageConstraint!
-            batchProvider = ImagesBatchProvider(realmClient: realmClient!, repoID: job.repoID, imageConstraint: constraint)
-        default:
-            print("Unrecognized type!")
-            return
+            batchProvider = ImagesBatchProvider(realmClient: realmClient!, datasetID: job.datasetID, imageConstraint: constraint)
         }
         
         job.omega = batchProvider.count
         job.modelURL = modelURL
-                
+                        
         let handlers = MLUpdateProgressHandlers(
         forEvents: [.trainingBegin, .miniBatchEnd, .epochEnd],
         progressHandler: progressHandler,

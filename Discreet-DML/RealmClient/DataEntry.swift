@@ -11,31 +11,47 @@ import RealmSwift
 
 
 /**
- General dataset object. Uniquely identified by `repoID`.
+ General dataset object. Uniquely identified by `repoID/datasetID`.
 */
 class DataEntry: Object {
     
-    /// The repo ID corresponding to the dataset of this library.
-    @objc dynamic var repoID: String = ""
+    @objc dynamic var dataType: String = ""
+    
+    @objc dynamic var primaryKey: String = ""
 
     /**
      Initializes the data entry object. Never initialized directly.
      
      - Parameters:
-        - repoID: The repo ID corresponding to the dataset of this library.
+        - repoID: The repo ID corresponding to the registered application.
+        - datasetID: The dataset ID corresponding to the desired dataset.
      */
-    convenience init(repoID: String) {
+    convenience init(repoID: String, datasetID: String) {
         self.init()
-        self.repoID = repoID
+        self.primaryKey = makePrimaryKey(repoID: repoID, datasetID: datasetID)
     }
 
+    convenience init(primaryKey: String, dataType: String) {
+        self.init()
+        self.primaryKey = primaryKey
+        self.dataType = dataType
+    }
     /**
      The primary key of the data entry object.
      
-     - Returns: `repoID`, the name of the primary key.
+     - Returns: `primaryKey`,  the name of the primary key.
      */
     override static func primaryKey() -> String? {
-        return "repoID"
+        return "primaryKey"
+    }
+    
+    /**
+     Convert this data entry into a `DataEntry` object.
+     
+     - Returns: The `DataEntry` object formed from this data entry's primary key
+     */
+    func toDataEntry() -> DataEntry {
+        return DataEntry(primaryKey: self.primaryKey, dataType: self.dataType)
     }
 }
 

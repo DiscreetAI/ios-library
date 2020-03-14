@@ -57,7 +57,7 @@ class CommunicationManagerTests: XCTestCase {
          Test that the protocol for a new train message is correct.
          */
         do {
-            communicationManager.currentJob = DMLJob(repoID: testRepo, sessionID: testSession, round: testRound)
+            communicationManager.currentJobs = [DMLJob(datasetID: testDataset, sessionID: testSession, round: testRound)]
             let result = try communicationManager.handleNewEvent(event: WebSocketEvent.text(trainMessage))
             RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
             XCTAssertNil(result)
@@ -74,7 +74,7 @@ class CommunicationManagerTests: XCTestCase {
          Test that the message to be sent after training is correct.
          */
         do {
-            let job = DummyDMLJob(repoID: testRepo, sessionID: testSession, round: testRound)
+            let job = DummyDMLJob(datasetID: testDataset, sessionID: testSession, round: testRound)
             let actual = try communicationManager.handleTrainingComplete(job: job)
 
             let expectedJSON = try parseJSON(stringOrFile: updateMessage, isString: true) as! NSDictionary

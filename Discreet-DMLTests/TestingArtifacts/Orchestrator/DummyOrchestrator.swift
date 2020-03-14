@@ -15,7 +15,7 @@ class DummyOrchestrator: Orchestrator {
         let coreMLClient = self.communicationManager.coreMLClient!
         self.communicationManager = DummyCommunicationManager(coreMLClient: coreMLClient)
         coreMLClient.weightsProcessor = WeightsProcessor()
-        coreMLClient.modelLoader = ModelLoader(downloadModelURL: testModelURL)
+        coreMLClient.modelLoader = DummyImageModelLoader()
         coreMLClient.configure(communicationManager: self.communicationManager)
     }
 }

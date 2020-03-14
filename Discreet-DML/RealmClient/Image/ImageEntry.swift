@@ -15,21 +15,23 @@ import RealmSwift
 class ImageEntry: DataEntry {
     
     /// The list of image paths referring to images stored in the application.
-    let images: List<String> = List<String>()
+    let images = List<String>()
     
     /// The labels for each of the images at the image paths.
-    let labels: List<String> = List<String>()
+    let labels = List<String>()
 
     /**
      Initializes the `ImageEntry` object with the starting images and labels.
      
      - Parameters:
-        - repoID: The repo ID corresponding to the dataset of this library.
+        - repoID: The repo ID corresponding to the registered application.
+        - datasetID: The dataset ID corresponding to the desired dataset.
         - images: The 1D array of image paths referring to images stored in the application.
         - labels: The labels for each of the images at the image paths.
      */
-    convenience init(repoID: String, images: [String], labels: [String]) {
-        self.init(repoID: repoID)
+    convenience init(repoID: String, datasetID: String, images: [String], labels: [String]) {
+        self.init(repoID: repoID, datasetID: datasetID)
+        self.dataType = DataType.IMAGE.rawValue
         self.addImages(images: images, labels: labels)
     }
 

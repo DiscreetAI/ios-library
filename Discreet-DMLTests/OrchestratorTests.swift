@@ -11,7 +11,7 @@ import Starscream
 @testable import Discreet_DML
 
 class OrchestratorTests: XCTestCase {
-    let orchestrator = try! DummyOrchestrator(repoID: testRepo)
+    let orchestrator = try! DummyOrchestrator(repoID: testRepo, connectImmediately: false)
 
     override func setUp() {
         try! orchestrator.realmClient.clear()
@@ -22,7 +22,7 @@ class OrchestratorTests: XCTestCase {
          Test validation of the repo ID.
          */
         do {
-            let badOrchestrator = try Orchestrator(repoID: testRepo)
+            let badOrchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
             XCTAssertThrowsError(try badOrchestrator.connect()) { error in
             XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidRepoID))
             
@@ -39,7 +39,7 @@ class OrchestratorTests: XCTestCase {
          Test validation with the addition of new data.
          */
         do {
-            let orchestrator = try Orchestrator(repoID: testRepo)
+            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
             
             XCTAssertThrowsError(try orchestrator.addImages(datasetID: testDataset, images: testImages, labels: testLabels)) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidImagePath))
@@ -64,7 +64,7 @@ class OrchestratorTests: XCTestCase {
          Test validation with removing an image.
          */
         do {
-            let orchestrator = try Orchestrator(repoID: testRepo)
+            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
             try! orchestrator.addImages(datasetID: testDataset, images: Array(realImages[0...1]), labels: Array(realLabels[0...1]))
             
             XCTAssertThrowsError(try orchestrator.removeImage(datasetID: testDataset, image: "badPath")) { error in

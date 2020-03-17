@@ -11,52 +11,25 @@ class TrainNeuralNetworkViewController: UIViewController {
     var trainingDataset: ImageDataset!
     var validationDataset: ImageDataset!
     var lastState: String!
+    var statusTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !orchestrator.isConnected() {
-            lastState = orchestrator.getState()
-            self.statusLabel.text = lastState
-            self.statusLabel.textColor = UIColor.white
-            self.statusLabel.numberOfLines = 0
-            self.statusLabel.sizeToFit()
-            
-            try! orchestrator.clearData()
-            var images = [String]()
-            var labels = [String]()
-            
-            for i in 0..<trainingDataset.count {
-                let image = self.trainingDataset.image(at: i)!
-                
-                let randomString = UUID().uuidString + ".jpg"
-                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let imageURL = documentsURL.appendingPathComponent(randomString)
-                
-                if let data = image.jpegData(compressionQuality: 1) {
-                    try? data.write(to: imageURL)
-                    print("Successfully saved \(imageURL.path) to the app!")
-                }
-                
-                let label = self.trainingDataset.label(at: i)
-                images.append(imageURL.path)
-                labels.append(label)
-            }
-            
-            try! orchestrator.addImages(images: images, labels: labels)
-            
-            try! orchestrator.connect()
-            
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+        lastState = orchestrator.getState()
+        self.statusLabel.text = lastState
+        self.statusLabel.textColor = UIColor.white
+        self.statusLabel.numberOfLines = 0
+        self.statusLabel.sizeToFit()
+        
+        if statusTimer == nil {
+            self.statusTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
                 let newStatus = orchestrator.getState()
                 if self.lastState != newStatus {
                     self.lastState = newStatus
                     self.statusLabel.text! += "\n\n" + self.lastState
                 }
             }
-        } else {
-            lastState = orchestrator.getState()
-            self.statusLabel.text = lastState
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(appWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)

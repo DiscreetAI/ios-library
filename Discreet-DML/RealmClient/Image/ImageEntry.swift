@@ -14,7 +14,7 @@ import RealmSwift
 */
 class ImageEntry: DataEntry {
     
-    /// The list of image paths referring to images stored in the application.
+    /// The list of image paths referring to images stored in the application's documents directory.
     let images = List<String>()
     
     /// The labels for each of the images at the image paths.
@@ -26,7 +26,7 @@ class ImageEntry: DataEntry {
      - Parameters:
         - repoID: The repo ID corresponding to the registered application.
         - datasetID: The dataset ID corresponding to the desired dataset.
-        - images: The 1D array of image paths referring to images stored in the application.
+        - images: The 1D array of image paths referring to images stored in the application's documents directory.
         - labels: The labels for each of the images at the image paths.
      */
     convenience init(repoID: String, datasetID: String, images: [String], labels: [String]) {
@@ -39,7 +39,7 @@ class ImageEntry: DataEntry {
      Add more image paths and labels to this entry.
      
      - Parameters:
-        - images: The 1D array of image paths referring to images stored in the application.
+        - images: The 1D array of image paths referring to images stored in the application's documents directory.
         - labels: The labels for each of the text datapoints.
      */
     func addImages(images: [String], labels: [String]) {
@@ -62,7 +62,7 @@ class ImageEntry: DataEntry {
      Replace any image data already stored for the given repo ID with the provided image paths and labels.
     
      - Parameters:
-        - images: The 1D array of image paths referring to images stored in the application.
+        - images: The 1D array of image paths referring to images stored in the application's documents directory.
         - labels: The labels for each of the text datapoints.
     */
     func setData(images: [String], labels: [String]) {

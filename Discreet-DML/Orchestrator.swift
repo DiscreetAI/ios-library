@@ -73,7 +73,7 @@ public class Orchestrator {
      
      - Parameters:
         - datasetID: The dataset ID corresponding to the desired dataset.
-        - images: The 1D array of image paths referring to images stored in the application.
+        - images: The 1D array of image paths referring to images stored in the application's documents directory.
         - labels: The labels for each of the text datapoints.
      
      - Throws: `DMLError` if an error occurred during validation of the data.
@@ -90,7 +90,7 @@ public class Orchestrator {
      
      - Parameters:
         - datasetID: The dataset ID corresponding to the desired dataset.
-        - images: The 1D array of image paths referring to images stored in the application.
+        - images: The 1D array of image paths referring to images stored in the application's documents directory.
         - labels: The labels for each of the text datapoints.
      
      - Throws: `DMLError` if an error occurred during validation of the data.
@@ -135,6 +135,7 @@ public class Orchestrator {
      
      - Parameters:
         - datasetID: The dataset ID corresponding to the desired dataset.
+     
      - Throws: `DMLError` if no image paths are currently stored.
      
      - Returns: A tuple (`images`, `labels`) where `images` refers to the stored image paths and `labels` refers to the corresponding labels.
@@ -266,6 +267,15 @@ public class Orchestrator {
         }
     }
     
+    /**
+     Validate the data type of data being modified to make sure it is the expected type. Used to ensure that an image dataset doesn't end up with text data, and vice-versa.
+     
+     - Parameters:
+        - datasetID: The dataset ID corresponding to the desired dataset.
+        - expectedType: The expected data type of this dataset.
+     
+     - Throws: `DMLError` if the data type of the dataset does not match the expected dataset type.
+     */
     private func validateDataType(datasetID: String, expectedType: DataType) throws {
         if let actualType = self.realmClient.getDataEntryType(datasetID: datasetID) {
             if actualType != expectedType {
@@ -284,7 +294,8 @@ public class Orchestrator {
         try self.validateData(data: images, labels: labels)
         
         for imagePath in images {
-            if !FileManager.default.fileExists(atPath: imagePath) {
+            let fullPath = makeImageURL(image: imagePath).path
+            if !fileManager.fileExists(atPath: fullPath) {
                 print("Failed to find image path:", imagePath)
                 throw DMLError.userError(ErrorMessage.invalidImagePath)
             }

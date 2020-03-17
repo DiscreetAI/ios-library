@@ -49,14 +49,15 @@ class ImagesFeatureProvider: MLFeatureProvider {
      Initialize the `TextFeatureValue` by turning the input text datapoint and label into MLMultiArrays.
     
      - Parameters:
-        - image: The path to the image.
+        - image: The path to the image within the documents directory.
         - label: The corresponding label for this datapoint
         - imageConstraint: The constraints of the input image.
      
      - Throws: `DMLError` if the image could not be loaded from the provided path.
     */
     init(image: String, label: String, imageConstraint: MLImageConstraint) throws {
-        let imageURL = URL(fileURLWithPath: image)
+        let imageURL = makeImageURL(image: image)
+        let path = imageURL.path
         let imageOptions: [MLFeatureValue.ImageOption: Any] = [:]
         var featureValue: MLFeatureValue
         do {

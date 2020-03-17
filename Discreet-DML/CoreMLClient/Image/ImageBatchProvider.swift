@@ -14,7 +14,7 @@ import CoreML
  */
 class ImagesBatchProvider: MLBatchProvider {
 
-    /// The 1D array of image paths referring to images stored in the application.
+    /// The 1D array of image paths referring to images stored in the application's documents directory.
     var images: [String]
     
     /// The labels for each of the images at the image paths.

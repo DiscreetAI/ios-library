@@ -22,14 +22,13 @@ import CoreML
 func renameModel(modelURL: URL) throws -> URL {
     let newName = "old_model.mlmodelc"
     let newURL = modelURL.deletingLastPathComponent().appendingPathComponent(newName)
-    let fileManager = FileManager.default
     do {
         try fileManager.createDirectory(at: newURL, withIntermediateDirectories: true, attributes: nil)
-        if FileManager().fileExists(atPath: newURL.path) {
+        if fileManager.fileExists(atPath: newURL.path) {
             print("File already exists [\(newURL.path)], deleting...")
-            try FileManager().removeItem(atPath: newURL.path)
+            try fileManager.removeItem(atPath: newURL.path)
         }
-        try FileManager.default.moveItem(atPath: modelURL.path, toPath: newURL.path)
+        try fileManager.moveItem(atPath: modelURL.path, toPath: newURL.path)
     } catch {
         print(error.localizedDescription)
         throw DMLError.coreMLError(ErrorMessage.failedRename)
@@ -49,11 +48,11 @@ func renameModel(modelURL: URL) throws -> URL {
  */
 func saveUpdatedModel(_ model: MLModel & MLWritable, to url: URL) throws {
     do {
-        if FileManager().fileExists(atPath: url.path) {
+        if fileManager.fileExists(atPath: url.path) {
             print("File already exists [\(url.path)], deleting...")
-            try FileManager().removeItem(atPath: url.path)
+            try fileManager.removeItem(atPath: url.path)
         }
-        try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+        try fileManager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         try model.write(to: url)
     } catch {
         print(error.localizedDescription)

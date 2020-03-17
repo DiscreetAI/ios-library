@@ -11,7 +11,7 @@ import RealmSwift
 
 
 /**
- Enum denoting type of data for this repo ID.
+ Enum denoting type of data for a specific dataset ID.
 */
 enum DataType: String {
     

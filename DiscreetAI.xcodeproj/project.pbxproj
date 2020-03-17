@@ -11,7 +11,7 @@
 		4403DA58180C99CE29B75292 /* Pods_Discreet_DMLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BDFAECCF0D7C93E76CC9572 /* Pods_Discreet_DMLTests.framework */; };
 		A72A31FD4ECDDD44A923CCF1 /* Pods_Discreet_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B6CA85E88BFB5ABFD9A053 /* Pods_Discreet_DML.framework */; };
 		E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */; };
-		E409790523A0A3A000F51C42 /* DiscreetAI_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* DiscreetAI_DML.framework */; };
+		E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */; };
 		E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* Discreet_DML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */; };
 		E41B26DA23EA367A0095C1CD /* old_simple_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D623EA36790095C1CD /* old_simple_weights */; };
@@ -30,7 +30,7 @@
 		E42C76EC23E8E8F00003F638 /* DummyOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */; };
 		E42C76EE23E8F73E0003F638 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76ED23E8F73E0003F638 /* Errors.swift */; };
 		E4301B3C2405CD6C00ED9CA4 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */; };
-		E4301B3E2405CD6D00ED9CA4 /* DiscreetAI_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* DiscreetAI_DML.framework */; };
+		E4301B3E2405CD6D00ED9CA4 /* DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */; };
 		E4301B452405F79B00ED9CA4 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B442405F79B00ED9CA4 /* Encoder.swift */; };
 		E4301B472406009000ED9CA4 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B462406009000ED9CA4 /* EncoderTests.swift */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
@@ -266,10 +266,10 @@
 		C268DCB89E882B0D098BB970 /* Pods-Discreet-DML.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DML.release.xcconfig"; path = "Target Support Files/Pods-Discreet-DML/Pods-Discreet-DML.release.xcconfig"; sourceTree = "<group>"; };
 		D62811CAAC41F0A7140DDF2F /* Pods_Discreet_DMLIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Discreet_DMLIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSHandler.swift; sourceTree = "<group>"; };
-		E40978FB23A0A39F00F51C42 /* DiscreetAI_DML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiscreetAI_DML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiscreetAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40978FE23A0A39F00F51C42 /* Discreet_DML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Discreet_DML.h; sourceTree = "<group>"; };
 		E40978FF23A0A39F00F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E409790423A0A3A000F51C42 /* DiscreetAI-DMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DiscreetAI-DMLTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E409790423A0A3A000F51C42 /* DiscreetAITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiscreetAITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E409790B23A0A3A000F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessorTests.swift; sourceTree = "<group>"; };
 		E4155EA323F62C2700D5074D /* Pods_SceneDetector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_SceneDetector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -511,7 +511,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E409790523A0A3A000F51C42 /* DiscreetAI_DML.framework in Frameworks */,
+				E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */,
 				4403DA58180C99CE29B75292 /* Pods_Discreet_DMLTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,7 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4301B3E2405CD6D00ED9CA4 /* DiscreetAI_DML.framework in Frameworks */,
+				E4301B3E2405CD6D00ED9CA4 /* DiscreetAI.framework in Frameworks */,
 				0A6498802D087F8711ADA9A9 /* Pods_Discreet_DMLIntegrationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,9 +544,9 @@
 		E40978F123A0A39F00F51C42 = {
 			isa = PBXGroup;
 			children = (
-				E40978FD23A0A39F00F51C42 /* DiscreetAI-DML */,
-				E409790823A0A3A000F51C42 /* DiscreeAIDMLUnitTests */,
-				E4301B3A2405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */,
+				E40978FD23A0A39F00F51C42 /* DiscreetAI */,
+				E409790823A0A3A000F51C42 /* DiscreeAI-UnitTests */,
+				E4301B3A2405CD6C00ED9CA4 /* DiscreetAI-IntegrationTests */,
 				E40978FC23A0A39F00F51C42 /* Products */,
 				E4AF70E323D905B400D65376 /* Frameworks */,
 				40DEAEC38CF5479E62B69B9F /* Pods */,
@@ -556,17 +556,17 @@
 		E40978FC23A0A39F00F51C42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E40978FB23A0A39F00F51C42 /* DiscreetAI_DML.framework */,
-				E409790423A0A3A000F51C42 /* DiscreetAI-DMLTests.xctest */,
+				E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */,
+				E409790423A0A3A000F51C42 /* DiscreetAITests.xctest */,
 				E4301B392405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E40978FD23A0A39F00F51C42 /* DiscreetAI-DML */ = {
+		E40978FD23A0A39F00F51C42 /* DiscreetAI */ = {
 			isa = PBXGroup;
 			children = (
-				E41D7BEC23E12E9000D58478 /* Communication Manager */,
+				E41D7BEC23E12E9000D58478 /* CommunicationManager */,
 				E41D7BEB23E12E8600D58478 /* Utils */,
 				E41D7BEA23E12E5400D58478 /* RealmClient */,
 				E41D7BE923E12E2500D58478 /* CoreMLClient */,
@@ -575,10 +575,10 @@
 				E40978FF23A0A39F00F51C42 /* Info.plist */,
 				E42C76E623E8DC2A0003F638 /* Orchestrator.swift */,
 			);
-			path = "DiscreetAI-DML";
+			path = DiscreetAI;
 			sourceTree = "<group>";
 		};
-		E409790823A0A3A000F51C42 /* DiscreeAIDMLUnitTests */ = {
+		E409790823A0A3A000F51C42 /* DiscreeAI-UnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				E49BDD4823D6889D00A954FE /* TestingArtifacts */,
@@ -591,7 +591,7 @@
 				E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */,
 				E4301B462406009000ED9CA4 /* EncoderTests.swift */,
 			);
-			path = DiscreeAIDMLUnitTests;
+			path = "DiscreeAI-UnitTests";
 			sourceTree = "<group>";
 		};
 		E41B26D523EA36510095C1CD /* WeightsProcessor */ = {
@@ -649,12 +649,12 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		E41D7BEC23E12E9000D58478 /* Communication Manager */ = {
+		E41D7BEC23E12E9000D58478 /* CommunicationManager */ = {
 			isa = PBXGroup;
 			children = (
 				E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */,
 			);
-			path = "Communication Manager";
+			path = CommunicationManager;
 			sourceTree = "<group>";
 		};
 		E41D7C0B23E37E8300D58478 /* CoreMLClient */ = {
@@ -680,14 +680,14 @@
 			path = Orchestrator;
 			sourceTree = "<group>";
 		};
-		E4301B3A2405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */ = {
+		E4301B3A2405CD6C00ED9CA4 /* DiscreetAI-IntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
 				E4C8CB95241C5AB600F3BAD7 /* TestingArtifacts */,
 				E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */,
 				E4301B3D2405CD6D00ED9CA4 /* Info.plist */,
 			);
-			path = Discreet_DMLIntegrationTests;
+			path = "DiscreetAI-IntegrationTests";
 			sourceTree = "<group>";
 		};
 		E468506C23E543BD00D3D689 /* CommunicationManager */ = {
@@ -1077,9 +1077,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E40978FA23A0A39F00F51C42 /* DiscreetAI-DML */ = {
+		E40978FA23A0A39F00F51C42 /* DiscreetAI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E409790F23A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI-DML" */;
+			buildConfigurationList = E409790F23A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI" */;
 			buildPhases = (
 				0E3FBF682D8566C6CB40AAE4 /* [CP] Check Pods Manifest.lock */,
 				E40978F623A0A39F00F51C42 /* Headers */,
@@ -1091,14 +1091,14 @@
 			);
 			dependencies = (
 			);
-			name = "DiscreetAI-DML";
+			name = DiscreetAI;
 			productName = "Discreet-DML";
-			productReference = E40978FB23A0A39F00F51C42 /* DiscreetAI_DML.framework */;
+			productReference = E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E409790323A0A3A000F51C42 /* DiscreetAI-DMLTests */ = {
+		E409790323A0A3A000F51C42 /* DiscreetAITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI-DMLTests" */;
+			buildConfigurationList = E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAITests" */;
 			buildPhases = (
 				24CFC83EF7308321C363B8A4 /* [CP] Check Pods Manifest.lock */,
 				E409790023A0A3A000F51C42 /* Sources */,
@@ -1111,9 +1111,9 @@
 			dependencies = (
 				E409790723A0A3A000F51C42 /* PBXTargetDependency */,
 			);
-			name = "DiscreetAI-DMLTests";
+			name = DiscreetAITests;
 			productName = "Discreet-DMLTests";
-			productReference = E409790423A0A3A000F51C42 /* DiscreetAI-DMLTests.xctest */;
+			productReference = E409790423A0A3A000F51C42 /* DiscreetAITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E4301B382405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */ = {
@@ -1158,7 +1158,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E40978F523A0A39F00F51C42 /* Build configuration list for PBXProject "DiscreetAI-DML" */;
+			buildConfigurationList = E40978F523A0A39F00F51C42 /* Build configuration list for PBXProject "DiscreetAI" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1176,8 +1176,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E40978FA23A0A39F00F51C42 /* DiscreetAI-DML */,
-				E409790323A0A3A000F51C42 /* DiscreetAI-DMLTests */,
+				E40978FA23A0A39F00F51C42 /* DiscreetAI */,
+				E409790323A0A3A000F51C42 /* DiscreetAITests */,
 				E4301B382405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */,
 			);
 		};
@@ -1560,12 +1560,12 @@
 /* Begin PBXTargetDependency section */
 		E409790723A0A3A000F51C42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E40978FA23A0A39F00F51C42 /* DiscreetAI-DML */;
+			target = E40978FA23A0A39F00F51C42 /* DiscreetAI */;
 			targetProxy = E409790623A0A3A000F51C42 /* PBXContainerItemProxy */;
 		};
 		E4301B402405CD6D00ED9CA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E40978FA23A0A39F00F51C42 /* DiscreetAI-DML */;
+			target = E40978FA23A0A39F00F51C42 /* DiscreetAI */;
 			targetProxy = E4301B3F2405CD6D00ED9CA4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1839,7 +1839,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E40978F523A0A39F00F51C42 /* Build configuration list for PBXProject "DiscreetAI-DML" */ = {
+		E40978F523A0A39F00F51C42 /* Build configuration list for PBXProject "DiscreetAI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E409790D23A0A3A000F51C42 /* Debug */,
@@ -1848,7 +1848,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E409790F23A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI-DML" */ = {
+		E409790F23A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E409791023A0A3A000F51C42 /* Debug */,
@@ -1857,7 +1857,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI-DMLTests" */ = {
+		E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E409791323A0A3A000F51C42 /* Debug */,

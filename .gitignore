@@ -5,7 +5,8 @@
 ## User settings
 *.py
 (A Document Being Saved By xctest*
-Pods/*
+Pods/
+*/Pods/
 */.DS_Store
 .DS_Store
 xcuserdata/

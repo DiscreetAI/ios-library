@@ -35,18 +35,11 @@ class ImagesByLabel {
   }
 
   func addImage(_ image: UIImage, for label: String) {
-    dataset.addImage(image, for: label)
-
-    let randomString = UUID().uuidString + ".jpg"
-    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let imageURL = documentsURL.appendingPathComponent(randomString)
-    
-    if let data = image.jpegData(compressionQuality: 1) {
-        try? data.write(to: imageURL)
-        print("Successfully saved \(imageURL.path) to the app!")
-    }
-    
-    try! orchestrator.addImages(images: [imageURL.path], labels: [label])
+    let filename = UUID().uuidString + ".jpg"
+    let path = "train/\(label)/\(filename)"
+    dataset.addImage(image, for: label, filename: filename)
+    try! orchestrator.addImages(datasetID: "mnist", images: [path], labels: [label])
+    dataset.examples.append((filename, label))
     // The new image is always added at the end, so we can simply append
     // the new index to the group for this label.
     groups[label]!.append(dataset.count - 1)
@@ -54,7 +47,7 @@ class ImagesByLabel {
 
   func removeImage(for label: String, at index: Int) {
     dataset.removeImage(at: flatIndex(for: label, at: index))
-    try! orchestrator.removeImage(index: index)
+    try! orchestrator.removeImage(datasetID: "mnist", index: index)
     // All the image indices following the deleted image are now off by one,
     // so recompute all the groups.
     updateGroups()

@@ -62,9 +62,7 @@ class ModelLoader {
      - Returns: URL of the `.mlmodel` file on device.
      */
     func downloadModel() throws -> URL {
-        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
-        let destinationUrl = documentsUrl.appendingPathComponent(self.downloadModelURL!.lastPathComponent)
+        let destinationUrl = documentsDirectory.appendingPathComponent(self.downloadModelURL!.lastPathComponent)
 
         if FileManager().fileExists(atPath: destinationUrl.path) {
             print("File already exists at [\(destinationUrl.path)], deleting...")
@@ -104,10 +102,7 @@ class ModelLoader {
          
          */
         if let compiledUrl = try? MLModel.compileModel(at: localModelURL) {
-            let fileManager = FileManager.default
-            let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
-            let permanentUrl = documentsUrl.appendingPathComponent(compiledUrl.lastPathComponent)
+            let permanentUrl = documentsDirectory.appendingPathComponent(compiledUrl.lastPathComponent)
 
             do {
                 if fileManager.fileExists(atPath: permanentUrl.path) {

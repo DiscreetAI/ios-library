@@ -146,3 +146,21 @@ func makeWeightsPath(modelURL: URL) -> String {
 func makePrimaryKey(repoID: String, datasetID: String) -> String {
     return repoID + "/" + datasetID
 }
+
+/// The File Manager for this library.
+var fileManager = FileManager.default
+
+/// The documents directory.
+var documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+
+/**
+ Make the image URL within the documents directory.
+ 
+ - Parameters:
+    - image: The path to the image stored in the application's documents directory.
+ 
+ - Returns: The URL referring to the absolute path of the image.
+ */
+func makeImageURL(image: String) -> URL {
+    return documentsDirectory.appendingPathComponent(image)
+}

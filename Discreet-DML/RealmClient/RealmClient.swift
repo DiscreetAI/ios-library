@@ -73,7 +73,7 @@ class RealmClient {
     
      - Parameters:
         - datasetID: The dataset ID corresponding to the desired dataset.
-        - images: The 1D array of image paths referring to images stored in the application.
+        - images: The 1D array of image paths referring to images stored in the application's documents directory.
         - labels: The labels for each of the images at the image paths.
     
      - Throws: `DMLError` if an error occurred while writing to Realm.

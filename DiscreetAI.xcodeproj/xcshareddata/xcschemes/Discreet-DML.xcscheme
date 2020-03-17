@@ -63,6 +63,26 @@
                ReferencedContainer = "container:DiscreetAIDML.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E4301B382405CD6C00ED9CA4"
+               BuildableName = "DiscreetAI-IntegrationTests.xctest"
+               BlueprintName = "DiscreetAI-IntegrationTests"
+               ReferencedContainer = "container:DiscreetAI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E409790323A0A3A000F51C42"
+               BuildableName = "DiscreetAI-UnitTests.xctest"
+               BlueprintName = "DiscreetAI-UnitTests"
+               ReferencedContainer = "container:DiscreetAI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

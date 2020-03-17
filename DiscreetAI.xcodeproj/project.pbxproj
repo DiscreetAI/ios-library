@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A6498802D087F8711ADA9A9 /* Pods_Discreet_DMLIntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62811CAAC41F0A7140DDF2F /* Pods_Discreet_DMLIntegrationTests.framework */; };
-		4403DA58180C99CE29B75292 /* Pods_Discreet_DMLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BDFAECCF0D7C93E76CC9572 /* Pods_Discreet_DMLTests.framework */; };
-		A72A31FD4ECDDD44A923CCF1 /* Pods_Discreet_DML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B6CA85E88BFB5ABFD9A053 /* Pods_Discreet_DML.framework */; };
+		7169A4CC0458ECF22746C146 /* Pods_DiscreetAI_IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA8A161BB32629794F091A8 /* Pods_DiscreetAI_IntegrationTests.framework */; };
 		E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */; };
 		E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */; };
-		E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* Discreet_DML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E409790C23A0A3A000F51C42 /* DiscreetAI.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* DiscreetAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */; };
 		E41B26DA23EA367A0095C1CD /* old_simple_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D623EA36790095C1CD /* old_simple_weights */; };
 		E41B26DB23EA367A0095C1CD /* new_complex_weights in Resources */ = {isa = PBXBuildFile; fileRef = E41B26D723EA367A0095C1CD /* new_complex_weights */; };
@@ -256,20 +254,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BDFAECCF0D7C93E76CC9572 /* Pods_Discreet_DMLTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Discreet_DMLTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10D68C76B950E2928E68CE5D /* Pods_DiscreetAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscreetAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AEAFF135B46365BDE0D58E /* Pods-Discreet-DMLTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DMLTests.debug.xcconfig"; path = "Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests.debug.xcconfig"; sourceTree = "<group>"; };
+		12C29D1B3831E6B2402F0285 /* Pods-DiscreetAI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI/Pods-DiscreetAI.debug.xcconfig"; sourceTree = "<group>"; };
+		360D17FE5D3BE91EC17D1C3A /* Pods-DiscreetAITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAITests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAITests/Pods-DiscreetAITests.debug.xcconfig"; sourceTree = "<group>"; };
+		370BB5F7A7C8160EBE32E8B6 /* Pods-DiscreetAI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI/Pods-DiscreetAI.release.xcconfig"; sourceTree = "<group>"; };
+		43BAA83EEBFC5862B1C3C7A9 /* Pods-DiscreetAI-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		4E2ED57B1C69C7748F41E354 /* Pods-Discreet-DML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DML.debug.xcconfig"; path = "Target Support Files/Pods-Discreet-DML/Pods-Discreet-DML.debug.xcconfig"; sourceTree = "<group>"; };
+		4E91C23BDA6D0821EA9B42F2 /* Pods_DiscreetAI_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscreetAI_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72AE88BBB44B6A5ECCDD86FB /* Pods-Discreet_DMLIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet_DMLIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-Discreet_DMLIntegrationTests/Pods-Discreet_DMLIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		87B6CA85E88BFB5ABFD9A053 /* Pods_Discreet_DML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Discreet_DML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DD8EE08218A3E4FADB37708 /* Pods-DiscreetAI-IntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-IntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		9879DB198677BE66E4B46106 /* Pods-Discreet-DMLTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DMLTests.release.xcconfig"; path = "Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests.release.xcconfig"; sourceTree = "<group>"; };
+		98B5515736FB7AAFAAAA5095 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9B18DCE6FA6575FA2B15E1EF /* Pods-DiscreetAITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAITests.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAITests/Pods-DiscreetAITests.release.xcconfig"; sourceTree = "<group>"; };
 		B56BD354093D9280C3CF86A9 /* Pods-Discreet_DMLIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet_DMLIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-Discreet_DMLIntegrationTests/Pods-Discreet_DMLIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
+		BEA8A161BB32629794F091A8 /* Pods_DiscreetAI_IntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscreetAI_IntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C268DCB89E882B0D098BB970 /* Pods-Discreet-DML.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DML.release.xcconfig"; path = "Target Support Files/Pods-Discreet-DML/Pods-Discreet-DML.release.xcconfig"; sourceTree = "<group>"; };
-		D62811CAAC41F0A7140DDF2F /* Pods_Discreet_DMLIntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Discreet_DMLIntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF8A08F35F7E67ECBF3A343C /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-IntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSHandler.swift; sourceTree = "<group>"; };
 		E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiscreetAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E40978FE23A0A39F00F51C42 /* Discreet_DML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Discreet_DML.h; sourceTree = "<group>"; };
+		E40978FE23A0A39F00F51C42 /* DiscreetAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscreetAI.h; sourceTree = "<group>"; };
 		E40978FF23A0A39F00F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E409790423A0A3A000F51C42 /* DiscreetAITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiscreetAITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E409790423A0A3A000F51C42 /* DiscreetAI-UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DiscreetAI-UnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E409790B23A0A3A000F51C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E40F614223CFEAA7009639CF /* WeightsProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsProcessorTests.swift; sourceTree = "<group>"; };
 		E4155EA323F62C2700D5074D /* Pods_SceneDetector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_SceneDetector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,7 +294,7 @@
 		E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrchestratorTests.swift; sourceTree = "<group>"; };
 		E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
 		E42C76ED23E8F73E0003F638 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		E4301B392405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Discreet_DMLIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4301B392405CD6C00ED9CA4 /* DiscreetAI-IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DiscreetAI-IntegrationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4301B3B2405CD6C00ED9CA4 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		E4301B3D2405CD6D00ED9CA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4301B442405F79B00ED9CA4 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
@@ -313,10 +319,10 @@
 		E4C8CA08240F0EC200F3BAD7 /* TextEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntry.swift; sourceTree = "<group>"; };
 		E4C8CA0A240F0EF100F3BAD7 /* ImageEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntry.swift; sourceTree = "<group>"; };
 		E4C8CA0C241784D400F3BAD7 /* DummyDMLJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDMLJob.swift; sourceTree = "<group>"; };
-		E4C8CB97241C5AB600F3BAD7 /* new_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = new_complex_weights; sourceTree = "<group>"; };
-		E4C8CB98241C5AB600F3BAD7 /* new_simple_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = new_simple_weights; sourceTree = "<group>"; };
-		E4C8CB99241C5AB600F3BAD7 /* old_simple_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = old_simple_weights; sourceTree = "<group>"; };
-		E4C8CB9A241C5AB600F3BAD7 /* old_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = file; path = old_complex_weights; sourceTree = "<group>"; };
+		E4C8CB97241C5AB600F3BAD7 /* new_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = text; path = new_complex_weights; sourceTree = "<group>"; };
+		E4C8CB98241C5AB600F3BAD7 /* new_simple_weights */ = {isa = PBXFileReference; lastKnownFileType = text; path = new_simple_weights; sourceTree = "<group>"; };
+		E4C8CB99241C5AB600F3BAD7 /* old_simple_weights */ = {isa = PBXFileReference; lastKnownFileType = text; path = old_simple_weights; sourceTree = "<group>"; };
+		E4C8CB9A241C5AB600F3BAD7 /* old_complex_weights */ = {isa = PBXFileReference; lastKnownFileType = text; path = old_complex_weights; sourceTree = "<group>"; };
 		E4C8CB9C241C5AB600F3BAD7 /* DummyDMLJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDMLJob.swift; sourceTree = "<group>"; };
 		E4C8CB9D241C5AB600F3BAD7 /* DummyCoreMLClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyCoreMLClient.swift; sourceTree = "<group>"; };
 		E4C8CB9E241C5AB600F3BAD7 /* TestingUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
@@ -503,7 +509,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A72A31FD4ECDDD44A923CCF1 /* Pods_Discreet_DML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +517,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */,
-				4403DA58180C99CE29B75292 /* Pods_Discreet_DMLTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +525,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4301B3E2405CD6D00ED9CA4 /* DiscreetAI.framework in Frameworks */,
-				0A6498802D087F8711ADA9A9 /* Pods_Discreet_DMLIntegrationTests.framework in Frameworks */,
+				7169A4CC0458ECF22746C146 /* Pods_DiscreetAI_IntegrationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +541,14 @@
 				9879DB198677BE66E4B46106 /* Pods-Discreet-DMLTests.release.xcconfig */,
 				72AE88BBB44B6A5ECCDD86FB /* Pods-Discreet_DMLIntegrationTests.debug.xcconfig */,
 				B56BD354093D9280C3CF86A9 /* Pods-Discreet_DMLIntegrationTests.release.xcconfig */,
+				12C29D1B3831E6B2402F0285 /* Pods-DiscreetAI.debug.xcconfig */,
+				370BB5F7A7C8160EBE32E8B6 /* Pods-DiscreetAI.release.xcconfig */,
+				360D17FE5D3BE91EC17D1C3A /* Pods-DiscreetAITests.debug.xcconfig */,
+				9B18DCE6FA6575FA2B15E1EF /* Pods-DiscreetAITests.release.xcconfig */,
+				DF8A08F35F7E67ECBF3A343C /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */,
+				8DD8EE08218A3E4FADB37708 /* Pods-DiscreetAI-IntegrationTests.release.xcconfig */,
+				98B5515736FB7AAFAAAA5095 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */,
+				43BAA83EEBFC5862B1C3C7A9 /* Pods-DiscreetAI-UnitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -545,7 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				E40978FD23A0A39F00F51C42 /* DiscreetAI */,
-				E409790823A0A3A000F51C42 /* DiscreeAI-UnitTests */,
+				E409790823A0A3A000F51C42 /* DiscreetAI-UnitTests */,
 				E4301B3A2405CD6C00ED9CA4 /* DiscreetAI-IntegrationTests */,
 				E40978FC23A0A39F00F51C42 /* Products */,
 				E4AF70E323D905B400D65376 /* Frameworks */,
@@ -557,8 +569,8 @@
 			isa = PBXGroup;
 			children = (
 				E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */,
-				E409790423A0A3A000F51C42 /* DiscreetAITests.xctest */,
-				E4301B392405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests.xctest */,
+				E409790423A0A3A000F51C42 /* DiscreetAI-UnitTests.xctest */,
+				E4301B392405CD6C00ED9CA4 /* DiscreetAI-IntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -571,14 +583,14 @@
 				E41D7BEA23E12E5400D58478 /* RealmClient */,
 				E41D7BE923E12E2500D58478 /* CoreMLClient */,
 				E41D7BE823E12DB200D58478 /* WeightsProcessor */,
-				E40978FE23A0A39F00F51C42 /* Discreet_DML.h */,
+				E40978FE23A0A39F00F51C42 /* DiscreetAI.h */,
 				E40978FF23A0A39F00F51C42 /* Info.plist */,
 				E42C76E623E8DC2A0003F638 /* Orchestrator.swift */,
 			);
 			path = DiscreetAI;
 			sourceTree = "<group>";
 		};
-		E409790823A0A3A000F51C42 /* DiscreeAI-UnitTests */ = {
+		E409790823A0A3A000F51C42 /* DiscreetAI-UnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				E49BDD4823D6889D00A954FE /* TestingArtifacts */,
@@ -591,7 +603,7 @@
 				E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */,
 				E4301B462406009000ED9CA4 /* EncoderTests.swift */,
 			);
-			path = "DiscreeAI-UnitTests";
+			path = "DiscreetAI-UnitTests";
 			sourceTree = "<group>";
 		};
 		E41B26D523EA36510095C1CD /* WeightsProcessor */ = {
@@ -715,9 +727,9 @@
 			isa = PBXGroup;
 			children = (
 				E4155EA323F62C2700D5074D /* Pods_SceneDetector.framework */,
-				87B6CA85E88BFB5ABFD9A053 /* Pods_Discreet_DML.framework */,
-				0BDFAECCF0D7C93E76CC9572 /* Pods_Discreet_DMLTests.framework */,
-				D62811CAAC41F0A7140DDF2F /* Pods_Discreet_DMLIntegrationTests.framework */,
+				10D68C76B950E2928E68CE5D /* Pods_DiscreetAI.framework */,
+				BEA8A161BB32629794F091A8 /* Pods_DiscreetAI_IntegrationTests.framework */,
+				4E91C23BDA6D0821EA9B42F2 /* Pods_DiscreetAI_UnitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1070,7 +1082,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E409790C23A0A3A000F51C42 /* Discreet_DML.h in Headers */,
+				E409790C23A0A3A000F51C42 /* DiscreetAI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,9 +1108,9 @@
 			productReference = E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E409790323A0A3A000F51C42 /* DiscreetAITests */ = {
+		E409790323A0A3A000F51C42 /* DiscreetAI-UnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAITests" */;
+			buildConfigurationList = E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI-UnitTests" */;
 			buildPhases = (
 				24CFC83EF7308321C363B8A4 /* [CP] Check Pods Manifest.lock */,
 				E409790023A0A3A000F51C42 /* Sources */,
@@ -1111,14 +1123,14 @@
 			dependencies = (
 				E409790723A0A3A000F51C42 /* PBXTargetDependency */,
 			);
-			name = DiscreetAITests;
+			name = "DiscreetAI-UnitTests";
 			productName = "Discreet-DMLTests";
-			productReference = E409790423A0A3A000F51C42 /* DiscreetAITests.xctest */;
+			productReference = E409790423A0A3A000F51C42 /* DiscreetAI-UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E4301B382405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */ = {
+		E4301B382405CD6C00ED9CA4 /* DiscreetAI-IntegrationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4301B412405CD6D00ED9CA4 /* Build configuration list for PBXNativeTarget "Discreet_DMLIntegrationTests" */;
+			buildConfigurationList = E4301B412405CD6D00ED9CA4 /* Build configuration list for PBXNativeTarget "DiscreetAI-IntegrationTests" */;
 			buildPhases = (
 				6A4D7671655C5CF9569A8360 /* [CP] Check Pods Manifest.lock */,
 				E4301B352405CD6C00ED9CA4 /* Sources */,
@@ -1131,9 +1143,9 @@
 			dependencies = (
 				E4301B402405CD6D00ED9CA4 /* PBXTargetDependency */,
 			);
-			name = Discreet_DMLIntegrationTests;
+			name = "DiscreetAI-IntegrationTests";
 			productName = Discreet_DMLIntegrationTests;
-			productReference = E4301B392405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests.xctest */;
+			productReference = E4301B392405CD6C00ED9CA4 /* DiscreetAI-IntegrationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1177,8 +1189,8 @@
 			projectRoot = "";
 			targets = (
 				E40978FA23A0A39F00F51C42 /* DiscreetAI */,
-				E409790323A0A3A000F51C42 /* DiscreetAITests */,
-				E4301B382405CD6C00ED9CA4 /* Discreet_DMLIntegrationTests */,
+				E409790323A0A3A000F51C42 /* DiscreetAI-UnitTests */,
+				E4301B382405CD6C00ED9CA4 /* DiscreetAI-IntegrationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1393,7 +1405,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Discreet-DML-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DiscreetAI-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1415,7 +1427,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Discreet-DMLTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DiscreetAI-UnitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1437,7 +1449,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Discreet_DMLIntegrationTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DiscreetAI-IntegrationTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1450,15 +1462,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Discreet_DMLIntegrationTests/Pods-Discreet_DMLIntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Discreet_DMLIntegrationTests/Pods-Discreet_DMLIntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Discreet_DMLIntegrationTests/Pods-Discreet_DMLIntegrationTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B293A0786FABB60EB512B4B4 /* [CP] Embed Pods Frameworks */ = {
@@ -1467,15 +1479,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1699,7 +1711,7 @@
 		};
 		E409791023A0A3A000F51C42 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E2ED57B1C69C7748F41E354 /* Pods-Discreet-DML.debug.xcconfig */;
+			baseConfigurationReference = 12C29D1B3831E6B2402F0285 /* Pods-DiscreetAI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1708,7 +1720,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Discreet-DML/Info.plist";
+				INFOPLIST_FILE = DiscreetAI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1716,7 +1728,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DML";
+				PRODUCT_BUNDLE_IDENTIFIER = com.discreetai.DML;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1727,7 +1739,7 @@
 		};
 		E409791123A0A3A000F51C42 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C268DCB89E882B0D098BB970 /* Pods-Discreet-DML.release.xcconfig */;
+			baseConfigurationReference = 370BB5F7A7C8160EBE32E8B6 /* Pods-DiscreetAI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1736,7 +1748,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Discreet-DML/Info.plist";
+				INFOPLIST_FILE = DiscreetAI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1744,7 +1756,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DML";
+				PRODUCT_BUNDLE_IDENTIFIER = com.discreetai.DML;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1754,20 +1766,24 @@
 		};
 		E409791323A0A3A000F51C42 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12AEAFF135B46365BDE0D58E /* Pods-Discreet-DMLTests.debug.xcconfig */;
+			baseConfigurationReference = 98B5515736FB7AAFAAAA5095 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V8MJQ33FN9;
-				INFOPLIST_FILE = "Discreet-DMLTests/Info.plist";
+				DEVELOPMENT_TEAM = 2BQCV4KLL7;
+				INFOPLIST_FILE = "DiscreetAI-UnitTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.discreetai.DML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1775,20 +1791,24 @@
 		};
 		E409791423A0A3A000F51C42 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9879DB198677BE66E4B46106 /* Pods-Discreet-DMLTests.release.xcconfig */;
+			baseConfigurationReference = 43BAA83EEBFC5862B1C3C7A9 /* Pods-DiscreetAI-UnitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V8MJQ33FN9;
-				INFOPLIST_FILE = "Discreet-DMLTests/Info.plist";
+				DEVELOPMENT_TEAM = 2BQCV4KLL7;
+				INFOPLIST_FILE = "DiscreetAI-UnitTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.discreetai.DML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1796,19 +1816,19 @@
 		};
 		E4301B422405CD6D00ED9CA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72AE88BBB44B6A5ECCDD86FB /* Pods-Discreet_DMLIntegrationTests.debug.xcconfig */;
+			baseConfigurationReference = DF8A08F35F7E67ECBF3A343C /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = V8MJQ33FN9;
+				DEVELOPMENT_TEAM = 2BQCV4KLL7;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = Discreet_DMLIntegrationTests/Info.plist;
+				INFOPLIST_FILE = "DiscreetAI-IntegraionTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLIntegrationTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.discreetai.DML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
@@ -1818,18 +1838,18 @@
 		};
 		E4301B432405CD6D00ED9CA4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B56BD354093D9280C3CF86A9 /* Pods-Discreet_DMLIntegrationTests.release.xcconfig */;
+			baseConfigurationReference = 8DD8EE08218A3E4FADB37708 /* Pods-DiscreetAI-IntegrationTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V8MJQ33FN9;
-				INFOPLIST_FILE = Discreet_DMLIntegrationTests/Info.plist;
+				DEVELOPMENT_TEAM = 2BQCV4KLL7;
+				INFOPLIST_FILE = "DiscreetAI-IntegraionTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.Discreet-DMLIntegrationTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.discreetai.DML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1857,7 +1877,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAITests" */ = {
+		E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI-UnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E409791323A0A3A000F51C42 /* Debug */,
@@ -1866,7 +1886,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4301B412405CD6D00ED9CA4 /* Build configuration list for PBXNativeTarget "Discreet_DMLIntegrationTests" */ = {
+		E4301B412405CD6D00ED9CA4 /* Build configuration list for PBXNativeTarget "DiscreetAI-IntegrationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4301B422405CD6D00ED9CA4 /* Debug */,

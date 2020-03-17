@@ -57,7 +57,6 @@ class ImagesFeatureProvider: MLFeatureProvider {
     */
     init(image: String, label: String, imageConstraint: MLImageConstraint) throws {
         let imageURL = makeImageURL(image: image)
-        let path = imageURL.path
         let imageOptions: [MLFeatureValue.ImageOption: Any] = [:]
         var featureValue: MLFeatureValue
         do {

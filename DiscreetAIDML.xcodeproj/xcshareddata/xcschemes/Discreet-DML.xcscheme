@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E40978FA23A0A39F00F51C42"
-               BuildableName = "Discreet_DML.framework"
-               BlueprintName = "Discreet-DML"
-               ReferencedContainer = "container:Discreet-DML.xcodeproj">
+               BuildableName = "DiscreetAIDML.framework"
+               BlueprintName = "DiscreetAIDML"
+               ReferencedContainer = "container:DiscreetAIDML.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E409790323A0A3A000F51C42"
-               BuildableName = "Discreet-DMLTests.xctest"
-               BlueprintName = "Discreet-DMLTests"
-               ReferencedContainer = "container:Discreet-DML.xcodeproj">
+               BuildableName = "DiscreetAIDMLTests.xctest"
+               BlueprintName = "DiscreetAIDMLTests"
+               ReferencedContainer = "container:DiscreetAIDML.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -48,9 +48,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E409790323A0A3A000F51C42"
-               BuildableName = "Discreet-DMLTests.xctest"
-               BlueprintName = "Discreet-DMLTests"
-               ReferencedContainer = "container:Discreet-DML.xcodeproj">
+               BuildableName = "DiscreetAIDMLTests.xctest"
+               BlueprintName = "DiscreetAIDMLTests"
+               ReferencedContainer = "container:DiscreetAIDML.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -60,7 +60,7 @@
                BlueprintIdentifier = "E4301B382405CD6C00ED9CA4"
                BuildableName = "Discreet_DMLIntegrationTests.xctest"
                BlueprintName = "Discreet_DMLIntegrationTests"
-               ReferencedContainer = "container:Discreet-DML.xcodeproj">
+               ReferencedContainer = "container:DiscreetAIDML.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -118,9 +118,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E40978FA23A0A39F00F51C42"
-            BuildableName = "Discreet_DML.framework"
-            BlueprintName = "Discreet-DML"
-            ReferencedContainer = "container:Discreet-DML.xcodeproj">
+            BuildableName = "DiscreetAIDML.framework"
+            BlueprintName = "DiscreetAIDML"
+            ReferencedContainer = "container:DiscreetAIDML.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

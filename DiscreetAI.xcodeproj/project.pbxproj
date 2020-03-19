@@ -630,6 +630,7 @@
 		E41D7BE923E12E2500D58478 /* CoreMLClient */ = {
 			isa = PBXGroup;
 			children = (
+				E468507123E5498C00D3D689 /* CoreMLUtils.swift */,
 				E4C8CA03240F0DD400F3BAD7 /* Image */,
 				E4C8CA02240F0DAD00F3BAD7 /* Text */,
 				E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */,
@@ -655,7 +656,6 @@
 			children = (
 				E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */,
 				E44F577123D3027400FE0619 /* Utils.swift */,
-				E468507123E5498C00D3D689 /* CoreMLUtils.swift */,
 				E42C76ED23E8F73E0003F638 /* Errors.swift */,
 			);
 			path = Utils;

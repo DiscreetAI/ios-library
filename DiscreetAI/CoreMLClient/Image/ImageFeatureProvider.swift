@@ -20,10 +20,16 @@ class ImagesFeatureProvider: MLFeatureProvider {
     /// The corresponding label for this image.
     var label: String
     
+    /// The name of the input .
+    var inputName: String
+    
+    /// The name of the predicted feature.
+    var predictedFeatureName: String
+    
     /// The possible feature names. Currently just the input image and label.
     var featureNames: Set<String> {
         get {
-            return ["image", "label"]
+            return [inputName, predictedFeatureName]
         }
     }
     
@@ -36,10 +42,10 @@ class ImagesFeatureProvider: MLFeatureProvider {
      - Returns: An optional consisting of the desired feature or `nil`.
     */
     func featureValue(for featureName: String) -> MLFeatureValue? {
-        if (featureName == "image") {
+        if (featureName == inputName) {
             return MLFeatureValue(pixelBuffer: image)
         }
-        if (featureName == "label") {
+        if (featureName == predictedFeatureName) {
             return MLFeatureValue(string: label)
         }
         return nil
@@ -52,10 +58,12 @@ class ImagesFeatureProvider: MLFeatureProvider {
         - image: The path to the image within the documents directory.
         - label: The corresponding label for this datapoint
         - imageConstraint: The constraints of the input image.
+        - inputName: The name of the input .
+        - predictedFeatureName: The name of the predicted feature.
      
      - Throws: `DMLError` if the image could not be loaded from the provided path.
     */
-    init(image: String, label: String, imageConstraint: MLImageConstraint) throws {
+    init(image: String, label: String, imageConstraint: MLImageConstraint, inputName: String, predictedFeatureName: String) throws {
         let imageURL = makeImageURL(image: image)
         let imageOptions: [MLFeatureValue.ImageOption: Any] = [:]
         var featureValue: MLFeatureValue
@@ -68,5 +76,7 @@ class ImagesFeatureProvider: MLFeatureProvider {
         }
         self.image = featureValue.imageBufferValue!
         self.label = label
+        self.inputName = inputName
+        self.predictedFeatureName = predictedFeatureName
     }
 }

@@ -23,6 +23,12 @@ class ImagesBatchProvider: MLBatchProvider {
     /// The constraints of the input image.
     var imageConstraint: MLImageConstraint
     
+    /// The name of the input .
+    var inputName: String
+    
+    /// The name of the predicted feature.
+    var predictedFeatureName: String
+    
     /// The number of datapoints.
     var count: Int
 
@@ -33,12 +39,16 @@ class ImagesBatchProvider: MLBatchProvider {
         - realmClient: instance of RealmClient to get data from.
         - datasetID: The dataset ID corresponding to the desired dataset.
         - imageConstraint: The constraints of the input image.
+        - inputName: The name of the input .
+        - predictedFeatureName: The name of the predicted feature.
     */
-    init(realmClient: RealmClient, datasetID: String, imageConstraint: MLImageConstraint) {
+    init(realmClient: RealmClient, datasetID: String, imageConstraint: MLImageConstraint, inputName: String, predictedFeatureName: String) {
         let imageEntry = realmClient.getImageEntry(datasetID: datasetID)!
         (self.images, self.labels) = imageEntry.getData()
         self.count = self.images.count
         self.imageConstraint = imageConstraint
+        self.inputName = inputName
+        self.predictedFeatureName = predictedFeatureName
     }
 
     /**
@@ -50,6 +60,6 @@ class ImagesBatchProvider: MLBatchProvider {
      - Returns: A `ImageFeatureProvider` corresponding ot the image path and label.
     */
     func features(at index: Int) -> MLFeatureProvider {
-        return try! ImagesFeatureProvider(image: self.images[index], label: self.labels[index], imageConstraint: self.imageConstraint)
+        return try! ImagesFeatureProvider(image: self.images[index], label: self.labels[index], imageConstraint: self.imageConstraint, inputName: inputName, predictedFeatureName: predictedFeatureName)
     }
 }

@@ -20,10 +20,16 @@ class TextFeatureProvider : MLFeatureProvider {
     /// The corresponding label as an MLMultiArray.
     var label: MLMultiArray
     
+    /// The name of the input .
+    var inputName: String
+    
+    /// The name of the predicted feature.
+    var predictedFeatureName: String
+    
     /// The possible feature names. Currently just the input text datapoint and label.
     var featureNames: Set<String> {
         get {
-            return ["input.1", "14_true"]
+            return [inputName, predictedFeatureName]
         }
     }
     
@@ -36,10 +42,10 @@ class TextFeatureProvider : MLFeatureProvider {
      - Returns: An optional consisting of the desired feature or `nil`.
      */
     func featureValue(for featureName: String) -> MLFeatureValue? {
-        if (featureName == "input.1") {
+        if (featureName == inputName) {
             return MLFeatureValue(multiArray: self.textDatapoint)
         }
-        if (featureName == "14_true") {
+        if (featureName == predictedFeatureName) {
             return MLFeatureValue(multiArray: self.label)
         }
         return nil
@@ -51,9 +57,13 @@ class TextFeatureProvider : MLFeatureProvider {
      - Parameters:
         - textDatapoint: The 1D array of encoded text data.
         - label: The corresponding label for this datapoint
+        - inputName: The name of the input .
+        - predictedFeatureName: The name of the predicted feature.
      */
-    init(textDatapoint: [Int], label: Int) {
+    init(textDatapoint: [Int], label: Int, inputName: String, predictedFeatureName: String) {
         self.textDatapoint = MLMultiArray.from(textDatapoint, dims: 2)
         self.label = MLMultiArray.from([label])
+        self.inputName = inputName
+        self.predictedFeatureName = predictedFeatureName
     }
 }

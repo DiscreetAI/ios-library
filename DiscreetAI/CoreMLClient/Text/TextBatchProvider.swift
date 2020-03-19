@@ -21,6 +21,12 @@ class TextBatchProvider: MLBatchProvider {
     /// The labels for each of the text datapoints.
     var labels: [Int]
     
+    /// The name of the input .
+    var inputName: String
+    
+    /// The name of the predicted feature.
+    var predictedFeatureName: String
+    
     /// The number of datapoints.
     var count: Int
     
@@ -30,11 +36,15 @@ class TextBatchProvider: MLBatchProvider {
      - Parameters:
         - realmClient: instance of RealmClient to get data from.
         - datasetID: The dataset ID corresponding to the desired dataset.
+        - inputName: The name of the input .
+        - predictedFeatureName: The name of the predicted feature.
      */
-    init(realmClient: RealmClient, datasetID: String) {
+    init(realmClient: RealmClient, datasetID: String, inputName: String, predictedFeatureName: String) {
         let textEntry = realmClient.getTextEntry(datasetID: datasetID)!
         (self.encodings, self.labels) = textEntry.getData()
         self.count = self.encodings.count
+        self.inputName = inputName
+        self.predictedFeatureName = predictedFeatureName
     }
     
     /**
@@ -48,6 +58,6 @@ class TextBatchProvider: MLBatchProvider {
     func features(at index: Int) -> MLFeatureProvider {
         let textDatapoint = self.encodings[index]
         let label = self.labels[index]
-        return TextFeatureProvider(textDatapoint: textDatapoint, label: label)
+        return TextFeatureProvider(textDatapoint: textDatapoint, label: label, inputName: inputName, predictedFeatureName: predictedFeatureName)
     }
 }

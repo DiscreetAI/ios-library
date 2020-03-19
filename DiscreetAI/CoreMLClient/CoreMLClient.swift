@@ -86,6 +86,18 @@ class CoreMLClient {
     func train(job: DMLJob) throws {
         self.currentJob = job
         let modelURL = try self.modelLoader!.loadModel()
+        
+        var model: MLModel
+        var inputName: String
+        var predictedFeatureName: String
+        do {
+            model = try MLModel(contentsOf: modelURL)
+            (inputName, predictedFeatureName) = getModelNames(model: model)
+        } catch {
+            print(error.localizedDescription)
+            throw DMLError.coreMLError(ErrorMessage.failedMLModel)
+        }
+        
         let type = self.realmClient?.getDataEntryType(datasetID: job.datasetID)
         
         if (type == nil) {
@@ -95,19 +107,12 @@ class CoreMLClient {
         
         var batchProvider: MLBatchProvider
         switch type! {
-        case .TEXT:
-            batchProvider = TextBatchProvider(realmClient: self.realmClient!, datasetID: job.datasetID)
-            break
-        case .IMAGE:
-            var model: MLModel
-            do {
-                model = try MLModel(contentsOf: modelURL)
-            } catch {
-                print(error.localizedDescription)
-                throw DMLError.coreMLError(ErrorMessage.failedMLModel)
-            }
-            let constraint = model.modelDescription.inputDescriptionsByName["image"]!.imageConstraint!
-            batchProvider = ImagesBatchProvider(realmClient: realmClient!, datasetID: job.datasetID, imageConstraint: constraint)
+            case .TEXT:
+                batchProvider = TextBatchProvider(realmClient: self.realmClient!, datasetID: job.datasetID, inputName: inputName, predictedFeatureName: predictedFeatureName)
+                break
+            case .IMAGE:
+                let constraint = model.modelDescription.inputDescriptionsByName["image"]!.imageConstraint!
+                batchProvider = ImagesBatchProvider(realmClient: realmClient!, datasetID: job.datasetID, imageConstraint: constraint, inputName: inputName, predictedFeatureName: predictedFeatureName)
         }
         
         if (batchProvider.count == 0) {

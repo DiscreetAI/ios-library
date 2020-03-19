@@ -59,3 +59,17 @@ func saveUpdatedModel(_ model: MLModel & MLWritable, to url: URL) throws {
         throw DMLError.coreMLError(ErrorMessage.failedModelUpdate)
     }
 }
+
+/**
+ Get the input and predicted feature name from the model.
+ 
+ - Parameters:
+    - model: The model to train with.
+ 
+ - Returns: A length-2 tuple consisting of the input name and the predicted feature name.
+ */
+func getModelNames(model: MLModel) -> (String, String) {
+    let trainingInputs =  Array(model.modelDescription.trainingInputDescriptionsByName.keys)
+    let inputName = model.modelDescription.inputDescriptionsByName.keys.first!
+    return inputName == trainingInputs[0] ? (trainingInputs[0], trainingInputs[1]) : (trainingInputs[1], trainingInputs[0])
+}

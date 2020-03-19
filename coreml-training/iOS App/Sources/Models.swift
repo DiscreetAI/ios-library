@@ -25,7 +25,7 @@ extension Models {
   }
 
   private static func urlForModelInDocumentsDirectory(_ model: Models) -> URL {
-    Gestures.urlForModelInDocumentsDirectory(model.rawValue)
+    DiscreetAIDemoApp.urlForModelInDocumentsDirectory(model.rawValue)
   }
 
   private static func loadModel(url: URL) -> MLModel? {

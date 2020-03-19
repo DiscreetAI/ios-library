@@ -1,6 +1,6 @@
 import UIKit
 import CoreML
-import Discreet_DML
+import DiscreetAI
 
 /**
   The app's main screen.

@@ -91,6 +91,8 @@ enum ErrorMessage: String {
     
     /// User error for trying to connect to the cloud node while the device does not have internet.
     case noInternet = "Device is not connected to Internet!"
+    
+    case defaultDataset = "Provided dataset ID corresponds to a protected default dataset! Please choose another dataset ID!"
 }
 
 /**

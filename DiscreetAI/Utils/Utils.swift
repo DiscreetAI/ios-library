@@ -147,6 +147,14 @@ func makePrimaryKey(repoID: String, datasetID: String) -> String {
     return repoID + "/" + datasetID
 }
 
+func makeMetadataKey(repoID: String, datasetID: String) -> String {
+    return "metadata/" + makePrimaryKey(repoID: repoID, datasetID: datasetID)
+}
+
+func makeMetadataKey(primaryKey: String) -> String {
+    return "metadata/" + primaryKey
+}
+
 /// The File Manager for this library.
 var fileManager = FileManager.default
 

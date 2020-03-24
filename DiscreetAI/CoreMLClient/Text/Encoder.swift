@@ -9,10 +9,18 @@
 import Foundation
 
 
+extension StringProtocol {
+    var words: [String] {
+        return split{ !$0.isLetter }.map{String($0)}
+    }
+}
+
 /**
  Class for providing a basic text encoder for the user.
  */
 public class BasicEncoder {
+    
+    
     
     /// The encoder dictionary, which maps a vocab word to an integer.
     var encoder: [String: Int]
@@ -52,7 +60,6 @@ public class BasicEncoder {
      - Returns: A 1D array of integer encodings.
      */
     public func encode(text: String) -> [Int] {
-        let words = text.components(separatedBy: " ")
-        return words.map(self.encodeWord)
+        return text.words.map(self.encodeWord)
     }
 }

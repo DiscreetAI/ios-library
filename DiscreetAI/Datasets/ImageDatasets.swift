@@ -1,17 +1,26 @@
 //
-//  ImageUtils.swift
-//  Discreet-DMLTests
+//  MNIST.swift
+//  DiscreetAI
 //
-//  Created by Neelesh on 1/31/20.
+//  Created by Neelesh on 3/20/20.
 //  Copyright © 2020 DiscreetAI. All rights reserved.
 //
 
 import Foundation
-@testable import DiscreetAI
 
-var imagesFolder = URL(fileURLWithPath: testingUtilsPath).deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("DiscreetAI-UnitTests/TestingArtifacts/CoreMLClient/mnist")
 
-func makeImagePaths() -> ([String], [String]) {
+enum ImageDatasets: String {
+    case MNIST = "mnist-sample"
+}
+
+let imageDataFunctions = [ImageDatasets.MNIST: getMNISTData]
+
+func isDefaultImageDataset(datasetID: String) -> Bool {
+    return ImageDatasets(rawValue: datasetID) != nil
+}
+
+func getMNISTData() -> ([String], [String]) {
+    let imagesFolder = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("mnist")
     var examples: [String] = []
     var labels: [String] = []
     for label in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] {
@@ -30,7 +39,7 @@ func makeImagePaths() -> ([String], [String]) {
     return (examples, labels)
 }
 
-private func fileURLs(at url: URL) -> [URL] {
+func fileURLs(at url: URL) -> [URL] {
     return contentsOfDirectory(at: url)!
 }
 
@@ -38,16 +47,16 @@ private func contentsOfDirectory(at url: URL) -> [URL]? {
   try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
 }
 
-private func labelURL(for label: String) -> URL {
+private func labelURL(imagesFolder: URL, for label: String) -> URL {
   imagesFolder.appendingPathComponent(label)
 }
 
-private func imageURL(for label: String, filename: String) -> URL {
-  labelURL(for: label).appendingPathComponent(filename)
+private func imageURL(imagesFolder: URL, for label: String, filename: String) -> URL {
+    labelURL(imagesFolder: imagesFolder, for: label).appendingPathComponent(filename)
 }
 
-private func imageURL(for example: (String, String)) -> URL {
-  imageURL(for: example.1, filename: example.0)
+private func imageURL(imagesFolder: URL, for example: (String, String)) -> URL {
+    imageURL(imagesFolder: imagesFolder, for: example.1, filename: example.0)
 }
 
 @discardableResult func copyIfNotExists(from: URL, to: URL) -> Bool {

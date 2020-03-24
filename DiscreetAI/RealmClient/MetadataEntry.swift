@@ -43,7 +43,8 @@ class MetadataEntry: Object {
         - dataEntry: The data entry to be added.
      */
     func addDataEntry(dataEntry: DataEntry) {
-        self.dataEntries.append(dataEntry.toDataEntry())
+        let entry = dataEntry.toDataEntry()
+        self.dataEntries.append(entry)
     }
     
     /**
@@ -54,15 +55,16 @@ class MetadataEntry: Object {
      
      - Returns: Boolean determining whether the removal was successful or not.
      */
-    func removeDataEntry(datasetID: String) -> Bool {
-        let primaryKey = makePrimaryKey(repoID: self.repoID, datasetID: datasetID)
+    func removeDataEntry(datasetID: String) -> DataEntry? {
+        let primaryKey = makeMetadataKey(repoID: self.repoID, datasetID: datasetID)
         
         if let index = self.dataEntries.firstIndex(where: {$0.primaryKey == primaryKey}) {
+            let entry = self.getDataEntries()[index]
             self.dataEntries.remove(at: index)
-            return true
-        } else {
-            return false
+            return entry
         }
+        
+        return nil
     }
     
     /**
@@ -74,7 +76,7 @@ class MetadataEntry: Object {
      - Returns: An optional containing a `DataEntry` if retrieval succeeded and `nil` otherwise.
      */
     func getDataEntry(datasetID: String) -> DataEntry? {
-        let primaryKey = makePrimaryKey(repoID: self.repoID, datasetID: datasetID)
+        let primaryKey = makeMetadataKey(repoID: self.repoID, datasetID: datasetID)
         
         return self.dataEntries.filter{$0.primaryKey == primaryKey}.first
     }

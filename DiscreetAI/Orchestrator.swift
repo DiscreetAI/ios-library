@@ -63,7 +63,7 @@ public class Orchestrator {
      - Throws: `DMLError` if an error occurred during validation of the data
      */
     public func addEncodings(datasetID: String, encodings: [[Int]], labels: [Int]) throws {
-        try validateDataType(datasetID: datasetID, expectedType: DataType.TEXT)
+        try validateDatasetID(datasetID: datasetID, expectedType: DataType.TEXT)
         try validateEncodings(encodings: encodings, labels: labels)
         try realmClient.addTextData(datasetID: datasetID, encodings: encodings, labels: labels)
     }
@@ -79,7 +79,7 @@ public class Orchestrator {
      - Throws: `DMLError` if an error occurred during validation of the data.
      */
     public func addImages(datasetID: String, images: [String], labels: [String]) throws {
-        try validateDataType(datasetID: datasetID, expectedType: DataType.IMAGE)
+        try validateDatasetID(datasetID: datasetID, expectedType: DataType.IMAGE)
         try self.validateImages(images: images, labels: labels)
         try realmClient.addImageData(datasetID: datasetID, images: images, labels: labels)
     }
@@ -96,7 +96,7 @@ public class Orchestrator {
      - Throws: `DMLError` if an error occurred during validation of the data.
      */
     public func setImages(datasetID: String, images: [String], labels: [String]) throws {
-        try validateDataType(datasetID: datasetID, expectedType: DataType.IMAGE)
+        try validateDatasetID(datasetID: datasetID, expectedType: DataType.IMAGE)
         try self.validateImages(images: images, labels: labels)
         try self.clearData(datasetID: datasetID)
         try self.addImages(datasetID: datasetID, images: images, labels: labels)
@@ -112,7 +112,7 @@ public class Orchestrator {
      - Throws: `DMLError` if the image path does not exist .
      */
     public func removeImage(datasetID: String, image: String) throws {
-        try validateDataType(datasetID: datasetID, expectedType: DataType.IMAGE)
+        try validateDatasetID(datasetID: datasetID, expectedType: DataType.IMAGE)
         try self.realmClient.removeImageDatapoint(datasetID: datasetID, image: image)
     }
     
@@ -126,7 +126,7 @@ public class Orchestrator {
      - Throws: `DMLError` if the provided index is invalid .
      */
     public func removeImage(datasetID: String, index: Int) throws {
-        try validateDataType(datasetID: datasetID, expectedType: DataType.IMAGE)
+        try validateDatasetID(datasetID: datasetID, expectedType: DataType.IMAGE)
         try self.realmClient.removeImageDatapoint(datasetID: datasetID, index: index)
     }
     
@@ -268,7 +268,7 @@ public class Orchestrator {
     }
     
     /**
-     Validate the data type of data being modified to make sure it is the expected type. Used to ensure that an image dataset doesn't end up with text data, and vice-versa.
+     Validate the data type of the data being accessed/modified to make sure it is the expected type. Used to ensure that an image dataset doesn't end up with text data, and vice-versa.
      
      - Parameters:
         - datasetID: The dataset ID corresponding to the desired dataset.
@@ -285,6 +285,32 @@ public class Orchestrator {
         }
     }
     
+    /**
+     Validate the dataset ID to make sure that it doesn't correpond to a default dataset.
+     
+     - Parameters:
+        - datasetID: The dataset ID corresponding to the desired dataset.
+     
+     - Throws: `DMLError` if the dataset ID corresponds to a default dataset.
+     */
+    private func validateDefaultDataset(datasetID: String) throws {
+        if self.realmClient.isDefaultDataset(datasetID: datasetID) {
+            throw DMLError.userError(ErrorMessage.defaultDataset)
+        }
+    }
+    
+    /**
+     Validate the data type of the data being accessed/modified to make sure it is the expected type. Also, validate the dataset ID to make sure that it doesn't correpond to a default dataset.
+    
+     - Parameters:
+       - datasetID: The dataset ID corresponding to the desired dataset.
+    
+     - Throws: `DMLError` if the data type of the dataset does not match the expected dataset type or if the dataset ID corresponds to a default dataset.
+    */
+    private func validateDatasetID(datasetID: String, expectedType: DataType) throws {
+        try validateDefaultDataset(datasetID: datasetID)
+        try validateDataType(datasetID: datasetID, expectedType: expectedType)
+    }
     /**
      Validate the image paths and labels as regular datapoints and then validate that the images corresponding to the image paths do in fact exist.
      

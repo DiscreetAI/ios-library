@@ -12,9 +12,9 @@ import Starscream
 
 class OrchestratorTests: XCTestCase {
     let orchestrator = try! DummyOrchestrator(repoID: testRepo, connectImmediately: false)
-
-    override func setUp() {
-        try! orchestrator.realmClient.clear()
+    
+    override func tearDown() {
+        try! orchestrator.clearData(datasetID: testDataset)
     }
     
     func testInvalidRepoID() {
@@ -41,7 +41,7 @@ class OrchestratorTests: XCTestCase {
         do {
             let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
             
-            XCTAssertThrowsError(try orchestrator.addImages(datasetID: testDataset, images: testImages, labels: testLabels)) { error in
+            XCTAssertThrowsError(try orchestrator.addImages(datasetID: testDataset, images: testImages, labels: testImageLabels)) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidImagePath))
             }
             
@@ -49,7 +49,7 @@ class OrchestratorTests: XCTestCase {
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidStore))
             }
             
-            XCTAssertThrowsError(try orchestrator.addImages(datasetID: testDataset, images: realImages, labels: testLabels)) { error in
+            XCTAssertThrowsError(try orchestrator.addImages(datasetID: testDataset, images: realImages, labels: testImageLabels)) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidStore))
             }
         } catch {
@@ -65,7 +65,7 @@ class OrchestratorTests: XCTestCase {
          */
         do {
             let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
-            try! orchestrator.addImages(datasetID: testDataset, images: Array(realImages[0...1]), labels: Array(realLabels[0...1]))
+            try orchestrator.addImages(datasetID: testDataset, images: Array(realImages[0...1]), labels: Array(realLabels[0...1]))
             
             XCTAssertThrowsError(try orchestrator.removeImage(datasetID: testDataset, image: "badPath")) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidImagePath))
@@ -77,6 +77,47 @@ class OrchestratorTests: XCTestCase {
             
             XCTAssertThrowsError(try orchestrator.removeImage(datasetID: testDataset, index: -1)) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidDatapointIndex))
+            }
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
+        }
+    }
+    
+    func testInvalidDataType() {
+        /*
+         Test validation with a dataset's data type and a specific action taken on that dataset.
+         */
+        do {
+            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
+            try orchestrator.addImages(datasetID: testDataset, images: realImages, labels: realLabels)
+            
+            XCTAssertThrowsError(try orchestrator.addEncodings(datasetID: testDataset, encodings: testEncodings, labels: testEncodingLabels)) { error in
+                XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidDataType))
+            }
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
+        }
+    }
+    
+    func testInvalidDefaultDatasetStore() {
+        /*
+         Test validation with an action taken on a default dataset.
+         */
+        do {
+            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
+            
+            let mnist = ImageDatasets.MNIST.rawValue
+            XCTAssertThrowsError(try orchestrator.addImages(datasetID: mnist, images: testImages, labels: testImageLabels)) { error in
+                XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.defaultDataset))
+            }
+            
+            let shakespeare = TextDatasets.SHAKESPEARE.rawValue
+            XCTAssertThrowsError(try orchestrator.addEncodings(datasetID: shakespeare, encodings: testEncodings, labels: testEncodingLabels)) { error in
+                XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.defaultDataset))
             }
         } catch {
             print("An unexpected error occurred during the test.")

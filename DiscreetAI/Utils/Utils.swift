@@ -147,6 +147,32 @@ func makePrimaryKey(repoID: String, datasetID: String) -> String {
     return repoID + "/" + datasetID
 }
 
+/**
+ Make the primary key corresponding to the metadata of a data entry from Realm.
+
+ - Parameters:
+    - repoID: The repo ID corresponding to the registered application.
+    - datasetID: The dataset ID corresponding to the desired dataset.
+
+ - Returns: The primary key of the desired data entry.
+*/
+func makeMetadataKey(repoID: String, datasetID: String) -> String {
+    return "metadata/" + makePrimaryKey(repoID: repoID, datasetID: datasetID)
+}
+
+/**
+ Make the primary key corresponding to the metadata of a data entry from Realm.
+
+ - Parameters:
+    - repoID: The repo ID corresponding to the registered application.
+    - datasetID: The dataset ID corresponding to the desired dataset.
+
+ - Returns: The primary key of the desired data entry.
+*/
+func makeMetadataKey(primaryKey: String) -> String {
+    return "metadata/" + primaryKey
+}
+
 /// The File Manager for this library.
 var fileManager = FileManager.default
 

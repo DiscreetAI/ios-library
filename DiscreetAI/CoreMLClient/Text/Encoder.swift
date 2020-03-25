@@ -10,6 +10,15 @@ import Foundation
 
 
 /**
+ Extension to retrieve all the words (without punctuation) in a string.
+ */
+extension StringProtocol {
+    var words: [String] {
+        return split{ !$0.isLetter }.map{String($0)}
+    }
+}
+
+/**
  Class for providing a basic text encoder for the user.
  */
 public class BasicEncoder {
@@ -52,7 +61,6 @@ public class BasicEncoder {
      - Returns: A 1D array of integer encodings.
      */
     public func encode(text: String) -> [Int] {
-        let words = text.components(separatedBy: " ")
-        return words.map(self.encodeWord)
+        return text.words.map(self.encodeWord)
     }
 }

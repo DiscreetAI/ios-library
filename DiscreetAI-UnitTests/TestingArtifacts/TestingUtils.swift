@@ -38,15 +38,15 @@ var updateMessage = try! makeDictionaryString(keys: ["type", "round", "session_i
 
 var testImages = ["path1", "path2"]
 
-var testEncodings = [[1, 2], [3, 4]]
+var testEncodings = [[0, 5], [4, 1]]
 
-var testLabels = ["small", "large"]
+var testImageLabels = ["small", "large"]
 
-var testEncodingLabels = [0, 6]
+var testEncodingLabels = [3, 5]
 
 var testText = "and the quick brown fox jumped over lazy dog"
 
-var (realImages, realLabels) = makeImagePaths()
+var (realImages, realLabels) = getMNISTData()
 
 var testModelURL = URL(string: "https://ios-discreetai.s3-us-west-1.amazonaws.com/my_model.mlmodel")!
 

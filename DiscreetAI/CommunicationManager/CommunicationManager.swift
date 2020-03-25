@@ -295,6 +295,7 @@ class CommunicationManager: WebSocketDelegate {
         self.jobTimer = nil
         
         if self.socket != nil {
+            print("Sending NEW_UPDATE message!")
             self.socket?.write(string: updateMessage)
         }
         
@@ -323,6 +324,7 @@ class CommunicationManager: WebSocketDelegate {
         self.jobTimer = nil
         
         if self.socket != nil {
+            print("Sending NO_DATASET message!")
             self.socket?.write(string: noDatasetMessage)
         }
         

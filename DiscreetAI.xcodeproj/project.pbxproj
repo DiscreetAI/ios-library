@@ -31,16 +31,16 @@
 		E4301B3E2405CD6D00ED9CA4 /* DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */; };
 		E4301B452405F79B00ED9CA4 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B442405F79B00ED9CA4 /* Encoder.swift */; };
 		E4301B472406009000ED9CA4 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B462406009000ED9CA4 /* EncoderTests.swift */; };
+		E4371717242969F800FAABB0 /* TextDatasets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4371716242969F800FAABB0 /* TextDatasets.swift */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
+		E458F0E22425BB4F005A6A54 /* ImageDatasets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458F0E12425BB4F005A6A54 /* ImageDatasets.swift */; };
 		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
 		E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506623E5424300D3D689 /* DummyCommunicationManager.swift */; };
 		E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */; };
 		E468506B23E542B600D3D689 /* DummyModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506A23E542B600D3D689 /* DummyModelLoader.swift */; };
 		E468506E23E5440500D3D689 /* DummyCoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506D23E5440500D3D689 /* DummyCoreMLClient.swift */; };
-		E468507023E5449C00D3D689 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506F23E5449C00D3D689 /* ImageUtils.swift */; };
 		E468507223E5498C00D3D689 /* CoreMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468507123E5498C00D3D689 /* CoreMLUtils.swift */; };
-		E476E5CE23ED0562008B8D8A /* mnist in Resources */ = {isa = PBXBuildFile; fileRef = E476E5CD23ED0562008B8D8A /* mnist */; };
 		E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BDD5223D689A400A954FE /* TestingUtils.swift */; };
 		E4ABEE4D24071C5400D5199E /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABEE4C24071C5400D5199E /* TextUtils.swift */; };
 		E4ABEE4F2407235D00D5199E /* neural_ngram_updatable.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E4ABEE4E2407235C00D5199E /* neural_ngram_updatable.mlmodel */; };
@@ -299,16 +299,16 @@
 		E4301B3D2405CD6D00ED9CA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4301B442405F79B00ED9CA4 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		E4301B462406009000ED9CA4 /* EncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderTests.swift; sourceTree = "<group>"; };
+		E4371716242969F800FAABB0 /* TextDatasets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDatasets.swift; sourceTree = "<group>"; };
 		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
+		E458F0E12425BB4F005A6A54 /* ImageDatasets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDatasets.swift; sourceTree = "<group>"; };
 		E468506423E5415100D3D689 /* DummyRealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
 		E468506623E5424300D3D689 /* DummyCommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCommunicationManager.swift; sourceTree = "<group>"; };
 		E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyWeightsProcessor.swift; sourceTree = "<group>"; };
 		E468506A23E542B600D3D689 /* DummyModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModelLoader.swift; sourceTree = "<group>"; };
 		E468506D23E5440500D3D689 /* DummyCoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCoreMLClient.swift; sourceTree = "<group>"; };
-		E468506F23E5449C00D3D689 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		E468507123E5498C00D3D689 /* CoreMLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLUtils.swift; sourceTree = "<group>"; };
-		E476E5CD23ED0562008B8D8A /* mnist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mnist; sourceTree = "<group>"; };
 		E49BDD5223D689A400A954FE /* TestingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
 		E4ABEE4C24071C5400D5199E /* TextUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtils.swift; sourceTree = "<group>"; };
 		E4ABEE4E2407235C00D5199E /* neural_ngram_updatable.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = neural_ngram_updatable.mlmodel; sourceTree = "<group>"; };
@@ -578,6 +578,7 @@
 		E40978FD23A0A39F00F51C42 /* DiscreetAI */ = {
 			isa = PBXGroup;
 			children = (
+				E458F0E62425BC1A005A6A54 /* Datasets */,
 				E41D7BEC23E12E9000D58478 /* CommunicationManager */,
 				E41D7BEB23E12E8600D58478 /* Utils */,
 				E41D7BEA23E12E5400D58478 /* RealmClient */,
@@ -673,12 +674,10 @@
 			isa = PBXGroup;
 			children = (
 				E4ABEE4E2407235C00D5199E /* neural_ngram_updatable.mlmodel */,
-				E476E5CD23ED0562008B8D8A /* mnist */,
 				E468506423E5415100D3D689 /* DummyRealmClient.swift */,
 				E468506623E5424300D3D689 /* DummyCommunicationManager.swift */,
 				E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */,
 				E468506A23E542B600D3D689 /* DummyModelLoader.swift */,
-				E468506F23E5449C00D3D689 /* ImageUtils.swift */,
 				E4ABEE4C24071C5400D5199E /* TextUtils.swift */,
 			);
 			path = CoreMLClient;
@@ -700,6 +699,31 @@
 				E4301B3D2405CD6D00ED9CA4 /* Info.plist */,
 			);
 			path = "DiscreetAI-IntegrationTests";
+			sourceTree = "<group>";
+		};
+		E4371719242AFA4500FAABB0 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				E458F0E12425BB4F005A6A54 /* ImageDatasets.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		E437171A242AFA4D00FAABB0 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				E4371716242969F800FAABB0 /* TextDatasets.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		E458F0E62425BC1A005A6A54 /* Datasets */ = {
+			isa = PBXGroup;
+			children = (
+				E437171A242AFA4D00FAABB0 /* Text */,
+				E4371719242AFA4500FAABB0 /* Image */,
+			);
+			path = Datasets;
 			sourceTree = "<group>";
 		};
 		E468506C23E543BD00D3D689 /* CommunicationManager */ = {
@@ -1207,7 +1231,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E476E5CE23ED0562008B8D8A /* mnist in Resources */,
 				E41B26DB23EA367A0095C1CD /* new_complex_weights in Resources */,
 				E41B26DD23EA367A0095C1CD /* old_complex_weights in Resources */,
 				E41B26DA23EA367A0095C1CD /* old_simple_weights in Resources */,
@@ -1498,7 +1521,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E468507223E5498C00D3D689 /* CoreMLUtils.swift in Sources */,
+				E458F0E22425BB4F005A6A54 /* ImageDatasets.swift in Sources */,
 				E41D7C0823E26EE200D58478 /* MetadataEntry.swift in Sources */,
+				E4371717242969F800FAABB0 /* TextDatasets.swift in Sources */,
 				E4D72E2323DF8D4F00BE3B75 /* CoreMLClient.swift in Sources */,
 				E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */,
 				E41D7BE523E12B6E00D58478 /* ModelLoader.swift in Sources */,
@@ -1543,7 +1568,6 @@
 				E4D72E3823DF9E7800BE3B75 /* CommunicationManagerTests.swift in Sources */,
 				E40F614323CFEAA7009639CF /* WeightsProcessorTests.swift in Sources */,
 				E42C76EC23E8E8F00003F638 /* DummyOrchestrator.swift in Sources */,
-				E468507023E5449C00D3D689 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

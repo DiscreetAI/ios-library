@@ -21,6 +21,7 @@ class RealmClient {
     /// The repo ID corresponding to the registered application.
     var repoID: String
     
+    /// The metadata entry that holds the set of current datasets and corresponding data types.
     var metadataEntry: MetadataEntry!
 
     /**
@@ -39,6 +40,7 @@ class RealmClient {
         
         self.repoID = repoID
         try self.setUpMetadataEntry()
+        try self.setUpDefaultDatasets()
     }
     
     /**
@@ -54,8 +56,8 @@ class RealmClient {
     func addTextData(datasetID: String, encodings: [[Int]], labels: [Int]) throws {
         do {
             try self.realm.write {
-                if let TextEntry = getTextEntry(datasetID: datasetID) {
-                    TextEntry.addEncodings(encodings: encodings, labels: labels)
+                if let textEntry = getTextEntry(datasetID: datasetID) {
+                    textEntry.addEncodings(encodings: encodings, labels: labels)
                 } else {
                     let textEntry = TextEntry(repoID: self.repoID, datasetID: datasetID, encodings: encodings, labels: labels)
                     self.metadataEntry.addDataEntry(dataEntry: textEntry)
@@ -218,7 +220,11 @@ class RealmClient {
      - Returns: Boolean determining whether the removal was successful or not.
      */
     func removeDataEntry(datasetID: String) -> Bool {
-        return self.metadataEntry.removeDataEntry(datasetID: datasetID)
+        if self.metadataEntry.removeDataEntry(datasetID: datasetID) != nil {
+            return true
+        } else {
+            return false
+        }
     }
     
     /**
@@ -258,9 +264,9 @@ class RealmClient {
         var metadataEntry = self.realm.object(ofType: MetadataEntry.self, forPrimaryKey: self.repoID)
         
         if metadataEntry == nil {
+            metadataEntry = MetadataEntry(repoID: self.repoID)
             do {
                 try self.realm.write {
-                    metadataEntry = MetadataEntry(repoID: self.repoID)
                     self.realm.add(metadataEntry!)
                 }
             } catch {
@@ -268,8 +274,40 @@ class RealmClient {
                 throw DMLError.realmError(ErrorMessage.failedRealmWrite)
             }
         }
-        
         self.metadataEntry = metadataEntry!
+    }
+    
+    /**
+     Set up the default datasets and store them if they don't already exist in Realm.
+     
+     - Throws: `DMLError` if an error occurred during set up of the datasets.
+     */
+    func setUpDefaultDatasets() throws {
+        for (imageDataset, dataFunction) in imageDataFunctions {
+            if !self.containsDataEntry(datasetID: imageDataset.rawValue) {
+                let (images, labels) = dataFunction()
+                try self.addImageData(datasetID: imageDataset.rawValue, images: images, labels: labels)
+            }
+        }
+        
+        for (textDataset, dataFunction) in textDataFunctions {
+            if !self.containsDataEntry(datasetID: textDataset.rawValue) {
+                let (encodings, labels) = try dataFunction()
+                try self.addTextData(datasetID: textDataset.rawValue, encodings: encodings, labels: labels)
+            }
+        }
+    }
+    
+    /**
+     Helper function to determine whether the provided dataset ID corresponds to a default dataset.
+    
+     - Parameters:
+       - datasetID: The dataset ID corresponding to the desired dataset.
+    
+     - Returns: A boolean dictating whether the provided dataset ID corresponds to a default dataset.
+     */
+    func isDefaultDataset(datasetID: String) -> Bool {
+        return isDefaultImageDataset(datasetID: datasetID) || isDefaultTextDataset(datasetID: datasetID)
     }
 
     /**
@@ -283,6 +321,7 @@ class RealmClient {
                 self.realm.deleteAll()
             }
             try self.setUpMetadataEntry()
+            try self.setUpDefaultDatasets()
         } catch {
             print(error.localizedDescription)
             throw DMLError.realmError(ErrorMessage.failedRealmClear)
@@ -299,8 +338,27 @@ class RealmClient {
      - Throws: `DMLError` if clearing failed.
     */
     func clear(datasetID: String) throws {
-        if !self.metadataEntry.removeDataEntry(datasetID: datasetID) {
+        do {
+            try self.realm.write {
+                if let type = self.getDataEntryType(datasetID: datasetID) {
+                    var dataEntry: DataEntry
+                    switch type {
+                    case .TEXT:
+                        dataEntry = getTextEntry(datasetID: datasetID)!
+                        break
+                    case .IMAGE:
+                        dataEntry = getImageEntry(datasetID: datasetID)!
+                        break
+                    }
+                    self.realm.delete(dataEntry)
+                    if let entry = self.metadataEntry.removeDataEntry(datasetID: datasetID) {
+                        self.realm.delete(entry)
+                    }
+                }
+            }
+        } catch {
             throw DMLError.userError(ErrorMessage.failedRealmClear)
         }
+        
     }
 }

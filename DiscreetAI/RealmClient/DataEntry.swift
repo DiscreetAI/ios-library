@@ -65,7 +65,7 @@ class DataEntry: Object {
      - Returns: The `DataEntry` object formed from this data entry's primary key
      */
     func toDataEntry() -> DataEntry {
-        return DataEntry(primaryKey: self.primaryKey, dataType: self.dataType)
+        return DataEntry(primaryKey: makeMetadataKey(primaryKey: primaryKey), dataType: self.dataType)
     }
 }
 

@@ -1,10 +1,10 @@
-//
-//  TextDatasets.swift
-//  DiscreetAI
-//
-//  Created by Neelesh on 3/23/20.
-//  Copyright © 2020 DiscreetAI. All rights reserved.
-//
+///
+///  TextDatasets.swift
+///  DiscreetAI
+///
+///  Created by Neelesh on 3/23/20.
+///  Copyright © 2020 DiscreetAI. All rights reserved.
+///
 
 import Foundation
 

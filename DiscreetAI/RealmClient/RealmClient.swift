@@ -275,7 +275,6 @@ class RealmClient {
             }
         }
         self.metadataEntry = metadataEntry!
-        print(self.metadataEntry.getDataEntries())
     }
     
     /**

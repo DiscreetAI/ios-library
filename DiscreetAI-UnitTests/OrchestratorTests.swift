@@ -86,6 +86,9 @@ class OrchestratorTests: XCTestCase {
     }
     
     func testInvalidDataType() {
+        /*
+         Test validation with a dataset's data type and a specific action taken on that dataset.
+         */
         do {
             let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
             try orchestrator.addImages(datasetID: testDataset, images: realImages, labels: realLabels)
@@ -101,6 +104,9 @@ class OrchestratorTests: XCTestCase {
     }
     
     func testInvalidDefaultDatasetStore() {
+        /*
+         Test validation with an action taken on a default dataset.
+         */
         do {
             let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
             

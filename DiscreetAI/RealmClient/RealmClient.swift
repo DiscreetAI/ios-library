@@ -21,6 +21,7 @@ class RealmClient {
     /// The repo ID corresponding to the registered application.
     var repoID: String
     
+    /// The metadata entry that holds the set of current datasets and corresponding data types.
     var metadataEntry: MetadataEntry!
 
     /**
@@ -39,7 +40,7 @@ class RealmClient {
         
         self.repoID = repoID
         try self.setUpMetadataEntry()
-        try self.setUpSampleDatasets()
+        try self.setUpDefaultDatasets()
     }
     
     /**
@@ -277,7 +278,12 @@ class RealmClient {
         print(self.metadataEntry.getDataEntries())
     }
     
-    func setUpSampleDatasets() throws {
+    /**
+     Set up the default datasets and store them if they don't already exist in Realm.
+     
+     - Throws: `DMLError` if an error occurred during set up of the datasets.
+     */
+    func setUpDefaultDatasets() throws {
         for (imageDataset, dataFunction) in imageDataFunctions {
             if !self.containsDataEntry(datasetID: imageDataset.rawValue) {
                 let (images, labels) = dataFunction()
@@ -293,6 +299,14 @@ class RealmClient {
         }
     }
     
+    /**
+     Helper function to determine whether the provided dataset ID corresponds to a default dataset.
+    
+     - Parameters:
+       - datasetID: The dataset ID corresponding to the desired dataset.
+    
+     - Returns: A boolean dictating whether the provided dataset ID corresponds to a default dataset.
+     */
     func isDefaultDataset(datasetID: String) -> Bool {
         return isDefaultImageDataset(datasetID: datasetID) || isDefaultTextDataset(datasetID: datasetID)
     }
@@ -308,7 +322,7 @@ class RealmClient {
                 self.realm.deleteAll()
             }
             try self.setUpMetadataEntry()
-            try self.setUpSampleDatasets()
+            try self.setUpDefaultDatasets()
         } catch {
             print(error.localizedDescription)
             throw DMLError.realmError(ErrorMessage.failedRealmClear)

@@ -701,11 +701,27 @@
 			path = "DiscreetAI-IntegrationTests";
 			sourceTree = "<group>";
 		};
-		E458F0E62425BC1A005A6A54 /* Datasets */ = {
+		E4371719242AFA4500FAABB0 /* Image */ = {
 			isa = PBXGroup;
 			children = (
 				E458F0E12425BB4F005A6A54 /* ImageDatasets.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		E437171A242AFA4D00FAABB0 /* Text */ = {
+			isa = PBXGroup;
+			children = (
 				E4371716242969F800FAABB0 /* TextDatasets.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		E458F0E62425BC1A005A6A54 /* Datasets */ = {
+			isa = PBXGroup;
+			children = (
+				E437171A242AFA4D00FAABB0 /* Text */,
+				E4371719242AFA4500FAABB0 /* Image */,
 			);
 			path = Datasets;
 			sourceTree = "<group>";

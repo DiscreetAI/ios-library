@@ -9,6 +9,9 @@
 import Foundation
 
 
+/**
+ Extension to retrieve all the words (without punctuation) in a string.
+ */
 extension StringProtocol {
     var words: [String] {
         return split{ !$0.isLetter }.map{String($0)}
@@ -19,8 +22,6 @@ extension StringProtocol {
  Class for providing a basic text encoder for the user.
  */
 public class BasicEncoder {
-    
-    
     
     /// The encoder dictionary, which maps a vocab word to an integer.
     var encoder: [String: Int]

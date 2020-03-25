@@ -141,7 +141,7 @@ public class Orchestrator {
      - Returns: A tuple (`images`, `labels`) where `images` refers to the stored image paths and `labels` refers to the corresponding labels.
      */
     public func getImages(datasetID: String) throws -> ([String], [String]) {
-        try validateDatasetID(datasetID: datasetID, expectedType: DataType.IMAGE)
+        try validateDataType(datasetID: datasetID, expectedType: DataType.IMAGE)
         if let imageEntry = self.realmClient.getImageEntry(datasetID: datasetID) {
             return imageEntry.getData()
         } else {
@@ -268,7 +268,7 @@ public class Orchestrator {
     }
     
     /**
-     Validate the data type of data being modified to make sure it is the expected type. Used to ensure that an image dataset doesn't end up with text data, and vice-versa.
+     Validate the data type of the data being accessed/modified to make sure it is the expected type. Used to ensure that an image dataset doesn't end up with text data, and vice-versa.
      
      - Parameters:
         - datasetID: The dataset ID corresponding to the desired dataset.
@@ -285,12 +285,28 @@ public class Orchestrator {
         }
     }
     
+    /**
+     Validate the dataset ID to make sure that it doesn't correpond to a default dataset.
+     
+     - Parameters:
+        - datasetID: The dataset ID corresponding to the desired dataset.
+     
+     - Throws: `DMLError` if the dataset ID corresponds to a default dataset.
+     */
     private func validateDefaultDataset(datasetID: String) throws {
         if self.realmClient.isDefaultDataset(datasetID: datasetID) {
             throw DMLError.userError(ErrorMessage.defaultDataset)
         }
     }
     
+    /**
+     Validate the data type of the data being accessed/modified to make sure it is the expected type. Also, validate the dataset ID to make sure that it doesn't correpond to a default dataset.
+    
+     - Parameters:
+       - datasetID: The dataset ID corresponding to the desired dataset.
+    
+     - Throws: `DMLError` if the data type of the dataset does not match the expected dataset type or if the dataset ID corresponds to a default dataset.
+    */
     private func validateDatasetID(datasetID: String, expectedType: DataType) throws {
         try validateDefaultDataset(datasetID: datasetID)
         try validateDataType(datasetID: datasetID, expectedType: expectedType)

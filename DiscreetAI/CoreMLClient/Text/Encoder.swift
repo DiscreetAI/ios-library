@@ -34,6 +34,7 @@ public class BasicEncoder {
      */
     init(vocabList: [String]) {
         self.encoder = Dictionary(uniqueKeysWithValues: zip(vocabList, 1...vocabList.count))
+        print(vocabList.count)
     }
     
     /**

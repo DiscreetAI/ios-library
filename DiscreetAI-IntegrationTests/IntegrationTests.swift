@@ -8,7 +8,7 @@
 
 import XCTest
 import Starscream
-@testable import Discreet_DML
+@testable import DiscreetAI
 
 class IntegrationTests: XCTestCase {
     func testCloudIntegration() {
@@ -23,7 +23,7 @@ class IntegrationTests: XCTestCase {
          */
         let orchestrator2 = try! Orchestrator(repoID: testRepo, connectImmediately: false)
         try! orchestrator2.realmClient.clear()
-        orchestrator2.communicationManager.coreMLClient!.modelLoader = ModelLoader(downloadModelURL: URL(string: "http://127.0.0.1:8999/my_model.mlmodel")!)
+        orchestrator2.communicationManager.coreMLClient!.modelLoader = ModelLoader(downloadModelURL: URL(string: "http://127.0.0.1/my_model.mlmodel")!)
         try! orchestrator2.addImages(datasetID: testDataset, images: realImages, labels: realLabels)
         try! orchestrator2.connect(webSocketURL: testWebSocketURL)
         let iterationTime: Double = 0.5

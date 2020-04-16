@@ -95,7 +95,7 @@ func makeDictionaryString(keys: [String], values: [Any]) throws -> String {
  - Returns: The WebSocket URL.
  */
 func makeWebSocketURL(repoID: String) -> URL {
-    return URL(string: "ws://\(repoID).au4c4pd2ch.us-west-1.elasticbeanstalk.com")!
+    return URL(string: "ws://\(repoID).cloud.discreetai.com")!
 }
 
 /**
@@ -107,7 +107,7 @@ func makeWebSocketURL(repoID: String) -> URL {
  - Returns: The base cloud node URL.
  */
 func makeCloudNodeURL(repoID: String) -> URL {
-     return URL(string: "http://\(repoID).au4c4pd2ch.us-west-1.elasticbeanstalk.com")!
+     return URL(string: "http://\(repoID).cloud.discreetai.com")!
 }
 
 /**

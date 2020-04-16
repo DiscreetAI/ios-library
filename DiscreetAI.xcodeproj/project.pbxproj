@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BB280BD4C8E33B5FA32F7B6 /* Pods_DiscreetAI_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E91C23BDA6D0821EA9B42F2 /* Pods_DiscreetAI_UnitTests.framework */; };
-		819826949E7F50BCB48B67AC /* Pods_DiscreetAI_IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA8A161BB32629794F091A8 /* Pods_DiscreetAI_IntegrationTests.framework */; };
 		E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */; };
 		E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */; };
 		E409790C23A0A3A000F51C42 /* DiscreetAI.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* DiscreetAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -196,7 +194,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */,
-				3BB280BD4C8E33B5FA32F7B6 /* Pods_DiscreetAI_UnitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +202,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41EE5932432FB3F00B6F228 /* DiscreetAI.framework in Frameworks */,
-				819826949E7F50BCB48B67AC /* Pods_DiscreetAI_IntegrationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

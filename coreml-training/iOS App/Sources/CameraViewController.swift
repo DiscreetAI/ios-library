@@ -22,6 +22,7 @@ class CameraViewController: UIViewController {
     super.viewDidLoad()
     textView.text = "Use the camera to take a photo."
     predictor = Predictor(model: model)
+    overrideUserInterfaceStyle = .dark
   }
 
   @IBAction func takePicture() {

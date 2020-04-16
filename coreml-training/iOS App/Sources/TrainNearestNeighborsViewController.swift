@@ -28,10 +28,7 @@ class TrainNearestNeighborsViewController: UITableViewController {
 
     trainButton.isEnabled = false
 
-    assert(model.modelDescription.isUpdatable)
-
-    //print(model.modelDescription.trainingInputDescriptionsByName)
-    //print(model.modelDescription.parameterDescriptionsByKey)
+    overrideUserInterfaceStyle = .dark
   }
 
   // MARK: - Table view data source

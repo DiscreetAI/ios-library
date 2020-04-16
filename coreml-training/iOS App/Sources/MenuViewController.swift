@@ -9,6 +9,10 @@ var orchestrator: Orchestrator!
 
 class MenuViewController: UITableViewController {
   @IBOutlet var backgroundTrainingSwitch: UISwitch!
+  @IBOutlet weak var repoIDLabel: UITextField!
+  @IBOutlet weak var instructionLabel: UILabel!
+  @IBOutlet weak var apiKeyLabel: UITextField!
+  @IBOutlet weak var errorLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -17,54 +21,64 @@ class MenuViewController: UITableViewController {
     Models.copyEmptyNearestNeighbors()
     Models.copyEmptyNeuralNetwork()
     
-    if orchestrator == nil {
-      orchestrator = try! Orchestrator(repoID: "49315aef7422d8a2a601f9d1bc88c907")
+    if orchestrator != nil {
+      repoIDLabel.text = orchestrator.repoID
+      apiKeyLabel.text = orchestrator.apiKey
     }
+    
+    instructionLabel.text = "Please enter your repo ID and API key before \nconnecting to the server."
+    instructionLabel.numberOfLines = 0
+    errorLabel.numberOfLines = 0
+    overrideUserInterfaceStyle = .dark
   }
 
+  private func showErrorMessage(message: String) {
+    errorLabel.isHidden = false
+    errorLabel.text = message
+  }
+  
+  override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    if identifier == "TrainNeuralNetwork" || identifier == "TrainingData" {
+      if repoIDLabel.text! == "" {
+        showErrorMessage(message: "Please fill in the repo ID.")
+        return false
+      }
+      
+      if apiKeyLabel.text! == "" {
+        showErrorMessage(message: "Please fill in the API key.")
+        return false
+      }
+      
+      do {
+        if orchestrator != nil {
+          if orchestrator.repoID != repoIDLabel.text && orchestrator.apiKey != apiKeyLabel.text {
+            orchestrator.disconnect()
+          }
+        } else {
+          orchestrator = try Orchestrator(repoID: repoIDLabel.text!, apiKey: apiKeyLabel.text!, connectImmediately: true)
+        }
+        errorLabel.isHidden = true
+        errorLabel.text = ""
+      } catch DMLError.userError(let errorMessage) {
+        showErrorMessage(message: errorMessage.rawValue)
+        return false
+      } catch {
+        showErrorMessage(message: "An unknown error occurred.")
+        return false
+      }
+    }
+    return true
+  }
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "TrainingData" {
       let viewController = segue.destination as! DataViewController
       viewController.imagesByLabel = ImagesByLabel(dataset: trainingDataset)
       viewController.title = "Training Data"
-    }
-    else if segue.identifier == "TestingData" {
-      let viewController = segue.destination as! DataViewController
-      viewController.imagesByLabel = ImagesByLabel(dataset: testingDataset)
-      viewController.title = "Testing Data"
-    }
-    else if segue.identifier == "TrainNearestNeighbors" {
-      let viewController = segue.destination as! TrainNearestNeighborsViewController
-      viewController.model = Models.loadTrainedNearestNeighbors()
-      viewController.imagesByLabel = ImagesByLabel(dataset: trainingDataset)
-    }
-    else if segue.identifier == "EvaluateNearestNeighbors" {
-      let viewController = segue.destination as! EvaluateViewController
-      viewController.model = Models.loadTrainedNearestNeighbors()
-      viewController.dataset = testingDataset
-      viewController.title = "k-Nearest Neighbors"
-    }
-    else if segue.identifier == "CameraNearestNeighbors" {
-      let viewController = segue.destination as! CameraViewController
-      viewController.model = Models.loadTrainedNearestNeighbors()
-      viewController.title = "k-Nearest Neighbors"
-    }
-    else if segue.identifier == "TrainNeuralNetwork" {
+    } else if segue.identifier == "TrainNeuralNetwork" {
       let viewController = segue.destination as! TrainNeuralNetworkViewController
       viewController.model = Models.loadTrainedNeuralNetwork()
       viewController.trainingDataset = trainingDataset
       viewController.validationDataset = testingDataset
-    }
-    else if segue.identifier == "EvaluateNeuralNetwork" {
-      let viewController = segue.destination as! EvaluateViewController
-      viewController.model = Models.loadTrainedNeuralNetwork()
-      viewController.dataset = testingDataset
-      viewController.title = "Neural Network"
-    }
-    else if segue.identifier == "CameraNeuralNetwork" {
-      let viewController = segue.destination as! CameraViewController
-      viewController.model = Models.loadTrainedNeuralNetwork()
-      viewController.title = "Neural Network"
     }
   }
 

@@ -12,7 +12,7 @@ import RealmSwift
 
 var testingUtilsPath = URL(fileURLWithPath: #file).deletingLastPathComponent().path + "/"
 
-var testWebSocketURL = URL(string: "ws://localhost")!
+var testWebSocketURL = URL(string: "ws://54.67.38.51")!
 
 var testRepo = "testRepo"
 

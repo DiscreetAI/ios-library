@@ -18,9 +18,7 @@ class TrainNeuralNetworkViewController: UIViewController {
         
         lastState = orchestrator.getState()
         self.statusLabel.text = lastState
-        self.statusLabel.textColor = UIColor.white
         self.statusLabel.numberOfLines = 0
-        self.statusLabel.sizeToFit()
         
         if statusTimer == nil {
             self.statusTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
@@ -31,6 +29,8 @@ class TrainNeuralNetworkViewController: UIViewController {
                 }
             }
         }
+        
+        overrideUserInterfaceStyle = .dark
         
         NotificationCenter.default.addObserver(self, selector: #selector(appWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
     }

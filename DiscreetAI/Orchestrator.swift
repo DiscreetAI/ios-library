@@ -17,7 +17,10 @@ import UIKit
 public class Orchestrator {
     
     /// The repo ID corresponding to the registered application.
-    var repoID: String
+    public var repoID: String
+    
+    /// The API key for authentication
+    public var apiKey: String
     
     /// An instance of the Realm Client to store data to be trained on.
     var realmClient: RealmClient
@@ -30,11 +33,14 @@ public class Orchestrator {
      
      - Parameters:
         - repoID: The repo ID corresponding to the registered application.
+        - apiKey: The API key for authentication.
+        - connectImmediately: Boolean dictating whether the library should immediately connect to the cloud node.
      
      - Throws: `DMLError` if an error occurred during the setup of the library.
      */
-    public init(repoID: String, connectImmediately: Bool = true) throws {
+    public init(repoID: String, apiKey: String, connectImmediately: Bool = true) throws {
         self.repoID = repoID
+        self.apiKey = apiKey
         self.realmClient = try RealmClient(repoID: self.repoID)
         var weightsProcessor: WeightsProcessor
         do {
@@ -44,7 +50,7 @@ public class Orchestrator {
             weightsProcessor = WeightsProcessor()
         }
         let coreMLClient = CoreMLClient(modelLoader: ModelLoader(repoID: repoID), realmClient: self.realmClient, weightsProcessor: weightsProcessor)
-        self.communicationManager = CommunicationManager(coreMLClient: coreMLClient, repoID: repoID)
+        self.communicationManager = CommunicationManager(coreMLClient: coreMLClient, repoID: repoID, apiKey: apiKey)
         coreMLClient.configure(communicationManager: self.communicationManager)
         
         if connectImmediately {
@@ -167,6 +173,10 @@ public class Orchestrator {
      */
     func connect(webSocketURL: URL) throws {
         self.communicationManager.connect(webSocketURL: webSocketURL)
+    }
+    
+    public func disconnect() {
+        self.communicationManager.disconnect()
     }
     
     /**

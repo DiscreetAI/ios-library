@@ -15,6 +15,7 @@ class DataViewController: UITableViewController {
         
         let cellNib = UINib(nibName: "ExampleCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "ExampleCell")
+        overrideUserInterfaceStyle = .dark
     }
     
     override func didReceiveMemoryWarning() {

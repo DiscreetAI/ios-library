@@ -18,6 +18,9 @@ enum State : String {
     /// The library is in the process of connecting to the cloud node via WebSocket.
     case notConnected = "Connecting to server..."
     
+    
+    case authError = "Authentication error occurred! Check to make sure \nthe API key is correct!"
+    
     /// The library is connected to the cloud node and waiting for a training request to begin its first training session.
     case idle = "Waiting for training requests..."
     
@@ -32,6 +35,7 @@ enum State : String {
     
     /// The library has finished training for the current session and currently waits a training request to begin its next training session.
     case trainingComplete = "Training complete!"
+    
 }
 
 /// TODO: Scale to multiple repo IDs per application.
@@ -45,7 +49,10 @@ class CommunicationManager: WebSocketDelegate {
     var coreMLClient: CoreMLClient?
     
     /// The repo ID corresponding to the dataset of this library.
-    var repoID: String!
+    var repoID: String
+    
+    /// The API key for authentication.
+    var apiKey: String
     
     /// The socket used for communication with the cloud node.
     var socket: WebSocket?
@@ -74,11 +81,13 @@ class CommunicationManager: WebSocketDelegate {
      - Parameters:
         - coreMLClient: An instance of the Core ML Client to begin training when a request is received.
         - repoID: The repo ID corresponding to the dataset of this library.
+        - apiKey: The API key for authentication.
         - reconnections: The number of continuous reconnections with the cloud node that are allowed. The default number is 3.
      */
-    init(coreMLClient: CoreMLClient?, repoID: String, reconnections: Int = 3) {
+    init(coreMLClient: CoreMLClient?, repoID: String, apiKey: String, reconnections: Int = 3) {
         self.coreMLClient = coreMLClient
         self.repoID = repoID
+        self.apiKey = apiKey
         self.reconnections = reconnections
         UIDevice.current.isBatteryMonitoringEnabled = true
     }
@@ -105,6 +114,11 @@ class CommunicationManager: WebSocketDelegate {
         self.socket?.delegate = self
         self.socket?.connect()
     }
+    
+    func disconnect() {
+        self.socket?.disconnect()
+        self.reset()
+    }
 
     /**
      Higher level function for dealing with new event. If our handler deems that there is a message to be sent, then send it.
@@ -117,7 +131,7 @@ class CommunicationManager: WebSocketDelegate {
         
         if let message = try! handleNewEvent(event: event) {
             print("Sending new message...")
-            socket?.write(string: message)
+            self.socket?.write(string: message)
         }
     }
 
@@ -185,7 +199,7 @@ class CommunicationManager: WebSocketDelegate {
             self.setUpPingTimer()
         }
         
-        return try makeDictionaryString(keys: ["type", "node_type"], values: [registerName, libraryName])
+        return try makeDictionaryString(keys: ["type", "node_type", "api_key"], values: [registerName, libraryName, self.apiKey])
     }
 
     /**
@@ -215,6 +229,16 @@ class CommunicationManager: WebSocketDelegate {
     private func handleNewMessage(jsonString: String) throws {
         
         let message: NSDictionary = try parseJSON(stringOrFile: jsonString, isString: true) as! NSDictionary
+        
+        if message["error"] as! Bool {
+            if message["type"] as! String == "AUTHENTICATION" {
+                self.state = State.authError
+                return
+            } else {
+                print(message["error_message"] as! String)
+            }
+        }
+        
         switch message["action"] as! String {
         case trainName:
             print("Received TRAIN message.")

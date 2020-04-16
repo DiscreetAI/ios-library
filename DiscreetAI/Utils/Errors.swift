@@ -12,7 +12,7 @@ import Foundation
 /**
  Enum for various error messages encountered in the library.
  */
-enum ErrorMessage: String {
+public enum ErrorMessage: String {
     
     /// General error with an unknown cause.
     case error = "An unknown error occurred."
@@ -99,7 +99,7 @@ enum ErrorMessage: String {
 /**
  Enum for various types of error messages in the library.
  */
-enum DMLError: Error, Equatable {
+public enum DMLError: Error, Equatable {
     
     /// Type of error associated with the MPS Handler.
     case mpsError(ErrorMessage)

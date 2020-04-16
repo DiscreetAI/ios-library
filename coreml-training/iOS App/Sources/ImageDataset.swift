@@ -25,7 +25,6 @@ class ImageDataset {
     init(split: Split) {
         self.split = split
         baseURL = applicationDocumentsDirectory.appendingPathComponent(split.folderName)
-        let basePath = baseURL.path
         createDatasetFolder()
         createBuiltinLabelFolders()
         scanAllImageFiles()

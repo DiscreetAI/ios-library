@@ -11,35 +11,19 @@
 		7B322ADF22FEEDB2002C7C38 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B322ADE22FEEDB2002C7C38 /* Labels.swift */; };
 		7B322AE122FEFFE2002C7C38 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B322AE022FEFFE2002C7C38 /* Globals.swift */; };
 		7B43804D22B3C3410034AE3C /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 7B43804C22B3C3410034AE3C /* README.markdown */; };
-		7B43805322B3F2360034AE3C /* EvaluateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43805222B3F2360034AE3C /* EvaluateViewController.swift */; };
 		7B43806522B424CD0034AE3C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43806422B424CD0034AE3C /* Helpers.swift */; };
 		7B43806722B527640034AE3C /* ImageDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43806622B527640034AE3C /* ImageDataset.swift */; };
-		7B43806B22B574CA0034AE3C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43806A22B574CA0034AE3C /* ImageLoader.swift */; };
-		7B43807222B6783E0034AE3C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43807122B6783E0034AE3C /* CameraViewController.swift */; };
-		7B43807522B680C70034AE3C /* TrainNeuralNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43807422B680C70034AE3C /* TrainNeuralNetworkViewController.swift */; };
-		7B72E0F9238DC2D100A1F15F /* NeuralNetworkTrainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B72E0F7238DC2D100A1F15F /* NeuralNetworkTrainer.swift */; };
-		7B72E0FA238DC2D100A1F15F /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B72E0F8238DC2D100A1F15F /* History.swift */; };
-		7B72E0FC238FF11300A1F15F /* TrainingBatchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B72E0FB238FF11300A1F15F /* TrainingBatchProvider.swift */; };
-		7B89B54F22B6C73D002DBA36 /* Predictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89B54E22B6C73D002DBA36 /* Predictor.swift */; };
-		7B89B55122B6D235002DBA36 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89B55022B6D235002DBA36 /* Settings.swift */; };
-		7B89B55722B7C905002DBA36 /* TrainNearestNeighborsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B89B55622B7C905002DBA36 /* TrainNearestNeighborsViewController.swift */; };
+		7B43807522B680C70034AE3C /* TrainingStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43807422B680C70034AE3C /* TrainingStatusController.swift */; };
 		7B8AF1A520D8311600DE58D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AF1A420D8311600DE58D5 /* AppDelegate.swift */; };
-		7B8AF1A720D8311600DE58D5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AF1A620D8311600DE58D5 /* MenuViewController.swift */; };
+		7B8AF1A720D8311600DE58D5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AF1A620D8311600DE58D5 /* LoginController.swift */; };
 		7B8AF1AC20D8311700DE58D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B8AF1AB20D8311700DE58D5 /* Assets.xcassets */; };
 		7B8AF1B720D8324E00DE58D5 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AF1B620D8324E00DE58D5 /* DataViewController.swift */; };
 		7B8AF1B920D835BD00DE58D5 /* ImagesByLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AF1B820D835BD00DE58D5 /* ImagesByLabel.swift */; };
-		7BABEFF322B7E9A5005C8BCF /* EvaluateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BABEFF122B7E9A5005C8BCF /* EvaluateCell.xib */; };
-		7BABEFF422B7E9A5005C8BCF /* SummaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BABEFF222B7E9A5005C8BCF /* SummaryHeaderView.xib */; };
 		7BABEFF722B7E9B6005C8BCF /* ExampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BABEFF522B7E9B6005C8BCF /* ExampleCell.xib */; };
 		7BABEFF822B7E9B6005C8BCF /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BABEFF622B7E9B6005C8BCF /* SectionHeaderView.xib */; };
 		7BABEFFA22B7E9C2005C8BCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BABEFF922B7E9C2005C8BCF /* Main.storyboard */; };
-		7BDCA4B122E09DBC00AA1F57 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BDCA4B022E09DBC00AA1F57 /* Models.swift */; };
-		7BE1EF3022BCD18500DC3AAE /* AddGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1EF2F22BCD18500DC3AAE /* AddGestureViewController.swift */; };
-		7BE1EF3222BD1C6400DC3AAE /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1EF3122BD1C6400DC3AAE /* GraphView.swift */; };
 		7BE1EF3422BD1CE600DC3AAE /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1EF3322BD1CE600DC3AAE /* ExampleCell.swift */; };
 		7BE1EF3622BD1CF400DC3AAE /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1EF3522BD1CF400DC3AAE /* SectionHeaderView.swift */; };
-		7BE1EF3822BD1D1700DC3AAE /* EvaluateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1EF3722BD1D1700DC3AAE /* EvaluateCell.swift */; };
-		7BE1EF3A22BD1D2500DC3AAE /* SummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1EF3922BD1D2500DC3AAE /* SummaryHeaderView.swift */; };
 		7BF7B37F214422CE0010448E /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7B37E214422CE0010448E /* UIImage+Resize.swift */; };
 		E41EE5DD2433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41EE5C82433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-20@3x.png */; };
 		E41EE5DE2433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = E41EE5C92433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-1024.png */; };
@@ -60,6 +44,7 @@
 		E45B0F4E2421991C00822C2E /* DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45B0F452420CDCA00822C2E /* DiscreetAI.framework */; };
 		E45B0F4F2421991D00822C2E /* DiscreetAI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E45B0F452420CDCA00822C2E /* DiscreetAI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E47FAFB5243FF32D00EA9AF0 /* encoder.json in Resources */ = {isa = PBXBuildFile; fileRef = E47FAFB4243FF32C00EA9AF0 /* encoder.json */; };
+		E48D5EC4244881B500F15817 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D5EC3244881B500F15817 /* MainMenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,37 +98,21 @@
 		7B322ADE22FEEDB2002C7C38 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		7B322AE022FEFFE2002C7C38 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		7B43804C22B3C3410034AE3C /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.markdown; path = ../README.markdown; sourceTree = "<group>"; };
-		7B43805222B3F2360034AE3C /* EvaluateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateViewController.swift; sourceTree = "<group>"; };
 		7B43806422B424CD0034AE3C /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		7B43806622B527640034AE3C /* ImageDataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataset.swift; sourceTree = "<group>"; };
-		7B43806A22B574CA0034AE3C /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		7B43807122B6783E0034AE3C /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		7B43807422B680C70034AE3C /* TrainNeuralNetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainNeuralNetworkViewController.swift; sourceTree = "<group>"; };
-		7B72E0F7238DC2D100A1F15F /* NeuralNetworkTrainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeuralNetworkTrainer.swift; sourceTree = "<group>"; };
-		7B72E0F8238DC2D100A1F15F /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		7B72E0FB238FF11300A1F15F /* TrainingBatchProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingBatchProvider.swift; sourceTree = "<group>"; };
-		7B89B54E22B6C73D002DBA36 /* Predictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predictor.swift; sourceTree = "<group>"; };
-		7B89B55022B6D235002DBA36 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		7B89B55622B7C905002DBA36 /* TrainNearestNeighborsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainNearestNeighborsViewController.swift; sourceTree = "<group>"; };
+		7B43807422B680C70034AE3C /* TrainingStatusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingStatusController.swift; sourceTree = "<group>"; };
 		7B8AF1A120D8311600DE58D5 /* DiscreetAIDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscreetAIDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8AF1A420D8311600DE58D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7B8AF1A620D8311600DE58D5 /* MenuViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7B8AF1A620D8311600DE58D5 /* LoginController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		7B8AF1AB20D8311700DE58D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B8AF1B020D8311700DE58D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B8AF1B620D8324E00DE58D5 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		7B8AF1B820D835BD00DE58D5 /* ImagesByLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesByLabel.swift; sourceTree = "<group>"; };
-		7BABEFF122B7E9A5005C8BCF /* EvaluateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvaluateCell.xib; sourceTree = "<group>"; };
-		7BABEFF222B7E9A5005C8BCF /* SummaryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryHeaderView.xib; sourceTree = "<group>"; };
 		7BABEFF522B7E9B6005C8BCF /* ExampleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleCell.xib; sourceTree = "<group>"; };
 		7BABEFF622B7E9B6005C8BCF /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		7BABEFF922B7E9C2005C8BCF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		7BDCA4B022E09DBC00AA1F57 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		7BE1EF2F22BCD18500DC3AAE /* AddGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGestureViewController.swift; sourceTree = "<group>"; };
-		7BE1EF3122BD1C6400DC3AAE /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		7BE1EF3322BD1CE600DC3AAE /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
 		7BE1EF3522BD1CF400DC3AAE /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
-		7BE1EF3722BD1D1700DC3AAE /* EvaluateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateCell.swift; sourceTree = "<group>"; };
-		7BE1EF3922BD1D2500DC3AAE /* SummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryHeaderView.swift; sourceTree = "<group>"; };
 		7BF7B37E214422CE0010448E /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		8DF702B1EE5086738643F0B6 /* Pods-DiscreetAIDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAIDemoApp.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAIDemoApp/Pods-DiscreetAIDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		93629BA8507E8E0BAC1DA7FA /* Pods-Gestures.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gestures.debug.xcconfig"; path = "Target Support Files/Pods-Gestures/Pods-Gestures.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +136,7 @@
 		E41EE5D62433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2020-03-31 at 3.14.41 AM-29@3x.png"; sourceTree = "<group>"; };
 		E41EE5D72433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2020-03-31 at 3.14.41 AM-60@2x.png"; sourceTree = "<group>"; };
 		E47FAFB4243FF32C00EA9AF0 /* encoder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = encoder.json; path = "../../../rsnt-really-simple-note-taking-ios/rsnt-really-simple-note-taking-ios/Storage/encoder.json"; sourceTree = "<group>"; };
+		E48D5EC3244881B500F15817 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,11 +176,7 @@
 				7B322AE022FEFFE2002C7C38 /* Globals.swift */,
 				7B43806422B424CD0034AE3C /* Helpers.swift */,
 				7B43806622B527640034AE3C /* ImageDataset.swift */,
-				7B43806A22B574CA0034AE3C /* ImageLoader.swift */,
 				7B322ADE22FEEDB2002C7C38 /* Labels.swift */,
-				7BDCA4B022E09DBC00AA1F57 /* Models.swift */,
-				7B89B54E22B6C73D002DBA36 /* Predictor.swift */,
-				7B89B55022B6D235002DBA36 /* Settings.swift */,
 				7BF7B37E214422CE0010448E /* UIImage+Resize.swift */,
 			);
 			name = "Core ML";
@@ -220,7 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				7BABEFF922B7E9C2005C8BCF /* Main.storyboard */,
-				7B8AF1A620D8311600DE58D5 /* MenuViewController.swift */,
+				7B8AF1A620D8311600DE58D5 /* LoginController.swift */,
+				E48D5EC3244881B500F15817 /* MainMenuController.swift */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -228,7 +195,6 @@
 		7B43806822B5738B0034AE3C /* Data screen */ = {
 			isa = PBXGroup;
 			children = (
-				7BE1EF2F22BCD18500DC3AAE /* AddGestureViewController.swift */,
 				7B8AF1B620D8324E00DE58D5 /* DataViewController.swift */,
 				7BE1EF3322BD1CE600DC3AAE /* ExampleCell.swift */,
 				7BABEFF522B7E9B6005C8BCF /* ExampleCell.xib */,
@@ -239,35 +205,10 @@
 			name = "Data screen";
 			sourceTree = "<group>";
 		};
-		7B43806922B5739B0034AE3C /* Evaluate screen */ = {
-			isa = PBXGroup;
-			children = (
-				7BE1EF3722BD1D1700DC3AAE /* EvaluateCell.swift */,
-				7BABEFF122B7E9A5005C8BCF /* EvaluateCell.xib */,
-				7B43805222B3F2360034AE3C /* EvaluateViewController.swift */,
-				7BE1EF3922BD1D2500DC3AAE /* SummaryHeaderView.swift */,
-				7BABEFF222B7E9A5005C8BCF /* SummaryHeaderView.xib */,
-			);
-			name = "Evaluate screen";
-			sourceTree = "<group>";
-		};
-		7B43807022B6782F0034AE3C /* Camera screen */ = {
-			isa = PBXGroup;
-			children = (
-				7B43807122B6783E0034AE3C /* CameraViewController.swift */,
-			);
-			name = "Camera screen";
-			sourceTree = "<group>";
-		};
 		7B43807322B680B70034AE3C /* Training screen */ = {
 			isa = PBXGroup;
 			children = (
-				7BE1EF3122BD1C6400DC3AAE /* GraphView.swift */,
-				7B72E0F8238DC2D100A1F15F /* History.swift */,
-				7B72E0F7238DC2D100A1F15F /* NeuralNetworkTrainer.swift */,
-				7B89B55622B7C905002DBA36 /* TrainNearestNeighborsViewController.swift */,
-				7B43807422B680C70034AE3C /* TrainNeuralNetworkViewController.swift */,
-				7B72E0FB238FF11300A1F15F /* TrainingBatchProvider.swift */,
+				7B43807422B680C70034AE3C /* TrainingStatusController.swift */,
 			);
 			name = "Training screen";
 			sourceTree = "<group>";
@@ -304,8 +245,6 @@
 				7B43805122B3D9230034AE3C /* User Interface */,
 				7B43806822B5738B0034AE3C /* Data screen */,
 				7B43807322B680B70034AE3C /* Training screen */,
-				7B43806922B5739B0034AE3C /* Evaluate screen */,
-				7B43807022B6782F0034AE3C /* Camera screen */,
 				7B43805022B3D8F60034AE3C /* Core ML */,
 			);
 			path = Sources;
@@ -484,7 +423,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BABEFF722B7E9B6005C8BCF /* ExampleCell.xib in Resources */,
-				7BABEFF422B7E9A5005C8BCF /* SummaryHeaderView.xib in Resources */,
 				E41EE5EA2433500900B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-76.png in Resources */,
 				E41EE5E02433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-20@2x.png in Resources */,
 				E41EE5DD2433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-20@3x.png in Resources */,
@@ -497,7 +435,6 @@
 				E41EE5E12433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-20.png in Resources */,
 				E41EE5EB2433500900B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-29@3x.png in Resources */,
 				E41EE5E92433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-29@2x.png in Resources */,
-				7BABEFF322B7E9A5005C8BCF /* EvaluateCell.xib in Resources */,
 				E41EE5E82433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-60@3x.png in Resources */,
 				E41EE5E72433500800B6F228 /* Contents.json in Resources */,
 				E41EE5E52433500800B6F228 /* Screen Shot 2020-03-31 at 3.14.41 AM-40@2x.png in Resources */,
@@ -566,29 +503,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BE1EF3A22BD1D2500DC3AAE /* SummaryHeaderView.swift in Sources */,
-				7B89B55722B7C905002DBA36 /* TrainNearestNeighborsViewController.swift in Sources */,
-				7B72E0FA238DC2D100A1F15F /* History.swift in Sources */,
-				7BE1EF3222BD1C6400DC3AAE /* GraphView.swift in Sources */,
+				E48D5EC4244881B500F15817 /* MainMenuController.swift in Sources */,
 				7B43806722B527640034AE3C /* ImageDataset.swift in Sources */,
-				7BE1EF3822BD1D1700DC3AAE /* EvaluateCell.swift in Sources */,
-				7B8AF1A720D8311600DE58D5 /* MenuViewController.swift in Sources */,
-				7B43806B22B574CA0034AE3C /* ImageLoader.swift in Sources */,
+				7B8AF1A720D8311600DE58D5 /* LoginController.swift in Sources */,
 				7B322AE122FEFFE2002C7C38 /* Globals.swift in Sources */,
-				7B43805322B3F2360034AE3C /* EvaluateViewController.swift in Sources */,
-				7B72E0F9238DC2D100A1F15F /* NeuralNetworkTrainer.swift in Sources */,
-				7B89B54F22B6C73D002DBA36 /* Predictor.swift in Sources */,
-				7B43807222B6783E0034AE3C /* CameraViewController.swift in Sources */,
 				7BE1EF3622BD1CF400DC3AAE /* SectionHeaderView.swift in Sources */,
-				7BE1EF3022BCD18500DC3AAE /* AddGestureViewController.swift in Sources */,
-				7B72E0FC238FF11300A1F15F /* TrainingBatchProvider.swift in Sources */,
 				7B8AF1B720D8324E00DE58D5 /* DataViewController.swift in Sources */,
 				7B322ADF22FEEDB2002C7C38 /* Labels.swift in Sources */,
-				7BDCA4B122E09DBC00AA1F57 /* Models.swift in Sources */,
 				7B43806522B424CD0034AE3C /* Helpers.swift in Sources */,
 				7BE1EF3422BD1CE600DC3AAE /* ExampleCell.swift in Sources */,
-				7B89B55122B6D235002DBA36 /* Settings.swift in Sources */,
-				7B43807522B680C70034AE3C /* TrainNeuralNetworkViewController.swift in Sources */,
+				7B43807522B680C70034AE3C /* TrainingStatusController.swift in Sources */,
 				7B8AF1B920D835BD00DE58D5 /* ImagesByLabel.swift in Sources */,
 				7BF7B37F214422CE0010448E /* UIImage+Resize.swift in Sources */,
 				7B8AF1A520D8311600DE58D5 /* AppDelegate.swift in Sources */,
@@ -733,7 +657,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2BQCV4KLL7;
 				INFOPLIST_FILE = Sources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
@@ -754,7 +678,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2BQCV4KLL7;
 				INFOPLIST_FILE = Sources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;

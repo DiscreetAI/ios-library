@@ -16,11 +16,11 @@ class DummyCommunicationManager: CommunicationManager {
     var success = false
 
     convenience init(coreMLClient: CoreMLClient) {
-        self.init(coreMLClient: coreMLClient, repoID: testRepo)
+        self.init(coreMLClient: coreMLClient, repoID: testRepo, apiKey: testApiKey)
     }
 
     override func handleTrainingComplete(job: DMLJob) throws -> String {
-        try! super.handleTrainingComplete(job: job)
+        _ = try! super.handleTrainingComplete(job: job)
         self.success = true
         return ""
     }

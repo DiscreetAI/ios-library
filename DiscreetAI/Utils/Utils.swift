@@ -24,6 +24,9 @@ var newUpdateName = "NEW_UPDATE"
 /// Name of a stop message.
 var stopName = "STOP"
 
+/// Name of successful registration message.
+var registrationSuccessName = "REGISTRATION_SUCCESS"
+
 /**
  Turn an arbitrary object (Dictionary, Int, etc.) into a String
  
@@ -190,3 +193,11 @@ var documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDoma
 func makeImageURL(image: String) -> URL {
     return documentsDirectory.appendingPathComponent(image)
 }
+
+var bundle = Bundle(identifier: "com.discreetai.library")!
+
+var datasetsFolder = bundle.url(forResource: "Datasets", withExtension: nil)!
+
+var imageDatasetsFolder = datasetsFolder.appendingPathComponent("ImageDatasets")
+
+var textDatasetsFolder = datasetsFolder.appendingPathComponent("TextDatasets")

@@ -11,8 +11,8 @@ import XCTest
 
 class DummyOrchestrator: Orchestrator {
     
-    override init(repoID: String, connectImmediately: Bool = false) throws {
-        try super.init(repoID: repoID, connectImmediately: connectImmediately)
+    override init?(repoID: String, apiKey: String, connectImmediately: Bool = false) throws {
+        try super.init(repoID: repoID, apiKey: apiKey, connectImmediately: connectImmediately)
         let coreMLClient = self.communicationManager.coreMLClient!
         self.communicationManager = DummyCommunicationManager(coreMLClient: coreMLClient)
         coreMLClient.weightsProcessor = WeightsProcessor()

@@ -12,13 +12,17 @@ import XCTest
 class EncoderTests: XCTestCase {
     func testBasicEncoder() {
         do {
-            let orchestrator = try! Orchestrator(repoID: testRepo, connectImmediately: false)
+            let orchestrator = try Orchestrator(repoID: testRepo, apiKey: testApiKey, connectImmediately: false)!
             let vocabList = testText.components(separatedBy: " ")
             let encoder = orchestrator.getBasicEncoder(vocabList: vocabList)
             let text = testText + " and jumped again"
             let encodings = encoder.encode(text: text)
             let expectedEncodings = Array(1...vocabList.count) + [1, 6, 0]
             XCTAssertEqual(expectedEncodings, encodings)
+        } catch {
+            print("An unexpected error occurred during the test.")
+            print(error.localizedDescription)
+            XCTFail()
         }
     }
 }

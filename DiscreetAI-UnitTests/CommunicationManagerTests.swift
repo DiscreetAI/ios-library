@@ -12,7 +12,7 @@ import XCTest
 @testable import DiscreetAI
 
 class CommunicationManagerTests: XCTestCase {
-    var communicationManager = CommunicationManager(coreMLClient: DummyCoreMLClient(), repoID: "testRepo")
+    var communicationManager = CommunicationManager(coreMLClient: DummyCoreMLClient(), repoID: testRepo, apiKey: testApiKey)
 
     override func tearDown() {
         communicationManager.reset()
@@ -30,7 +30,7 @@ class CommunicationManagerTests: XCTestCase {
             XCTAssertEqual(expectedJSON["type"] as! String, actualJSON["type"] as! String)
             XCTAssertEqual(expectedJSON["node_type"] as! String, actualJSON["node_type"] as! String)
             XCTAssertTrue(communicationManager.isConnected)
-            XCTAssertEqual(communicationManager.state, State.idle)
+            XCTAssertEqual(communicationManager.state, State.awaitingRegistration)
         } catch {
             print("An unexpected error occurred during the test.")
             print(error.localizedDescription)

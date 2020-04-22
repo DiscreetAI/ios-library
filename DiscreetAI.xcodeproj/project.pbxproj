@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C69222E1C48D7BF42DC71FC /* Pods_DiscreetAI_IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA8A161BB32629794F091A8 /* Pods_DiscreetAI_IntegrationTests.framework */; };
+		4FD7C6DF9BDE8B71AFEE3039 /* Pods_DiscreetAI_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E91C23BDA6D0821EA9B42F2 /* Pods_DiscreetAI_UnitTests.framework */; };
 		E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */; };
 		E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */; };
 		E409790C23A0A3A000F51C42 /* DiscreetAI.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* DiscreetAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,9 +49,12 @@
 		E4301B452405F79B00ED9CA4 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B442405F79B00ED9CA4 /* Encoder.swift */; };
 		E4301B472406009000ED9CA4 /* EncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4301B462406009000ED9CA4 /* EncoderTests.swift */; };
 		E4371717242969F800FAABB0 /* TextDatasets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4371716242969F800FAABB0 /* TextDatasets.swift */; };
+		E43ECF8B244FCBA3009152F5 /* Datasets in Resources */ = {isa = PBXBuildFile; fileRef = E43ECF8A244FCBA3009152F5 /* Datasets */; };
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
 		E458F0E22425BB4F005A6A54 /* ImageDatasets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458F0E12425BB4F005A6A54 /* ImageDatasets.swift */; };
+		E463E718244FA6E000FB2D6C /* Pods_DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E463E717244FA6E000FB2D6C /* Pods_DiscreetAI.framework */; };
+		E463E719244FA6E000FB2D6C /* Pods_DiscreetAI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E463E717244FA6E000FB2D6C /* Pods_DiscreetAI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
 		E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506623E5424300D3D689 /* DummyCommunicationManager.swift */; };
 		E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */; };
@@ -91,24 +96,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E463E71A244FA6E000FB2D6C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E463E719244FA6E000FB2D6C /* Pods_DiscreetAI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		10D68C76B950E2928E68CE5D /* Pods_DiscreetAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscreetAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		12AEAFF135B46365BDE0D58E /* Pods-Discreet-DMLTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DMLTests.debug.xcconfig"; path = "Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests.debug.xcconfig"; sourceTree = "<group>"; };
-		12C29D1B3831E6B2402F0285 /* Pods-DiscreetAI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI/Pods-DiscreetAI.debug.xcconfig"; sourceTree = "<group>"; };
-		360D17FE5D3BE91EC17D1C3A /* Pods-DiscreetAITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAITests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAITests/Pods-DiscreetAITests.debug.xcconfig"; sourceTree = "<group>"; };
-		370BB5F7A7C8160EBE32E8B6 /* Pods-DiscreetAI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI/Pods-DiscreetAI.release.xcconfig"; sourceTree = "<group>"; };
-		43BAA83EEBFC5862B1C3C7A9 /* Pods-DiscreetAI-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
-		4E2ED57B1C69C7748F41E354 /* Pods-Discreet-DML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DML.debug.xcconfig"; path = "Target Support Files/Pods-Discreet-DML/Pods-Discreet-DML.debug.xcconfig"; sourceTree = "<group>"; };
+		13D95FA03C090EFF88107A09 /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-IntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E7CC714F5641BB135A6AA7A /* Pods-DiscreetAI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI/Pods-DiscreetAI.release.xcconfig"; sourceTree = "<group>"; };
 		4E91C23BDA6D0821EA9B42F2 /* Pods_DiscreetAI_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscreetAI_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		72AE88BBB44B6A5ECCDD86FB /* Pods-Discreet_DMLIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet_DMLIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-Discreet_DMLIntegrationTests/Pods-Discreet_DMLIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8DD8EE08218A3E4FADB37708 /* Pods-DiscreetAI-IntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-IntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
-		9879DB198677BE66E4B46106 /* Pods-Discreet-DMLTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DMLTests.release.xcconfig"; path = "Target Support Files/Pods-Discreet-DMLTests/Pods-Discreet-DMLTests.release.xcconfig"; sourceTree = "<group>"; };
-		98B5515736FB7AAFAAAA5095 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9B18DCE6FA6575FA2B15E1EF /* Pods-DiscreetAITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAITests.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAITests/Pods-DiscreetAITests.release.xcconfig"; sourceTree = "<group>"; };
-		B56BD354093D9280C3CF86A9 /* Pods-Discreet_DMLIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet_DMLIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-Discreet_DMLIntegrationTests/Pods-Discreet_DMLIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
+		8CE950EFE84EAE5AE9C88069 /* Pods-DiscreetAI-IntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-IntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
+		9DE492C19D2C0FF320C38F51 /* Pods-DiscreetAI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI/Pods-DiscreetAI.debug.xcconfig"; sourceTree = "<group>"; };
+		B6CB3ED8DADAD5217AE9F501 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BEA8A161BB32629794F091A8 /* Pods_DiscreetAI_IntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscreetAI_IntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C268DCB89E882B0D098BB970 /* Pods-Discreet-DML.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discreet-DML.release.xcconfig"; path = "Target Support Files/Pods-Discreet-DML/Pods-Discreet-DML.release.xcconfig"; sourceTree = "<group>"; };
-		DF8A08F35F7E67ECBF3A343C /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-IntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D1A5A7D2285EE1F74D26B742 /* Pods-DiscreetAI-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSHandler.swift; sourceTree = "<group>"; };
 		E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiscreetAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40978FE23A0A39F00F51C42 /* DiscreetAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscreetAI.h; sourceTree = "<group>"; };
@@ -153,16 +164,24 @@
 		E42C76ED23E8F73E0003F638 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		E4301B442405F79B00ED9CA4 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		E4301B462406009000ED9CA4 /* EncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncoderTests.swift; sourceTree = "<group>"; };
+		E4338CBA244D21DC00DC9AE6 /* Pods_DiscreetAIDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DiscreetAIDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4371716242969F800FAABB0 /* TextDatasets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDatasets.swift; sourceTree = "<group>"; };
+		E43ECF8A244FCBA3009152F5 /* Datasets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Datasets; sourceTree = "<group>"; };
 		E44F577123D3027400FE0619 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E45288FD23E383A9003F422A /* CoreMLClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClientTests.swift; sourceTree = "<group>"; };
 		E458F0E12425BB4F005A6A54 /* ImageDatasets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDatasets.swift; sourceTree = "<group>"; };
+		E463E717244FA6E000FB2D6C /* Pods_DiscreetAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DiscreetAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E468506423E5415100D3D689 /* DummyRealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRealmClient.swift; sourceTree = "<group>"; };
 		E468506623E5424300D3D689 /* DummyCommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCommunicationManager.swift; sourceTree = "<group>"; };
 		E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyWeightsProcessor.swift; sourceTree = "<group>"; };
 		E468506A23E542B600D3D689 /* DummyModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModelLoader.swift; sourceTree = "<group>"; };
 		E468506D23E5440500D3D689 /* DummyCoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCoreMLClient.swift; sourceTree = "<group>"; };
 		E468507123E5498C00D3D689 /* CoreMLUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLUtils.swift; sourceTree = "<group>"; };
+		E48D5F1E24492FD200F15817 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E48D5F2024492FD200F15817 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E48D5F2224492FD200F15817 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E48D5F2424492FD200F15817 /* Surge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Surge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E48D5F27244931CE00F15817 /* Pods_DiscreetAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DiscreetAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49BDD5223D689A400A954FE /* TestingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingUtils.swift; sourceTree = "<group>"; };
 		E4ABEE4C24071C5400D5199E /* TextUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtils.swift; sourceTree = "<group>"; };
 		E4ABEE4E2407235C00D5199E /* neural_ngram_updatable.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = neural_ngram_updatable.mlmodel; sourceTree = "<group>"; };
@@ -186,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E463E718244FA6E000FB2D6C /* Pods_DiscreetAI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */,
+				4FD7C6DF9BDE8B71AFEE3039 /* Pods_DiscreetAI_UnitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,29 +223,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41EE5932432FB3F00B6F228 /* DiscreetAI.framework in Frameworks */,
+				1C69222E1C48D7BF42DC71FC /* Pods_DiscreetAI_IntegrationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		40DEAEC38CF5479E62B69B9F /* Pods */ = {
+		4C9A35736032C7C12FA8A4E4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4E2ED57B1C69C7748F41E354 /* Pods-Discreet-DML.debug.xcconfig */,
-				C268DCB89E882B0D098BB970 /* Pods-Discreet-DML.release.xcconfig */,
-				12AEAFF135B46365BDE0D58E /* Pods-Discreet-DMLTests.debug.xcconfig */,
-				9879DB198677BE66E4B46106 /* Pods-Discreet-DMLTests.release.xcconfig */,
-				72AE88BBB44B6A5ECCDD86FB /* Pods-Discreet_DMLIntegrationTests.debug.xcconfig */,
-				B56BD354093D9280C3CF86A9 /* Pods-Discreet_DMLIntegrationTests.release.xcconfig */,
-				12C29D1B3831E6B2402F0285 /* Pods-DiscreetAI.debug.xcconfig */,
-				370BB5F7A7C8160EBE32E8B6 /* Pods-DiscreetAI.release.xcconfig */,
-				360D17FE5D3BE91EC17D1C3A /* Pods-DiscreetAITests.debug.xcconfig */,
-				9B18DCE6FA6575FA2B15E1EF /* Pods-DiscreetAITests.release.xcconfig */,
-				DF8A08F35F7E67ECBF3A343C /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */,
-				8DD8EE08218A3E4FADB37708 /* Pods-DiscreetAI-IntegrationTests.release.xcconfig */,
-				98B5515736FB7AAFAAAA5095 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */,
-				43BAA83EEBFC5862B1C3C7A9 /* Pods-DiscreetAI-UnitTests.release.xcconfig */,
+				9DE492C19D2C0FF320C38F51 /* Pods-DiscreetAI.debug.xcconfig */,
+				4E7CC714F5641BB135A6AA7A /* Pods-DiscreetAI.release.xcconfig */,
+				13D95FA03C090EFF88107A09 /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */,
+				8CE950EFE84EAE5AE9C88069 /* Pods-DiscreetAI-IntegrationTests.release.xcconfig */,
+				B6CB3ED8DADAD5217AE9F501 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */,
+				D1A5A7D2285EE1F74D26B742 /* Pods-DiscreetAI-UnitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -232,12 +246,13 @@
 		E40978F123A0A39F00F51C42 = {
 			isa = PBXGroup;
 			children = (
+				E43ECF8A244FCBA3009152F5 /* Datasets */,
 				E40978FD23A0A39F00F51C42 /* DiscreetAI */,
 				E409790823A0A3A000F51C42 /* DiscreetAI-UnitTests */,
 				E41EE58F2432FB3F00B6F228 /* DiscreetAI-IntegrationTests */,
 				E40978FC23A0A39F00F51C42 /* Products */,
 				E4AF70E323D905B400D65376 /* Frameworks */,
-				40DEAEC38CF5479E62B69B9F /* Pods */,
+				4C9A35736032C7C12FA8A4E4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,7 +269,7 @@
 		E40978FD23A0A39F00F51C42 /* DiscreetAI */ = {
 			isa = PBXGroup;
 			children = (
-				E458F0E62425BC1A005A6A54 /* Datasets */,
+				E458F0E62425BC1A005A6A54 /* DatasetLoaders */,
 				E41D7BEC23E12E9000D58478 /* CommunicationManager */,
 				E41D7BEB23E12E8600D58478 /* Utils */,
 				E41D7BEA23E12E5400D58478 /* RealmClient */,
@@ -481,13 +496,13 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
-		E458F0E62425BC1A005A6A54 /* Datasets */ = {
+		E458F0E62425BC1A005A6A54 /* DatasetLoaders */ = {
 			isa = PBXGroup;
 			children = (
 				E437171A242AFA4D00FAABB0 /* Text */,
 				E4371719242AFA4500FAABB0 /* Image */,
 			);
-			path = Datasets;
+			path = DatasetLoaders;
 			sourceTree = "<group>";
 		};
 		E468506C23E543BD00D3D689 /* CommunicationManager */ = {
@@ -514,6 +529,13 @@
 		E4AF70E323D905B400D65376 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E463E717244FA6E000FB2D6C /* Pods_DiscreetAI.framework */,
+				E4338CBA244D21DC00DC9AE6 /* Pods_DiscreetAIDemoApp.framework */,
+				E48D5F27244931CE00F15817 /* Pods_DiscreetAI.framework */,
+				E48D5F1E24492FD200F15817 /* Realm.framework */,
+				E48D5F2024492FD200F15817 /* RealmSwift.framework */,
+				E48D5F2224492FD200F15817 /* Starscream.framework */,
+				E48D5F2424492FD200F15817 /* Surge.framework */,
 				E4155EA323F62C2700D5074D /* Pods_SceneDetector.framework */,
 				10D68C76B950E2928E68CE5D /* Pods_DiscreetAI.framework */,
 				BEA8A161BB32629794F091A8 /* Pods_DiscreetAI_IntegrationTests.framework */,
@@ -576,11 +598,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E409790F23A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI" */;
 			buildPhases = (
-				0E3FBF682D8566C6CB40AAE4 /* [CP] Check Pods Manifest.lock */,
+				3AAD8598CFC5FC0D42CE7A11 /* [CP] Check Pods Manifest.lock */,
 				E40978F623A0A39F00F51C42 /* Headers */,
 				E40978F723A0A39F00F51C42 /* Sources */,
 				E40978F823A0A39F00F51C42 /* Frameworks */,
 				E40978F923A0A39F00F51C42 /* Resources */,
+				E463E71A244FA6E000FB2D6C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -595,11 +618,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E409791223A0A3A000F51C42 /* Build configuration list for PBXNativeTarget "DiscreetAI-UnitTests" */;
 			buildPhases = (
-				24CFC83EF7308321C363B8A4 /* [CP] Check Pods Manifest.lock */,
+				906A23570C71399661CC0B6E /* [CP] Check Pods Manifest.lock */,
 				E409790023A0A3A000F51C42 /* Sources */,
 				E409790123A0A3A000F51C42 /* Frameworks */,
 				E409790223A0A3A000F51C42 /* Resources */,
-				B293A0786FABB60EB512B4B4 /* [CP] Embed Pods Frameworks */,
+				96676ABF73E66AF61616EB57 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -615,7 +638,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E41EE5982432FB3F00B6F228 /* Build configuration list for PBXNativeTarget "DiscreetAI-IntegrationTests" */;
 			buildPhases = (
-				120EB363F46055A1CB3996AD /* [CP] Check Pods Manifest.lock */,
+				38E72C42CAF754097D74302F /* [CP] Check Pods Manifest.lock */,
 				E41EE58A2432FB3F00B6F228 /* Sources */,
 				E41EE58B2432FB3F00B6F228 /* Frameworks */,
 				E41EE58C2432FB3F00B6F228 /* Resources */,
@@ -662,11 +685,6 @@
 				Base,
 			);
 			mainGroup = E40978F123A0A39F00F51C42;
-			packageReferences = (
-				E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */,
-				E4D72E3423DF9E3200BE3B75 /* XCRemoteSwiftPackageReference "Starscream" */,
-				E4D72E4923DFB0DE00BE3B75 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-			);
 			productRefGroup = E40978FC23A0A39F00F51C42 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -683,6 +701,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43ECF8B244FCBA3009152F5 /* Datasets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,29 +731,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0E3FBF682D8566C6CB40AAE4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DiscreetAI-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		120EB363F46055A1CB3996AD /* [CP] Check Pods Manifest.lock */ = {
+		38E72C42CAF754097D74302F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -756,7 +753,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		24CFC83EF7308321C363B8A4 /* [CP] Check Pods Manifest.lock */ = {
+		3AAD8598CFC5FC0D42CE7A11 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DiscreetAI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		906A23570C71399661CC0B6E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -778,7 +797,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B293A0786FABB60EB512B4B4 /* [CP] Embed Pods Frameworks */ = {
+		96676ABF73E66AF61616EB57 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -956,7 +975,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				NEW_SETTING = "";
@@ -1016,7 +1035,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				NEW_SETTING = "";
@@ -1033,7 +1052,7 @@
 		};
 		E409791023A0A3A000F51C42 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12C29D1B3831E6B2402F0285 /* Pods-DiscreetAI.debug.xcconfig */;
+			baseConfigurationReference = 9DE492C19D2C0FF320C38F51 /* Pods-DiscreetAI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1044,7 +1063,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = DiscreetAI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1053,15 +1072,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.discreetai.library;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		E409791123A0A3A000F51C42 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 370BB5F7A7C8160EBE32E8B6 /* Pods-DiscreetAI.release.xcconfig */;
+			baseConfigurationReference = 4E7CC714F5641BB135A6AA7A /* Pods-DiscreetAI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1072,7 +1092,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = DiscreetAI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1081,14 +1101,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.discreetai.library;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		E409791323A0A3A000F51C42 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98B5515736FB7AAFAAAA5095 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */;
+			baseConfigurationReference = B6CB3ED8DADAD5217AE9F501 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1096,7 +1117,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BQCV4KLL7;
 				INFOPLIST_FILE = "DiscreetAI-UnitTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1107,13 +1128,13 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		E409791423A0A3A000F51C42 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43BAA83EEBFC5862B1C3C7A9 /* Pods-DiscreetAI-UnitTests.release.xcconfig */;
+			baseConfigurationReference = D1A5A7D2285EE1F74D26B742 /* Pods-DiscreetAI-UnitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1121,7 +1142,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BQCV4KLL7;
 				INFOPLIST_FILE = "DiscreetAI-UnitTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1132,13 +1153,13 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		E41EE5962432FB3F00B6F228 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF8A08F35F7E67ECBF3A343C /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */;
+			baseConfigurationReference = 13D95FA03C090EFF88107A09 /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1154,13 +1175,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		E41EE5972432FB3F00B6F228 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DD8EE08218A3E4FADB37708 /* Pods-DiscreetAI-IntegrationTests.release.xcconfig */;
+			baseConfigurationReference = 8CE950EFE84EAE5AE9C88069 /* Pods-DiscreetAI-IntegrationTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BQCV4KLL7;
@@ -1174,7 +1195,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "discreetai.DiscreetAI-IntegrationTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1218,33 +1239,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		E4BA35F223AC2CBA00F81825 /* XCRemoteSwiftPackageReference "Surge" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Jounce/Surge";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.0;
-			};
-		};
-		E4D72E3423DF9E3200BE3B75 /* XCRemoteSwiftPackageReference "Starscream" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/daltoniam/Starscream";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		E4D72E4923DFB0DE00BE3B75 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-cocoa";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.3.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = E40978F223A0A39F00F51C42 /* Project object */;
 }

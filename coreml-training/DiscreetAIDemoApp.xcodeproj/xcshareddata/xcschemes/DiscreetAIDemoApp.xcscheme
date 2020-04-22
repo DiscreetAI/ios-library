@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1130"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7B8AF1A020D8311600DE58D5"
+               BuildableName = "DiscreetAIDemoApp.app"
+               BlueprintName = "DiscreetAIDemoApp"
+               ReferencedContainer = "container:DiscreetAIDemoApp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E41EE57F2432FAE700B6F228"
+               BuildableName = "DiscreetAIDemoAppTests.xctest"
+               BlueprintName = "DiscreetAIDemoAppTests"
+               ReferencedContainer = "container:DiscreetAIDemoApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E409790323A0A3A000F51C42"
+               BuildableName = "DiscreetAI-UnitTests.xctest"
+               BlueprintName = "DiscreetAI-UnitTests"
+               ReferencedContainer = "container:../../DiscreetAI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E4301B382405CD6C00ED9CA4"
+               BuildableName = "DiscreetAI-IntegrationTests.xctest"
+               BlueprintName = "DiscreetAI-IntegrationTests"
+               ReferencedContainer = "container:../../DiscreetAI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E41EE58D2432FB3F00B6F228"
+               BuildableName = "DiscreetAI-IntegrationTests.xctest"
+               BlueprintName = "DiscreetAI-IntegrationTests"
+               ReferencedContainer = "container:../DiscreetAI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E409790323A0A3A000F51C42"
+               BuildableName = "DiscreetAI-UnitTests.xctest"
+               BlueprintName = "DiscreetAI-UnitTests"
+               ReferencedContainer = "container:../DiscreetAI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7B8AF1A020D8311600DE58D5"
+            BuildableName = "DiscreetAIDemoApp.app"
+            BlueprintName = "DiscreetAIDemoApp"
+            ReferencedContainer = "container:DiscreetAIDemoApp.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7B8AF1A020D8311600DE58D5"
+            BuildableName = "DiscreetAIDemoApp.app"
+            BlueprintName = "DiscreetAIDemoApp"
+            ReferencedContainer = "container:DiscreetAIDemoApp.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

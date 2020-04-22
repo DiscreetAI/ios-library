@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/realm/realm-cocoa",
         "state": {
           "branch": null,
-          "revision": "9743cb4afcb16f7297460f633ee939fc1a52355b",
-          "version": "4.3.1"
+          "revision": "fa43b8e2909334c79f233ce472332c136ca108da",
+          "version": "4.4.1"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/daltoniam/Starscream",
         "state": {
           "branch": null,
-          "revision": "850f6204411cde04d16c129b70a2b9d1beba3a95",
-          "version": "4.0.0"
+          "revision": "cfc7b7b8dc98df3f7bef8aa068bbaec13d9ceb1b",
+          "version": "4.0.3"
         }
       },
       {

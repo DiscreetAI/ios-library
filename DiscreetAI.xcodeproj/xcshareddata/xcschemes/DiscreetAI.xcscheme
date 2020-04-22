@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1130"
+   LastUpgradeVersion = "1140"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -35,16 +35,6 @@
                BlueprintIdentifier = "E409790323A0A3A000F51C42"
                BuildableName = "DiscreetAI-UnitTests.xctest"
                BlueprintName = "DiscreetAI-UnitTests"
-               ReferencedContainer = "container:DiscreetAI.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E41EE58D2432FB3F00B6F228"
-               BuildableName = "DiscreetAI-IntegrationTests.xctest"
-               BlueprintName = "DiscreetAI-IntegrationTests"
                ReferencedContainer = "container:DiscreetAI.xcodeproj">
             </BuildableReference>
          </TestableReference>

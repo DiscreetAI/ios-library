@@ -1,16 +1,16 @@
 PODS:
-  - Realm (4.3.1):
-    - Realm/Headers (= 4.3.1)
-  - Realm/Headers (4.3.1)
-  - RealmSwift (4.3.1):
-    - Realm (= 4.3.1)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
   - Starscream (4.0.0)
   - Surge (2.3.0)
 
 DEPENDENCIES:
   - RealmSwift (>= 0.92.3)
-  - Starscream (~> 4.0.0)
-  - Surge (~> 2.3.0)
+  - Starscream (>= 4.0.0)
+  - Surge (>= 2.3.0)
 
 SPEC REPOS:
   trunk:
@@ -20,11 +20,11 @@ SPEC REPOS:
     - Surge
 
 SPEC CHECKSUMS:
-  Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
-  RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
   Starscream: 04b26f02727e10a002e6b5d21b188ba0d049910b
   Surge: 13979cd9593e943f9ce1202439da2999ea57e46d
 
-PODFILE CHECKSUM: b013f7932650df4295c61ecbb1ea269afe0388c8
+PODFILE CHECKSUM: 8f7ba93a72b59b31d7a7f4fbe621b5da56a9bed6
 
 COCOAPODS: 1.8.4

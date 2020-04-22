@@ -16,9 +16,13 @@ var testWebSocketURL = URL(string: "ws://54.67.38.51")!
 
 var testRepo = "testRepo"
 
+var testApiKey = "testAPIKey"
+
 var testDataset = "testDataset"
 
-var testRemoteRepo = "49315aef7422d8a2a601f9d1bc88c907"
+var testRemoteRepo = "87398da407199e962693360ce3894f64"
+
+var testRemoteApiKey = "3757611061d2771bc34aeae96748f12988a90e3f1f98981640fd5f857cf6c739"
 
 var testSession = "testSession"
 
@@ -30,7 +34,7 @@ var testOmega = 1
 
 var registrationMessage = try! makeDictionaryString(keys: ["node_type", "type"], values: [libraryName, registerName])
 
-var trainMessage = try! makeDictionaryString(keys: ["dataset_id", "session_id", "round", "action"], values: [testDataset, testSession, testRound, trainName])
+var trainMessage = try! makeDictionaryString(keys: ["dataset_id", "session_id", "round", "action", "error"], values: [testDataset, testSession, testRound, trainName, false])
 
 var resultsMessage = try! makeDictionaryString(keys: ["gradients", "omega"], values: [testGradients, testRound])
 

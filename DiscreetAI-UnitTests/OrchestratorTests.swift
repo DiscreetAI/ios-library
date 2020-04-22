@@ -11,7 +11,7 @@ import Starscream
 @testable import DiscreetAI
 
 class OrchestratorTests: XCTestCase {
-    let orchestrator = try! DummyOrchestrator(repoID: testRepo, connectImmediately: false)
+    let orchestrator = try! DummyOrchestrator(repoID: testRepo, apiKey: testApiKey, connectImmediately: false)!
     
     override func tearDown() {
         try! orchestrator.clearData(datasetID: testDataset)
@@ -22,7 +22,7 @@ class OrchestratorTests: XCTestCase {
          Test validation of the repo ID.
          */
         do {
-            let badOrchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
+            let badOrchestrator = try Orchestrator(repoID: testRepo, apiKey: testApiKey, connectImmediately: false)!
             XCTAssertThrowsError(try badOrchestrator.connect()) { error in
             XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidRepoID))
             
@@ -39,7 +39,7 @@ class OrchestratorTests: XCTestCase {
          Test validation with the addition of new data.
          */
         do {
-            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
+            let orchestrator = try Orchestrator(repoID: testRepo, apiKey: testApiKey, connectImmediately: false)!
             
             XCTAssertThrowsError(try orchestrator.addImages(datasetID: testDataset, images: testImages, labels: testImageLabels)) { error in
                 XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidImagePath))
@@ -64,7 +64,7 @@ class OrchestratorTests: XCTestCase {
          Test validation with removing an image.
          */
         do {
-            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
+            let orchestrator = try Orchestrator(repoID: testRepo, apiKey: testApiKey, connectImmediately: false)!
             try orchestrator.addImages(datasetID: testDataset, images: Array(realImages[0...1]), labels: Array(realLabels[0...1]))
             
             XCTAssertThrowsError(try orchestrator.removeImage(datasetID: testDataset, image: "badPath")) { error in
@@ -90,7 +90,7 @@ class OrchestratorTests: XCTestCase {
          Test validation with a dataset's data type and a specific action taken on that dataset.
          */
         do {
-            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
+            let orchestrator = try Orchestrator(repoID: testRepo, apiKey: testApiKey, connectImmediately: false)!
             try orchestrator.addImages(datasetID: testDataset, images: realImages, labels: realLabels)
             
             XCTAssertThrowsError(try orchestrator.addEncodings(datasetID: testDataset, encodings: testEncodings, labels: testEncodingLabels)) { error in
@@ -108,7 +108,7 @@ class OrchestratorTests: XCTestCase {
          Test validation with an action taken on a default dataset.
          */
         do {
-            let orchestrator = try Orchestrator(repoID: testRepo, connectImmediately: false)
+            let orchestrator = try Orchestrator(repoID: testRepo, apiKey: testApiKey, connectImmediately: false)!
             
             let mnist = ImageDatasets.MNIST.rawValue
             XCTAssertThrowsError(try orchestrator.addImages(datasetID: mnist, images: testImages, labels: testImageLabels)) { error in

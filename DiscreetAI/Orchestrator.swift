@@ -38,7 +38,7 @@ public class Orchestrator {
      
      - Throws: `DMLError` if an error occurred during the setup of the library.
      */
-    public init(repoID: String, apiKey: String, connectImmediately: Bool = true) throws {
+    public init?(repoID: String, apiKey: String, connectImmediately: Bool = true) throws {
         self.repoID = repoID
         self.apiKey = apiKey
         self.realmClient = try RealmClient(repoID: self.repoID)
@@ -54,7 +54,10 @@ public class Orchestrator {
         coreMLClient.configure(communicationManager: self.communicationManager)
         
         if connectImmediately {
-            try self.connect()
+            if !(try self.connect()) {
+                self.disconnect()
+                return nil
+            }
         }
     }
     
@@ -160,10 +163,10 @@ public class Orchestrator {
      
      - Throws: `DMLError` if there is no internet connection or the repo ID is invalid or there are no datapoints.
      */
-    public func connect() throws {
+    public func connect() throws -> Bool {
         try self.validateInternetConnection()
         try self.validateRepoID()
-        self.communicationManager.connect()
+        return self.communicationManager.connect()
     }
     
     /**
@@ -171,8 +174,8 @@ public class Orchestrator {
      
      - Throws: `DMLError` if there are no datapoints.
      */
-    func connect(webSocketURL: URL) throws {
-        self.communicationManager.connect(webSocketURL: webSocketURL)
+    func connect(webSocketURL: URL) throws -> Bool {
+        return self.communicationManager.connect(webSocketURL: webSocketURL)
     }
     
     public func disconnect() {
@@ -187,7 +190,7 @@ public class Orchestrator {
     public func isConnected() -> Bool {
         return self.communicationManager.isConnected
     }
-    
+        
     /**
      Determine the state of the library.
      

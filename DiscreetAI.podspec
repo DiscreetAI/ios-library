@@ -37,7 +37,7 @@ TODO: Add long description of the pod here.
   }
 
   s.dependency 'RealmSwift', '>= 0.92.3'
-  s.dependency 'Starscream', '>= 4.0.0'
+  s.dependency 'Starscream', '~> 4.0.0'
   s.dependency 'Surge', '>= 2.3.0' 
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

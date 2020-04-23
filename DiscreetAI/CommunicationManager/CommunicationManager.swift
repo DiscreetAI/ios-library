@@ -205,7 +205,7 @@ class CommunicationManager: WebSocketDelegate {
             self.isConnected = false
             self.pingTimer?.invalidate()
             self.pingTimer = nil
-        case .viablityChanged(_):
+        default:
             break
         }
         return nil

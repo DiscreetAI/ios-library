@@ -205,7 +205,7 @@ class CommunicationManager: WebSocketDelegate {
             self.isConnected = false
             self.pingTimer?.invalidate()
             self.pingTimer = nil
-        case .viablityChanged(_):
+        default:
             break
         }
         return nil
@@ -241,7 +241,7 @@ class CommunicationManager: WebSocketDelegate {
         self.reconnections -= 1
         if self.reconnections > 0 {
             print("Reconnecting...")
-            connect()
+            _ = connect()
         } else {
             throw DMLError.communicationManagerError(ErrorMessage.failedConnection)
         }

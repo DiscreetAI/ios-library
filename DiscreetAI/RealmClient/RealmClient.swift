@@ -30,8 +30,6 @@ class RealmClient {
      - Throws: `DMLError` if an error occurred during Realm setup.
      */
     init(repoID: String) throws {
-        print(Bundle(for: type(of: self)).bundlePath)
-        print(Bundle(for: type(of: self)).url(forResource: "cleanFolders.py", withExtension: nil))
         do {
             self.realm = try Realm()
         } catch {

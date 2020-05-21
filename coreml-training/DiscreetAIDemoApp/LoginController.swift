@@ -23,6 +23,10 @@ class LoginController: UITableViewController {
             repoIDLabel.text = orchestrator!.repoID
             apiKeyLabel.text = orchestrator!.apiKey
         }
+        else {
+            repoIDLabel.text = "discreet-demo"
+            apiKeyLabel.text = "demo-api-key"
+        }
         
         errorLabel.numberOfLines = 0
         overrideUserInterfaceStyle = .dark

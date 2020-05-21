@@ -20,7 +20,7 @@ class TrainingStatusController: UIViewController {
         self.statusLabel.numberOfLines = 0
         
         if statusTimer == nil {
-            self.statusTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            self.statusTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
                 let newStatus = self.orchestrator.getState()
                 if self.lastState != newStatus {
                     self.lastState = newStatus

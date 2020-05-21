@@ -16,16 +16,17 @@ import CoreML
 class ModelLoader {
     
     /// The URL of the model to be downloaded.
-    var downloadModelURL: URL?
+    var downloadModelBaseURL: URL?
+    
     
     /**
      Initializes the Model Loader by forming the download URL from the repo ID.
      
      - Parameters:
-        - repoID: The repo ID corresponding to the registered application.
+        - cloudDomain: The domain of the cloud node.
      */
-    init(repoID: String) {
-        self.downloadModelURL = makeModelDownloadURL(repoID: repoID)
+    init(cloudDomain: String) {
+        self.downloadModelBaseURL = makeDownloadModelBaseURL(cloudDomain: cloudDomain)
     }
     
     /**
@@ -34,11 +35,11 @@ class ModelLoader {
      - Parameters:
         - downloadModelURL: The URL of the model to be downloaded.
     */
-    init(downloadModelURL: URL?) {
+    init(downloadModelBaseURL: URL?) {
         /*
          downloadModelURL: The URL of the model to be directly downloaded from.
          */
-        self.downloadModelURL = downloadModelURL
+        self.downloadModelBaseURL = downloadModelBaseURL
     }
 
     /**
@@ -48,9 +49,15 @@ class ModelLoader {
      
      - Returns: URL of the compiled model on device.
      */
-    func loadModel() throws -> URL {
-        let localModelURL = try downloadModel()
-        let compiledModelURL = try compileModel(localModelURL: localModelURL)
+    func loadModel(sessionID: String) throws -> URL {
+        let downloadModelFullURL = self.downloadModelBaseURL!.appendingPathComponent(sessionID)
+        return try loadModel(downloadModelFullURL: downloadModelFullURL)
+    }
+    
+    func loadModel(downloadModelFullURL: URL) throws -> URL {
+        let localModelURL = try downloadModel(downloadModelFullURL: downloadModelFullURL)
+        let sessionID = downloadModelFullURL.lastPathComponent
+        let compiledModelURL = try compileModel(localModelURL: localModelURL, sessionID: sessionID)
         return compiledModelURL
     }
 
@@ -61,20 +68,24 @@ class ModelLoader {
      
      - Returns: URL of the `.mlmodel` file on device.
      */
-    func downloadModel() throws -> URL {
-        let destinationUrl = documentsDirectory.appendingPathComponent(self.downloadModelURL!.lastPathComponent)
-
-        if FileManager().fileExists(atPath: destinationUrl.path) {
-            print("File already exists at [\(destinationUrl.path)], deleting...")
+    func downloadModel(downloadModelFullURL: URL) throws -> URL {
+        let modelFolderURL = documentsDirectory.appendingPathComponent("temp")
+        
+        if fileManager.fileExists(atPath: modelFolderURL.path) {
+            print("Folder already exists [\(modelFolderURL.path)], deleting...")
             do {
-                try FileManager().removeItem(atPath: destinationUrl.path)
+                try FileManager().removeItem(atPath: modelFolderURL.path)
             } catch {
                 print(error.localizedDescription)
                 throw DMLError.modelLoaderError(ErrorMessage.error)
             }
         }
         
-        if let dataFromURL = NSData(contentsOf: self.downloadModelURL!) {
+        try fileManager.createDirectory(at: modelFolderURL, withIntermediateDirectories: true, attributes: nil)
+        let destinationUrl = modelFolderURL.appendingPathComponent("my_model.mlmodel")
+        
+        
+        if let dataFromURL = NSData(contentsOf: downloadModelFullURL) {
             if dataFromURL.write(to: destinationUrl, atomically: true) {
                 print("file saved [\(destinationUrl.path)]")
             } else {
@@ -97,26 +108,41 @@ class ModelLoader {
     
      - Returns: URL of the compiled model on device.
      */
-    func compileModel(localModelURL: URL) throws -> URL {
-        /*
-         
-         */
+    func compileModel(localModelURL: URL, sessionID: String) throws -> URL {
+        print("Compiling now...")
         if let compiledUrl = try? MLModel.compileModel(at: localModelURL) {
-            let permanentUrl = documentsDirectory.appendingPathComponent(compiledUrl.lastPathComponent)
-
+            print("Compilation successful")
+            let permanentUrl = documentsDirectory.appendingPathComponent("temp").appendingPathComponent(compiledUrl.lastPathComponent)
+            
             do {
-                if fileManager.fileExists(atPath: permanentUrl.path) {
-                    _ = try fileManager.replaceItemAt(permanentUrl, withItemAt: compiledUrl)
-                } else {
-                    try fileManager.copyItem(at: compiledUrl, to: permanentUrl)
-                }
+                try fileManager.copyItem(at: compiledUrl, to: permanentUrl)
+                #if targetEnvironment(simulator)
+                #else
+                try fileManager.removeItem(atPath: localModelURL.path)
+                #endif
+                try fileManager.removeItem(at: compiledUrl)
             } catch {
                 print(error.localizedDescription)
                 throw DMLError.modelLoaderError(ErrorMessage.failedCompiledModelSave)
             }
+            print("Model successfully compiled and saved.")
             return permanentUrl
         } else {
             throw DMLError.modelLoaderError(ErrorMessage.failedCompile)
+        }
+    }
+    
+    func deleteModelFolder(sessionID: String) throws {
+        let modelFolderURL = documentsDirectory.appendingPathComponent("temp")
+        
+        if fileManager.fileExists(atPath: modelFolderURL.path) {
+            print("Deleting model folder...")
+            do {
+                try FileManager().removeItem(atPath: modelFolderURL.path)
+            } catch {
+                print(error.localizedDescription)
+                throw DMLError.modelLoaderError(ErrorMessage.error)
+            }
         }
     }
 }

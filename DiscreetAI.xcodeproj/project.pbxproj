@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C69222E1C48D7BF42DC71FC /* Pods_DiscreetAI_IntegrationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA8A161BB32629794F091A8 /* Pods_DiscreetAI_IntegrationTests.framework */; };
-		4FD7C6DF9BDE8B71AFEE3039 /* Pods_DiscreetAI_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E91C23BDA6D0821EA9B42F2 /* Pods_DiscreetAI_UnitTests.framework */; };
+		E4016FBE246E74B30093AC18 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4016FBD246E74B30093AC18 /* CommunicationManager.swift */; };
 		E4058A7323D6A0FD00F8C03D /* MPSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */; };
 		E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */; };
 		E409790C23A0A3A000F51C42 /* DiscreetAI.h in Headers */ = {isa = PBXBuildFile; fileRef = E40978FE23A0A39F00F51C42 /* DiscreetAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,14 +33,13 @@
 		E41EE5B82432FB9300B6F228 /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5A22432FB9300B6F228 /* TestingUtils.swift */; };
 		E41EE5B92432FB9300B6F228 /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5A52432FB9300B6F228 /* TextUtils.swift */; };
 		E41EE5BA2432FB9300B6F228 /* DummyWeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5A62432FB9300B6F228 /* DummyWeightsProcessor.swift */; };
-		E41EE5BB2432FB9300B6F228 /* neural_ngram_updatable.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5A72432FB9300B6F228 /* neural_ngram_updatable.mlmodel */; };
 		E41EE5BC2432FB9300B6F228 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5A82432FB9300B6F228 /* DummyRealmClient.swift */; };
 		E41EE5BD2432FB9300B6F228 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = E41EE5AB2432FB9300B6F228 /* data.json */; };
 		E41EE5BE2432FB9300B6F228 /* DummyModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5AC2432FB9300B6F228 /* DummyModelLoader.swift */; };
 		E41EE5BF2432FB9300B6F228 /* DummyCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5AE2432FB9300B6F228 /* DummyCommunicationManager.swift */; };
-		E41EE5C02432FB9300B6F228 /* my_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5AF2432FB9300B6F228 /* my_model.mlmodel */; };
 		E41EE5C12432FB9300B6F228 /* DummyOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5B12432FB9300B6F228 /* DummyOrchestrator.swift */; };
 		E41EE5C32432FBC200B6F228 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5C22432FBC200B6F228 /* IntegrationTests.swift */; };
+		E42354262476DC07001BA2CC /* demo_creds.json in Resources */ = {isa = PBXBuildFile; fileRef = E42354252476DC06001BA2CC /* demo_creds.json */; };
 		E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E623E8DC2A0003F638 /* Orchestrator.swift */; };
 		E42C76E923E8DCD20003F638 /* OrchestratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */; };
 		E42C76EC23E8E8F00003F638 /* DummyOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */; };
@@ -53,8 +51,6 @@
 		E44F577223D3027500FE0619 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44F577123D3027400FE0619 /* Utils.swift */; };
 		E45288FE23E383A9003F422A /* CoreMLClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45288FD23E383A9003F422A /* CoreMLClientTests.swift */; };
 		E458F0E22425BB4F005A6A54 /* ImageDatasets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E458F0E12425BB4F005A6A54 /* ImageDatasets.swift */; };
-		E463E718244FA6E000FB2D6C /* Pods_DiscreetAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E463E717244FA6E000FB2D6C /* Pods_DiscreetAI.framework */; };
-		E463E719244FA6E000FB2D6C /* Pods_DiscreetAI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E463E717244FA6E000FB2D6C /* Pods_DiscreetAI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E468506523E5415100D3D689 /* DummyRealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506423E5415100D3D689 /* DummyRealmClient.swift */; };
 		E468506723E5424300D3D689 /* DummyCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506623E5424300D3D689 /* DummyCommunicationManager.swift */; };
 		E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468506823E5428200D3D689 /* DummyWeightsProcessor.swift */; };
@@ -63,7 +59,6 @@
 		E468507223E5498C00D3D689 /* CoreMLUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E468507123E5498C00D3D689 /* CoreMLUtils.swift */; };
 		E49BDD5323D689A400A954FE /* TestingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49BDD5223D689A400A954FE /* TestingUtils.swift */; };
 		E4ABEE4D24071C5400D5199E /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABEE4C24071C5400D5199E /* TextUtils.swift */; };
-		E4ABEE4F2407235D00D5199E /* neural_ngram_updatable.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E4ABEE4E2407235C00D5199E /* neural_ngram_updatable.mlmodel */; };
 		E4BA35ED23AB100000F81825 /* WeightsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35EC23AB100000F81825 /* WeightsProcessor.swift */; };
 		E4BA35F123AB187000F81825 /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA35F023AB187000F81825 /* BinaryUtils.swift */; };
 		E4C8CA01240F0D6D00F3BAD7 /* ImageBatchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CA00240F0D6D00F3BAD7 /* ImageBatchProvider.swift */; };
@@ -73,7 +68,6 @@
 		E4C8CA0D241784D400F3BAD7 /* DummyDMLJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CA0C241784D400F3BAD7 /* DummyDMLJob.swift */; };
 		E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */; };
 		E4D72E2323DF8D4F00BE3B75 /* CoreMLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */; };
-		E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */; };
 		E4D72E3823DF9E7800BE3B75 /* CommunicationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E3723DF9E7800BE3B75 /* CommunicationManagerTests.swift */; };
 		E4D72E3F23DFA7CE00BE3B75 /* RealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E3E23DFA7CE00BE3B75 /* RealmClient.swift */; };
 		E4D72E4323DFA7ED00BE3B75 /* RealmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D72E4223DFA7ED00BE3B75 /* RealmClientTests.swift */; };
@@ -96,20 +90,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		E463E71A244FA6E000FB2D6C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E463E719244FA6E000FB2D6C /* Pods_DiscreetAI.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		10D68C76B950E2928E68CE5D /* Pods_DiscreetAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscreetAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D95FA03C090EFF88107A09 /* Pods-DiscreetAI-IntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-IntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-IntegrationTests/Pods-DiscreetAI-IntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +100,7 @@
 		B6CB3ED8DADAD5217AE9F501 /* Pods-DiscreetAI-UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-UnitTests.debug.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BEA8A161BB32629794F091A8 /* Pods_DiscreetAI_IntegrationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscreetAI_IntegrationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1A5A7D2285EE1F74D26B742 /* Pods-DiscreetAI-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscreetAI-UnitTests.release.xcconfig"; path = "Target Support Files/Pods-DiscreetAI-UnitTests/Pods-DiscreetAI-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
+		E4016FBD246E74B30093AC18 /* CommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		E4058A7223D6A0FD00F8C03D /* MPSHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSHandler.swift; sourceTree = "<group>"; };
 		E40978FB23A0A39F00F51C42 /* DiscreetAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiscreetAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40978FE23A0A39F00F51C42 /* DiscreetAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscreetAI.h; sourceTree = "<group>"; };
@@ -158,6 +139,7 @@
 		E41EE5AF2432FB9300B6F228 /* my_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = my_model.mlmodel; sourceTree = "<group>"; };
 		E41EE5B12432FB9300B6F228 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
 		E41EE5C22432FBC200B6F228 /* IntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		E42354252476DC06001BA2CC /* demo_creds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demo_creds.json; sourceTree = "<group>"; };
 		E42C76E623E8DC2A0003F638 /* Orchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orchestrator.swift; sourceTree = "<group>"; };
 		E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrchestratorTests.swift; sourceTree = "<group>"; };
 		E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
@@ -194,7 +176,6 @@
 		E4C8CA0C241784D400F3BAD7 /* DummyDMLJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDMLJob.swift; sourceTree = "<group>"; };
 		E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMLJob.swift; sourceTree = "<group>"; };
 		E4D72E2223DF8D4F00BE3B75 /* CoreMLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLClient.swift; sourceTree = "<group>"; };
-		E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		E4D72E3723DF9E7800BE3B75 /* CommunicationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManagerTests.swift; sourceTree = "<group>"; };
 		E4D72E3E23DFA7CE00BE3B75 /* RealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClient.swift; sourceTree = "<group>"; };
 		E4D72E4223DFA7ED00BE3B75 /* RealmClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClientTests.swift; sourceTree = "<group>"; };
@@ -205,7 +186,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E463E718244FA6E000FB2D6C /* Pods_DiscreetAI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +194,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E409790523A0A3A000F51C42 /* DiscreetAI.framework in Frameworks */,
-				4FD7C6DF9BDE8B71AFEE3039 /* Pods_DiscreetAI_UnitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +202,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41EE5932432FB3F00B6F228 /* DiscreetAI.framework in Frameworks */,
-				1C69222E1C48D7BF42DC71FC /* Pods_DiscreetAI_IntegrationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +219,14 @@
 				D1A5A7D2285EE1F74D26B742 /* Pods-DiscreetAI-UnitTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E4016FBC246E74760093AC18 /* CommunicationManager */ = {
+			isa = PBXGroup;
+			children = (
+				E4016FBD246E74B30093AC18 /* CommunicationManager.swift */,
+			);
+			path = CommunicationManager;
 			sourceTree = "<group>";
 		};
 		E40978F123A0A39F00F51C42 = {
@@ -269,8 +255,8 @@
 		E40978FD23A0A39F00F51C42 /* DiscreetAI */ = {
 			isa = PBXGroup;
 			children = (
+				E4016FBC246E74760093AC18 /* CommunicationManager */,
 				E458F0E62425BC1A005A6A54 /* DatasetLoaders */,
-				E41D7BEC23E12E9000D58478 /* CommunicationManager */,
 				E41D7BEB23E12E8600D58478 /* Utils */,
 				E41D7BEA23E12E5400D58478 /* RealmClient */,
 				E41D7BE923E12E2500D58478 /* CoreMLClient */,
@@ -346,19 +332,12 @@
 		E41D7BEB23E12E8600D58478 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E42354252476DC06001BA2CC /* demo_creds.json */,
 				E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */,
 				E44F577123D3027400FE0619 /* Utils.swift */,
 				E42C76ED23E8F73E0003F638 /* Errors.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		E41D7BEC23E12E9000D58478 /* CommunicationManager */ = {
-			isa = PBXGroup;
-			children = (
-				E4D72E3223DF9E0A00BE3B75 /* CommunicationManager.swift */,
-			);
-			path = CommunicationManager;
 			sourceTree = "<group>";
 		};
 		E41D7C0B23E37E8300D58478 /* CoreMLClient */ = {
@@ -603,7 +582,6 @@
 				E40978F723A0A39F00F51C42 /* Sources */,
 				E40978F823A0A39F00F51C42 /* Frameworks */,
 				E40978F923A0A39F00F51C42 /* Resources */,
-				E463E71A244FA6E000FB2D6C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -701,6 +679,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E42354262476DC07001BA2CC /* demo_creds.json in Resources */,
 				E43ECF8B244FCBA3009152F5 /* Datasets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -852,7 +831,6 @@
 				E4301B452405F79B00ED9CA4 /* Encoder.swift in Sources */,
 				E4D72E3F23DFA7CE00BE3B75 /* RealmClient.swift in Sources */,
 				E41D7BD923E0E34300D58478 /* DataEntry.swift in Sources */,
-				E4D72E3323DF9E0A00BE3B75 /* CommunicationManager.swift in Sources */,
 				E41D7BE723E12BBB00D58478 /* MLMultiArrayUtils.swift in Sources */,
 				E4C8CA0B240F0EF100F3BAD7 /* ImageEntry.swift in Sources */,
 				E44F577223D3027500FE0619 /* Utils.swift in Sources */,
@@ -861,6 +839,7 @@
 				E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */,
 				E4D72E2123DF8C8900BE3B75 /* DMLJob.swift in Sources */,
 				E41D7BEE23E13C5500D58478 /* TextBatchProvider.swift in Sources */,
+				E4016FBE246E74B30093AC18 /* CommunicationManager.swift in Sources */,
 				E4C8CA09240F0EC200F3BAD7 /* TextEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,7 +848,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4ABEE4F2407235D00D5199E /* neural_ngram_updatable.mlmodel in Sources */,
 				E4301B472406009000ED9CA4 /* EncoderTests.swift in Sources */,
 				E4D72E4323DFA7ED00BE3B75 /* RealmClientTests.swift in Sources */,
 				E468506923E5428200D3D689 /* DummyWeightsProcessor.swift in Sources */,
@@ -893,8 +871,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E41EE5C02432FB9300B6F228 /* my_model.mlmodel in Sources */,
-				E41EE5BB2432FB9300B6F228 /* neural_ngram_updatable.mlmodel in Sources */,
 				E41EE5B82432FB9300B6F228 /* TestingUtils.swift in Sources */,
 				E41EE5BA2432FB9300B6F228 /* DummyWeightsProcessor.swift in Sources */,
 				E41EE5C32432FBC200B6F228 /* IntegrationTests.swift in Sources */,

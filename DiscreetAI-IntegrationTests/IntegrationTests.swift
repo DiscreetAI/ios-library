@@ -21,9 +21,10 @@ class IntegrationTests: XCTestCase {
          
          WARNING: This test takes an even longer amount of time to run (about 10 minutes max).
          */
-        let orchestrator2 = try! Orchestrator(repoID: testRepo, apiKey: testApiKey, connectImmediately: false)!
+        testWebSocketURL = URL(string: "ws://localhost")!
+        let orchestrator2 = try! Orchestrator(repoID: "demo", apiKey: testApiKey, connectImmediately: false)!
         try! orchestrator2.realmClient.clear()
-        orchestrator2.communicationManager.coreMLClient!.modelLoader = ModelLoader(downloadModelURL: URL(string: "http://127.0.0.1/my_model.mlmodel")!)
+        orchestrator2.communicationManager.coreMLClient!.modelLoader = ModelLoader(downloadModelBaseURL: URL(string: "http://localhost/mlmodel/")!)
         try! orchestrator2.addImages(datasetID: testDataset, images: realImages, labels: realLabels)
         try! orchestrator2.connect(webSocketURL: testWebSocketURL)
         let iterationTime: Double = 0.5

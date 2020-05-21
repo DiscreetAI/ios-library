@@ -22,7 +22,7 @@ class OrchestratorTests: XCTestCase {
          Test validation of the repo ID.
          */
         do {
-            let badOrchestrator = try Orchestrator(repoID: testRepo, apiKey: testApiKey, connectImmediately: false)!
+            let badOrchestrator = try Orchestrator(repoID: badRepo, apiKey: badApiKey, connectImmediately: false)!
             XCTAssertThrowsError(try badOrchestrator.connect()) { error in
             XCTAssertEqual(error as! DMLError, DMLError.userError(ErrorMessage.invalidRepoID))
             

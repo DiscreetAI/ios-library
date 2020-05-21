@@ -7,12 +7,13 @@
 ///
 
 import Foundation
+import CoreML
 
 /**
  DML Job for containing information needed for the update message.
  */
-class DMLJob {
-    
+public class DMLJob {
+        
     /// The dataset ID corresponding to the desired dataset.
     var datasetID: String
     
@@ -21,6 +22,8 @@ class DMLJob {
     
     /// The current round in this training session.
     var round: Int
+    
+    var epochs: Int?
     
     /// The calculated gradients after training.
     var gradients: [[Float32]]?
@@ -31,6 +34,11 @@ class DMLJob {
     /// The URL of the model on device.
     var modelURL: URL?
 
+    var repoID: String?
+    
+    var batchProvider: MLBatchProvider?
+    
+    var config: MLModelConfiguration?
     
     /**
      Initializes the DML job with the information already known before training. The remaining information is manually set after training.

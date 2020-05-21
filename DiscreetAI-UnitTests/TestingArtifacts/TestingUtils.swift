@@ -12,17 +12,21 @@ import RealmSwift
 
 var testingUtilsPath = URL(fileURLWithPath: #file).deletingLastPathComponent().path + "/"
 
-var testWebSocketURL = URL(string: "ws://54.67.38.51")!
+var testWebSocketURL = URL(string: "ws://127.0.0.1")!
 
 var testRepo = "testRepo"
 
-var testApiKey = "testAPIKey"
+var testApiKey = "demo-api-key"
 
 var testDataset = "testDataset"
 
-var testRemoteRepo = "87398da407199e962693360ce3894f64"
+var testRemoteRepo = "demo"
 
-var testRemoteApiKey = "3757611061d2771bc34aeae96748f12988a90e3f1f98981640fd5f857cf6c739"
+var testRemoteApiKey = "demo-api-key"
+
+var badRepo = "badRepo"
+
+var badApiKey = "badApiKey"
 
 var testSession = "testSession"
 
@@ -32,13 +36,13 @@ var testGradients: [[Float32]] = [[1]]
 
 var testOmega = 1
 
-var registrationMessage = try! makeDictionaryString(keys: ["node_type", "type"], values: [libraryName, registerName])
+var registrationMessage = try! makeDictionaryString(keys: ["repo_id", "node_type", "type"], values: [testRepo, libraryName, registerName])
 
-var trainMessage = try! makeDictionaryString(keys: ["dataset_id", "session_id", "round", "action", "error"], values: [testDataset, testSession, testRound, trainName, false])
+var trainMessage = try! makeDictionaryString(keys: ["repo_id", "dataset_id", "session_id", "round", "action", "error"], values: [testRepo, testDataset, testSession, testRound, trainName, false])
 
 var resultsMessage = try! makeDictionaryString(keys: ["gradients", "omega"], values: [testGradients, testRound])
 
-var updateMessage = try! makeDictionaryString(keys: ["type", "round", "session_id", "results"], values: [newUpdateName, testRound, testSession, resultsMessage])
+var updateMessage = try! makeDictionaryString(keys: ["repo_id", "type", "round", "session_id", "results"], values: [testRepo, newUpdateName, testRound, testSession, resultsMessage])
 
 var testImages = ["path1", "path2"]
 

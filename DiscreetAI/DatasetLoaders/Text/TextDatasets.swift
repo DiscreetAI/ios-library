@@ -40,7 +40,7 @@ func isDefaultTextDataset(datasetID: String) -> Bool {
  - Returns: Tuple corresponding to the sample data's encodings and labels.
 */
 func getShakespeareData() throws -> ([[Int]], [Int]) {
-    let shakespeareFolder = textDatasetsFolder.appendingPathComponent("shakespeare")
+    let shakespeareFolder = Artifacts.textDatasetsFolder.appendingPathComponent("shakespeare")
     let shakespearePath = shakespeareFolder.appendingPathComponent("shakespeare.txt")
 
     var text: String

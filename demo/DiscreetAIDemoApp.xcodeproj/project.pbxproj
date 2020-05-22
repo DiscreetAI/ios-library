@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7589950E83D7F77E32A62579 /* Pods_DiscreetAIDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4338CB4244D21C100DC9AE6 /* Pods_DiscreetAIDemoApp.framework */; };
 		E4339204244DA7EA00DC9AE6 /* Datasets in Resources */ = {isa = PBXBuildFile; fileRef = E4339203244DA7E900DC9AE6 /* Datasets */; };
 		E48D5EDA24492B5E00F15817 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D5EC824492B5E00F15817 /* ExampleCell.swift */; };
 		E48D5EDB24492B5E00F15817 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D5EC924492B5E00F15817 /* UIImage+Resize.swift */; };
@@ -136,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E48D5EF824492BEB00F15817 /* DiscreetAI.framework in Frameworks */,
+				7589950E83D7F77E32A62579 /* Pods_DiscreetAIDemoApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

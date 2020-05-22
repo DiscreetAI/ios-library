@@ -39,7 +39,7 @@
 		E41EE5BF2432FB9300B6F228 /* DummyCommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5AE2432FB9300B6F228 /* DummyCommunicationManager.swift */; };
 		E41EE5C12432FB9300B6F228 /* DummyOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5B12432FB9300B6F228 /* DummyOrchestrator.swift */; };
 		E41EE5C32432FBC200B6F228 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41EE5C22432FBC200B6F228 /* IntegrationTests.swift */; };
-		E42354262476DC07001BA2CC /* demo_creds.json in Resources */ = {isa = PBXBuildFile; fileRef = E42354252476DC06001BA2CC /* demo_creds.json */; };
+		E423542E24776845001BA2CC /* demo_details.json in Resources */ = {isa = PBXBuildFile; fileRef = E423542D24776844001BA2CC /* demo_details.json */; };
 		E42C76E723E8DC2A0003F638 /* Orchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E623E8DC2A0003F638 /* Orchestrator.swift */; };
 		E42C76E923E8DCD20003F638 /* OrchestratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */; };
 		E42C76EC23E8E8F00003F638 /* DummyOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */; };
@@ -139,7 +139,7 @@
 		E41EE5AF2432FB9300B6F228 /* my_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = my_model.mlmodel; sourceTree = "<group>"; };
 		E41EE5B12432FB9300B6F228 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
 		E41EE5C22432FBC200B6F228 /* IntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
-		E42354252476DC06001BA2CC /* demo_creds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demo_creds.json; sourceTree = "<group>"; };
+		E423542D24776844001BA2CC /* demo_details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demo_details.json; sourceTree = "<group>"; };
 		E42C76E623E8DC2A0003F638 /* Orchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orchestrator.swift; sourceTree = "<group>"; };
 		E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrchestratorTests.swift; sourceTree = "<group>"; };
 		E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
@@ -232,6 +232,7 @@
 		E40978F123A0A39F00F51C42 = {
 			isa = PBXGroup;
 			children = (
+				E423542D24776844001BA2CC /* demo_details.json */,
 				E43ECF8A244FCBA3009152F5 /* Datasets */,
 				E40978FD23A0A39F00F51C42 /* DiscreetAI */,
 				E409790823A0A3A000F51C42 /* DiscreetAI-UnitTests */,
@@ -332,7 +333,6 @@
 		E41D7BEB23E12E8600D58478 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E42354252476DC06001BA2CC /* demo_creds.json */,
 				E4D72E2023DF8C8900BE3B75 /* DMLJob.swift */,
 				E44F577123D3027400FE0619 /* Utils.swift */,
 				E42C76ED23E8F73E0003F638 /* Errors.swift */,
@@ -679,8 +679,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E42354262476DC07001BA2CC /* demo_creds.json in Resources */,
 				E43ECF8B244FCBA3009152F5 /* Datasets in Resources */,
+				E423542E24776845001BA2CC /* demo_details.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

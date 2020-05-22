@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DiscreetAI'
-  s.version          = '0.1.1'
-  s.summary          = 'A short description of DiscreetAI.'
+  s.version          = '1.0.4'
+  s.summary          = 'Discreet AI\'s custom library for private on device training.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -24,8 +24,8 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/DiscreetAI'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'neeleshdodda44' => 'ndodda@berkeley.edu' }
-  s.source           = { :git => 'https://github.com/neeleshdodda44/ios-library.git', :tag => s.version.to_s}
+  s.author           = { 'neeleshdodda44' => 'neelesh.dodda@discreetai.com' }
+  s.source           = { :git => 'https://github.com/DiscreetAI/ios-library.git', :tag => s.version.to_s}
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '13.4'

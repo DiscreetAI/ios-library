@@ -56,7 +56,7 @@ struct Artifacts {
 
     static var textDatasetsFolder = datasetsFolder.appendingPathComponent("TextDatasets")
     
-    static var demoCredsPath = bundle.url(forResource: "demo_creds", withExtension: "json")!
+    static var demoCredsPath = bundle.url(forResource: "demo_details", withExtension: "json")!
 }
 
 /// Max number epochs total on device.
@@ -68,8 +68,8 @@ var unlimitedEpochs = 100000
  - Returns: Dictionary holding the credentials.
  */
 func getDemoCreds() throws -> NSDictionary? {
-    if let demoCreds: NSDictionary = try? parseJSON(stringOrFile: Artifacts.demoCredsPath.path, isString: false) as? NSDictionary {
-        return demoCreds
+    if fileManager.fileExists(atPath: Artifacts.demoCredsPath.path) {
+         return try parseJSON(stringOrFile: Artifacts.demoCredsPath.path, isString: false) as! NSDictionary
     }
     
     return nil

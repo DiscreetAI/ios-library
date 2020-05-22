@@ -287,10 +287,8 @@ class CommunicationManager: WebSocketDelegate {
             let sessionID = message["session_id"] as! String
             let round = message["round"] as! Int
             let hyperparams = message["hyperparams"] as! NSDictionary
-            let epochs = hyperparams["epochs"] as! Int
             let job = DMLJob(datasetID: datasetID, sessionID: sessionID, round: round)
             job.repoID = repoID
-            job.epochs = epochs
             self.currentJobs.append(job)
             if (self.jobTimer == nil) {
                 self.setUpJobTimer()

@@ -9,23 +9,71 @@
 import Foundation
 import CoreML
 
-/// Name for a register messsage.
-var registerName = "REGISTER"
 
-/// Name for a message from the library.
-var libraryName = "LIBRARY"
+/// Names of messages received and sent by library.
+struct MessageNames {
+    
+    /// Names of messages associated with registration.
+    struct RegistrationNames {
+        
+        /// Name for a register messsage.
+        static var registerName = "REGISTER"
 
-/// Name of a train message.
-var trainName = "TRAIN"
+        /// Name for a message from the library.
+        static var libraryName = "LIBRARY"
+        
+        /// Name of successful registration message.
+        static var registrationSuccessName = "REGISTRATION_SUCCESS"
+    }
+    
+    /// Names of messages associated with training.
+    struct TrainNames {
+        
+        /// Name of a train message.
+        static var trainName = "TRAIN"
 
-/// Name of an update message.
-var newUpdateName = "NEW_UPDATE"
+        /// Name of an update message.
+        static var newUpdateName = "NEW_UPDATE"
+        
+        /// Name of a no dataset message.
+        static var noDatasetName = "NO_DATASET"
+        
+        /// Name of a training error message.
+        static var trainingErrorName = "TRAINING_ERROR"
 
-/// Name of a stop message.
-var stopName = "STOP"
+        /// Name of a stop message.
+        static var stopName = "STOP"
+    }
+}
 
-/// Name of successful registration message.
-var registrationSuccessName = "REGISTRATION_SUCCESS"
+/// Paths to dataset folders.
+struct Artifacts {
+    static var bundle = Bundle(identifier: "com.discreetai.library")!
+    
+    static var datasetsFolder = bundle.url(forResource: "Datasets", withExtension: nil)!
+
+    static var imageDatasetsFolder = datasetsFolder.appendingPathComponent("ImageDatasets")
+
+    static var textDatasetsFolder = datasetsFolder.appendingPathComponent("TextDatasets")
+    
+    static var demoCredsPath = bundle.url(forResource: "demo_creds", withExtension: "json")!
+}
+
+/// Max number epochs total on device.
+var unlimitedEpochs = 100000
+
+/**
+ Helper function to demo repo credentials.
+ 
+ - Returns: Dictionary holding the credentials.
+ */
+func getDemoCreds() throws -> NSDictionary? {
+    if let demoCreds: NSDictionary = try? parseJSON(stringOrFile: Artifacts.demoCredsPath.path, isString: false) as? NSDictionary {
+        return demoCreds
+    }
+    
+    return nil
+}
 
 /**
  Turn an arbitrary object (Dictionary, Int, etc.) into a String
@@ -93,36 +141,56 @@ func makeDictionaryString(keys: [String], values: [Any]) throws -> String {
  Make the WebSocket URL for the Communication Manager.
  
  - Parameters:
-    - repoID: The repo ID corresponding to the registered application.
+    - cloudDomain: The domain of the cloud node.
  
  - Returns: The WebSocket URL.
  */
-func makeWebSocketURL(repoID: String) -> URL {
-    return URL(string: "ws://\(repoID).cloud.discreetai.com")!
-}
-
-/**
- Make the base cloud node URL for the Orchestrator and Model Loader.
- 
- - Parameters:
-    - repoID: The repo ID corresponding to the registered application.
- 
- - Returns: The base cloud node URL.
- */
-func makeCloudNodeURL(repoID: String) -> URL {
-     return URL(string: "http://\(repoID).cloud.discreetai.com")!
+func makeWebSocketURL(cloudDomain: String) -> URL {
+    return URL(string: "ws://\(cloudDomain).cloud.discreetai.com")!
 }
 
 /**
  Make the model download URL for the Model Loader.
 
  - Parameters:
-    - repoID: The repo ID corresponding to the registered application.
+    - cloudDomain: The domain of the cloud node.
+
+ - Returns:The base cloud node URL.
+*/
+func makeCloudNodeURL(cloudDomain: String) -> URL {
+    return URL(string: "http://\(cloudDomain).cloud.discreetai.com")!
+}
+
+/**
+ Make the model download URL for the Model Loader.
+
+ - Parameters:
+    - cloudDomain: The domain of the cloud node.
 
  - Returns: The model download URL.
 */
-func makeModelDownloadURL(repoID: String) -> URL {
-    return makeCloudNodeURL(repoID: repoID).appendingPathComponent("/my_model.mlmodel")
+func makeDownloadModelBaseURL(cloudDomain: String) -> URL {
+    return makeCloudNodeURL(cloudDomain: cloudDomain).appendingPathComponent("/mlmodel/")
+}
+
+/**
+ Get the domain for the cloud node.
+ 
+ - Parameters:
+    - repoID: The repo ID corresponding to the registered application.
+    - apiKey: The API key for authentication
+
+ - Returns: The domain of the cloud node.
+ 
+ */
+func getCloudDomain(repoID: String, apiKey: String) throws -> String {
+    if let demoCreds = try getDemoCreds() {
+        let demoRepoID = demoCreds["demo_repo_id"] as! String
+        let demoApiKey = demoCreds["demo_api_key"] as! String
+        return apiKey == demoApiKey && repoID == demoRepoID ? demoRepoID : repoID
+    }
+    
+    return repoID
 }
 
 /**
@@ -194,10 +262,3 @@ func makeImageURL(image: String) -> URL {
     return documentsDirectory.appendingPathComponent(image)
 }
 
-var bundle = Bundle(identifier: "com.discreetai.library")!
-
-var datasetsFolder = bundle.url(forResource: "Datasets", withExtension: nil)!
-
-var imageDatasetsFolder = datasetsFolder.appendingPathComponent("ImageDatasets")
-
-var textDatasetsFolder = datasetsFolder.appendingPathComponent("TextDatasets")

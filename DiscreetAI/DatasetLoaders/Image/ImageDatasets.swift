@@ -38,27 +38,26 @@ func isDefaultImageDataset(datasetID: String) -> Bool {
  - Returns: Tuple corresponding to the sample data's image paths and labels.
  */
 func getMNISTData() -> ([String], [String]) {
-    let mnistFolder = imageDatasetsFolder.appendingPathComponent("mnist")
+    let mnistFolder = Artifacts.imageDatasetsFolder.appendingPathComponent("mnist")
     var examples: [String] = []
     var labels: [String] = []
-    for label in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] {
+    for label in ["0"] {
         let url = documentsDirectory.appendingPathComponent(label)
         if !fileManager.fileExists(atPath: url.path) {
             try! fileManager.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)
         }
         let labelURL = mnistFolder.appendingPathComponent(label)
-        print(labelURL.path)
         let fileURLs = try! FileManager.default.contentsOfDirectory(at: labelURL, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])
         
-        for fromURL in fileURLs {
-            let filename = fromURL.lastPathComponent
-            let copyDestination = url.appendingPathComponent(filename)
-            if !fileManager.fileExists(atPath: copyDestination.path) {
-                try! fileManager.copyItem(at: fromURL, to: copyDestination)
-            }
-            examples.append("\(label)/\(filename)")
-            labels.append(label)
+        let fromURL = fileURLs[0]
+        let filename = fromURL.lastPathComponent
+        let copyDestination = url.appendingPathComponent(filename)
+        if !fileManager.fileExists(atPath: copyDestination.path) {
+            try! fileManager.copyItem(at: fromURL, to: copyDestination)
         }
+        examples.append("\(label)/\(filename)")
+        labels.append(label)
+        
     }
     return (examples, labels)
 }

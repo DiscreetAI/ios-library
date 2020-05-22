@@ -26,6 +26,7 @@ class CoreMLClientTests: XCTestCase {
             let communicationManager = DummyCommunicationManager(coreMLClient: coreMLClient)
             coreMLClient.configure(communicationManager: communicationManager)
             let job = DMLJob(datasetID: testDataset, sessionID: testSession, round: testRound)
+            job.repoID = testRepo
             try coreMLClient.train(job: job)
             
             while !communicationManager.success && numIterations < maxIterations {
@@ -52,6 +53,7 @@ class CoreMLClientTests: XCTestCase {
             let communicationManager = DummyCommunicationManager(coreMLClient: coreMLClient)
             coreMLClient.configure(communicationManager: communicationManager)
             let job = DMLJob(datasetID: testDataset, sessionID: testSession, round: testRound)
+            job.repoID = testRepo
             try coreMLClient.train(job: job)
             
             while !communicationManager.success && numIterations < maxIterations {

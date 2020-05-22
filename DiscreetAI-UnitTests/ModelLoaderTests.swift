@@ -16,8 +16,8 @@ class ModelLoaderTests: XCTestCase {
         Download the model from S3, and compile it. Load it to ensure that the previous actions succeeded.
         */
         do {
-            let modelLoader = ModelLoader(downloadModelURL: testModelURL)
-            let modelURL = try modelLoader.loadModel()
+            let modelLoader = ModelLoader(repoID: testRepo, apiKey: testApiKey)
+            let modelURL = try modelLoader.loadModel(downloadModelFullURL: testModelURL)
             let model = try? MLModel(contentsOf: modelURL)
             XCTAssertNotNil(model)
         } catch {
@@ -29,8 +29,8 @@ class ModelLoaderTests: XCTestCase {
     }
     
     func testBadDownload() {
-        let modelLoader = ModelLoader(downloadModelURL: URL(string: "http://badserver.com/model.mlmodel")!)
-        XCTAssertThrowsError(try modelLoader.loadModel()) { error in
+        let modelLoader = ModelLoader(downloadModelBaseURL: URL(string: "http://badserver.com/model.mlmodel")!)
+        XCTAssertThrowsError(try modelLoader.loadModel(sessionID: testSession)) { error in
             XCTAssertEqual(error as! DMLError, DMLError.modelLoaderError(ErrorMessage.failedDownload))
         }
     }

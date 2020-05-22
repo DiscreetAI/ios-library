@@ -19,9 +19,6 @@ enum State : String {
     /// The library is in the process of connecting to the cloud node via WebSocket.
     case notConnected = "Connecting to server..."
     
-    /// The library is connected and waiting for registration to completed.
-    case awaitingRegistration = "Registering..."
-    
     /// The API key corresponding to the repo ID is invalid (error with registration).
     case authError = "Authentication error occurred! Check to make sure \nthe API key is correct!"
     
@@ -58,6 +55,9 @@ class CommunicationManager: WebSocketDelegate {
     /// The repo ID corresponding to the dataset of this library.
     var repoID: String
     
+    /// The repo ID corresponding to the dataset of this library.
+    var cloudDomain: String
+    
     /// The API key for authentication.
     var apiKey: String
     
@@ -68,13 +68,12 @@ class CommunicationManager: WebSocketDelegate {
     var reconnections: Int
     
     /// The current training job for this library (if applicable).
-    var currentJobs = [DMLJob]()
+    public var currentJobs = [DMLJob]()
+        
+    var registered: Bool?
     
     /// The job timer used for running jobs only when the library is in a valid training state.
     var jobTimer: Timer?
-    
-    /// The ping timer used to detect when the library is disconnected from the cloud node.
-    var pingTimer: Timer?
     
     /// Whether the library is currently connected to the cloud node or not.
     var isConnected = false
@@ -90,10 +89,11 @@ class CommunicationManager: WebSocketDelegate {
          - repoID: The repo ID corresponding to the dataset of this library.
          - apiKey: The API key for authentication.
      */
-    init(coreMLClient: CoreMLClient?, repoID: String, apiKey: String) {
+    init(coreMLClient: CoreMLClient?, repoID: String, apiKey: String, cloudDomain: String) {
         self.coreMLClient = coreMLClient
         self.repoID = repoID
         self.apiKey = apiKey
+        self.cloudDomain = cloudDomain
         self.reconnections = 3
         UIDevice.current.isBatteryMonitoringEnabled = true
     }
@@ -102,7 +102,7 @@ class CommunicationManager: WebSocketDelegate {
      Connect to the cloud node via WebSocket by using the repo ID to form the URL.
      */
     func connect() -> Bool {
-        let webSocketURL = makeWebSocketURL(repoID: self.repoID)
+        let webSocketURL = makeWebSocketURL(cloudDomain: self.cloudDomain)
         return self.connect(webSocketURL: webSocketURL)
     }
     
@@ -119,45 +119,46 @@ class CommunicationManager: WebSocketDelegate {
         self.socket?.delegate = self
         self.socket?.connect()
         
-        if blockUntilRegistrationReponse(secondsToWait: 10) {
-            return self.state == State.idle
-        } else {
-            return false
-        }
+        blockUntilRegistrationReponse(secondsToWait: 10)
+        
+        return (self.registered == nil) ? false : self.registered!
     }
     
+    /**
+     Disconnect from the cloud node.
+     */
     func disconnect() {
         self.socket?.disconnect()
         self.socket = nil
         self.reset()
     }
     
-    func blockUntilRegistrationReponse(secondsToWait: Double) -> Bool {
-        func registrationResponseReceived() -> Bool {
-            return self.state == State.authError || self.state == State.idle
-        }
+    /**
+     Block until a registration response has been received, or timeout.
+     
+     - Parameters:
+        - secondsToWait: The number of seconds to wait until timeout.
+     */
+    func blockUntilRegistrationReponse(secondsToWait: Double) {
         let iterationTime: Double = 0.5
         let maxIterations = secondsToWait/iterationTime
         var numIterations = 0.0
         
             
-        while !registrationResponseReceived() && numIterations < maxIterations {
+        while self.registered == nil && numIterations < maxIterations {
             RunLoop.current.run(until: Date(timeIntervalSinceNow: iterationTime))
             numIterations += 1
         }
-        
-        return registrationResponseReceived()
     }
     
     /**
      Higher level function for dealing with new event. If our handler deems that there is a message to be sent, then send it.
      
      - Parameters:
-     - event: An WebSocket associated event, such as a new connection, disconnection, etc.
-     - client: The client WebSocket on the cloud node that the event is associated with.
+        - event: An WebSocket associated event, such as a new connection, disconnection, etc.
+        - client: The client WebSocket on the cloud node that the event is associated with.
      */
     func didReceive(event: WebSocketEvent, client: WebSocket) {
-        
         if let message = try! handleNewEvent(event: event) {
             print("Sending new message...")
             self.socket?.write(string: message)
@@ -169,7 +170,7 @@ class CommunicationManager: WebSocketDelegate {
      
      
      - Parameters:
-     - event: An WebSocket associated event, such as a new connection, disconnection, etc.
+        - event: An WebSocket associated event, such as a new connection, disconnection, etc.
      
      - Throws: `DMLError`, if something went wrong processing the event.
      
@@ -203,8 +204,6 @@ class CommunicationManager: WebSocketDelegate {
             let errorMessage = error!
             print(errorMessage.localizedDescription)
             self.isConnected = false
-            self.pingTimer?.invalidate()
-            self.pingTimer = nil
         default:
             break
         }
@@ -219,16 +218,22 @@ class CommunicationManager: WebSocketDelegate {
      - Returns: A string representing the registration message to be sent to the cloud node.
      */
     private func handleNewConnection() throws -> String {
-        
         self.isConnected = true
-        self.state = State.awaitingRegistration
         self.reconnections = 3
-        
-        if self.socket != nil {
-            self.setUpPingTimer()
-        }
-        
-        return try makeDictionaryString(keys: ["type", "node_type", "api_key"], values: [registerName, libraryName, self.apiKey])
+        return try makeRegistrationMessage()
+    }
+    
+    /**
+     Helper function to make registration message.
+     
+     - Throws: `DMLError` if the registration message could not be formed.
+     
+     - Returns: A string representing the registration message to be sent to the cloud node.
+     */
+    func makeRegistrationMessage() throws -> String {
+        let keys = ["type", "node_type", "repo_id", "api_key"]
+        let values = [MessageNames.RegistrationNames.registerName, MessageNames.RegistrationNames.libraryName, self.repoID, self.apiKey]
+        return try makeDictionaryString(keys: keys, values: values)
     }
     
     /**
@@ -251,7 +256,7 @@ class CommunicationManager: WebSocketDelegate {
      Handler for new messages. Depending on the action, either begin training or set the state to `State.trainingComplete`.
      
      - Parameters:
-     - jsonString: The string representing the message received from the cloud node.
+        - jsonString: The string representing the message received from the cloud node.
      
      - Throws: `DMLError` if an error occurred during training.
      */
@@ -262,30 +267,38 @@ class CommunicationManager: WebSocketDelegate {
         if message["error"] as! Bool {
             if message["type"] as! String == "AUTHENTICATION" {
                 self.state = State.authError
-                return
+                self.registered = false
             } else {
                 print(message["error_message"] as! String)
             }
+            return
         }
         
         switch message["action"] as! String {
-        case registrationSuccessName:
-            print("Received \(registrationSuccessName) message.")
+        case MessageNames.RegistrationNames.registrationSuccessName:
+            print("Received \(MessageNames.RegistrationNames.registrationSuccessName) message.")
             self.state = State.idle
+            self.registered = true
             break
-        case trainName:
-            print("Received \(trainName) message.")
+        case MessageNames.TrainNames.trainName:
+            let repoID = message["repo_id"] as! String
+            print("Received \(MessageNames.TrainNames.trainName) message with repo ID: \(repoID).")
             let datasetID = message["dataset_id"] as! String
             let sessionID = message["session_id"] as! String
             let round = message["round"] as! Int
+            let hyperparams = message["hyperparams"] as! NSDictionary
+            let epochs = hyperparams["epochs"] as! Int
             let job = DMLJob(datasetID: datasetID, sessionID: sessionID, round: round)
+            job.repoID = repoID
+            job.epochs = epochs
             self.currentJobs.append(job)
             if (self.jobTimer == nil) {
                 self.setUpJobTimer()
             }
             break
-        case stopName:
-            print("Received \(stopName) message.")
+        case MessageNames.TrainNames.stopName:
+            let repoID = message["repo_id"] as! String
+            print("Received \(MessageNames.TrainNames.stopName) message with repo ID: \(repoID).")
             state = State.trainingComplete
             break
         default:
@@ -297,12 +310,22 @@ class CommunicationManager: WebSocketDelegate {
      Start up the job timer so that it checks for train jobs.
      */
     private func setUpJobTimer() {
-        self.jobTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
-            if self.state != State.training {
+        self.jobTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            if !self.coreMLClient!.isTraining  {
                 if self.isValidTrainingState() {
                     self.state = State.training
-                    for job in self.currentJobs {
-                        try! self.coreMLClient!.train(job: job)
+                    if self.currentJobs.count > 0 {
+                        let job = self.currentJobs.remove(at: 0)
+                        do {
+                            if self.coreMLClient!.inProgressHandler {
+                                try self.coreMLClient!.newJob(job: job)
+                            } else {
+                                try self.coreMLClient!.train(job: job)
+                            }
+                        } catch {
+                            print(error.localizedDescription)
+                            try! self.handleTrainingError(job: job)
+                        }
                     }
                 } else {
                     self.state = State.notCharging
@@ -310,23 +333,13 @@ class CommunicationManager: WebSocketDelegate {
             }
         }
     }
-    
-    /**
-     Start up the ping timer so that it begins pinging the cloud node every 5 seconds.
-     */
-    private func setUpPingTimer() {
-        self.pingTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            self.socket?.write(ping: Data())
-        }
-    }
-    
+
     /**
      Determine whether the device is in a valid training state. Currently, the device is in a valid training state if the device is a simulator or a physical phone that is charging.
      
      - Returns: Boolean representing whether the device is in a valid training state.
      */
     func isValidTrainingState() -> Bool {
-        
         #if targetEnvironment(simulator)
         return true
         #else
@@ -338,50 +351,65 @@ class CommunicationManager: WebSocketDelegate {
      Handler for the Core ML Client when training has finished. Make the update message and send it.
      
      - Parameters:
-     - job: The DML Job associated with this training round. Holds the gradients and omega to be sent to the cloud node, along with other necessary training information.
+        - job: The DML Job associated with this training round. Holds the gradients and omega to be sent to the cloud node, along with other necessary training information.
      
      - Throws: `DMLError` if the update message could not be formed.
      
      - Returns: A string representing the update message. Primarily used for testing.
      */
     func handleTrainingComplete(job: DMLJob) throws -> String {
-        let resultsMessage = try makeDictionaryString(keys: ["gradients", "omega"], values: [job.gradients!, job.omega!])
-        let updateMessage = try makeDictionaryString(keys: ["type", "round", "dataset_id", "session_id", "results"], values: ["NEW_UPDATE", job.round, job.datasetID, job.sessionID, resultsMessage])
+        let updateMessage = try makeNewUpdateMessage(job: job)
         
-        self.jobTimer?.invalidate()
-        self.jobTimer = nil
+        self.state = State.waiting
+        
+        if self.currentJobs.count == 0 {
+            self.jobTimer?.invalidate()
+            self.jobTimer = nil
+        }
         
         if self.socket != nil {
-            print("Sending NEW_UPDATE message!")
+            print("Sending \(MessageNames.TrainNames.newUpdateName) message with repo ID: \(job.repoID!).")
             self.socket?.write(string: updateMessage)
         }
         
-        if let index = self.currentJobs.firstIndex(where: {$0.datasetID == job.datasetID}) {
-            self.currentJobs.remove(at: index)
-        }
-        
-        self.state = State.waiting
         return updateMessage
+    }
+    
+    /**
+     Helper function to make new update message.
+     
+     - Parameters:
+        - job: The DML Job associated with this training round. Holds the gradients and omega to be sent to the cloud node, along with other necessary training information.
+     
+     - Throws: `DMLError` if the update message could not be formed.
+     
+     - Returns: A string representing the update message.
+     */
+    func makeNewUpdateMessage(job: DMLJob) throws -> String {
+        let resultsMessage = try makeDictionaryString(keys: ["gradients", "omega"], values: [job.gradients!, job.omega!])
+        let keys = ["type", "round", "repo_id", "dataset_id", "session_id", "results"]
+        let values: [Any] = [MessageNames.TrainNames.newUpdateName, job.round, job.repoID!, job.datasetID, job.sessionID, resultsMessage]
+        return try makeDictionaryString(keys: keys, values: values)
     }
     
     /**
      Handler for the Core ML Client if no dataset/datapoints were found for the specified dataset. Make the no dataset message and send it.
      
      - Parameters:
-     - job: The DML Job associated with this training round.
+        - job: The DML Job associated with this training round.
      
      - Throws: `DMLError` if the update message could not be formed.
      
      - Returns: A string representing the no dataset message. Primarily used for testing.
      */
     func handleNoDataset(job: DMLJob) throws -> String {
-        let noDatasetMessage = try makeDictionaryString(keys: ["type", "round", "dataset_id", "session_id"], values: ["NO_DATASET", job.round, job.datasetID, job.sessionID])
+        let noDatasetMessage = try makeNoDatasetMessage(job: job)
         
         self.jobTimer?.invalidate()
         self.jobTimer = nil
         
         if self.socket != nil {
-            print("Sending NO_DATASET message!")
+            print("Sending \(MessageNames.TrainNames.noDatasetName) message!")
             self.socket?.write(string: noDatasetMessage)
         }
         
@@ -389,8 +417,70 @@ class CommunicationManager: WebSocketDelegate {
             self.currentJobs.remove(at: index)
         }
         
-        self.state = State.waiting
+        self.state = State.idle
         return noDatasetMessage
+    }
+    
+    /**
+     Helper function to make the no dataset message.
+    
+     - Parameters:
+        - job: The DML Job associated with this training round.
+
+     - Throws: `DMLError` if the no dataset message could not be formed.
+
+     - Returns: A string representing the no dataset message.
+    */
+    func makeNoDatasetMessage(job: DMLJob) throws -> String {
+        let keys = ["type", "round", "repo_id", "dataset_id", "session_id"]
+        let values: [Any] = [MessageNames.TrainNames.noDatasetName, job.round, job.repoID!, job.datasetID, job.sessionID]
+        return try makeDictionaryString(keys: keys, values: values)
+    }
+    
+    
+    /**
+     Handler for the Core ML Client if an error occurred during training. Make the training error message and send it.
+    
+     - Parameters:
+       - job: The DML Job associated with this training round.
+    
+     - Throws: `DMLError` if the training error message could not be formed.
+    
+     - Returns: A string representing the no dataset message. Primarily used for testing.
+    */
+    func handleTrainingError(job: DMLJob) throws -> String {
+        let noDatasetMessage = try makeTrainingErrorMessage(job: job)
+        
+        self.jobTimer?.invalidate()
+        self.jobTimer = nil
+        
+        if self.socket != nil {
+            print("Sending \(MessageNames.TrainNames.trainingErrorName) message!")
+            self.socket?.write(string: noDatasetMessage)
+        }
+        
+        if let index = self.currentJobs.firstIndex(where: {$0.sessionID == job.sessionID}) {
+            self.currentJobs.remove(at: index)
+        }
+        
+        self.state = State.idle
+        return noDatasetMessage
+    }
+    
+    /**
+     Helper functon to make the training error message.
+    
+     - Parameters:
+       - job: The DML Job associated with this training round.
+    
+     - Throws: `DMLError` if the update message could not be formed.
+    
+     - Returns: A string representing the no dataset message.
+    */
+    func makeTrainingErrorMessage(job: DMLJob) throws -> String {
+        let keys = ["type", "round", "repo_id", "dataset_id", "session_id"]
+        let values: [Any] = [MessageNames.TrainNames.trainingErrorName, job.round, job.repoID!, job.datasetID, job.sessionID]
+        return try makeDictionaryString(keys: keys, values: values)
     }
     
     /**
@@ -401,7 +491,5 @@ class CommunicationManager: WebSocketDelegate {
         self.isConnected = false
         self.jobTimer?.invalidate()
         self.jobTimer = nil
-        self.pingTimer?.invalidate()
-        self.pingTimer = nil
     }
 }

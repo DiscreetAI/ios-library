@@ -37,6 +37,9 @@ class CoreMLClient {
     /// TODO: Do something with these metrics and add more metrics.
     var losses = [String: [Double]]()
     
+    var isTraining: Bool
+    
+    var inProgressHandler: Bool
     /**
      Initializes the Core ML Client for training on jobs. Still needs to be configured with the Communication Manager before training. Set up the metrics too.
      
@@ -51,16 +54,8 @@ class CoreMLClient {
         self.modelLoader = modelLoader
         self.realmClient = realmClient
         self.weightsProcessor = weightsProcessor
-        self.resetMetrics()
-    }
-    
-    /**
-     Reset the metrics. Called on initialization or after training.
-     */
-    func resetMetrics() {
-        let batchLoss: [Double] = []
-        let trainLoss: [Double] = []
-        self.losses = ["batchLoss": batchLoss, "trainLoss": trainLoss]
+        self.isTraining = false
+        self.inProgressHandler = false
     }
     
     /**
@@ -84,12 +79,32 @@ class CoreMLClient {
      - Throws: `DMLError` if an error occurred during loading, preparing or training.
      */
     func train(job: DMLJob) throws {
-        self.currentJob = job
-        let modelURL = try self.modelLoader!.loadModel()
+        self.isTraining = true
+        if let trainJob = try makeTrainJob(job: job) {
+            self.currentJob = trainJob
+            print("Making handlers")
+            
+            let handlers = MLUpdateProgressHandlers(
+                forEvents: [.trainingBegin, .miniBatchEnd, .epochEnd],
+                progressHandler: progressHandler,
+                completionHandler: realCompletionHandler)
+                    
+            let updateTask = try! MLUpdateTask(forModelAt: trainJob.modelURL!, trainingData: trainJob.batchProvider!, configuration: nil, progressHandlers: handlers)
+            
+            updateTask.resume()
+        } else {
+            print("No dataset found!")
+        }
+    }
+    
+    func makeTrainJob(job: DMLJob) throws -> DMLJob? {
+        let modelURL = try self.modelLoader!.loadModel(sessionID: job.sessionID)
         
         var model: MLModel
         var inputName: String
         var predictedFeatureName: String
+
+        print("Making MLModel")
         do {
             model = try MLModel(contentsOf: modelURL)
             (inputName, predictedFeatureName) = getModelNames(model: model)
@@ -102,8 +117,10 @@ class CoreMLClient {
         
         if (type == nil) {
             _ = try self.communicationManager?.handleNoDataset(job: job)
-            return
+            return nil
         }
+        
+        print("Getting Batch Provider")
         
         var batchProvider: MLBatchProvider
         switch type! {
@@ -117,24 +134,25 @@ class CoreMLClient {
         
         if (batchProvider.count == 0) {
             _ = try self.communicationManager?.handleNoDataset(job: job)
-            return
+            return nil
         }
+        
+        
         
         job.omega = batchProvider.count
         job.modelURL = modelURL
+        job.batchProvider = batchProvider
         
-        let handlers = MLUpdateProgressHandlers(
-        forEvents: [.trainingBegin, .miniBatchEnd, .epochEnd],
-        progressHandler: progressHandler,
-        completionHandler: completionHandler)
-                
-        guard let updateTask = try? MLUpdateTask(forModelAt: modelURL, trainingData: batchProvider, configuration: nil, progressHandlers: handlers)
-            else {
-                print("Could't create an MLUpdateTask.")
-                return
-            }
-        updateTask.resume()
-        
+        return job
+    }
+    
+    func newJob(job: DMLJob) throws {
+        self.isTraining = true
+        if let trainJob = try makeTrainJob(job: job) {
+            self.currentJob = trainJob
+        } else {
+            print("No dataset found!")
+        }
     }
     
     /**
@@ -143,18 +161,19 @@ class CoreMLClient {
      - Throws: `DMLError` if an error occurred during gradient calculation or communication of the update message.
      */
     func finishedTraining(oldModelURL: URL, newModelURL: URL, learningRate: Double) throws {
-        /*
-         
-         */
-        print("Training complete.")
+        print("Training complete with repo ID: \(self.currentJob!.repoID!).")
         let oldWeightsPath = makeWeightsPath(modelURL: oldModelURL)
         let newWeightsPath = makeWeightsPath(modelURL: newModelURL)
-        print("Calculating gradients...")
+        print("Calculating gradients... with repo ID: \(self.currentJob!.repoID!).")
         self.currentJob!.gradients = try self.weightsProcessor!.calculateGradients(oldWeightsPath: oldWeightsPath, newWeightsPath: newWeightsPath, learningRate: Float32(learningRate)
         )
-        print("Finished calculating gradients!")
+        print("Finished calculating gradients with repo ID: \(self.currentJob!.repoID!).")
         _ = try self.communicationManager!.handleTrainingComplete(job: self.currentJob!)
-        
+        #if targetEnvironment(simulator)
+        #else
+        try self.modelLoader!.deleteModelFolder(sessionID: self.currentJob!.sessionID)
+        #endif
+        self.isTraining = false
     }
     
     /**
@@ -163,15 +182,28 @@ class CoreMLClient {
     func progressHandler(context: MLUpdateContext) {
         switch context.event {
         case .trainingBegin:
-            print("Training begin")
+            print("Training begin with repo ID: \(self.currentJob!.repoID!).")
         case .miniBatchEnd:
             let batchIndex = context.metrics[.miniBatchIndex] as! Int
             let batchLoss = context.metrics[.lossValue] as! Double
-            print("Mini batch \(batchIndex), loss: \(batchLoss)")
-            self.losses["batchLoss"]!.append(batchLoss)
+            print("Mini batch \(batchIndex), loss: \(batchLoss) with repo ID: \(self.currentJob!.repoID!).")
+            //self.losses["batchLoss"]!.append(batchLoss)
         case .epochEnd:
+            print(context.parameters[.epochs])
+            
+            self.inProgressHandler = true
             let trainLoss = context.metrics[.lossValue] as! Double
-            self.losses["trainLoss"]!.append(trainLoss)
+            print(trainLoss)
+            self.completionHandler(context: context)
+            
+            while self.currentJob == nil {
+               RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+            }
+            
+            self.isTraining = true
+            
+            
+            //self.losses["trainLoss"]!.append(trainLoss)
         default:
             print("Unknown event")
         }
@@ -181,23 +213,36 @@ class CoreMLClient {
      Completion handler for the model to use after training as finished. Handler any errors encountered here, since handlers cannot throw errors.
      */
     func completionHandler(context: MLUpdateContext) {
-        print("Training completed with state \(context.task.state.rawValue)")
- 
-        if context.task.state == .failed {
-          print("An error occurred.")
-          return
+        print("Training completed with state \(context.task.state.rawValue) with repo ID: \(self.currentJob!.repoID!).")
+        if context.task.state == .completed {
+            print("YAY")
         }
-
-        let trainLoss = context.metrics[.lossValue] as! Double
-        print("Final loss: \(trainLoss)")
+        if context.task.state == .cancelling {
+            print("BOOO")
+        }
+        if context.task.state == .suspended {
+            print("OOP")
+        }
+        if context.task.state == .failed {
+            print("An error occurred with repo ID: \(self.currentJob!.repoID!).")
+            try! self.communicationManager!.handleTrainingError(job: self.currentJob!)
+            return
+        }
+//        else {
+//            let trainLoss = context.metrics[.lossValue] as! Double
+//            print("Final loss: \(trainLoss) with repo ID: \(self.currentJob!.repoID!).")
+//        }
 
         do {
             let oldModelURL = try renameModel(modelURL: self.currentJob!.modelURL!)
+            print(oldModelURL.path, self.currentJob?.modelURL?.path)
             try saveUpdatedModel(context.model, to: self.currentJob!.modelURL!)
+            context.model.accessibilityValue = "";
             try self.finishedTraining(oldModelURL: oldModelURL, newModelURL: self.currentJob!.modelURL!, learningRate: context.parameters[.learningRate] as! Double)
-            print("Saved new model and communicated gradients!")
+            print("Saved new model and communicated gradients with repo ID: \(self.currentJob!.repoID!).")
         } catch DMLError.coreMLError(ErrorMessage.failedRename) {
             print(DMLError.coreMLError(ErrorMessage.failedRename))
+            self.isTraining = false
             print("Failed to rename old model!")
         } catch DMLError.coreMLError(ErrorMessage.failedModelUpdate) {
             print(DMLError.coreMLError(ErrorMessage.failedModelUpdate))
@@ -206,5 +251,11 @@ class CoreMLClient {
             print(error.localizedDescription)
             print("Failed to communicate gradients!")
         }
+        self.isTraining = false
+        self.currentJob = nil
+    }
+    
+    func realCompletionHandler(context: MLUpdateContext) {
+        print("Should not have reached this!!!")
     }
 }

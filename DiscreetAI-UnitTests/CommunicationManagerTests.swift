@@ -12,7 +12,7 @@ import XCTest
 @testable import DiscreetAI
 
 class CommunicationManagerTests: XCTestCase {
-    var communicationManager = CommunicationManager(coreMLClient: DummyCoreMLClient(), repoID: testRepo, apiKey: testApiKey)
+    var communicationManager = CommunicationManager(coreMLClient: DummyCoreMLClient(), repoID: testRepo, apiKey: testApiKey, cloudDomain: testRepo)
 
     override func tearDown() {
         communicationManager.reset()
@@ -57,9 +57,11 @@ class CommunicationManagerTests: XCTestCase {
          Test that the protocol for a new train message is correct.
          */
         do {
-            communicationManager.currentJobs = [DMLJob(datasetID: testDataset, sessionID: testSession, round: testRound)]
+            let job = DMLJob(datasetID: testDataset, sessionID: testSession, round: testRound)
+            job.repoID = testRepo
+            communicationManager.currentJobs = [job]
             let result = try communicationManager.handleNewEvent(event: WebSocketEvent.text(trainMessage))
-            RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
+            RunLoop.current.run(until: Date(timeIntervalSinceNow: 2))
             XCTAssertNil(result)
             XCTAssertEqual(communicationManager.state, State.training)
         } catch {
@@ -75,6 +77,7 @@ class CommunicationManagerTests: XCTestCase {
          */
         do {
             let job = DummyDMLJob(datasetID: testDataset, sessionID: testSession, round: testRound)
+            job.repoID = testRepo
             let actual = try communicationManager.handleTrainingComplete(job: job)
 
             let expectedJSON = try parseJSON(stringOrFile: updateMessage, isString: true) as! NSDictionary

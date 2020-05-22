@@ -19,9 +19,12 @@ public class Orchestrator {
     /// The repo ID corresponding to the registered application.
     public var repoID: String
     
-    /// The API key for authentication
+    /// The API key for authentication.
     public var apiKey: String
     
+    /// The domain of the cloud node.
+    var cloudDomain: String
+        
     /// An instance of the Realm Client to store data to be trained on.
     var realmClient: RealmClient
     
@@ -41,7 +44,9 @@ public class Orchestrator {
     public init?(repoID: String, apiKey: String, connectImmediately: Bool = true) throws {
         self.repoID = repoID
         self.apiKey = apiKey
+        self.cloudDomain = try getCloudDomain(repoID: repoID, apiKey: apiKey)
         self.realmClient = try RealmClient(repoID: self.repoID)
+        
         var weightsProcessor: WeightsProcessor
         do {
             let mpsHandler = try MPSHandler()
@@ -49,8 +54,10 @@ public class Orchestrator {
         } catch {
             weightsProcessor = WeightsProcessor()
         }
-        let coreMLClient = CoreMLClient(modelLoader: ModelLoader(repoID: repoID), realmClient: self.realmClient, weightsProcessor: weightsProcessor)
-        self.communicationManager = CommunicationManager(coreMLClient: coreMLClient, repoID: repoID, apiKey: apiKey)
+        
+        let modelLoader = ModelLoader(cloudDomain: cloudDomain)
+        let coreMLClient = CoreMLClient(modelLoader: modelLoader, realmClient: self.realmClient, weightsProcessor: weightsProcessor)
+        self.communicationManager = CommunicationManager(coreMLClient: coreMLClient, repoID: repoID, apiKey: apiKey, cloudDomain: cloudDomain)
         coreMLClient.configure(communicationManager: self.communicationManager)
         
         if connectImmediately {
@@ -200,6 +207,14 @@ public class Orchestrator {
         return self.communicationManager.state.rawValue
     }
     
+    public func setJobs(jobs: [DMLJob]) {
+        self.communicationManager.currentJobs = jobs
+    }
+    
+    public func getJobs() -> [DMLJob] {
+        return self.communicationManager.currentJobs
+    }
+    
     /**
      Clear all of the data in Realm.
      
@@ -263,7 +278,7 @@ public class Orchestrator {
      - Throws: `DMLError` if the repo ID is invalid.
      */
     private func validateRepoID() throws {
-        let url = makeCloudNodeURL(repoID: self.repoID)
+        let url = try makeCloudNodeURL(cloudDomain: self.cloudDomain)
         if NSData(contentsOf: url) == nil {
             throw DMLError.userError(ErrorMessage.invalidRepoID)
         } 

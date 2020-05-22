@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DiscreetAI'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'Discreet AI\'s custom library for private on device training.'
 
 # This description is used to generate tags and improve search results.

@@ -138,6 +138,7 @@
 		E41EE5AF2432FB9300B6F228 /* my_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = my_model.mlmodel; sourceTree = "<group>"; };
 		E41EE5B12432FB9300B6F228 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
 		E41EE5C22432FBC200B6F228 /* IntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		E423542C24776735001BA2CC /* demo_creds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = demo_creds.json; sourceTree = "<group>"; };
 		E42C76E623E8DC2A0003F638 /* Orchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orchestrator.swift; sourceTree = "<group>"; };
 		E42C76E823E8DCD20003F638 /* OrchestratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrchestratorTests.swift; sourceTree = "<group>"; };
 		E42C76EB23E8E8F00003F638 /* DummyOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyOrchestrator.swift; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		E40978F123A0A39F00F51C42 = {
 			isa = PBXGroup;
 			children = (
+				E423542C24776735001BA2CC /* demo_creds.json */,
 				E43ECF8A244FCBA3009152F5 /* Datasets */,
 				E40978FD23A0A39F00F51C42 /* DiscreetAI */,
 				E409790823A0A3A000F51C42 /* DiscreetAI-UnitTests */,

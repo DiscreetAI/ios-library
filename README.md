@@ -9,5 +9,5 @@ platform :ios, '13.4'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'DiscreetAI', '~> 1.0.3'
+    pod 'DiscreetAI', '~> 1.0.4'
 ```

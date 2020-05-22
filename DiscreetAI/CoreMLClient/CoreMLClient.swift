@@ -188,9 +188,7 @@ class CoreMLClient {
             let batchLoss = context.metrics[.lossValue] as! Double
             print("Mini batch \(batchIndex), loss: \(batchLoss) with repo ID: \(self.currentJob!.repoID!).")
             //self.losses["batchLoss"]!.append(batchLoss)
-        case .epochEnd:
-            print(context.parameters[.epochs])
-            
+        case .epochEnd:            
             self.inProgressHandler = true
             let trainLoss = context.metrics[.lossValue] as! Double
             print(trainLoss)
@@ -214,15 +212,6 @@ class CoreMLClient {
      */
     func completionHandler(context: MLUpdateContext) {
         print("Training completed with state \(context.task.state.rawValue) with repo ID: \(self.currentJob!.repoID!).")
-        if context.task.state == .completed {
-            print("YAY")
-        }
-        if context.task.state == .cancelling {
-            print("BOOO")
-        }
-        if context.task.state == .suspended {
-            print("OOP")
-        }
         if context.task.state == .failed {
             print("An error occurred with repo ID: \(self.currentJob!.repoID!).")
             try! self.communicationManager!.handleTrainingError(job: self.currentJob!)
@@ -235,7 +224,6 @@ class CoreMLClient {
 
         do {
             let oldModelURL = try renameModel(modelURL: self.currentJob!.modelURL!)
-            print(oldModelURL.path, self.currentJob?.modelURL?.path)
             try saveUpdatedModel(context.model, to: self.currentJob!.modelURL!)
             context.model.accessibilityValue = "";
             try self.finishedTraining(oldModelURL: oldModelURL, newModelURL: self.currentJob!.modelURL!, learningRate: context.parameters[.learningRate] as! Double)
@@ -256,6 +244,6 @@ class CoreMLClient {
     }
     
     func realCompletionHandler(context: MLUpdateContext) {
-        print("Should not have reached this!!!")
+        print("An internal error occurred.")
     }
 }

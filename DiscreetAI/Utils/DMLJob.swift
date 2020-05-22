@@ -22,9 +22,7 @@ public class DMLJob {
     
     /// The current round in this training session.
     var round: Int
-    
-    var epochs: Int?
-    
+        
     /// The calculated gradients after training.
     var gradients: [[Float32]]?
     
@@ -37,8 +35,7 @@ public class DMLJob {
     var repoID: String?
     
     var batchProvider: MLBatchProvider?
-    
-    var config: MLModelConfiguration?
+
     
     /**
      Initializes the DML job with the information already known before training. The remaining information is manually set after training.
